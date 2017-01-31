@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+# the STAR index path we will use is:
+INDEX=/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index
+
+echo $INDEX
