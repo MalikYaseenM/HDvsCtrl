@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/css/theme/simple.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>BA9 / CAP mRNA-Seq Analysis Strategy</h2>
+          Adam Labadorf <br/>
+          February 2, 2017
+        </section>
+        <section>
+          <h3>Asymptomatic HD mRNA-Seq Samples</h3>
+          <ul>
+            <li class="fragment">2 asymptomatic HD individuals</li>
+            <li class="fragment">2 brain regions each:
+              <ul>
+                <li>Brodmann Area 9 (Prefrontal Cortex, BA9)</li>
+                <li>Caudate Nucleus/Putamen (CAP)</li>
+              </ul>
+            </li>
+            <li class="fragment">BA9 is poly-A selected</li>
+            <li class="fragment">CAP is ribo-depleted</li>
+            <li class="fragment">Age and sex matched controls</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Two samples isn't good for much of anything...</h3>
+          <h3 class="fragment">so what can we do?</h3>
+        </section>
+        <section>
+          <h3>Planned analyses</h3>
+          <ul>
+            <li class="fragment">Align against hg38 with STAR+salmon+tximport</li>
+            <li class="fragment">Quantify DE of BA9 vs CAP with VST+limma</li>
+            <li class="fragment">VST counts ~ brain region + age of death<br/>(ignore condition - physiological differences)</li>
+            <li class="fragment">VST counts ~ case status + age of death<br/>(ignore brain regions - disease differences)</li>
+            <li class="fragment">Combining region and case status == low power</li>
+            <li class="fragment">No idea what to do about poly-A vs ribo-depleted...</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Strategy:</h3>
+          <ul>
+            <li class="fragment">Define differences between BA9 and CAP in "healthy" people</li>
+            <li class="fragment">Quantify uncertainty of statistical differences in gene expression (i.e. standard error of &beta; estimates)</li>
+            <li class="fragment">Use &beta; confidence intervals to better interpret DE statistics from n=2</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Data sources</h3>
+          <ul>
+            <li class="fragment">GTEx:
+              <p>
+                <iframe src="http://www.gtexportal.org/home/tissueSummaryPage" width=800 height=300></iframe>
+              </p>
+            </li>
+            <li class="fragment">Allen Brain Atlas - microarray datasets, but might be useful if GTEx fails</li>
+          </ul>
+        </section>
+        <section>
+          <section>
+            <h3>Processing</h3>
+            <ol>
+              <li class="fragment">Download all mRNA-Seq datasets from GTEx</li>
+              <li class="fragment">Align against hg38 with standard pipeline</li>
+              <li class="fragment">Quantify DE of BA9 vs CAP with VST+limma</li>
+              <li class="fragment">Extract standard error of &beta; estimate for each gene</li>
+              <li class="fragment">Compare HD BA9 vs CAP fold change point estimates to "empirical" &beta;s</li>
+            </ol>
+          </section>
+          <section>
+            <h3>Why not Firth's Logistic Regression?</h3>
+            How do we get a log odds ratio using just counts?
+          </section>
+          <section>
+            <h3>Why not DESeq2?</h3>
+            Does taking a simple ratio of counts violate some assumption of the negative binomial distribution?
+          </section>
+        </section>
+        <section>
+          <h3>Interpretation</h3>
+          <table>
+            <th>
+              <td>Significant &beta;</td>
+              <td>Non-significant &beta;</td>
+            </th>
+            <tr>
+              <td>FC inside CI</td>
+              <td><span class="fragment">Gene altered as expected</span></td>
+              <td><span class="fragment">Gene normally not different</span></td>
+            </tr>
+            <tr>
+              <td>FC not inside CI</td>
+              <td>
+                <span class="fragment">&asymp; zero?<br/>Not affected</span><br/>
+                <span class="fragment">!&asymp; zero?<br/>Possible HD gene</span>
+              </td>
+              <td class="fragment">Likely HD gene</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h3>Pitfalls</h3>
+          <ul>
+            <li class="fragment">HD dead brains too different from "healthy" dead brains</li>
+            <li class="fragment">poly-A vs ribo-deplete has larger effect than DE</li>
+            <li class="fragment">Others?</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Another crazy and undeveloped idea</h3>
+          <p class="fragment">
+            Is the correlation structure between genes
+            <i>within</i> a brain the same between brains?
+          </p>
+          <p class="fragment">
+            Idea: calculate all pairwise fold changes between genes within a sample,
+            compare across samples
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: '../reveal.js/plugin/markdown/marked.js' },
+          { src: '../reveal.js/plugin/markdown/markdown.js' },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true },
+          { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
