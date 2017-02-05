@@ -4,4 +4,4 @@
 #$ -P mlhd
 #$ -cwd
 
-gecho fastqc path_to_read1 path_to_read2
+fastqc /usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1.fastq.gz /usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2.fastq.gz
