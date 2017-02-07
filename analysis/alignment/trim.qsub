@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# arguments to qsub
+
+#$ -P mlhd
+
+#$ -cwd
+
+trimmomatic PE -phred64 H_0014_BA9_mRNASeq.R1_fastqc.zip H_0014_BA9_mRNASeq.R2_fastqc.zip H_0014_BA9_trim.R1P_fastqc.zip H_0014_BA9_trim.R1UP_fastqc.zip H_0014_BA9_trim.R2P_fastqc.zip H_0014_BA9_trim.R2UP_fastqc.zip ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
