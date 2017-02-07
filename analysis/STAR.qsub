@@ -1,7 +1,9 @@
 #!/bin/bash
+#$-P mlhd
+#$-cwd
 
 
 # the STAR index path we will use is:
 INDEX=/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index
 
-echo $INDEX
+STAR  H_0014_BA9_trim.R1P_fastqc.zip  H_0014_BA9_trim.R1UP_fastqc.zip
