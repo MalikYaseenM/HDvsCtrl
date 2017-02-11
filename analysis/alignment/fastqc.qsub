@@ -1,7 +1,15 @@
 #!/bin/bash
 #$ -P mlhd
+<<<<<<< HEAD
 #$ -cwd
 R1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1.fastq.gz
 R2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2.fastq.gz
 
 fastqc  $R1 $R2
+=======
+#$ -wd /usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples
+
+#SRCDIR=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples
+
+fastqc H_0014_BA9_mRNASeq.R1.fastq.gz H_0014_BA9_mRNASeq.R2.fastq.gz
+>>>>>>> 36c364f81a161554efc4d43e1ffbe14a97cddbb3
