@@ -1,0 +1,3 @@
+Sample	FastQC_avg_sequence_length	FastQC_percent_duplicates	FastQC_total_sequences	FastQC_percent_fails	FastQC_percent_gc
+H_0014_BA9_mRNASeq.R1	151.0	62.52215222772296	75106478.0	41.66666666666667	47.0
+H_0014_BA9_mRNASeq.R2	151.0	53.55170770695698	75106478.0	33.33333333333333	48.0

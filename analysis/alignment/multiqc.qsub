@@ -1,0 +1,10 @@
+#!/bin/bash
+#$ -P mlhd
+#$ -cwd
+
+export LC_ALL=en_US.utf-8
+export LANG=$LC_ALL
+samplesdir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/
+
+
+multiqc /usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/

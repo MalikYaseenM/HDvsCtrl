@@ -1,0 +1,3 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	H_0014_BA9_mRNASeq.R1	/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1_fastqc.zip
+FastQC	all_sections	H_0014_BA9_mRNASeq.R2	/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2_fastqc.zip
