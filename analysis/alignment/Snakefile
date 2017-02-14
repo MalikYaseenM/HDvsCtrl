@@ -11,9 +11,6 @@ rule fastqc:
         "{sample}.fastqc.zip"
         "{sample}.fastqc.html"
     shell:
-        "#!bin/bash"
-        "#$ -P mlhd"
-        "#$ -cwd"
         "fastqc {input} - > {output}"
 
 
@@ -24,9 +21,6 @@ rule trimmomatic:
         "H_0014_BA9_trim.{}P_fastq.zip"
         "H_0014_BA9_trim.R{replicate}UP_fastq.zip", replicate
     shell:
-        "#!bin/bash"
-        "#$ -P mlhd"
-        "#$ -cwd"
         "trimmomatic PE -phred33 {input} {output} ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
 
 rule multiqc:
