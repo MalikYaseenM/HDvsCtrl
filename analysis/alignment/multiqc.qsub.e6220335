@@ -1,3 +1,4 @@
+[INFO   ]         multiqc : Not cleaning sample names
 [INFO   ]         multiqc : This is MultiQC v0.9
 [INFO   ]         multiqc : Template    : default
 [INFO   ]         multiqc : Searching '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/'

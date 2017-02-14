@@ -7,4 +7,4 @@ export LANG=$LC_ALL
 samplesdir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/
 
 
-multiqc /usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/
+multiqc -s $samplesdir
