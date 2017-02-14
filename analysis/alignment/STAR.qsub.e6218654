@@ -1,1 +1,0 @@
-/var/spool/sge/scc-tk4/job_scripts/6218654: line 16: 27118 Segmentation fault      (core dumped) STAR --genomeDir $INDEX --readFilesIn $p1 $up1 $p2 $up2 --outFileNamePrefix $prefix
