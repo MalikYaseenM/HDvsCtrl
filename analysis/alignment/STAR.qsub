@@ -1,16 +1,14 @@
 #!/bin/bash
 #$-P mlhd
 #$-cwd
-
+#$ -pe mpi_8_tasks_per_node 8
 
 # the STAR index path we will use is:
 INDEX=/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index
-
-up1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1UP_fastq.zip                                                                                                                                     
-up2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2UP_fastq.zip                                                                                                                                     
+                                                                                                                                     
 p1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1P_fastq.zip                                                                                                                                      
 p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2P_fastq.zip  
 
 prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__
 
-STAR --genomeDir $INDEX --readFilesIn $p1 $up1 $p2 $up2 --outFileNamePrefix $prefix
+STAR --genomeDir $INDEX --runThreadN 8 --readFilesIn $p1 $p2 --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
