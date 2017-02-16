@@ -7,10 +7,10 @@
 #$ -cwd
 in1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1.fastq.gz
 in2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2.fastq.gz
-up1=H_0014_BA9_trim.R1UP_fastq.zip
-up2=H_0014_BA9_trim.R2UP_fastq.zip
-p1=H_0014_BA9_trim.R1P_fastq.zip
-p2=H_0014_BA9_trim.R2P_fastq.zip
+up1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1UP_fastq.zip
+up2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2UP_fastq.zip
+p1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1P_fastq.zip
+p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2P_fastq.zip
 
 
 trimmomatic PE -phred33 $in1 $in2 $p1 $up1 $p2 $up2 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36

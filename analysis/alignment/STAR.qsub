@@ -11,4 +11,4 @@ p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_B
 
 prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__
 
-STAR --genomeDir $INDEX --runThreadN 8 --readFilesIn $p1 $p2 --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
+STAR --runThreadN 8 --runMode alignReads --genomeDir $INDEX --readFilesIn $p1 $p2 --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
