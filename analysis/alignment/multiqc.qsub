@@ -5,11 +5,6 @@
 export LC_ALL=en_US.utf-8
 export LANG=$LC_ALL
 
-p1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1P_fastq.zip
-p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2P_fastq.zip
-f1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1_fastqc.zip 
-f2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2_fastqc.zip
-error=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/trimerror.txt
-STAR=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__Log.final.out
+samplesdir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/
 
-multiqc -s $p1 $p2 $error $f1 $f2 $STAR
+multiqc -s $samplesdir
