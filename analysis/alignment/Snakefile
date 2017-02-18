@@ -1,37 +1,41 @@
-directory =/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples
 
-rule all:
-    input:
-        "report.html"
-    
 rule fastqc:
     input:
-        "{directory}/{sample}.fastq.gz"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}.fastq.gz"
     output:
-        "{directory}/{sample}.fastqc.zip"
-        "{directory}/{sample}.fastqc.html"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}.fastqc.zip"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}.fastqc.html"
     shell:
         "fastqc {input} - > {output}"
 
 
 rule trimmomatic:
     input:
-        "{directory}/{sample}.fastq.gz"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}.fastq.gz"
     output:
-        "H_0014_BA9_trim.{}P_fastq.zip"
-        "H_0014_BA9_trim.R{replicate}UP_fastq.zip", replicate
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.{}P_fastq.zip"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R{replicate}UP_fastq.zip", replicate
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/trimerror.txt"
     shell:
-        "trimmomatic PE -phred33 {input} {output} ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
+        "trimmomatic PE -phred33 {input} {output} ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>trimerr.txt"
 
 rule STAR:
     input:
-        fa="data/genome.fa",
+        "/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1P_fastq.zip
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2P_fastq.zip
+        "
 
     output:
-        "calls/all.vcf"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__Aligned.out.bam"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__Log.final.out"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__Log.out"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__Log.progress.out"
+        "STAR__SJ.out.tab"
+
     shell:
-        "samtools mpileup -g -f {input.fa} {input.bam} | "
-        "bcftools call -mv - > {output}"
+        prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__
+        STAR --runThreadN 8 --runMode alignReads --genomeDir $INDEX --readFilesIn $p1 $p2 --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
         
 rule multiqc:
     input:
