@@ -1,15 +1,15 @@
-directory =/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq
+directory =/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples
 
 rule all:
     input:
         "report.html"
-
+    
 rule fastqc:
     input:
         "{directory}/{sample}.fastq.gz"
     output:
-        "{sample}.fastqc.zip"
-        "{sample}.fastqc.html"
+        "{directory}/{sample}.fastqc.zip"
+        "{directory}/{sample}.fastqc.html"
     shell:
         "fastqc {input} - > {output}"
 
@@ -23,15 +23,6 @@ rule trimmomatic:
     shell:
         "trimmomatic PE -phred33 {input} {output} ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
 
-rule multiqc:
-    input:
-        "sorted_reads/{sample}.bam"
-    output:
-        "sorted_reads/{sample}.bam.bai"
-    shell:
-        "samtools index {input}"
-
-
 rule STAR:
     input:
         fa="data/genome.fa",
@@ -41,7 +32,14 @@ rule STAR:
     shell:
         "samtools mpileup -g -f {input.fa} {input.bam} | "
         "bcftools call -mv - > {output}"
-
+        
+rule multiqc:
+    input:
+        "sorted_reads/{sample}.bam"
+    output:
+        "sorted_reads/{sample}.bam.bai"
+    shell:
+        "samtools index {input}"
 
 rule report:
     input:
