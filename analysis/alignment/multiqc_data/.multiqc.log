@@ -1,0 +1,62 @@
+[2017-02-18 13:12:11,916] multiqc                                            [DEBUG  ]  No MultiQC config found: /projectnb/bubhub/conda_root/user_envs/crespodi/presymptomatic_hd_mrnaseq/lib/python3.4/site-packages/multiqc-0.9-py3.4.egg/multiqc_config.yaml
+[2017-02-18 13:12:11,916] multiqc                                            [DEBUG  ]  No MultiQC config found: /usr3/graduate/crespodi/.multiqc_config.yaml
+[2017-02-18 13:12:11,917] multiqc                                            [DEBUG  ]  No MultiQC config found: multiqc_config.yaml
+[2017-02-18 13:12:11,917] multiqc                                            [DEBUG  ]  Command used: /projectnb/bubhub/conda_root/user_envs/crespodi/presymptomatic_hd_mrnaseq/bin/multiqc -s /usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/
+[2017-02-18 13:12:12,145] multiqc                                            [INFO   ]  Not cleaning sample names
+[2017-02-18 13:12:12,146] multiqc                                            [INFO   ]  This is MultiQC v0.9
+[2017-02-18 13:12:12,146] multiqc                                            [DEBUG  ]  Command     : /projectnb/bubhub/conda_root/user_envs/crespodi/presymptomatic_hd_mrnaseq/bin/multiqc -s /usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/
+[2017-02-18 13:12:12,146] multiqc                                            [DEBUG  ]  Working dir : /usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment
+[2017-02-18 13:12:12,146] multiqc                                            [INFO   ]  Template    : default
+[2017-02-18 13:12:12,147] multiqc                                            [INFO   ]  Searching '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/'
+[2017-02-18 13:12:12,147] multiqc                                            [DEBUG  ]  Analysing modules: htseq, gatk, custom_content, peddy, quast, snpeff, qualimap, bcftools, featureCounts, methylQA, rseqc, picard, preseq, prokka, samblaster, samtools, bamtools, bismark, hicup, salmon, kallisto, slamdunk, star, tophat, bowtie2, bowtie1, cutadapt, trimmomatic, skewer, fastq_screen, fastqc
+[2017-02-18 13:12:12,148] multiqc                                            [DEBUG  ]  Using temporary directory for creating report: /scratch/6402594.1.linga/tmpuypfvoxd
+[2017-02-18 13:12:12,227] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: STAR__Aligned.out.bam
+[2017-02-18 13:12:12,227] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: H_0791_BA9_mRNASeq.R1.fastq.gz
+[2017-02-18 13:12:12,255] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: H_0791_BA9_mRNASeq.R2.fastq.gz
+[2017-02-18 13:12:12,256] multiqc                                            [DEBUG  ]  Ignoring file as too large: H_0014_BA9_trim.R2P_fastq.zip
+[2017-02-18 13:12:12,256] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: H_0014_BA9_mRNASeq.R1.fastq.gz
+[2017-02-18 13:12:12,258] multiqc                                            [DEBUG  ]  Ignoring file as too large: H_0014_BA9_trim.R1UP_fastq.zip
+[2017-02-18 13:12:12,259] multiqc                                            [DEBUG  ]  Ignoring file as too large: H_0014_BA9_trim.R1P_fastq.zip
+[2017-02-18 13:12:12,260] multiqc                                            [DEBUG  ]  Ignoring file as too large: H_0014_BA9_trim.R2UP_fastq.zip
+[2017-02-18 13:12:12,262] multiqc                                            [DEBUG  ]  Ignoring file as too large: STAR__SJ.out.tab
+[2017-02-18 13:12:12,263] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: H_0014_BA9_mRNASeq.R2.fastq.gz
+[2017-02-18 13:12:12,450] multiqc.modules.htseq.htseq                        [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:12,539] multiqc.modules.gatk.gatk                          [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:12,571] multiqc.modules.custom_content.custom_content      [DEBUG  ]  No custom content found
+[2017-02-18 13:12:12,601] multiqc.modules.peddy.peddy                        [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:12,632] multiqc.modules.quast.quast                        [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:12,684] multiqc.modules.snpeff.snpeff                      [DEBUG  ]  Could not find any data in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:12,781] multiqc.modules.qualimap.QM_BamQC                  [DEBUG  ]  Using default Qualimap thresholds: 1, 5, 10, 30, 50
+[2017-02-18 13:12:12,788] multiqc.modules.qualimap.qualimap                  [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:12,827] multiqc.modules.bcftools.bcftools                  [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:12,859] multiqc.modules.featureCounts.feature_counts       [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:12,890] multiqc.modules.methylQA.methylQA                  [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,083] multiqc.modules.rseqc.rseqc                        [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,252] multiqc.modules.picard.picard                      [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,289] multiqc.modules.preseq.preseq                      [DEBUG  ]  Could not find any preseq data in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,315] multiqc.modules.prokka.prokka                      [DEBUG  ]  Could not find any Prokka data in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,354] multiqc.modules.samblaster.samblaster              [DEBUG  ]  Could not find any data in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,512] multiqc.modules.samtools.samtools                  [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,575] multiqc.modules.bamtools.bamtools                  [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,601] multiqc.modules.bismark.bismark                    [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,627] multiqc.modules.hicup.hicup                        [DEBUG  ]  Could not find any HiCUP data in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,646] multiqc.modules.salmon.salmon                      [DEBUG  ]  Could not find any Salmon data in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,687] multiqc.modules.kallisto.kallisto                  [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,783] multiqc.modules.slamdunk.slamdunk                  [DEBUG  ]  No slamdunk reports found.
+[2017-02-18 13:12:13,826] multiqc.modules.star.star                          [INFO   ]  Found 1 reports
+[2017-02-18 13:12:13,856] multiqc.modules.tophat.tophat                      [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,891] multiqc.modules.bowtie2.bowtie2                    [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,936] multiqc.modules.bowtie1.bowtie1                    [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,964] multiqc.modules.cutadapt.cutadapt                  [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:13,994] multiqc.modules.trimmomatic.trimmomatic            [INFO   ]  Found 1 logs
+[2017-02-18 13:12:14,029] multiqc.modules.skewer.skewer                      [DEBUG  ]  Could not find any data in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:14,052] multiqc.modules.fastq_screen.fastq_screen          [DEBUG  ]  Could not find any reports in ('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/',)
+[2017-02-18 13:12:14,207] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 2 reports
+[2017-02-18 13:12:14,378] multiqc                                            [INFO   ]  Report      : multiqc_report.html
+[2017-02-18 13:12:14,381] multiqc                                            [INFO   ]  Data        : multiqc_data
+[2017-02-18 13:12:14,381] multiqc                                            [DEBUG  ]  Moving data file from '/scratch/6402594.1.linga/tmpuypfvoxd/multiqc_data/multiqc_star.txt' to '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment/multiqc_data'
+[2017-02-18 13:12:14,384] multiqc                                            [DEBUG  ]  Moving data file from '/scratch/6402594.1.linga/tmpuypfvoxd/multiqc_data/multiqc_trimmomatic.txt' to '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment/multiqc_data'
+[2017-02-18 13:12:14,386] multiqc                                            [DEBUG  ]  Moving data file from '/scratch/6402594.1.linga/tmpuypfvoxd/multiqc_data/multiqc_general_stats.txt' to '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment/multiqc_data'
+[2017-02-18 13:12:14,389] multiqc                                            [DEBUG  ]  Moving data file from '/scratch/6402594.1.linga/tmpuypfvoxd/multiqc_data/multiqc_fastqc.txt' to '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment/multiqc_data'
+[2017-02-18 13:12:14,391] multiqc                                            [DEBUG  ]  Moving data file from '/scratch/6402594.1.linga/tmpuypfvoxd/multiqc_data/multiqc_sources.txt' to '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment/multiqc_data'
+[2017-02-18 13:12:15,182] multiqc                                            [INFO   ]  MultiQC complete
