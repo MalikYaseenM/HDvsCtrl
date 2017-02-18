@@ -1,2 +1,2 @@
-Sample	dropped_pct	input_read_pairs	forward_only_surviving	dropped	reverse_only_surviving	surviving	reverse_only_surviving_pct	forward_only_surviving_pct	surviving_pct
-/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1	0.12	75106478.0	5751670.0	89462.0	169015.0	69096331.0	0.23	7.66	92.0
+Sample	forward_only_surviving_pct	input_read_pairs	surviving_pct	reverse_only_surviving_pct	dropped_pct	reverse_only_surviving	forward_only_surviving	dropped	surviving
+/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1	7.66	75106478.0	92.0	0.23	0.12	169015.0	5751670.0	89462.0	69096331.0

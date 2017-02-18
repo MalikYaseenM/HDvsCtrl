@@ -1,0 +1,15 @@
+[INFO   ]         multiqc : Not cleaning sample names
+[INFO   ]         multiqc : This is MultiQC v0.9
+[INFO   ]         multiqc : Template    : default
+[INFO   ]         multiqc : Searching '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1P_fastq.zip'
+[INFO   ]         multiqc : Searching '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2P_fastq.zip'
+[INFO   ]         multiqc : Searching '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/trimerror.txt'
+[INFO   ]         multiqc : Searching '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1_fastqc.zip'
+[INFO   ]         multiqc : Searching '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2_fastqc.zip'
+[INFO   ]         multiqc : Searching '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__Log.final.out'
+[INFO   ]            star : Found 1 reports
+[INFO   ]     trimmomatic : Found 1 logs
+[INFO   ]          fastqc : Found 2 reports
+[INFO   ]         multiqc : Report      : multiqc_report.html
+[INFO   ]         multiqc : Data        : multiqc_data
+[INFO   ]         multiqc : MultiQC complete

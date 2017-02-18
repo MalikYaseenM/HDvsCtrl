@@ -1,5 +1,5 @@
-Sample	Trimmomatic_dropped_pct	FastQC_avg_sequence_length	FastQC_percent_gc	FastQC_percent_duplicates	FastQC_total_sequences	FastQC_percent_fails	STAR_uniquely_mapped	STAR_uniquely_mapped_percent
+Sample	Trimmomatic_dropped_pct	FastQC_percent_fails	FastQC_percent_duplicates	FastQC_total_sequences	FastQC_avg_sequence_length	FastQC_percent_gc	STAR_uniquely_mapped_percent	STAR_uniquely_mapped
 /usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1	0.12							
-H_0014_BA9_mRNASeq.R1.fastq.gz		151.0	47.0	62.52215222772296	75106478.0	41.66666666666667		
-H_0014_BA9_mRNASeq.R2.fastq.gz		151.0	48.0	53.55170770695698	75106478.0	33.33333333333333		
-STAR__Log.final.out							62909754.0	91.05
+H_0014_BA9_mRNASeq.R1.fastq.gz		41.66666666666667	62.52215222772296	75106478.0	151.0	47.0		
+H_0014_BA9_mRNASeq.R2.fastq.gz		33.33333333333333	53.55170770695698	75106478.0	151.0	48.0		
+STAR__Log.final.out							91.05	62909754.0
