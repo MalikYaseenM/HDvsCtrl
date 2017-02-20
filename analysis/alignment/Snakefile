@@ -1,10 +1,10 @@
 
 rule fastqc:
     input:
-        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}.fastq.gz"
+        "../../samples/{sample}.fastq.gz"
     output:
-        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}_fastqc.zip"
-        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}_fastqc.html"
+        "../../samples/{sample}_fastqc.zip"
+        "../../samples/{sample{sample}_fastqc.html"
     shell:
         "fastqc {input} - > {output}"
 
