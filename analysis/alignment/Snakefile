@@ -3,8 +3,8 @@ rule fastqc:
     input:
         "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}.fastq.gz"
     output:
-        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}.fastqc.zip"
-        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}.fastqc.html"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}_fastqc.zip"
+        "/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/{sample}_fastqc.html"
     shell:
         "fastqc {input} - > {output}"
 
