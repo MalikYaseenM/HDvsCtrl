@@ -1,0 +1,68 @@
+workdir: "../../samples"
+
+# Source fastq file pattern is like:
+#   {dataset}.{readnum}.fastq.gz
+#   e.g. H_0014_BA9_mRNASeq.R1.fastq.gz
+#
+# fastqc
+#   input:
+#     {path}.fastq.gz
+#   output:
+#     {path}_fastqc.zip
+#
+# trimmomatic
+#   input:
+#     {dataset}.R1.fastq.gz
+#     {dataset}.R2.fastq.gz
+#   output:
+#     {dataset}.R1.trimP.fastq.gz
+#     {dataset}.R1.trimU.fastq.gz
+#     {dataset}.R2.trimP.fastq.gz
+#     {dataset}.R2.trimU.fastq.gz
+#
+# STAR
+#   input:
+#     {dataset}.R1.trimP.fastq.gz
+#     {dataset}.R2.trimP.fastq.gz
+#   output:
+#     {dataset}.STAR.bam
+#
+# sort_bam:
+#   input:
+#     {dataset}.STAR.bam
+#   output:
+#     {dataset}.STAR.sorted.bam
+
+rule fastqc:
+    input:
+        fastq="{sample}.fastq.gz"
+    output:
+        zip="{sample}_fastqc.zip",
+        html="{sample}_fastqc.html"
+    shell:
+        "fastqc {input.fastq} {output.html} {output.zip}"
+
+rule read_length_distribution:
+  input:
+    "{sample}.fastq.gz"
+  output:
+    "{sample}_readlen_stats.txt"
+  run:
+    import gzip
+
+    len_dist = {}
+    with gzip.open(input[0],'rt') as fastq_f :
+      for line in fastq_f :
+        if line.startswith('@') :
+          seq = next(fastq_f)
+          len_seq = len(seq.strip())
+
+          if len_seq in len_dist :
+            len_dist[len_seq] += 1
+          else :
+            len_dist[len_seq] = 0
+
+    with open(output[0],'w') as stat_f :
+      sorted_lens = sorted(len_dist.keys())
+      for seq_len in sorted_lens :
+        stat_f.write('{},{}\n'.format(seq_len,len_dist[seq_len]))
