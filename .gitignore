@@ -1,2 +1,6 @@
 *#
 *~
+*.e[0-9]*
+*.o[0-9]*
+multiqc_data
+multiqc_report.html
