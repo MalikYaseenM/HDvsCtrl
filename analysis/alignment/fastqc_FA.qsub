@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#$ -P mlhd
+#$ -cwd
+
+R1=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq_100k.R1.fastq.gz
+R2=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq_100k.R2.fastq.gz
+
+fastqc  $R1 $R2
