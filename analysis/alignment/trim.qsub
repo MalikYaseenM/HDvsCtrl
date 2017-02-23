@@ -16,7 +16,7 @@ up1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_
 up2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2.trimU.fastq.gz
 
 #the error output is needed in multiqc so we capture it and give it a location
-serror=2>/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.trim.txt
+serror=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.trim.txt
 
-#trim running in Paired end, using phred 33. Format is input{1..2} p1 up1, p2 up2, <parameters>, then capture all with >2
-trimmomatic PE -phred33 $in12 $p1 $up1 $p2 $up2 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 $serror
+#trim running in paired end, using phred 33. Format is input{1..2} p1 up1, p2 up2, <parameters>, then capture all with >2
+trimmomatic PE -phred33 $in12 $p1 $up1 $p2 $up2 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>$serror
