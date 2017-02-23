@@ -12,3 +12,11 @@ p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_B
 prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__
 
 STAR --runThreadN 8 --runMode alignReads --genomeDir $INDEX --readFilesIn $p1 $p2 --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
+
+INDEX=/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index
+p1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq_100k.R1.trimP.fastq.gz
+p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq_100k.R2.trimP.fastq.gz  
+prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq_100k.STAR.
+
+STAR --runMode alignReads --genomeDir $INDEX --readFilesIn $p1 $p2 --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
+

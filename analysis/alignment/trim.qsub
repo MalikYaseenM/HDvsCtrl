@@ -13,4 +13,19 @@ p1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_B
 p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2P_fastq.gz
 
 
-trimmomatic PE -phred33 $in1 $in2 $p1 $up1 $p2 $up2 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>H_0014_BA9_trim.txt
+trimmomatic PE -phred33 $in1 $in2 $p1 $up1 $p2 $up2 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.txt
+
+#!/bin/bash
+
+#$ -P mlhd
+
+#$ -cwd
+in12=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq_100k.R{1..2}.fastq.gz
+
+p12=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq_100k.R{1..2}.trimP.fastq.gz
+
+up12=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq_100k.R{1..2}.trimU.fastq.gz
+
+
+
+trimmomatic PE -phred33 $in12 $p12 $up12 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.txt
