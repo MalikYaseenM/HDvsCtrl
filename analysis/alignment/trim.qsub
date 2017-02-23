@@ -1,31 +1,22 @@
 #!/bin/bash
 
-# arguments to qsub
-
 #$ -P mlhd
 
 #$ -cwd
-in1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1.fastq.gz
-in2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2.fastq.gz
-up1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1UP_fastq.gz
-up2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2UP_fastq.gz
-p1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1P_fastq.gz
-p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2P_fastq.gz
 
+#required inputs for trim which are just the original mRNASeq files
+in12=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R{1..2}.fastq.gz
 
-trimmomatic PE -phred33 $in1 $in2 $p1 $up1 $p2 $up2 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.txt
+#paired end mode requires two pairs, This specifies the location and name of the pairs
+p1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1.trimP.fastq.gz
+p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2.trimP.fastq.gz
 
-#!/bin/bash
+#unpaired outputs are where one read survived the trimming but not the other
+up1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1.trimU.fastq.gz
+up2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2.trimU.fastq.gz
 
-#$ -P mlhd
+#the error output is needed in multiqc so we capture it and give it a location
+serror=2>/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.trim.txt
 
-#$ -cwd
-in12=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq_100k.R{1..2}.fastq.gz
-
-p12=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq_100k.R{1..2}.trimP.fastq.gz
-
-up12=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq_100k.R{1..2}.trimU.fastq.gz
-
-
-
-trimmomatic PE -phred33 $in12 $p12 $up12 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.txt
+#trim running in Paired end, using phred 33. Format is input{1..2} p1 up1, p2 up2, <parameters>, then capture all with >2
+trimmomatic PE -phred33 $in12 $p1 $up1 $p2 $up2 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 $serror
