@@ -5,10 +5,15 @@
 
 # the STAR index path we will use is:
 INDEX=/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index
-                                                                                                                                     
-p1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R1P_fastq.zip                                                                                                                                      
-p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_trim.R2P_fastq.zip  
 
-prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/STAR__
+#sample pairs
+p1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1.trimP.fastq.gz   
+p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2.trimP.fastq.gz   
 
-STAR --runThreadN 8 --runMode alignReads --genomeDir $INDEX --readFilesIn $p1 $p2 --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
+#prefix that all the output files will start with
+prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.STAR.
+
+#script threads to use, what type of runmode (align,genomegen etc) path to index,read in files, unzip files to run, prefix name, bam unsorted
+
+STAR --runThreadN 8 --runMode alignReads --genomeDir $INDEX --readFilesIn $p1 $p2 --readFilesCommand zcat --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
+

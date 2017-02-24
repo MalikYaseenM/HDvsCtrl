@@ -5,6 +5,9 @@
 export LC_ALL=en_US.utf-8
 export LANG=$LC_ALL
 
-samplesdir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/
+dir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/
 
-multiqc -s $samplesdir
+samplesdir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq*
+prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.multiqc_report
+
+multiqc -n $prefix -outdir $dir $samplesdir
