@@ -1,0 +1,10 @@
+#!/bin/bash
+#$ -P mlhd
+#$ -cwd
+
+export LC_ALL=en_US.utf-8
+export LANG=$LC_ALL
+
+samp=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq*
+
+multiqc -s $samp

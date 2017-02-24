@@ -6,9 +6,10 @@
 
 inFR=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.R1.fastq.gz
 inRV=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.R2.fastq.gz
-outFP=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_trim.R1P.fastq.gz
-outRP=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_trim.R2P.fastq.gz
-outFUP=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_trim.R1UP.fastq.gz
-outRUP=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_trim.R2UP.fastq.gz
+outFP=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.R1.trimP.fastq.gz
+outRP=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.R2.trimP.fastq.gz
+outFUP=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.R1.trimU.fastq.gz
+outRUP=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.R2.trimU.fastq.gz
+trerror=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H0791_BA9_mRNASeq_trimerror.txt
 
-trimmomatic PE -phred33 $inFR $inRV $outFP $outFUP $outRP $outRUP ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>trimerror.txt
+trimmomatic PE -phred33 $inFR $inRV $outFP $outFUP $outRP $outRUP ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>$trerror
