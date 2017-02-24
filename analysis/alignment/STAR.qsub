@@ -13,7 +13,7 @@ p2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_B
 #prefix that all the output files will start with
 prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.STAR.
 
-#script threads to use, what type of runmode (align,genomegen etc) path to index, files to run, prefix name, bam unsorted
+#script threads to use, what type of runmode (align,genomegen etc) path to index,read in files, unzip files to run, prefix name, bam unsorted
 
-STAR --runThreadN 8 --runMode alignReads --genomeDir $INDEX --readFilesIn $p1 $p2 --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
+STAR --runThreadN 8 --runMode alignReads --genomeDir $INDEX --readFilesIn $p1 $p2 --readFilesCommand zcat --outFileNamePrefix $prefix --outSAMtype BAM Unsorted
 
