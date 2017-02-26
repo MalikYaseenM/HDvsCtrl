@@ -1,0 +1,19 @@
+#!/bin/bash
+#$ -P mlhd
+#$ -cwd
+#$ -pe mpi_8_tasks_per_node 8
+
+# STAR index path
+INDEX=/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index
+
+# Samples
+in1=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.R1.trimP.fastq.gz
+
+in2=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.R2.trimP.fastq.gz
+
+# Output files
+out=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.STAR.
+
+# STAR Script
+
+STAR --runThreadN 8 --runMode alignReads --genomeDir $INDEX --readFilesIn $in1 $in2 --readFilesCommand zcat --outFileNamePrefix $out --outSAMtype BAM Unsorted
