@@ -2,7 +2,6 @@
 #$ -P mlhd
 #$ -cwd
 
-
 # Snakefile
 
 
@@ -34,24 +33,31 @@ rule trimmomatic:
     o4 = "{sample}.R2.trimU.fastq.gz"
   log:
      "{sample}.trimerror.log"
-     
   shell:
     " trimmomatic PE -phred33 "
     " {input.i1} {input.i2} {output.o1} {output.o2} {output.o3} {output.o4} "
     " ILLUMINACLIP:{input.truseqdir}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2> {log} "
+
 rule STAR:
     input:
       index= indexdir,
-      in1="{sample}.trimP.fastq.gz",
-      in2="{sample}.trimP.fastq.gz"
+      in1="{sample}.R1.trimP.fastq.gz",
+      in2="{sample}.R2.trimP.fastq.gz"
     output:
-      "{sample}.STAR.bam"
+      unsorted_bam='{sample}.STAR.Aligned.out.bam',
+      log_out='{sample}.STAR.Log.out',
+      log_progress_out='{sample}.STAR.Log.progress.out',
+      log_final_out='{sample}.STAR.Log.final.out',
+      sj_out='{sample}.STAR.SJ.out.tab',
+      STARdir='{sample}.STAR._STARtmp'
+    params:
+      prefix='{sample}.STAR.'
     shell:
       " STAR --runThreadN 8 "
       " --runMode alignReads " 
       " --genomeDir {input.index} " 
       " --readFilesIn {input.in1} {input.in2} "
-      " --readFilesCommand zcat --outFileNamePrefix {output} --outSAMtype BAM Unsorted "
+      " --readFilesCommand zcat --outFileNamePrefix {params.prefix} --outSAMtype BAM Unsorted "
 
 # rule multiqc:
 #   input:
