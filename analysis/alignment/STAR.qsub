@@ -4,6 +4,7 @@
 #$ -pe mpi_8_tasks_per_node 8
 
 # the STAR index path we will use is:
+
 INDEX=/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index
 
 #sample pairs

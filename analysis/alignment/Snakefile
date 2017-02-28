@@ -4,15 +4,14 @@
 
 
 # Snakefile
+
+
 # Working dir
-
 workdir: "../../samples"
-
-#SAMPLES - [H_0791, H_0791]
-
-#rule all:
- # input:
-  #  expand("{sample}.sort.txt", sample = SAMPLES)
+#references
+truseq_dir= '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment/TruSeq3-PE.fa'
+indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index'
+multiqcdir= '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/'
 
 rule fastqc:
   input:
@@ -25,30 +24,52 @@ rule fastqc:
 
 rule trimmomatic:
   input:
+    truseqdir = truseq_dir,
     i1 = "{sample}.R1.fastq.gz",
     i2 = "{sample}.R2.fastq.gz"
   output:
     o1 = "{sample}.R1.trimP.fastq.gz",
     o2 = "{sample}.R1.trimU.fastq.gz",
     o3 = "{sample}.R2.trimP.fastq.gz",
-    o4 = "{sample}.R2.trimU.fastq.gz",
-    te = "{sample}.trimerror.txt"
+    o4 = "{sample}.R2.trimU.fastq.gz"
+  log:
+     "{sample}.trimerror.log"
+     
   shell:
-    "trimmomatic PE -phred33 {input.i1} {input.i2} {output.o1} {output.o2} {output.o3} {output.o4} ILLUMINATI:TruSeq3=PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>{output.te}"
-
+    " trimmomatic PE -phred33 "
+    " {input.i1} {input.i2} {output.o1} {output.o2} {output.o3} {output.o4} "
+    " ILLUMINACLIP:{input.truseqdir}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2> {log} "
 rule STAR:
     input:
-      index="/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index",
+      index= indexdir,
       in1="{sample}.trimP.fastq.gz",
       in2="{sample}.trimP.fastq.gz"
     output:
       "{sample}.STAR.bam"
     shell:
-      "STAR --runThreadN 8 --runMode alignReads --genomeDir {input.index} --readFilesIn {input.in1} {input.in2} --readFilesCommand zcat --outFileNamePrefix {output} --outSAMtype BAM unsorted"
+      " STAR --runThreadN 8 "
+      " --runMode alignReads " 
+      " --genomeDir {input.index} " 
+      " --readFilesIn {input.in1} {input.in2} "
+      " --readFilesCommand zcat --outFileNamePrefix {output} --outSAMtype BAM Unsorted "
 
-#rule multiqc:
-#    input:
-#    output:
+# rule multiqc:
+#   input:
+#     trim="{sample}.trimP.fastq.gz",
+#     fastqc="{sample}_fastqc.zip",
+#     STAR="{sample}.STAR.bam",
+#     dir= multiqcdir
+
+#   output:
+#     report="{sample}.multqc_report.html"
+#     prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.multiqc_report
+#     samplesdir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq*                                
 #   shell:
-#        export LC_ALL=en_US.utf-8 export LANG=$LC_ALL""
+#     " export LC_ALL=en_US.utf-8 export LANG=$LC_ALL "
+#     " multiqc -n {output.prefix} -outdir {input.dir} {output.samplesdir} "  
+
+                                                                                                                                   
+
+
+                                                                                                                                   
 
