@@ -8,9 +8,13 @@
 # Working dir
 workdir: "../../samples"
 #references
-truseq_dir= '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment/TruSeq3-PE.fa'
+
+#truseq_dir= '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment/TruSeq3-PE.fa'
 indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index'
-multiqcdir= '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/'
+#multiqcdir= '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/'
+
+truseq_dir= '/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/alignment/TruSeq3-PE.fa'
+multiqcdir= '/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/'
 
 rule fastqc:
   input:

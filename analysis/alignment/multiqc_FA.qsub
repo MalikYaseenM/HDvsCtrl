@@ -5,6 +5,16 @@
 export LC_ALL=en_US.utf-8
 export LANG=$LC_ALL
 
+# Output directory
+dir=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/
+
+# Samples
 samp=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq*
 
-multiqc -s $samp
+# Ignore
+ign=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq*
+
+# Ouput name
+out=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.multiqc_report
+
+multiqc -n $out -o $dir -x $ign $samp
