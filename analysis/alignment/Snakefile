@@ -4,6 +4,7 @@
 
 include: '../common_workflow.snake'
 
+fastqc = expand('../../samples/{sample}__fastqc.zip', sample=sample_names)
 bams = expand('../../samples/{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
 
 rule all:
@@ -62,15 +63,14 @@ rule STAR:
 
 # rule multiqc:
 #   input:
-#     trim="{sample}.trimP.fastq.gz",
-#     fastqc="{sample}_fastqc.zip",
-#     STAR="{sample}.STAR.bam",
-#     dir= multiqcdir
+#     trim="../../samples/{sample}__trimerror.log",
+#     fastqc="../../samples/{sample}__fastqc.zip",
+#     STAR="../../samples/{sample}__trimP__.STAR.Aligned.out.bam",
 
 #   output:
-#     report="{sample}.multqc_report.html"
+#     report="../../samples/{sample}__multiqc_report.html"
 #     prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.multiqc_report
-#     samplesdir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq*
+#     samplesdir="../../samples/
 #   shell:
 #     " export LC_ALL=en_US.utf-8 export LANG=$LC_ALL "
-#     " multiqc -n {output.prefix} -outdir {input.dir} {output.samplesdir} "
+#     " multiqc -n {output.report} -outdir {output.samplesdir} {input.trim} {input.fastqc} {input.STAR}} "
