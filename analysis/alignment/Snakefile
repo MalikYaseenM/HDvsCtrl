@@ -1,67 +1,64 @@
-#!/bin/bash
-#$ -P mlhd
-#$ -cwd
-
 # Snakefile
 
+# snakemake --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 3
 
-# Working dir
-workdir: "../../samples"
+include: '../common_workflow.snake'
+
+bams = expand('../../samples/{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
+
+rule all:
+  input:
+    bams
+
 #references
 
-#truseq_dir= '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/alignment/TruSeq3-PE.fa'
 indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index'
-#multiqcdir= '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/'
-
-truseq_dir= '/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/alignment/TruSeq3-PE.fa'
-multiqcdir= '/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/'
 
 rule fastqc:
   input:
-    fastq="{sample}.fastq.gz"
+    fastq="../../samples/{sample}.fastq.gz"
   output:
-    zip="{sample}_fastqc.zip",
-    html="{sample}_fastqc.html"
+    zip="../../samples/{sample}__fastqc.zip",
+    html="../../samples/{sample}__fastqc.html"
   shell:
     "fastqc {input.fastq} {output.html} {output.zip}"
 
 rule trimmomatic:
   input:
-    truseqdir = truseq_dir,
-    i1 = "{sample}.R1.fastq.gz",
-    i2 = "{sample}.R2.fastq.gz"
+    read1 = "../../samples/{sample}.R1.fastq.gz",
+    read2 = "../../samples/{sample}.R2.fastq.gz",
+    adapter_fa = 'TruSeq3-PE.fa'
   output:
-    o1 = "{sample}.R1.trimP.fastq.gz",
-    o2 = "{sample}.R1.trimU.fastq.gz",
-    o3 = "{sample}.R2.trimP.fastq.gz",
-    o4 = "{sample}.R2.trimU.fastq.gz"
+    read1p = "../../samples/{sample}.R1__trimP.fastq.gz",
+    read1u = "../../samples/{sample}.R1__trimU.fastq.gz",
+    read2p = "../../samples/{sample}.R2__trimP.fastq.gz",
+    read2u = "../../samples/{sample}.R2__trimU.fastq.gz"
   log:
-     "{sample}.trimerror.log"
+     "../../samples/{sample}__trimerror.log"
   shell:
-    " trimmomatic PE -phred33 "
-    " {input.i1} {input.i2} {output.o1} {output.o2} {output.o3} {output.o4} "
-    " ILLUMINACLIP:{input.truseqdir}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2> {log} "
+    "trimmomatic PE -phred33 "
+    "{input.read1} {input.read2} "
+    "{output.read1p} {output.read1u} {output.read2p} {output.read2u} "
+    "ILLUMINACLIP:{input.adapter_fa}:2:30:10 LEADING:3 TRAILING:3 "
+    "SLIDINGWINDOW:4:15 MINLEN:36 2> {log} "
 
 rule STAR:
     input:
       index= indexdir,
-      in1="{sample}.R1.trimP.fastq.gz",
-      in2="{sample}.R2.trimP.fastq.gz"
+      read1="../../samples/{sample}.R1__trimP.fastq.gz",
+      read2="../../samples/{sample}.R2__trimP.fastq.gz"
     output:
-      unsorted_bam='{sample}.STAR.Aligned.out.bam',
-      log_out='{sample}.STAR.Log.out',
-      log_progress_out='{sample}.STAR.Log.progress.out',
-      log_final_out='{sample}.STAR.Log.final.out',
-      sj_out='{sample}.STAR.SJ.out.tab',
-      STARdir='{sample}.STAR._STARtmp'
+      unsorted_bam='../../samples/{sample}__trimP__STAR.Aligned.out.bam'
     params:
-      prefix='{sample}.STAR.'
+      prefix='../../samples/{sample}__trimP__STAR.'
+    threads: 8
     shell:
-      " STAR --runThreadN 8 "
-      " --runMode alignReads " 
-      " --genomeDir {input.index} " 
-      " --readFilesIn {input.in1} {input.in2} "
-      " --readFilesCommand zcat --outFileNamePrefix {params.prefix} --outSAMtype BAM Unsorted "
+      "STAR --runThreadN {threads} "
+      "--runMode alignReads "
+      "--genomeDir {input.index} "
+      "--readFilesIn {input.read1} {input.read2} "
+      "--readFilesCommand zcat --outFileNamePrefix {params.prefix} "
+      "--outSAMtype BAM Unsorted "
 
 # rule multiqc:
 #   input:
@@ -73,13 +70,7 @@ rule STAR:
 #   output:
 #     report="{sample}.multqc_report.html"
 #     prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.multiqc_report
-#     samplesdir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq*                                
+#     samplesdir=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq*
 #   shell:
 #     " export LC_ALL=en_US.utf-8 export LANG=$LC_ALL "
-#     " multiqc -n {output.prefix} -outdir {input.dir} {output.samplesdir} "  
-
-                                                                                                                                   
-
-
-                                                                                                                                   
-
+#     " multiqc -n {output.prefix} -outdir {input.dir} {output.samplesdir} "
