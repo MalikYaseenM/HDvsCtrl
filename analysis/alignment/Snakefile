@@ -1,10 +1,12 @@
 # Snakefile
 
-# snakemake --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 3
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 3
 
 include: '../common_workflow.snake'
 
-bams = expand('../../samples/{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
+workdir: '../../samples'
+
+bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
 
 rule all:
   input:
@@ -16,25 +18,25 @@ indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v
 
 rule fastqc:
   input:
-    fastq="../../samples/{sample}.fastq.gz"
+    fastq="{sample}.fastq.gz"
   output:
-    zip="../../samples/{sample}__fastqc.zip",
-    html="../../samples/{sample}__fastqc.html"
+    zip="{sample}__fastqc.zip",
+    html="{sample}__fastqc.html"
   shell:
     "fastqc {input.fastq} {output.html} {output.zip}"
 
 rule trimmomatic:
   input:
-    read1 = "../../samples/{sample}.R1.fastq.gz",
-    read2 = "../../samples/{sample}.R2.fastq.gz",
+    read1 = "{sample}.R1.fastq.gz",
+    read2 = "{sample}.R2.fastq.gz",
     adapter_fa = 'TruSeq3-PE.fa'
   output:
-    read1p = "../../samples/{sample}.R1__trimP.fastq.gz",
-    read1u = "../../samples/{sample}.R1__trimU.fastq.gz",
-    read2p = "../../samples/{sample}.R2__trimP.fastq.gz",
-    read2u = "../../samples/{sample}.R2__trimU.fastq.gz"
+    read1p = "{sample}.R1__trimP.fastq.gz",
+    read1u = "{sample}.R1__trimU.fastq.gz",
+    read2p = "{sample}.R2__trimP.fastq.gz",
+    read2u = "{sample}.R2__trimU.fastq.gz"
   log:
-     "../../samples/{sample}__trimerror.log"
+     "{sample}__trimerror.log"
   shell:
     "trimmomatic PE -phred33 "
     "{input.read1} {input.read2} "
@@ -45,12 +47,12 @@ rule trimmomatic:
 rule STAR:
     input:
       index= indexdir,
-      read1="../../samples/{sample}.R1__trimP.fastq.gz",
-      read2="../../samples/{sample}.R2__trimP.fastq.gz"
+      read1="{sample}.R1__trimP.fastq.gz",
+      read2="{sample}.R2__trimP.fastq.gz"
     output:
-      unsorted_bam='../../samples/{sample}__trimP__STAR.Aligned.out.bam'
+      unsorted_bam='{sample}__trimP__STAR.Aligned.out.bam'
     params:
-      prefix='../../samples/{sample}__trimP__STAR.'
+      prefix='{sample}__trimP__STAR.'
     threads: 8
     shell:
       "STAR --runThreadN {threads} "
