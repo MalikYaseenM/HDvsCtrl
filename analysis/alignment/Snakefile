@@ -63,16 +63,15 @@ rule STAR:
       "--readFilesCommand zcat --outFileNamePrefix {params.prefix} "
       "--outSAMtype BAM Unsorted "
 
-# rule multiqc:
-#   input:
-#     trim="../../samples/{sample}__trimerror.log",
-#     fastqc="../../samples/{sample}__fastqc.zip",
-#     STAR="../../samples/{sample}__trimP__.STAR.Aligned.out.bam",
-
-#   output:
-#     report="../../samples/{sample}__multiqc_report.html"
-#     prefix=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.multiqc_report
-#     samplesdir="../../samples/
-#   shell:
-#     " export LC_ALL=en_US.utf-8 export LANG=$LC_ALL "
-#     " multiqc -n {output.report} -outdir {output.samplesdir} {input.trim} {input.fastqc} {input.STAR}} "
+rule multiqc:
+    input:
+      trim="{sample}__trimerror.log",
+      fastqc="{sample}__fastqc.zip",
+      STAR="{sample}__trimP__.STAR.Aligned.out.bam",
+    output:
+      report="{sample}__multiqc_report.html"
+      samplesdir="../../samples/
+    shell:
+      "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL "
+      "multiqc -n {output.report} -outdir {output.samplesdir} "
+      "{input.trim} {input.fastqc} {input.STAR}} "
