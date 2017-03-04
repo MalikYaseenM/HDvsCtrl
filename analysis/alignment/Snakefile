@@ -64,14 +64,20 @@ rule STAR:
       "--outSAMtype BAM Unsorted "
 
 rule multiqc:
+#sample FQC: H_0791_BA9_mRNASeq_100k.R1
+#sample: H_0791_BA9_mRNASeq_100k
+# error not all output contain same wildcards
     input:
+      fqcR1="{sample}__fastqc.zip",
+#      fqcR2="{sample}.R2__fastqc.zip",
       trim="{sample}__trimerror.log",
-      fastqc="{sample}__fastqc.zip",
-      STAR="{sample}__trimP__.STAR.Aligned.out.bam",
+      STAR="{sample}__trimP__.STAR.Aligned.out.bam"
     output:
-      report="{sample}__multiqc_report.html"
-      samplesdir="../../samples/
+      report="{sample}__multiqc_report.html",
+      samplesdir="../../samples/"
+    params:
+      prefix="{sample}__multiqc_"
     shell:
       "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL "
-      "multiqc -n {output.report} -outdir {output.samplesdir} "
-      "{input.trim} {input.fastqc} {input.STAR}} "
+      "multiqc -n {params.prefix} -o {output.samplesdir} "
+      "{inputfqcR1} {input.trim} {input.STAR}} "
