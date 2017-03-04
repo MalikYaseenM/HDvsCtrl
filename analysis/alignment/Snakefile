@@ -67,17 +67,18 @@ rule multiqc:
 #sample FQC: H_0791_BA9_mRNASeq_100k.R1
 #sample: H_0791_BA9_mRNASeq_100k
 # error not all output contain same wildcards
+# missing rule exception: no rule to produce report
     input:
-      fqcR1="{sample}__fastqc.zip",
-#      fqcR2="{sample}.R2__fastqc.zip",
+      fqcR1="{sample}.R1__fastqc.zip",
+      fqcR2="{sample}.R2__fastqc.zip",
       trim="{sample}__trimerror.log",
       STAR="{sample}__trimP__.STAR.Aligned.out.bam"
     output:
       report="{sample}__multiqc_report.html",
       samplesdir="../../samples/"
     params:
-      prefix="{sample}__multiqc_"
+      prefix="{sample}__multiqc_report."
     shell:
       "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL "
       "multiqc -n {params.prefix} -o {output.samplesdir} "
-      "{inputfqcR1} {input.trim} {input.STAR}} "
+      "{input.fqcR1} {input.fcqR2} {input.trim} {input.STAR}} "
