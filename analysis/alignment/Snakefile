@@ -7,7 +7,7 @@ include: '../common_workflow.snake'
 workdir: '../../samples'
 
 bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
-fastqc = expand('{sample}__fastqc.zip', sample=sample_names)
+fastqc = expand('{sample}_fastqc.zip', sample=sample_names)
 
 rule all:
   input:
