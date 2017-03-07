@@ -21,8 +21,8 @@ rule fastqc:
   input:
     fastq="{sample}.fastq.gz"
   output:
-    zip="{sample}__fastqc.zip"
-#    html="{sample}__fastqc.html"
+    zip="{sample}_fastqc.zip",
+    html="{sample}_fastqc.html"
   shell:
     "fastqc {input.fastq} "
 
@@ -64,14 +64,9 @@ rule STAR:
       "--outSAMtype BAM Unsorted "
 
 rule multiqc:
-#samplesdir="../../samples/"
-#sample FQC: H_0791_BA9_mRNASeq_100k.R1
-#sample: H_0791_BA9_mRNASeq_100k
-# error not all output contain same wildcards
-# missing rule exception: no rule to produce report
     input:
-      fqcR1="{sample}.R1__fastqc.zip",
-      fqcR2="{sample}.R2__fastqc.zip",
+      fqcR1="{sample}.R1_fastqc.zip",
+      fqcR2="{sample}.R2_fastqc.zip",
       trim="{sample}__trimerror.log",
       STAR="{sample}__trimP__STAR.Aligned.out.bam"
     output:
