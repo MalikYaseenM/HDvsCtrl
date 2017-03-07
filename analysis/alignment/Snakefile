@@ -81,4 +81,4 @@ rule multiqc:
     shell:
       "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL "
       "multiqc -n {params.prefix} "
-      "{input.fqcR1} {input.fcqR2} {input.trim} {input.STAR}} "
+      "{input.fqcR1} {input.fqcR2} {input.trim} {input.STAR}} "
