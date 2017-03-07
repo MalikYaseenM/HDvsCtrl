@@ -21,10 +21,10 @@ rule fastqc:
   input:
     fastq="{sample}.fastq.gz"
   output:
-    zip="{sample}__fastqc.zip",
-    html="{sample}__fastqc.html"
+    zip="{sample}__fastqc.zip"
+#    html="{sample}__fastqc.html"
   shell:
-    "fastqc {input.fastq} {output.html} {output.zip}"
+    "fastqc {input.fastq} "
 
 rule trimmomatic:
   input:
