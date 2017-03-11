@@ -68,7 +68,7 @@ rule multiqc:
       fqcR1="{sample}.R1_fastqc.zip",
       fqcR2="{sample}.R2_fastqc.zip",
       trim="{sample}__trimerror.log",
-      STAR="{sample}__trimP__STAR.Aligned.out.bam"
+      STAR="{sample}__trimP__STAR.Log.final.out"
     output:
       report="{sample}__multiqc_report.html"
     params:
