@@ -35,7 +35,8 @@ rule trimmomatic:
     read1p = "{sample}.R1__trimP.fastq.gz",
     read1u = "{sample}.R1__trimU.fastq.gz",
     read2p = "{sample}.R2__trimP.fastq.gz",
-    read2u = "{sample}.R2__trimU.fastq.gz"
+    read2u = "{sample}.R2__trimU.fastq.gz",
+    trimlog = "{sample}__trimerror.log"
   log:
      "{sample}__trimerror.log"
   shell:
@@ -51,7 +52,8 @@ rule STAR:
       read1="{sample}.R1__trimP.fastq.gz",
       read2="{sample}.R2__trimP.fastq.gz"
     output:
-      unsorted_bam='{sample}__trimP__STAR.Aligned.out.bam'
+      unsorted_bam='{sample}__trimP__STAR.Aligned.out.bam',
+      finallog='{sample}__trimP__STAR.Log.final.out'
     params:
       prefix='{sample}__trimP__STAR.'
     threads: 8
