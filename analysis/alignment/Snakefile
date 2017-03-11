@@ -72,8 +72,8 @@ rule multiqc:
     output:
       report="{sample}__multiqc_report.html"
     params:
-      prefix="{sample}__multiqc_report."
+      prefix="{sample}__multiqc_report"
     shell:
-      "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL "
+      "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL && "
       "multiqc -n {params.prefix} "
       "{input.fqcR1} {input.fqcR2} {input.trim} {input.STAR} "
