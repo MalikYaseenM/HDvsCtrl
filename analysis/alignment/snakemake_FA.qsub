@@ -36,7 +36,7 @@ rule trimmomatic:
     o4 = "{sample}_BA9_mRNASeq.R2.trimU.fastq.gz"
     te = "{sample}_BA9_mRNASeq_trimerror.txt"
   shell:
-    "trimmomatic PE -phred33 {input.i1} {input.i2} {output.o1} {output.o2} {output.o3} {output.o4} ILLUMINATI:TruSeq3=PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>{o.te}"
+    "trimmomatic PE -phred33 {input.i1} {input.i2} {output.o1} {output.o2} {output.o3} {output.o4} ILLUMINACLIP:TruSeq3=PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2>{o.te}"
 
   rule STAR:
     input:
