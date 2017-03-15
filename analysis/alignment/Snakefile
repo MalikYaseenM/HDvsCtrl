@@ -25,6 +25,8 @@ rule fastqc:
     html="{sample}_fastqc.html"
   shell:
     "fastqc {input.fastq} "
+    "mv {wildcards}_fastqc.zip {wildcards}__fastqc.zip"
+    "mv {wildcards}_fastqc.html {wildcards}__fastqc.html"
 
 rule trimmomatic:
   input:
