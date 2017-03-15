@@ -1,0 +1,65 @@
+
+rule all:
+  input:
+    '../HD_mRNASeq_sample_info.csv'
+    ,'fastq_symlinks.done'
+
+rule get_sample_info:
+  output:
+    '../HD_mRNASeq_sample_info.csv'
+  shell:
+    r"""
+      source activate sample_info;
+
+      sample_info.py query Subject HDSubject Dataset mRNASeq \
+        -w 'Subject.subject_type == "HD"' \
+        -w 'Dataset.datatype == "mRNASeq"' \
+        -w 'mRNASeq.read1_path is not None' > {output};
+
+      sample_info.py query Subject HDSubject Dataset mRNASeq \
+        -w 'Subject.subject_type == "HDpos"' \
+        -w 'Dataset.datatype == "mRNASeq"' \
+        -w 'mRNASeq.read1_path is not None' | tail -n +3  >> {output};
+
+      sample_info.py query Subject HDSubject Dataset mRNASeq \
+        -w 'Subject.subject_type == "Control"' \
+        -w 'Dataset.datatype == "mRNASeq"' \
+        -w 'mRNASeq.read1_path is not None' | tail -n +3  >> {output};
+
+      source deactivate
+    """
+
+rule create_fastq_links:
+  input:
+    '../HD_mRNASeq_sample_info.csv'
+  output:
+    touch('fastq_symlinks.done')
+  params:
+    sampdir='../../samples'
+  run:
+    import os
+    import pandas
+
+    samples = pandas.read_csv(
+      input[0]
+      ,comment='#'
+    )
+
+    for k, samp in samples.iterrows() :
+      try :
+        os.symlink(
+          samp['mRNASeq.read1_path']
+          ,os.path.join(
+            params.sampdir
+            ,'{}__R1.fastq.gz'.format(samp['Dataset.dataset_id'])
+          )
+        )
+        os.symlink(
+          samp['mRNASeq.read2_path']
+          ,os.path.join(
+            params.sampdir
+            ,'{}__R2.fastq.gz'.format(samp['Dataset.dataset_id'])
+          )
+        )
+      except:
+        pass
