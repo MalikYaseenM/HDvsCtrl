@@ -30,14 +30,14 @@ rule fastqc:
 
 rule trimmomatic:
   input:
-    read1 = "{sample}.R1.fastq.gz",
-    read2 = "{sample}.R2.fastq.gz",
+    read1 = "{sample}__R1.fastq.gz",
+    read2 = "{sample}__R2.fastq.gz",
     adapter_fa = 'TruSeq3-PE.fa'
   output:
-    read1p = "{sample}.R1__trimP.fastq.gz",
-    read1u = "{sample}.R1__trimU.fastq.gz",
-    read2p = "{sample}.R2__trimP.fastq.gz",
-    read2u = "{sample}.R2__trimU.fastq.gz",
+    read1p = "{sample}__R1__trimP.fastq.gz",
+    read1u = "{sample}__R1__trimU.fastq.gz",
+    read2p = "{sample}__R2__trimP.fastq.gz",
+    read2u = "{sample}__R2__trimU.fastq.gz",
     trimlog = "{sample}__trimerror.log"
   log:
      "{sample}__trimerror.log"
@@ -51,8 +51,8 @@ rule trimmomatic:
 rule STAR:
     input:
       index= indexdir,
-      read1="{sample}.R1__trimP.fastq.gz",
-      read2="{sample}.R2__trimP.fastq.gz"
+      read1="{sample}__R1__trimP.fastq.gz",
+      read2="{sample}__R2__trimP.fastq.gz"
     output:
       unsorted_bam='{sample}__trimP__STAR.Aligned.out.bam',
       finallog='{sample}__trimP__STAR.Log.final.out'
@@ -69,8 +69,8 @@ rule STAR:
 
 rule multiqc:
     input:
-      fqcR1="{sample}.R1_fastqc.zip",
-      fqcR2="{sample}.R2_fastqc.zip",
+      fqcR1="{sample}__R1_fastqc.zip",
+      fqcR2="{sample}__R2_fastqc.zip",
       trim="{sample}__trimerror.log",
       STAR="{sample}__trimP__STAR.Log.final.out"
     output:

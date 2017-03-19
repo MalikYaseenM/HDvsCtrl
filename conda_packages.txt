@@ -1,7 +1,7 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: linux-64
-boost=1.60.0=py34_0
+boost=1.61.0=py34_1
 bzip2=1.0.6=3
 cairo=1.14.8=0
 cffi=1.9.1=py34_0
@@ -26,6 +26,7 @@ harfbuzz=0.9.39=2
 icu=56.1=4
 idna=2.2=py34_0
 java-jdk=8.0.92=1
+jemalloc=3.6.0=1
 jinja2=2.9.5=py34_0
 jpeg=9b=0
 libffi=3.2.1=1
@@ -46,7 +47,7 @@ paramiko=2.0.2=py34_0
 pcre=8.39=1
 pip=9.0.1=py34_1
 pixman=0.34.0=0
-pyasn1=0.2.3=py34_0
+pyasn1=0.1.9=py34_0
 pycparser=2.17=py34_0
 pyparsing=2.1.4=py34_0
 pyqt=4.11.4=py34_4
@@ -58,14 +59,14 @@ pyyaml=3.12=py34_0
 qt=4.8.7=4
 readline=6.2=2
 requests=2.13.0=py34_0
-salmon=0.8.0=boost1.60_0
+salmon=0.8.2=0
 setuptools=27.2.0=py34_0
 simplejson=3.10.0=py34_0
 sip=4.18=py34_0
 six=1.10.0=py34_0
-snakemake=3.11.1=py34_1
+snakemake=3.11.2=py34_0
 sqlite=3.13.0=0
-star=2.5.2b=0
+star=2.5.3a=0
 tbb=4.4_20150728=0
 tk=8.5.18=0
 trimmomatic=0.36=3
