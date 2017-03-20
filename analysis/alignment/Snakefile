@@ -7,7 +7,7 @@ include: '../common_workflow.snake'
 workdir: '../../samples'
 
 bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
-fastqc = expand('{sample}_fastqc.zip', sample=sample_names)
+fastqc = expand('{sample}__fastqc.zip', sample=sample_names)
 
 rule all:
   input:
@@ -25,8 +25,19 @@ rule fastqc:
     html="{sample}_fastqc.html"
   shell:
     "fastqc {input.fastq} "
-    "mv {wildcards}_fastqc.zip {wildcards}__fastqc.zip"
-    "mv {wildcards}_fastqc.html {wildcards}__fastqc.html"
+#    "mv {wildcards}_fastqc.zip {wildcards}__fastqc.zip &&"
+#    "mv {wildcards}_fastqc.html {wildcards}__fastqc.html"
+
+rule renamefastqc:
+  input:
+   zip="{sample}_fastqc.zip",
+   html="{sample}_fastqc.html"
+  output:
+   zip="{sample}__fastqc.zip",
+   html="{sample}__fastqc.html"
+  shell:
+   "mv {input.zip} {output.zip} && "
+   "mv {input.html} {output.html}"
 
 rule trimmomatic:
   input:
