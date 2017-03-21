@@ -7,7 +7,7 @@ workdir: '../../samples'
 import csv
 sample_names = []
 trimsamples = []
-with open('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/totalsamples.csv') as f :
+with open('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/HD_info.csv') as f :
   for r in csv.reader(f) :
     if r[0].startswith('subject') : continue
     sample_names.append(r[1])
@@ -18,8 +18,8 @@ with open('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis
 rule all:
   input:
     #bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
-    fastqc = expand('{sample}_fastqc.zip',sample=sample_names)
-    #trimmo = expand('{sample}__trimerror.log', sample=trimsamples)
+    #fastqc = expand('{sample}_fastqc.zip',sample=sample_names)
+    trimmo = expand('{sample}__trimerror.log', sample=trimsamples)
 
 
 #references
