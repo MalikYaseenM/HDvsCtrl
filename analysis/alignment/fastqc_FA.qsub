@@ -3,7 +3,7 @@
 #$ -P mlhd
 #$ -cwd
 
-R1=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq_100k.R1.fastq.gz
-R2=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq_100k.R2.fastq.gz
+R1=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/C_0036_BA9_mRNASeq__R1.fastq.gz
+R2=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/C_0036_BA9_mRNASeq__R2.fastq.gz
 
 fastqc  $R1 $R2
