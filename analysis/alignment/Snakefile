@@ -1,17 +1,23 @@
 # Snakefile
 
-# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 3
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 
 include: '../common_workflow.snake'
+
+# For Filisia's workflow
+#include: '../workflow_FA.snake'
 
 workdir: '../../samples'
 
 bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
-fastqc = expand('{sample}__fastqc.zip', sample=sample_names)
+fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
+
 
 rule all:
   input:
-    bams
+    bams,
+    fastqc
+
 
 #references
 
@@ -37,7 +43,7 @@ rule renamefastqc:
    html="{sample}__fastqc.html"
   shell:
    "mv {input.zip} {output.zip} && "
-   "mv {input.html} {output.html}"
+   "mv {input.html} {output.html} "
 
 rule trimmomatic:
   input:
