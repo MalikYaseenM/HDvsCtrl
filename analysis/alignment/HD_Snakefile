@@ -1,0 +1,92 @@
+# Snakefile
+
+include: '../HD_workflow.snake'
+
+workdir: '../../samples'
+
+import csv
+sample_names = []
+trimsamples = []
+with open('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/totalsamples.csv') as f :
+  for r in csv.reader(f) :
+    if r[0].startswith('subject') : continue
+    sample_names.append(r[1])
+    trimsamples.append(r[0])
+
+
+
+rule all:
+  input:
+    #bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
+    fastqc = expand('{sample}_fastqc.zip',sample=sample_names)
+    #trimmo = expand('{sample}__trimerror.log', sample=trimsamples)
+
+
+#references
+
+indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index'
+
+rule fastqc:
+  input:
+    fastq="{sample}.fastq.gz"
+  output:
+    zip="{sample}_fastqc.zip",
+    html="{sample}_fastqc.html"
+  shell:
+    "fastqc {input.fastq} "
+    "mv {wildcards}_fastqc.zip {wildcards}__fastqc.zip"
+    "mv {wildcards}_fastqc.html {wildcards}__fastqc.html"
+
+rule trimmomatic:
+  input:
+    read1 = "{sample}__R1.fastq.gz",
+    read2 = "{sample}__R2.fastq.gz",
+    adapter_fa = 'TruSeq3-PE.fa'
+  output:
+    read1p = "{sample}__R1__trimP.fastq.gz",
+    read1u = "{sample}__R1__trimU.fastq.gz",
+    read2p = "{sample}__R2__trimP.fastq.gz",
+    read2u = "{sample}__R2__trimU.fastq.gz",
+    trimlog = "{sample}__trimerror.log"
+  log:
+     "{sample}__trimerror.log"
+  shell:
+    "trimmomatic PE -phred33 "
+    "{input.read1} {input.read2} "
+    "{output.read1p} {output.read1u} {output.read2p} {output.read2u} "
+    "ILLUMINACLIP:{input.adapter_fa}:2:30:10 LEADING:3 TRAILING:3 "
+    "SLIDINGWINDOW:4:15 MINLEN:36 2> {log} "
+
+rule STAR:
+    input:
+      index= indexdir,
+      read1="{sample}__R1__trimP.fastq.gz",
+      read2="{sample}__R2__trimP.fastq.gz"
+    output:
+      unsorted_bam='{sample}__trimP__STAR.Aligned.out.bam',
+      finallog='{sample}__trimP__STAR.Log.final.out'
+    params:
+      prefix='{sample}__trimP__STAR.'
+    threads: 8
+    shell:
+      "STAR --runThreadN {threads} "
+      "--runMode alignReads "
+      "--genomeDir {input.index} "
+      "--readFilesIn {input.read1} {input.read2} "
+      "--readFilesCommand zcat --outFileNamePrefix {params.prefix} "
+      "--outSAMtype BAM Unsorted "
+
+rule multiqc:
+    input:
+      fqcR1="{sample}__R1_fastqc.zip",
+      fqcR2="{sample}__R2_fastqc.zip",
+      trim="{sample}__trimerror.log",
+      STAR="{sample}__trimP__STAR.Log.final.out"
+    output:
+      report="{sample}__multiqc_report.html"
+    params:
+      prefix="{sample}__multiqc_report"
+    shell:
+      "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL && "
+      "multiqc -n {params.prefix} "
+      "{input.fqcR1} {input.fqcR2} {input.trim} {input.STAR} "

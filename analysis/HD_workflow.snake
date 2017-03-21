@@ -1,0 +1,8 @@
+import csv
+
+sample_names = []
+
+with open('../HD_info.csv') as f :
+  for r in csv.reader(f) :
+    if r[0].startswith('subject') : continue
+    sample_names.append(r[1])
