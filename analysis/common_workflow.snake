@@ -1,12 +1,6 @@
 import csv
 import pandas
 
-#sample_names = []
-#with open('../sample_info.csv') as f :
-#with open('../HD_mRNASeq_sample_info.csv') as f:
-#  for r in csv.reader(f) :
-#    if r[0].startswith('subject') : continue
-#    sample_names.append(r[1])
 
 sample_info = pandas.read_csv('../HD_mRNASeq_sample_info.csv', comment='#')
 
