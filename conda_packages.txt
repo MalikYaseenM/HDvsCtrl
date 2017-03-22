@@ -1,7 +1,8 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: linux-64
-boost=1.61.0=py34_1
+boost=1.63.0=py34_5
+boost-cpp=1.63.0=2
 bzip2=1.0.6=3
 cairo=1.14.8=0
 cffi=1.9.1=py34_0
@@ -23,10 +24,10 @@ glib=2.50.2=1
 gst-plugins-base=1.8.0=0
 gstreamer=1.8.0=0
 harfbuzz=0.9.39=2
-icu=56.1=4
+icu=58.1=1
 idna=2.2=py34_0
 java-jdk=8.0.92=1
-jemalloc=3.6.0=1
+jemalloc=4.5.0=0
 jinja2=2.9.5=py34_0
 jpeg=9b=0
 libffi=3.2.1=1
@@ -59,7 +60,7 @@ pyyaml=3.12=py34_0
 qt=4.8.7=4
 readline=6.2=2
 requests=2.13.0=py34_0
-salmon=0.8.2=0
+salmon=0.8.2=1
 setuptools=27.2.0=py34_0
 simplejson=3.10.0=py34_0
 sip=4.18=py34_0
