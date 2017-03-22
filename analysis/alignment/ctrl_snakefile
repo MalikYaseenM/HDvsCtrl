@@ -1,0 +1,23 @@
+import csv
+
+#sample_names = []
+#fastqc_names = []
+
+#with open('../sample_controls.csv') as f :
+#  for r in csv.reader(f) :
+#    if r[0].startswith('subject') : continue
+#    sample_names.append(r[0])
+#    fastqc_names.append(r[1])
+
+include: 'Snakefile'
+
+#define sample_names
+
+control_ids = [ _ for _ in dataset_ids if _.startswith('C')]
+control_bams=['{}__trimP__STAR.Aligned.out.bam'.format(_) for _ in control_ids]
+# or
+# control_bams=(expand '{sample}__trimP__STAR.Aligned.out.bam',sample=control_ids)
+
+rule control_all:
+  input:
+    control_bams
