@@ -1,3 +1,5 @@
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+
 import csv
 
 include: 'Snakefile'
