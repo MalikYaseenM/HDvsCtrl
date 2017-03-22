@@ -9,14 +9,14 @@ include: '../common_workflow.snake'
 
 workdir: '../../samples'
 
-bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=sample_names)
-fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
+bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=dataset_ids)
+#fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
 
 
 rule all:
   input:
     bams,
-    fastqc
+#    fastqc
 
 
 #references
