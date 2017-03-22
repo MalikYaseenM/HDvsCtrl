@@ -1,4 +1,4 @@
-include:Snakefile
+include: Snakefile 
 include: ../common_workflow.snake
 
 ids = [_ for _ in dataset_ids if _.startswith('H')]

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-#$ -P mlhd
-#$ -cwd
-
-R1=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R1.fastq.gz
-R2=/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq.R2.fastq.gz
-
-fastqc  $R1 $R2
