@@ -1,8 +1,0 @@
-include: Snakefile 
-include: ../common_workflow.snake
-
-ids = [_ for _ in dataset_ids if _.startswith('H')]
-HD_bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=ids)
-rule all_hd:
-    input:
-        HD_bams
