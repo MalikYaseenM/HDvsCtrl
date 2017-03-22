@@ -1,17 +1,8 @@
 # Snakefile
 
-include: '../HD_workflow.snake'
+include: '../HD_workflow'
 
 workdir: '../../samples'
-
-import csv
-sample_names = []
-trimsamples = []
-with open('/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/HD_info.csv') as f :
-  for r in csv.reader(f) :
-    if r[0].startswith('subject') : continue
-    sample_names.append(r[1])
-    trimsamples.append(r[0])
 
 
 
