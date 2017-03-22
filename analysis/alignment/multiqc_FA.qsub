@@ -9,12 +9,12 @@ export LANG=$LC_ALL
 dir=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/
 
 # Samples
-samp=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq*
+samp=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples
 
 # Ignore
-ign=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0014_BA9_mRNASeq*
+#ign=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_*_BA9_mRNASeq_100k.*.fastq.gz
 
 # Ouput name
-out=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/H_0791_BA9_mRNASeq.multiqc_report
+out=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/ALL_mRNASeq.multiqc_report
 
-multiqc -n $out -o $dir -x $ign $samp
+multiqc -n $out -o $dir $samp
