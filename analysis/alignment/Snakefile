@@ -12,7 +12,8 @@ workdir: '../../samples'
 #REFERENCES
 
 indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index'
-salmonindex= '../analysis/reference/salmonreference'
+salmonpath= '../analysis/reference/salmonreference'
+pathtogtf= '../reference/gtf/gencode.v25.annotation.gtf'
 
 bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=dataset_ids)
 #fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
@@ -101,10 +102,13 @@ rule multiqc:
 
 rule salmon:
     input:
-      
+        read1="{sample}__R1.fastq.gz"
+	read2="{sample}__R1.fastq.gz"
+	gtf= pathtogtf
+	salmonindex= salmonpath
     output:
-      
-    params:
-      
+        salmon_files='
+    threads: 8
     shell:
-      ""
+      "salmon quant --index {input.salmonindex} -g {input.gtf} "
+      "-l A -1 {input.read1} -2 {input.read2} --output {output.salmon_files} " 
