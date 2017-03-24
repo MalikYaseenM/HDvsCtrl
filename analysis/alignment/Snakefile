@@ -4,10 +4,15 @@
 
 include: '../common_workflow.snake'
 
-# For Filisia's workflow
+#For Filisia's workflow
 #include: '../workflow_FA.snake'
 
 workdir: '../../samples'
+
+#REFERENCES
+
+indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index'
+salmonindex= '../analysis/reference/salmonreference'
 
 bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=dataset_ids)
 #fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
@@ -19,9 +24,6 @@ rule all:
 #    fastqc
 
 
-#references
-
-indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index'
 
 rule fastqc:
   input:
@@ -96,3 +98,13 @@ rule multiqc:
       "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL && "
       "multiqc -n {params.prefix} "
       "{input.fqcR1} {input.fqcR2} {input.trim} {input.STAR} "
+
+rule salmon:
+    input:
+      
+    output:
+      
+    params:
+      
+    shell:
+      ""
