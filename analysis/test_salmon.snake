@@ -1,8 +1,0 @@
-import csv
-
-dataset_ids = [C_0002_BA9_mRNASeq]
-#with open('../sample_info.csv') as f :
-#  for r in csv.reader(f) :
-#    if r[0].startswith('subject') : continue
-#    dataset_ids.append(r[1])
-

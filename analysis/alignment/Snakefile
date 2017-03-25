@@ -4,25 +4,28 @@
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 
 include: '../common_workflow.snake'
-#include: '../test_salmon.snake'
 
 workdir: '../../samples'
 
 #REFERENCES
 
 indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index'
-salmonpath= '../reference/gtf/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
-pathtogtf= '../reference/gtf/gencode.v25.annotation.gtf'
+
+salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
+pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.annotation.gtf'
+#salmonpath= '../reference/gtf/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
+#pathtogtf= '../reference/gtf/gencode.v25.annotation.gtf'
 
 bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=dataset_ids),
 #fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
-count = expand('{sample}__salmon__counts', sample=dataset_ids)
+#count = expand('{sample}__salmon__counts', sample=dataset_ids)
+quant = expand('{sample}__salmon__counts_.quant.sf',sample=dataset_ids)
 
 rule all:
   input:
     bams,
 #    fastqc
-    count
+    quant
 
 rule fastqc:
   input:
@@ -92,7 +95,7 @@ rule multiqc:
     output:
       report="{sample}__multiqc_report.html"
     params:
-      prefix="{sample}__multiqc_report"
+      prefix="{sample}__multiqc_report."
     shell:
       "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL && "
       "multiqc -n {params.prefix} "
@@ -100,16 +103,18 @@ rule multiqc:
 
 rule salmonquant:
     input:
-        read1="{sample}__R1.fastq.gz",
-	read2="{sample}__R2.fastq.gz",
-	gtf= pathtogtf,
-	index= salmonpath
+      read1="{sample}__R1.fastq.gz",
+      read2="{sample}__R2.fastq.gz",
+      gtf= pathtogtf,
+      index= salmonpath
     output:
-        counts='{sample}__salmon__counts'
+      file='{sample}__salmon__counts_.quant.sf'
+    params:
+      prefix='{sample}__salmon__counts.'
     threads: 8
     shell:
       "salmon quant --index {input.index} -g {input.gtf} "
-      "-l A -1 {input.read1} -2 {input.read2} --output {output.counts} "
+      "-l A -1 {input.read1} -2 {input.read2} --output {params.prefix} "
       "-p {threads} " 
 
 #rule salmonquantaligned:
