@@ -4,9 +4,6 @@
 
 include: '../common_workflow.snake'
 
-#For Filisia's workflow
-#include: '../workflow_FA.snake'
-
 workdir: '../../samples'
 
 #REFERENCES
@@ -17,14 +14,12 @@ pathtogtf= '../reference/gtf/gencode.v25.annotation.gtf'
 
 bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=dataset_ids)
 #fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
-
+#counts = ('{sample}__salmon__counts', sample=dataset_ids)
 
 rule all:
   input:
     bams,
 #    fastqc
-
-
 
 rule fastqc:
   input:
@@ -100,15 +95,30 @@ rule multiqc:
       "multiqc -n {params.prefix} "
       "{input.fqcR1} {input.fqcR2} {input.trim} {input.STAR} "
 
-rule salmon:
+rule salmonquant:
     input:
-        read1="{sample}__R1.fastq.gz"
-	read2="{sample}__R1.fastq.gz"
+        read1="{sample}__R1.fastq.gz",
+	read2="{sample}__R2.fastq.gz"
 	gtf= pathtogtf
 	salmonindex= salmonpath
     output:
-        salmon_files='
+        salmon_files='{sample}__salmon__counts'
     threads: 8
     shell:
+      # 
       "salmon quant --index {input.salmonindex} -g {input.gtf} "
-      "-l A -1 {input.read1} -2 {input.read2} --output {output.salmon_files} " 
+      "-l A -1 {input.read1} -2 {input.read2} --output {output.salmon_files}  "
+      "-p {threads} " 
+
+#rule salmonquantaligned:
+#input:
+#bam='{sample}__trimP__STAR.Aligned.out.bam'
+#index=salmonpath
+#gtf=pathtogtf
+#output:
+#salmon_files='{sample}__salmon__counts'
+#threads: 8
+#shell:
+#"salmon quant -l A -a {input.bam} -g{input.gtf} -o {output.salmon_files} "
+#"-p {threads} " 
+
