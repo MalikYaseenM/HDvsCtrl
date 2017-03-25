@@ -6,4 +6,3 @@ multiqc_data
 multiqc_report.html
 .snakemake
 snakejob.*
-*reference/
