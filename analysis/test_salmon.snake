@@ -1,0 +1,8 @@
+import csv
+
+dataset_ids = []
+with open('../sample_info.csv') as f :
+  for r in csv.reader(f) :
+    if r[0].startswith('subject') : continue
+    sample_names.append(r[1])
+
