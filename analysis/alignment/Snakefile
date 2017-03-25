@@ -3,15 +3,15 @@
 # snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 
-#include: '../common_workflow.snake'
-include: '../test_salmon.snake'
+include: '../common_workflow.snake'
+#include: '../test_salmon.snake'
 
 workdir: '../../samples'
 
 #REFERENCES
 
 indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v25_star_index'
-salmonpath= '../analysis/reference/salmonreference'
+salmonpath= '../reference/gtf/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
 pathtogtf= '../reference/gtf/gencode.v25.annotation.gtf'
 
 bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=dataset_ids),
