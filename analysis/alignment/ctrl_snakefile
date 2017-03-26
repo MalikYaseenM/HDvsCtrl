@@ -12,6 +12,8 @@ control_bams=['{}__trimP__STAR.Aligned.out.bam'.format(_) for _ in control_ids]
 fastqc1= ['{}__R1__fastqc.zip'.format(_) for _ in control_ids]
 fastqc2= ['{}__R2__fastqc.zip'.format(_) for _ in control_ids]
 
+salmon= ['{}__salmon__counts'.format(_) for _ in control_ids]
+
 # or for snakemake:
 # control_bams=(expand '{sample}__trimP__STAR.Aligned.out.bam',sample=control_ids)
 
@@ -19,4 +21,5 @@ rule control_all:
   input:
     control_bams,
     fastqc1,
-    fastqc2
+    fastqc2,
+    salmon
