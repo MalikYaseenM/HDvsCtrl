@@ -13,8 +13,8 @@ indexdir= '/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/GENCODE_v
 
 salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
 pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.annotation.gtf'
-#salmonpath= '../reference/gtf/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
-#pathtogtf= '../reference/gtf/gencode.v25.annotation.gtf'
+#salmonpath= '../analysis/reference/salmonreference'
+#pathtogtf= '../reference/gtf'
 
 bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=dataset_ids),
 #fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
