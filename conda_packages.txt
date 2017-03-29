@@ -21,7 +21,6 @@ freetype=2.5.5=2
 ftputil=3.2=py35_0
 git=2.11.1=0
 glib=2.50.2=1
-gmp=6.1.0=0
 gst-plugins-base=1.8.0=0
 gstreamer=1.8.0=0
 harfbuzz=0.9.39=2
@@ -61,7 +60,6 @@ pyyaml=3.12=py35_0
 qt=4.8.7=4
 readline=6.2=2
 requests=2.13.0=py35_0
-ruby=2.2.3=0
 salmon=0.8.2=1
 setuptools=27.2.0=py35_0
 simplejson=3.10.0=py35_0
