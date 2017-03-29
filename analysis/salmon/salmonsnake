@@ -1,13 +1,18 @@
+include: '../common_workflow.snake'
+workdir: '../../samples'
+
+
 salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.pc_lncRNA_transcri\
 pts.salmon_quasi_index'
 
 pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.annotation.gtf'
 
 #quant = expand('{sample}__salmon__counts.quant.sf',sample=dataset_ids)
+count = expand('{sample}__salmon__counts', sample=dataset_ids)
 
 rule all:
   input:
-    bams,
+    count
 
 
 rule salmonquant:
