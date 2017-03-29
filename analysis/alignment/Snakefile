@@ -16,16 +16,14 @@ pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v
 #salmonpath= '../analysis/reference/salmonreference'
 #pathtogtf= '../reference/gtf'
 
-bams = expand('{sample}__trimP__STAR.Aligned.out.bam',sample=dataset_ids),
-#fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
+
+fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
-#quant = expand('{sample}__salmon__counts.quant.sf',sample=dataset_ids)
+
 
 rule all:
   input:
-    bams,
-#    fastqc
-#    quant
+    fastqc
     count
 
 rule fastqc:
