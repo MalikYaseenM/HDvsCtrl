@@ -2,12 +2,12 @@ include: '../common_workflow.snake'
 workdir: '../../samples'
 
 
-salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.pc_lncRNA_transcri\
-pts.salmon_quasi_index'
+#salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
 
-pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.annotation.gtf'
+#pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.annotation.gtf'
 
-
+salmonpath='../reference/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
+pathtogtf='../reference/gencode.v25.annotation.gtf'
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
 
 rule all:
