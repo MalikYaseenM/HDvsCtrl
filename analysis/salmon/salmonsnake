@@ -30,3 +30,10 @@ rule salmonquant:
       "salmon quant --index {input.index} -g {input.gtf} "
       "-l A -1 {input.read1} -2 {input.read2} --output {output.file} "
       "-p {threads} "
+
+rule salmonquant:
+    input:
+
+    output:
+
+    shell:
