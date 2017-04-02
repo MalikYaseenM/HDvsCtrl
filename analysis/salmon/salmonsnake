@@ -1,3 +1,7 @@
+import os
+import re
+import pandas
+
 include: '../common_workflow.snake'
 workdir: '../../samples'
 
@@ -9,10 +13,12 @@ workdir: '../../samples'
 salmonpath='../reference/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
 pathtogtf='../reference/gencode.v25.annotation.gtf'
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
+salmon_concat = expand('{sample}__salmon__counts/quant.sf' sample = dataset_ids)
 
 rule all:
   input:
-    count
+    count,
+    salmon_concat
 
 
 rule salmonquant:
@@ -33,7 +39,9 @@ rule salmonquant:
 
 rule salmonquant:
     input:
-
+        salmon_concat
     output:
-
-    shell:
+        "salmoncounts.tsv"
+    run:
+        mat = None
+	for 
