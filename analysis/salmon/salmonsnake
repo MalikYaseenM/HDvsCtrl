@@ -1,3 +1,7 @@
+import pandas
+import os
+
+
 include: '../common_workflow.snake'
 workdir: '../../samples'
 
@@ -31,9 +35,15 @@ rule salmonquant:
       "-l A -1 {input.read1} -2 {input.read2} --output {output.file} "
       "-p {threads} "
 
-rule salmonquant:
+rule salmon_concat:
     input:
-
+      quant=expand("../../samples/{sample}__salmon__counts/quant.sf sample=dataset_ids)
     output:
 
     shell:
+      all_samples = None
+      for i in input.quant:
+         sample_name =
+         col_names = ['gene_id', 'Length', 'EffectiveLength', 'TPM', '{}'.format(sample_name)]
+         df = pandas.read_csv(????)
+
