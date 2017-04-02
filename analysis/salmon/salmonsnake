@@ -39,9 +39,9 @@ rule salmon_concat:
     input:
       quant=expand("../../samples/{sample}__salmon__counts/quant.sf sample=dataset_ids)
     output:
-
+      "../../samples/all_salmon_mRNASeq_counts.tsv"
     shell:
-      all_samples = None
+      all_samples_matrix = None
       for i in input.quant:
          sample_name =
          col_names = ['gene_id', 'Length', 'EffectiveLength', 'TPM', '{}'.format(sample_name)]
