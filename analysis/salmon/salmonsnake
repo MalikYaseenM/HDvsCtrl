@@ -1,6 +1,7 @@
 import os
 import re
 import pandas
+import glob
 
 include: '../common_workflow.snake'
 workdir: '../../samples'
@@ -11,24 +12,27 @@ salmon_matrix = 'all_salmon_quant.tsv'
 
 #pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.annotation.gtf'
 
+#Salmon_counts is a list that contains the path to all of the quant.sf files(sample/quant.sf)
+salmon_counts = glob.glob(*/quant.sf)
+
 salmonpath='../reference/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
 pathtogtf='../reference/gencode.v25.annotation.gtf'
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
 salmon_concat = expand('{sample}__salmon__counts/quant.sf' sample = dataset_ids)
 
 rule all:
-  input:
-    count,
-    salmon_matrix
-    
+    input:
+        count,
+        salmon_matrix
+
 rule salmonquant:
     input:
-      read1="{sample}__R1.fastq.gz",
-      read2="{sample}__R2.fastq.gz",
-      gtf= pathtogtf,
-      index= salmonpath
+        read1="{sample}__R1.fastq.gz",
+        read2="{sample}__R2.fastq.gz",
+        gtf= pathtogtf,
+        index= salmonpath
     output:
-      file='{sample}__salmon__counts'
+        file='{sample}__salmon__counts'
     threads: 8
     shell:
       "salmon quant --index {input.index} -g {input.gtf} "
@@ -37,17 +41,29 @@ rule salmonquant:
 
 rule salmon_concat:
     input:
-      quant= salmon_concat
+        quant= salmon_counts
     output:
-      matrix= salmon_matrix
+        matrix= salmon_matrix
     run:
-      mat = None
-      for fn in input.quant:
-         sample_name = ??? import os???
-         col_names = ???
-         df = pandas.read_csv(fn, sep='\t', skiprows=1, names=col_names)
-         if mat is None:
-            mat = df
-         else: #we only need numreads?
-            mat = pandas.concat([mat, df.iloc[:, 4:]], axis=1)
-      mat.to_csv(output[0], sep='\t', index=False)
+        mat = None
+        for fn in input.quant:
+        '''
+        if path='/home/user/student' printing (os.path.basename(path)) gives you 'student'
+        printing (os.path.basename(os.path.dirname(path)) 'user'
+        '''
+        sample_name = os.path.basename(os.path.dirname(fn))
+        # file name is <sample>_mrnaseq_salmon_counts this removes that leaving you with just the samplename)
+        sample_name = sample_name.replace('_mRNASeq__salmon__counts', '')
+
+        df = pandas.read_csv(fn,sep='\t',index_col=0)
+        df.rename(columns={_:'{}_{}'.format(sample,_) for _ in df.columns[1:]}, inplace=True)
+
+            if mat is None:
+                mat = df
+            else:
+                def df['Length']
+                mat = mat.merge(df,left_index=True,right_index=True)
+                mat.to_csv(output[0],sep='\t')
+
+            #mat = pandas.concat([mat, df.iloc[:, 4:]], axis=1)
+      #mat.to_csv(output[0], sep='\t', index=False)
