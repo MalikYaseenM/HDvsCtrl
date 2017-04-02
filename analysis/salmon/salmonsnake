@@ -1,4 +1,3 @@
-
 import os
 import re
 import pandas
@@ -20,13 +19,8 @@ salmon_concat = expand('{sample}__salmon__counts/quant.sf' sample = dataset_ids)
 rule all:
   input:
     count,
-<<<<<<< HEAD
     salmon_matrix
-=======
-    salmon_concat
-
->>>>>>> 7280ce03b92db6688cefe2f0a6fbb0f1ed900e80
-
+    
 rule salmonquant:
     input:
       read1="{sample}__R1.fastq.gz",
@@ -35,8 +29,6 @@ rule salmonquant:
       index= salmonpath
     output:
       file='{sample}__salmon__counts'
-#    params:
-#      prefix='{sample}__salmon__counts.'
     threads: 8
     shell:
       "salmon quant --index {input.index} -g {input.gtf} "
@@ -45,36 +37,17 @@ rule salmonquant:
 
 rule salmon_concat:
     input:
-<<<<<<< HEAD
-        salmon_concat
+      quant= salmon_concat
     output:
-        "salmoncounts.tsv"
-    run:
-        mat = None
-	for 
-      quant=expand("../../samples/{sample}__salmon__counts/quant.sf sample=dataset_ids)
-    output:
-<<<<<<< HEAD
-      matrix=salmon_matrix
+      matrix= salmon_matrix
     run:
       mat = None
       for fn in input.quant:
          sample_name = ??? import os???
-         col_names = 
+         col_names = ???
          df = pandas.read_csv(fn, sep='\t', skiprows=1, names=col_names)
          if mat is None:
             mat = df
          else: #we only need numreads?
             mat = pandas.concat([mat, df.iloc[:, 4:]], axis=1)
       mat.to_csv(output[0], sep='\t', index=False)
-=======
-      "../../samples/all_salmon_mRNASeq_counts.tsv"
-    shell:
-      all_samples_matrix = None
-      for i in input.quant:
-         sample_name =
-         col_names = ['gene_id', 'Length', 'EffectiveLength', 'TPM', '{}'.format(sample_name)]
-         df = pandas.read_csv(????)
-
-
->>>>>>> 7280ce03b92db6688cefe2f0a6fbb0f1ed900e80
