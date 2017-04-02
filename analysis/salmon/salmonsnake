@@ -1,6 +1,7 @@
-import pandas
-import os
 
+import os
+import re
+import pandas
 
 include: '../common_workflow.snake'
 workdir: '../../samples'
@@ -14,11 +15,17 @@ salmon_matrix = 'all_salmon_quant.tsv'
 salmonpath='../reference/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
 pathtogtf='../reference/gencode.v25.annotation.gtf'
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
+salmon_concat = expand('{sample}__salmon__counts/quant.sf' sample = dataset_ids)
 
 rule all:
   input:
     count,
+<<<<<<< HEAD
     salmon_matrix
+=======
+    salmon_concat
+
+>>>>>>> 7280ce03b92db6688cefe2f0a6fbb0f1ed900e80
 
 rule salmonquant:
     input:
@@ -38,8 +45,16 @@ rule salmonquant:
 
 rule salmon_concat:
     input:
+<<<<<<< HEAD
+        salmon_concat
+    output:
+        "salmoncounts.tsv"
+    run:
+        mat = None
+	for 
       quant=expand("../../samples/{sample}__salmon__counts/quant.sf sample=dataset_ids)
     output:
+<<<<<<< HEAD
       matrix=salmon_matrix
     run:
       mat = None
@@ -52,3 +67,14 @@ rule salmon_concat:
          else: #we only need numreads?
             mat = pandas.concat([mat, df.iloc[:, 4:]], axis=1)
       mat.to_csv(output[0], sep='\t', index=False)
+=======
+      "../../samples/all_salmon_mRNASeq_counts.tsv"
+    shell:
+      all_samples_matrix = None
+      for i in input.quant:
+         sample_name =
+         col_names = ['gene_id', 'Length', 'EffectiveLength', 'TPM', '{}'.format(sample_name)]
+         df = pandas.read_csv(????)
+
+
+>>>>>>> 7280ce03b92db6688cefe2f0a6fbb0f1ed900e80
