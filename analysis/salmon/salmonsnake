@@ -1,12 +1,7 @@
-<<<<<<< HEAD
+
 import os
 import re
 import pandas
-=======
-import pandas
-import os
-
->>>>>>> 491c203c281f314476a9d59bcc97cbd696c4fdab
 
 include: '../common_workflow.snake'
 workdir: '../../samples'
@@ -52,7 +47,6 @@ rule salmon_concat:
     run:
         mat = None
 	for 
-=======
       quant=expand("../../samples/{sample}__salmon__counts/quant.sf sample=dataset_ids)
     output:
       "../../samples/all_salmon_mRNASeq_counts.tsv"
@@ -63,4 +57,4 @@ rule salmon_concat:
          col_names = ['gene_id', 'Length', 'EffectiveLength', 'TPM', '{}'.format(sample_name)]
          df = pandas.read_csv(????)
 
->>>>>>> 491c203c281f314476a9d59bcc97cbd696c4fdab
+
