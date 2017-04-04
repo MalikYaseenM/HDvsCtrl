@@ -71,9 +71,9 @@ rule salmon_concat:
 
       if mat is None :
         mat = df
-        else :
-          del df['Length']
-            mat = mat.merge(df,left_index=True,right_index=True)
+      else :
+        del df['Length']
+        mat = mat.merge(df,left_index=True,right_index=True)
 #writing final output to a tab delimited file
     mat.to_csv(output[0],sep='\t')
 
