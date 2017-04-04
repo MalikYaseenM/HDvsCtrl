@@ -18,7 +18,7 @@ count=expand('{sample}__salmon__counts', sample=dataset_ids)
 
 salmon_matrix='all_salmon_quant.tsv'
 
-annotation='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.lncRNA_transcripts.fa'
+annotation='../reference/gencode.v25.lncRNA_transcripts.fa'
 
 final_map='gencode.v25.lncRNA_transcripts.tsv'
 
