@@ -1,0 +1,13 @@
+#include: '../alignment/Snakefile'
+include: '../common_workflow.snake'
+
+workdir: '../../samples'
+Poly_A = [ _ for _ in dataset_ids if _.startswith('poly-A')]
+print(Poly_A)
+
+#Ribo_dep = [ _ for _ in dataset_ids if _.startswith('Ribo-depleted')]
+
+
+# H_0791_BA9_mRNASeq,mRNASeq,TruSeq Ribo-depleted,mRNA_asymHD,101,/restricted/project/mlhd/mRN\
+# A/20160511-genohub-rm/20160511-genohub-rmgp9223208-5433591c-1323-4a58-b31d-16ecf70cc7dc/5039_S1_R1_001.fastq.gz,,/restricted/proje\
+# ct/mlhd/mRNA/20160511-genohub-rm/20160511-genohub-rmgp9223208-5433591c-1323-4a58-b31d-16ecf70cc7dc/5039_S1_R2_001.fastq.gz,,7.7
