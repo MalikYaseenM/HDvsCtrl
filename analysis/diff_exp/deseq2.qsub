@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#$ -P mlhd
+#$ -cwd
+
+R1=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/all_salmon_quant.tsv
+
+Rscript run_deseq2.R $R1
