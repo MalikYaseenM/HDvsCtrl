@@ -1,0 +1,8 @@
+worrkdir: '../../samples'
+
+rule original_sample:
+  input:
+    
+  output:
+  shell:
+    "detk-de firth "
