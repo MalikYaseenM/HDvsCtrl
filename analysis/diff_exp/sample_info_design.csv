@@ -1,96 +1,97 @@
-Control ~ 66
-Control ~ 79
-HD ~ 40
-Control ~ 69
-HD ~ 68
-Control ~ 69
-HD ~ 51
-HD ~ 48
-Control ~ 93
-Control ~ 76
-Control ~ 21
-Control ~ 53
-Control ~ 55
-Control ~ 97
-Control ~ 57
-HDpos ~ 19
-Control ~ 57
-HD ~ 71
-HD ~ 55
-Control ~ 73
-HD ~ 78
-Control ~ 76
-HD ~ 53
-Control ~ 79
-HD ~ 59
-HD ~ 69
-Control ~ 61
-Control ~ 44
-Control ~ 93
-Control ~ 66
-HD ~ 68
-HD ~ 57
-Control ~ 36
-HD ~ 68
-Control ~ 73
-Control ~ 80
-HD ~ 50
-Control ~ 60
-Control ~ 86
-Control ~ 71
-Control ~ 46
-Control ~ 52
-Control ~ 106
-Control ~ 61
-Control ~ 67
-HD ~ 55
-HD ~ 72
-Control ~ 61
-HD ~ 71
-Control ~ 51
-HD ~ 68
-Control ~ 62
-Control ~ 43
-Control ~ 69
-HD ~ 50
-Control ~ 78
-Control ~ 64
-HDpos ~ 86
-Control ~ 40
-Control ~ 58
-Control ~ 63
-Control ~ 86
-Control ~ 81
-Control ~ 82
-HDpos ~ 49
-Control ~ 57
-HD ~ 75
-Control ~ 91
-HD ~ 68
-Control ~ NA
-Control ~ 82
-Control ~ 88
-Control ~ 70
-HD ~ 51
-HDpos ~ 49
-Control ~ 76
-Control ~ 68
-Control ~ 79
-HD ~ 69
-HD ~ 54
-Control ~ 87
-HD ~ 48
-Control ~ 66
-Control ~ 74
-HD ~ 54
-Control ~ 66
-HDpos ~ 86
-Control ~ 64
-HD ~ 48
-Control ~ 46
-HD ~ 43
-HD ~ 61
-HD ~ 56
-Control ~ 91
-Control ~ 55
-Control ~ 54
+Dataset.dataset_id,Subject.subject_type,Subject.death
+C_0083_BA9_mRNASeq,Control,66
+C_0010_BA9_mRNASeq,Control,79
+H_0006_BA9_mRNASeq,HD,40
+C_0053_BA9_mRNASeq,Control,69
+H_0689_BA9_mRNASeq,HD,68
+C_0024_BA9_mRNASeq,Control,69
+H_0709_BA9_mRNASeq,HD,51
+H_0014_BA9_mRNASeq,HD,48
+C_0029_BA9_mRNASeq_REPEAT,Control,93
+C_0021_BA9_mRNASeq_REPEAT,Control,76
+C_0074_BA9_mRNASeq,Control,21
+C_0031_BA9_mRNASeq,Control,53
+C_0107_BA9_mRNASeq,Control,55
+C_0005_BA9_mRNASeq,Control,97
+C_0082_BA9_mRNASeq,Control,57
+H_1106_BA9_mRNASeq,HDpos,19
+C_0032_BA9_mRNASeq,Control,57
+H_0821_BA9_mRNASeq,HD,71
+H_0695_BA9_mRNASeq,HD,55
+C_0019_BA9_mRNASeq,Control,73
+H_0723_BA9_mRNASeq,HD,78
+C_0060_BA9_mRNASeq,Control,76
+H_0750_BA9_mRNASeq,HD,53
+C_0014_BA9_mRNASeq_REPEAT,Control,79
+H_0010_BA9_mRNASeq,HD,59
+H_0002_BA9_mRNASeq,HD,69
+C_0022_BA9_mRNASeq,Control,61
+C_0037_BA9_mRNASeq,Control,44
+C_0029_BA9_mRNASeq,Control,93
+C_0018_BA9_mRNASeq,Control,66
+H_0009_BA9_mRNASeq,HD,68
+H_0013_BA9_mRNASeq,HD,57
+C_0077_BA9_mRNASeq,Control,36
+H_0012_BA9_mRNASeq,HD,68
+C_0002_BA9_mRNASeq,Control,73
+C_0039_BA9_mRNASeq,Control,80
+H_0726_BA9_mRNASeq,HD,50
+C_0020_BA9_mRNASeq,Control,60
+C_0006_BA9_mRNASeq,Control,86
+C_0034_BA9_mRNASeq,Control,71
+C_0076_BA9_mRNASeq,Control,46
+C_0075_BA9_mRNASeq,Control,52
+C_0071_BA9_mRNASeq,Control,106
+C_0015_BA9_mRNASeq,Control,61
+C_0103_BA9_mRNASeq,Control,67
+H_0001_BA9_mRNASeq,HD,55
+H_0007_BA9_mRNASeq,HD,72
+C_0025_BA9_mRNASeq,Control,61
+H_0003_BA9_mRNASeq,HD,71
+C_0113_CAP_mRNASeq,Control,51
+H_0513_BA9_mRNASeq,HD,68
+C_0023_BA9_mRNASeq,Control,62
+C_0033_BA9_mRNASeq,Control,43
+C_0013_BA9_mRNASeq,Control,69
+H_0700_BA9_mRNASeq,HD,50
+C_0061_BA9_mRNASeq,Control,78
+C_0106_BA9_mRNASeq,Control,64
+H_1104_CAP_mRNASeq,HDpos,86
+C_0036_BA9_mRNASeq,Control,40
+C_0016_BA9_mRNASeq,Control,58
+C_0011_BA9_mRNASeq,Control,63
+C_0065_BA9_mRNASeq,Control,86
+C_0009_BA9_mRNASeq,Control,81
+C_0114_CAP_mRNASeq,Control,82
+H_1105_BA9_mRNASeq,HDpos,49
+C_0038_BA9_mRNASeq,Control,57
+H_0740_BA9_mRNASeq,HD,75
+C_0003_BA9_mRNASeq,Control,91
+H_0656_BA9_mRNASeq,HD,68
+C_0054_BA9_mRNASeq,Control,NA
+C_0004_BA9_mRNASeq,Control,82
+C_0026_BA9_mRNASeq,Control,88
+C_0017_BA9_mRNASeq,Control,70
+H_0802_BA9_mRNASeq,HD,51
+H_1105_CAP_mRNASeq,HDpos,49
+C_0021_BA9_mRNASeq,Control,76
+C_0070_BA9_mRNASeq,Control,68
+C_0014_BA9_mRNASeq,Control,79
+H_0681_BA9_mRNASeq,HD,69
+H_0539_BA9_mRNASeq,HD,54
+C_0062_BA9_mRNASeq,Control,87
+H_0005_BA9_mRNASeq,HD,48
+C_0012_BA9_mRNASeq,Control,66
+C_0050_BA9_mRNASeq,Control,74
+H_0791_BA9_mRNASeq,HD,54
+C_0018_BA9_mRNASeq_REPEAT,Control,66
+H_1104_BA9_mRNASeq,HDpos,86
+C_0087_BA9_mRNASeq,Control,64
+H_0658_BA9_mRNASeq,HD,48
+C_0035_BA9_mRNASeq,Control,46
+H_0008_BA9_mRNASeq,HD,43
+H_0657_BA9_mRNASeq,HD,61
+H_0601_BA9_mRNASeq,HD,56
+C_0008_BA9_mRNASeq,Control,91
+C_0081_BA9_mRNASeq,Control,55
+C_0069_BA9_mRNASeq,Control,54

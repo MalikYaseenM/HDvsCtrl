@@ -29,17 +29,19 @@ ordered <- colData
 
 # Initialize original samples from python script output
 original <- read.csv("sample_info_py.csv", header=FALSE)
-original <- as.data.frame(original)
+#original <- as.data.frame(original)
 row.names(original) <- original$V1
-row.names(ordered) <- ordered$V1
+row.names(ordered) <- ordered$`colnames(counts)`
 
 # Reorder original (append into ordered) and rename as original2
 original2 <- original[row.names(ordered),]
+# Change the column names
+original2 <- setNames(original2, c("Dataset.dataset_id","Subject.subject_type","Subject.death"))
 
 # Pull subject type and age of death from original2
-ordered_design <- original2[,(2:3)]
+#ordered_design <- original2[,(2:3)]
 # Merge the 2 columns and add ~
-ordered_design2 <- as.data.frame(paste(original2$V2, original2$V3, sep=" ~ "))
+#ordered_design2 <- as.data.frame(paste(original2$V2, original2$V3, sep=" ~ "))
 
 # Write to csv file
-write.table(ordered_design2,"sample_info_design.csv",col.names=FALSE,quote=FALSE,row.names=FALSE,sep=",")
+write.table(original2,"sample_info_design.csv",col.names=TRUE,quote=FALSE,row.names=FALSE,sep=",")
