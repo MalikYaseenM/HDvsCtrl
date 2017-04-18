@@ -1,8 +1,32 @@
+import pandas as pd
+import os
 workdir: '../../samples'
-include:'workflow.py'
+
+fn = os.path.abspath('../analysis/HD_mRNASeq_sample_info.csv')
+
+col_names = ['Dataset.dataset_id','Dataset.protocol']
+
+files = pd.read_csv(fn, sep=',', comment='#', usecols=col_names)
+
+files.reindex(columns=['Dataset.protocol','Dataset.dataset_id']).to_csv('sample_info.csv', sep=',', index=False,header=False)
+
+
+info = open('sample_info.csv','r')
+fullread = info.readlines()
+
+Poly = []
+Ribo = []
+
+for lines in fullread:
+    if 'poly-A' in lines:
+        newline= lines.strip('\n')
+        split = newline.split(',')
+        Poly.append(split[1])
+    else:
+        newline= lines.strip('\n')
+        split = newline.split(',')
+        Ribo.append(split[1])
+
 
 Poly_ids = [ _ for _ in Poly]
 Ribo_dep = [ _ for _ in Ribo]
-print('These are Poly', Poly_ids)
-print()
-print('These are Ribo', Ribo_dep)
