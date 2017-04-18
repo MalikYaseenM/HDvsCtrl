@@ -4,6 +4,7 @@ include: '../common_workflow.snake'
 
 # Outputs normalized salmon counts without column names
 # Outputs sample_info_py.csv which has dataset_id, subject_type, subject_age
+# Needs to be done first as sample_info_py.csv is needed for get_design_R
 rule order_py:
   input: "../analysis/diff_exp/common_DF.py"
   output: 
