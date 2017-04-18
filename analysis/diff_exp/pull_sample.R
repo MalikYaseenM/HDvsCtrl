@@ -10,38 +10,31 @@ counts <- as.matrix(counts)
 # Taking out the sample names from the column names and saving it as a data frame
 colData <- as.data.frame(colnames(counts))
 
-## Make new colData as sample names
-## Some colData had __salmon__counts ending (on sample names with REPEAT)
-#sample_name <- sub("__salmon__counts","",colData[,1])
-
-## Sample names didn't have mRNASeq, added mRNASeq to all
-#sample_name <- sub("CAP$","CAP_mRNASeq",sample_name)
-#sample_name <- sub("BA9$","BA9_mRNASeq",sample_name)
-
-## Set sample name as a data frame
-#sample_name <- as.data.frame(sample_name)
-
-# Write to csv file
-#write.table(sample_name,"sample_info_norm_order.csv",col.names=FALSE,quote=FALSE,row.names=FALSE,sep=",")
-
 # Initialize ordered samples from colData
 ordered <- colData
 
-# Initialize original samples from python script output
-original <- read.csv("sample_info_py.csv", header=FALSE)
-#original <- as.data.frame(original)
-row.names(original) <- original$V1
+# Initialize original samples as ori
+ori <- read.csv("../HD_mRNASeq_sample_info.csv", header=FALSE)
+
+# Delete first row
+ori <- ori[-1,]
+
+# Set second row as column names
+names(ori) <- as.matrix(ori[1, ])
+ori <- ori[-1,]
+ori[] <- lapply(ori,function(x) type.convert(as.character(x)))
+
+# Make new matrix column15: datasetid, 2: subject type, 5: death age
+design <- subset(ori, select = c(15, 2, 5))
+
+# Set sample names as rownames
+row.names(design) <- design$`Dataset.dataset_id`
 row.names(ordered) <- ordered$`colnames(counts)`
 
-# Reorder original (append into ordered) and rename as original2
-original2 <- original[row.names(ordered),]
-# Change the column names
-original2 <- setNames(original2, c("Dataset.dataset_id","Subject.subject_type","Subject.death"))
+# Finds similar row names and append subject type and death age to new data frame 
+design <- design[row.names(ordered),]
 
-# Pull subject type and age of death from original2
-#ordered_design <- original2[,(2:3)]
-# Merge the 2 columns and add ~
-#ordered_design2 <- as.data.frame(paste(original2$V2, original2$V3, sep=" ~ "))
+# Write to new csv file
+#write.table(design,"sample_info_design.csv",quote=FALSE,row.names=FALSE)
 
-# Write to csv file
-write.table(original2,"sample_info_design.csv",col.names=TRUE,quote=FALSE,row.names=FALSE,sep=",")
+write.table(design,"sample_info_design.csv",col.names=TRUE,quote=FALSE,row.names=FALSE,sep=",")

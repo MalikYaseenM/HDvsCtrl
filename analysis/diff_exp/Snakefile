@@ -4,12 +4,12 @@ include: '../common_workflow.snake'
 
 # Outputs normalized salmon counts without column names
 # Outputs sample_info_py.csv which has dataset_id, subject_type, subject_age
-# Needs to be done first as sample_info_py.csv is needed for get_design_R
+
 rule order_py:
   input: "../analysis/diff_exp/common_DF.py"
   output: 
-    py="sample_info_py.csv"
-    norm="normalized_salmon_wo_header.tsv"
+#    py= "sample_info_py.csv",
+    norm= "normalized_salmon_wo_header.tsv"
   shell:
     "python {input}"
 
@@ -25,9 +25,9 @@ rule get_design_R:
 # Firth
 rule original_sample:
   input: 
-    counts_fn= "normalized_salmon_wo_header.tsv",
+    counts_fn= "all_salmon_norm.csv",
     sample_info= "sample_info_norm_order.csv"
-  design: "Subject.subject_type ~ Subject.death"  
-  output: "all_samples_firth.tsv"
+  design: "'Subject.subject_type ~ Subject.death'"  
+  output: "all_samples_firth.csv"
   shell:
     "detk-de firth {design} {input.counts_fn} {input.sample_info} -o {output}"
