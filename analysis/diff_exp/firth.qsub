@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#$ -P mlhd
+#$ -cwd
+
+design="Subject.subject_type ~ Subject.death"
+
+counts=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/diff_exp/normalized_salmon_wo_header.tsv
+
+sample=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/diff_exp/sample_info_norm_order.csv
+
+# detk-de firth "<design>" <counts_fn> <sample_info_fn>
+detk-de firth "$design" $counts $sample
