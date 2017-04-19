@@ -5,9 +5,18 @@
 
 design="Subject.subject_type ~ Subject.death"
 
-counts=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/diff_exp/normalized_salmon_wo_header.tsv
+#counts=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/diff_exp/normalized_salmon_wo_header.tsv
 
-sample=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/diff_exp/sample_info_norm_order.csv
+counts=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/samples/all_salmon_quant_norm.csv
+
+info=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/diff_exp/sample_info_design.csv
+
+#out=all_samples_firth.csv
+
+out=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/diff_exp/all_samples_firth.csv
 
 # detk-de firth "<design>" <counts_fn> <sample_info_fn>
-detk-de firth "$design" $counts $sample
+# detk-de firth "Subject.subject_type ~ Subject.death" ../../samples/all_salmon_quant_norm.csv sample_info_design.csv
+
+detk-de firth "Subject.subject_type ~ Subject.death" $counts $info -o $out
+
