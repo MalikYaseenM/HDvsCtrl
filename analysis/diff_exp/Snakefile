@@ -1,33 +1,39 @@
 
-workdir: '../../samples'
-include: '../common_workflow.snake'
-
-# Outputs normalized salmon counts without column names
-# Outputs sample_info_py.csv which has dataset_id, subject_type, subject_age
-
-rule order_py:
-  input: "../analysis/diff_exp/common_DF.py"
-  output: 
-#    py= "sample_info_py.csv",
-    norm= "normalized_salmon_wo_header.tsv"
-  shell:
-    "python {input}"
+#include: '../common_workflow.snake'
 
 # Outputs ordered sample info with subject type and age
 rule get_design_R:
   input: 
     R="pull_sample.R",
-    counts="all_salmon_quant.tsv"
-  output: "sample_info_design.csv"
+    counts= "../../samples/all_salmon_quant.tsv"
+  output:"sample_info_design.csv"
   shell:
-    "Rscript {input.file} {input.counts}"
+    "Rscript {input.R} {input.counts}"
+
+# Test makes a file with first 100 lines
+rule head:
+  input:"../../samples/all_salmon_quant_norm.csv"
+  output:"head_all_salmon_quant_norm.csv"
+  shell:
+    "head -n 101 {input} > {output}"
+
+# Test for firth
+rule head_counts:
+  input:
+    counts="head_all_salmon_quant_norm.csv",
+    info="sample_info_design.csv"
+  params: 
+    design="Subject.subject_type ~ Subject.death"
+  output: "head_all_samples_firth.csv"
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 # Firth
-rule original_sample:
-  input: 
-    counts_fn= "all_salmon_norm.csv",
-    sample_info= "sample_info_norm_order.csv"
-  design: "'Subject.subject_type ~ Subject.death'"  
-  output: "all_samples_firth.csv"
-  shell:
-    "detk-de firth {design} {input.counts_fn} {input.sample_info} -o {output}"
+#rule original_sample:
+#  input: 
+#    counts_fn= "all_salmon_norm.csv",
+#    sample_info= "sample_info_norm_order.csv"
+#  design: "'Subject.subject_type ~ Subject.death'"  
+#  output: "all_samples_firth.csv"
+#  shell:
+#    "detk-de firth {design} {input.counts_fn} {input.sample_info} -o {output}"
