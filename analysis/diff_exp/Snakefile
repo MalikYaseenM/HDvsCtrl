@@ -1,6 +1,16 @@
 
 #include: '../common_workflow.snake'
 
+design = "sample_info_design.csv"
+head = "head_all_salmon_quant_norm.csv"
+firth_head = "head_all_samples_firth.csv"
+
+rule all:
+  input:
+    design,
+    head,
+    firth_head
+
 # Outputs ordered sample info with subject type and age
 rule get_design_R:
   input: 
@@ -29,11 +39,12 @@ rule head_counts:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 # Firth
-#rule original_sample:
+#rule firth:
 #  input: 
-#    counts_fn= "all_salmon_norm.csv",
-#    sample_info= "sample_info_norm_order.csv"
-#  design: "'Subject.subject_type ~ Subject.death'"  
+#    counts= "../../samples/all_salmon_quant_norm.csv",
+#    info= "sample_info_design.csv"
+#  params: 
+#    design="Subject.subject_type ~ Subject.death"
 #  output: "all_samples_firth.csv"
 #  shell:
-#    "detk-de firth {design} {input.counts_fn} {input.sample_info} -o {output}"
+#    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
