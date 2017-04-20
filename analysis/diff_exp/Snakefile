@@ -4,22 +4,24 @@
 ## Dry run to check if snakefile works
 # snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 ## Actual run
-# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
 design = "sample_info_design.csv"
-head = "head_all_salmon_quant_norm.csv"
+head = "head_all_salmon_norm_filter.csv"
 #filter_row = "head_all_salmon_norm_filter.csv"
 filter_row = "all_salmon_norm_filter.csv"
 firth_test = "head_all_samples_firth.csv"
 firth = "all_salmon_norm_firth.csv"
+clean = "clean_filtered_genes.csv"
 
 rule all:
   input:
     design,
-#    head,
     filter_row,
-#    firth_test
-    firth
+#    clean,
+    head,
+    firth_test
+#    firth
     
 # Outputs ordered sample info with subject type and age
 rule get_design_R:
@@ -29,13 +31,6 @@ rule get_design_R:
   output:"sample_info_design.csv"
   shell:
     "Rscript {input.R} {input.counts}"
-
-# Test makes a file with first 100 lines
-rule head:
-  input:"../../samples/all_salmon_quant_norm.csv"
-  output:"head_all_salmon_quant_norm.csv"
-  shell:
-    "head -n 101 {input} > {output}"
 
 # Both filter rows rule works, gets the same output
 
@@ -55,6 +50,22 @@ rule filter_rows:
   output:"all_salmon_norm_filter.csv"
   shell:
     "python {input}"
+
+# Deletes the genes from row 1 to bad gene, rinse and repeat
+rule clean:
+  input: "all_salmon_norm_filter.csv"
+  output: "clean_filtered_genes.csv"
+  shell:
+    "python delete_gene.py"
+
+# Test makes a file with first n lines
+rule head:
+  input:"clean_filtered_genes.csv"
+  output:"head_all_salmon_norm_filter.csv"
+  shell:
+#    "head -n 500 {input} > {output}"
+#    "head -n 2001 {input} > {output}"
+    "head -n 2501 {input} > {output}"
 
 #Test for firth
 rule firth_test:

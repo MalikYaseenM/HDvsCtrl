@@ -105,23 +105,9 @@ rule salmonquant:
       index= salmonpath
     output:
       file='{sample}__salmon__counts'
-#    params:
-#      prefix='{sample}__salmon__counts.'
     threads: 8
     shell:
       "salmon quant --index {input.index} -g {input.gtf} "
       "-l A -1 {input.read1} -2 {input.read2} --output {output.file} "
       "-p {threads} " 
-
-#rule salmonquantaligned:
-#input:
-#bam='{sample}__trimP__STAR.Aligned.out.bam',
-#index=salmonpath,
-#gtf=pathtogtf,
-#output:
-#salmon_files='{sample}__salmon__counts'
-#threads: 8
-#shell:
-#"salmon quant -l A -a {input.bam} -g{input.gtf} -o {output.salmon_files} "
-#"-p {threads} " 
 
