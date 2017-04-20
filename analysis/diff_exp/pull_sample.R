@@ -4,7 +4,7 @@ library(docopt)
 opts <- docopt(doc, commandArgs(trailingOnly = TRUE))
 
 # read tsv file as csv and initialize counts as matrix
-counts <- read.table(opts$count_matrix, header=TRUE, row.names = 'gene_id')
+counts <- read.csv(opts$count_matrix, header=TRUE, row.names = 'gene_id')
 counts <- as.matrix(counts)
 
 # Taking out the sample names from the column names and saving it as a data frame

@@ -5,7 +5,7 @@ library(DESeq2)
 opts <- docopt(doc, commandArgs(trailingOnly = TRUE))
 
 # read tsv file as csv and initialize counts as matrix
-counts <- read.table(opts$count_matrix, header=TRUE, row.names = 'gene_id')
+counts <- read.csv(opts$count_matrix, header=TRUE, row.names = 'gene_id')
 counts <- as.matrix(counts)
 
 # To prevent having DDS error of having missing integers use:
@@ -55,6 +55,6 @@ norm.counts <- counts(dds, normalized=TRUE)
 name <- gsub('.tsv', '_normalized_counts.tsv',basename(opts$count_matrix))
 colnames(norm.counts) <- sample_names
 #write.table(norm.counts, file = file.path('samples',name), sep='\t', col.names = TRUE)
-write.table(norm.counts, file = name, sep = '\t', col.names = TRUE)
+write.table(norm.counts, file = name, sep = ',', col.names = TRUE)
 
 
