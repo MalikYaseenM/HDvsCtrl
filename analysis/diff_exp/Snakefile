@@ -6,22 +6,28 @@
 ## Actual run
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
+# Slices filtered genes into files that has 201 lines each
+#include: "names.py"
+#names = expand('{lines}.csv', lines=name_list) 
+#firth_test = expand('{lines}_firth.csv', lines=name_list)
+
 design = "sample_info_design.csv"
 head = "head_all_salmon_norm_filter.csv"
-#filter_row = "head_all_salmon_norm_filter.csv"
 filter_row = "all_salmon_norm_filter.csv"
-firth_test = "head_all_samples_firth.csv"
-firth = "all_salmon_norm_firth.csv"
+#firth_test = "head_all_salmon_norm_firth.csv"
+#firth = "all_salmon_norm_firth.csv"
+firth = "clean_salmon_norm_firth.csv"
 clean = "clean_filtered_genes.csv"
 
 rule all:
   input:
+#    names
     design,
     filter_row,
-#    clean,
-    head,
-    firth_test
-#    firth
+    clean,
+#    head,
+#    firth_test
+    firth
     
 # Outputs ordered sample info with subject type and age
 rule get_design_R:
@@ -32,26 +38,15 @@ rule get_design_R:
   shell:
     "Rscript {input.R} {input.counts}"
 
-# Both filter rows rule works, gets the same output
-
-# Filter rows with means less than 10
-#rule filter_rows:
-#  input:
-#    R="filter.R",
-#    counts="head_all_salmon_quant_norm.csv"
-#  output:"head_all_salmon_norm_filter.csv"
-#  shell:
-#    "Rscript {input.R} {input.counts}"
-
-# Filter rows with means less than 10
+# Filter out rows with means less than 10
 rule filter_rows:
   input:"filter.py"
-#  output:"head_all_salmon_norm_filter.csv"
   output:"all_salmon_norm_filter.csv"
   shell:
     "python {input}"
 
-# Deletes the genes from row 1 to bad gene, rinse and repeat
+# Deletes the genes from row 0 to bad gene, rinse and repeat
+# After all bad genes are found, just deletes bad gene rows
 rule clean:
   input: "all_salmon_norm_filter.csv"
   output: "clean_filtered_genes.csv"
@@ -63,28 +58,37 @@ rule head:
   input:"clean_filtered_genes.csv"
   output:"head_all_salmon_norm_filter.csv"
   shell:
-#    "head -n 500 {input} > {output}"
-#    "head -n 2001 {input} > {output}"
-    "head -n 2501 {input} > {output}"
+#    "head -n 151 {input} > {output}"
+    "head -n 155 {input} > {output}"
+
+# comment out the firth_test run rule all while running this.
+# make files first, have to be done individually as snakemake will give an error
+# if this method get's called out again for every {lines}.csv in firth_test
+#rule divide:
+#  input:"clean_filtered_genes.csv"
+#  output: "{lines}.csv"
+#  shell:
+#    "python divide.py"
 
 #Test for firth
 rule firth_test:
   input:
-    counts="head_all_salmon_norm_filter.csv",
+    counts="{lines}.csv",
     info="sample_info_design.csv"
   params:
     design="Subject.subject_type ~ Subject.death"
-  output: "head_all_samples_firth.csv"
+  output: "{lines}_firth.csv"
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 # Firth
 rule firth:
   input: 
-    counts= "all_salmon_norm_filter.csv",
+    counts= "clean_filtered_genes.csv",
     info= "sample_info_design.csv"
   params: 
     design="Subject.subject_type ~ Subject.death"
-  output: "all_salmon_norm_firth.csv"
+#  output: "head_all_salmon_norm_firth.csv"
+  output: "clean_salmon_norm_firth.csv"
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
