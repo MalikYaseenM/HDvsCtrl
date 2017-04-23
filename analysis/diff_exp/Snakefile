@@ -1,39 +1,94 @@
+# Snakefile
 
-#include: '../common_workflow.snake'
+# Usage
+## Dry run to check if snakefile works
+# snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+## Actual run
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
+# Slices filtered genes into files that has 201 lines each
+#include: "names.py"
+#names = expand('{lines}.csv', lines=name_list) 
+#firth_test = expand('{lines}_firth.csv', lines=name_list)
+
+design = "sample_info_design.csv"
+head = "head_all_salmon_norm_filter.csv"
+filter_row = "all_salmon_norm_filter.csv"
+#firth_test = "head_all_salmon_norm_firth.csv"
+#firth = "all_salmon_norm_firth.csv"
+firth = "clean_salmon_norm_firth.csv"
+clean = "clean_filtered_genes.csv"
+
+rule all:
+  input:
+#    names
+    design,
+    filter_row,
+    clean,
+#    head,
+#    firth_test
+    firth
+    
 # Outputs ordered sample info with subject type and age
 rule get_design_R:
   input: 
     R="pull_sample.R",
-    counts= "../../samples/all_salmon_quant.tsv"
+    counts= "../../samples/all_salmon_quant_norm.csv"
   output:"sample_info_design.csv"
   shell:
     "Rscript {input.R} {input.counts}"
 
-# Test makes a file with first 100 lines
-rule head:
-  input:"../../samples/all_salmon_quant_norm.csv"
-  output:"head_all_salmon_quant_norm.csv"
+# Filter out rows with means less than 10
+rule filter_rows:
+  input:"filter.py"
+  output:"all_salmon_norm_filter.csv"
   shell:
-    "head -n 101 {input} > {output}"
+    "python {input}"
 
-# Test for firth
-rule head_counts:
+# Deletes the genes from row 0 to bad gene, rinse and repeat
+# After all bad genes are found, just deletes bad gene rows
+rule clean:
+  input: "all_salmon_norm_filter.csv"
+  output: "clean_filtered_genes.csv"
+  shell:
+    "python delete_gene.py"
+
+# Test makes a file with first n lines
+rule head:
+  input:"clean_filtered_genes.csv"
+  output:"head_all_salmon_norm_filter.csv"
+  shell:
+#    "head -n 151 {input} > {output}"
+    "head -n 155 {input} > {output}"
+
+# comment out the firth_test run rule all while running this.
+# make files first, have to be done individually as snakemake will give an error
+# if this method get's called out again for every {lines}.csv in firth_test
+#rule divide:
+#  input:"clean_filtered_genes.csv"
+#  output: "{lines}.csv"
+#  shell:
+#    "python divide.py"
+
+#Test for firth
+rule firth_test:
   input:
-    counts="head_all_salmon_quant_norm.csv",
+    counts="{lines}.csv",
     info="sample_info_design.csv"
-  params: 
+  params:
     design="Subject.subject_type ~ Subject.death"
-  output: "head_all_samples_firth.csv"
+  output: "{lines}_firth.csv"
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 # Firth
-#rule original_sample:
-#  input: 
-#    counts_fn= "all_salmon_norm.csv",
-#    sample_info= "sample_info_norm_order.csv"
-#  design: "'Subject.subject_type ~ Subject.death'"  
-#  output: "all_samples_firth.csv"
-#  shell:
-#    "detk-de firth {design} {input.counts_fn} {input.sample_info} -o {output}"
+rule firth:
+  input: 
+    counts= "clean_filtered_genes.csv",
+    info= "sample_info_design.csv"
+  params: 
+    design="Subject.subject_type ~ Subject.death"
+#  output: "head_all_salmon_norm_firth.csv"
+  output: "clean_salmon_norm_firth.csv"
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
