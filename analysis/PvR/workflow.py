@@ -1,3 +1,4 @@
+import pandas as pd
 info = open('sample_info.csv','r')
 fullread = info.readlines()
 
@@ -14,3 +15,7 @@ for lines in fullread:
         split = newline.split(',')
         Ribo.append(split[1])
 
+polyseq=pd.DataFrame(Poly, columns=['Poly_A'])
+polyseq.to_csv('polyseq.csv', sep=',', index=False)
+ribodepseq=pd.DataFrame(Ribo, columns=['Ribo_D'])
+ribodepseq.to_csv('ribodepseq.csv', sep=',', index=False)

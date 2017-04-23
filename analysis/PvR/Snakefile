@@ -5,11 +5,20 @@
 # Ribo_dep = [ _ for _ in Ribo]
 
 
-rule Protocol_Extractor:
+rule Protocol_Appender:
     input:
-        script1=script.py
+        pythonscript='protocol.py'
     output:
-        outfile='samplesnake_info.csv'
+        outfile='sample_info.csv'
     shell:
+        "python {input.pythonscript}"
 
         
+rule PolyRibocsv:
+    input:
+        workflow='workflow.py'
+    output:
+        ribodepleted='ribodepseq.csv',
+        polyadenylated='polyseq.csv'
+    shell:
+        "python {input.workflow}"
