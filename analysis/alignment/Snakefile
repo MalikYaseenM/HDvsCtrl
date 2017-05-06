@@ -10,9 +10,9 @@ workdir: '../../samples'
 #REFERENCES
 
 indexdir= '../reference/GENCODE_v25_star_index'
-salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
+#salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index'
 pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.annotation.gtf'
-
+salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.transcripts.salmon_quasi_index'
 
 # Only for working with all samplesfastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
@@ -20,7 +20,6 @@ count = expand('{sample}__salmon__counts', sample=dataset_ids)
 
 rule all:
   input:
-    fastqc,
     count
 
 rule fastqc:
