@@ -3,8 +3,8 @@ import pandas as pd
 df = pd.read_csv("clean_filtered_genes.csv")
 df2 = pd.read_csv("clean_filtered_genes.csv")
 total_rows = len(df.index)
-start = 10499
-end = 10699
+start = 0
+end = 200
 
 
 while(total_rows > 200):

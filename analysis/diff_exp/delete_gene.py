@@ -1,6 +1,6 @@
 import pandas as pd
 
-## List of bad genes so far:
+## List of "error" genes so far:
 # Gene name, Line from all_salmon_norm_filter (in excel), line # pandas
 # For excel, first row is header, genes start from second row
 #1  ENSG00000280594.1,  line 237,     ,line 235
@@ -19,41 +19,40 @@ import pandas as pd
 #14 ENSG00000253190.3,  line 21905    ,line 21093
 
 df = pd.read_csv("all_salmon_norm_filter.csv")
-# drops all bad gene rows only
+# drops all genes which produces NA error for firth
 # pandas index starts from 0
 df = df.drop([235, 3277, 3300, 5569, 9677, 9999, 10496, 11864, 12356, 15057, 15461, 15486, 21131, 21903])
 
 # Firth testing
 ##drops row 0 to X returns rows starting from X
-##drop bad gene #1
+##drop gene #1
 # df = df.drop(df.index[0:236])
-##drop bad gene #2
+##drop gene #2
 # df = df.drop(df.index[0:3278])
-##drop bad gene #3
+##drop gene #3
 # df = df.drop(df.index[0:3301])
-##drop bad gene #4
+##drop gene #4
 # df = df.drop(df.index[0:5570])
-##drop bad gene #5
+##drop gene #5
 # df = df.drop(df.index[0:9678])
-##drop bad gene #6
+##drop gene #6
 # df = df.drop(df.index[0:10000])
-##drop bad gene #7
+##drop gene #7
 # df = df.drop(df.index[0:10497])
-##drop bad gene #8
+##drop gene #8
 # df = df.drop(df.index[0:11865])
-##drop bad gene #9
+##drop gene #9
 # df = df.drop(df.index[0:12357])
-##drop bad gene #10
+##drop gene #10
 # df = df.drop(df.index[0:15058])
-##drop bad gene #11
+##drop gene #11
 # df = df.drop(df.index[0:15462])
-##drop bad gene #12
+##drop gene #12
 # df = df.drop(df.index[0:15487])
-##drop bad gene #13
+##drop gene #13
 # df = df.drop(df.index[0:21132])
-##drop bad gene #14
+##drop gene #14
 #df = df.drop(df.index[0:21904])
 
 # write to csv file
 df.to_csv("clean_filtered_genes.csv", index=False)
-

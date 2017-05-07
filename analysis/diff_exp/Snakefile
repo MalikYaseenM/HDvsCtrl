@@ -15,19 +15,21 @@ design = "sample_info_design.csv"
 head = "head_all_salmon_norm_filter.csv"
 filter_row = "all_salmon_norm_filter.csv"
 #firth_test = "head_all_salmon_norm_firth.csv"
-#firth = "all_salmon_norm_firth.csv"
-firth = "clean_salmon_norm_firth.csv"
+firth = "all_salmon_firth.csv"
+#firth = "clean_salmon_norm_firth.csv"
 clean = "clean_filtered_genes.csv"
+#tab = "clean_salmon_norm_firth_tab.csv"
 
 rule all:
   input:
 #    names
     design,
     filter_row,
-    clean,
+#    clean,
 #    head,
 #    firth_test
     firth
+#    tab
     
 # Outputs ordered sample info with subject type and age
 rule get_design_R:
@@ -84,11 +86,20 @@ rule firth_test:
 # Firth
 rule firth:
   input: 
-    counts= "clean_filtered_genes.csv",
+    counts = "all_salmon_norm_filter.csv",
+#    counts= "clean_filtered_genes.csv",
     info= "sample_info_design.csv"
   params: 
     design="Subject.subject_type ~ Subject.death"
 #  output: "head_all_salmon_norm_firth.csv"
-  output: "clean_salmon_norm_firth.csv"
+#  output: "clean_salmon_norm_firth.csv"
+  output: "all_salmon_firth.csv"
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
+# 
+rule tab:
+  input: "clean_salmon_norm_firth.csv"
+  output: "clean_salmon_norm_firth_tab.csv"
+  shell: "python tab_delim.py"
+    
