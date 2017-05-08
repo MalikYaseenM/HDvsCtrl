@@ -1,0 +1,20 @@
+#Snakefile
+
+# snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+
+include: '../common_workflow.snake'
+workdir: '../../samples'
+
+sort_bams = expand('{sample}__trimP__STAR.Aligned.sorted.bam', sample=dataset_ids)
+
+rule all:
+  input:
+    sort_bams
+
+rule sort_bams:
+  input:'{sample}__trimP__STAR.Aligned.out.bam'
+  output:'{sample}__trimP__STAR.Aligned.sorted.bam'
+  threads: 8
+  shell:
+    "samtools sort {input} -o {output} -@ {threads}"
