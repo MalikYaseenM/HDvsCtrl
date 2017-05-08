@@ -9,10 +9,18 @@ workdir: '../../samples'
 sort_bams = expand('{sample}__trimP__STAR.Aligned.sorted.bam', sample=dataset_ids)
 index_bams = expand('{sample}__trimP__STAR.Aligned.sorted.bam.bai', sample=dataset_ids)
 extract_gene = expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam', sample=dataset_ids)
-ribo = expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam', sample=ribo)
-poly = expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam', sample=poly)
+ribos = expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam', sample=ribo)
+polys = expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam', sample=poly)
 concat_ribo='all_ribo_depleted__trimP__STAR.Aligned.sorted.HTT.bam'
 concat_poly='all_polyA__trimP__STAR.Aligned.sorted.HTT.bam'
+index_HTT=expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam.bai', sample=dataset_ids)
+ribo_i=expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam.bai', sample=ribo)
+poly_i=expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam.bai', sample=poly)
+
+all_concat=['all_polyA','all_ribo_depleted']
+#index_concat=expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam.bai', sample=all_concat)
+sort_cat=expand('{sample}__trimP__STAR.Aligned.resorted.HTT.bam', sample=all_concat)
+index_concat=expand('{sample}__trimP__STAR.Aligned.resorted.HTT.bam.bai', sample=all_concat)
 
 rule all:
   input:
@@ -20,7 +28,10 @@ rule all:
     index_bams,
     extract_gene,
     concat_ribo,
-    concat_poly
+    concat_poly,
+#    index_HTT,
+    sort_cat,
+    index_concat
 
 rule sort_bams:
   input:'{sample}__trimP__STAR.Aligned.out.bam'
@@ -43,13 +54,46 @@ rule extract_gene:
     "samtools view {input} chr4:3074681-3243959 -o {output}"
 
 rule concat_ribo:
-  input: ribo
+  input: ribos
   output: 'all_ribo_depleted__trimP__STAR.Aligned.sorted.HTT.bam'
   shell:
     "samtools cat -o {output} {input}"
 
 rule concat_poly:
-  input: poly
+  input: polys
   output: 'all_polyA__trimP__STAR.Aligned.sorted.HTT.bam'
   shell:
     "samtools cat -o {output} {input}"
+
+rule index_HTT:
+  input:'{sample}__trimP__STAR.Aligned.sorted.HTT.bam'
+  output: '{sample}__trimP__STAR.Aligned.sorted.HTT.bam.bai'
+  threads: 8
+  shell:
+    "samtools index {input} -@ {threads}"
+
+rule sort_cat:
+  input:'{sample}__trimP__STAR.Aligned.sorted.HTT.bam'
+  output:'{sample}__trimP__STAR.Aligned.resorted.HTT.bam'
+  threads: 8
+  shell:
+    "samtools sort {input} -o {output} -@ {threads}"
+
+rule index_concat:
+  input:'{sample}__trimP__STAR.Aligned.resorted.HTT.bam'
+  output: '{sample}__trimP__STAR.Aligned.resorted.HTT.bam.bai'
+  threads: 8
+  shell: 
+    "samtools index {input} -@ {threads}"
+
+#rule index_ribo:
+#  input: ribo_i
+#  output:'all_ribo_depleted__trimP__STAR.Aligned.sorted.HTT.bam.bai'
+#  shell:
+#    "samtools cat -o {output} {input}"
+
+#rule index_poly:
+#  input: poly_i
+#  output:'all_polyA__trimP__STAR.Aligned.sorted.HTT.bam.bai'
+#  shell:
+#    "samtools cat -o {output} {input}"
