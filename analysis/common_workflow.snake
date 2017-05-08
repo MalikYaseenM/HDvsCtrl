@@ -1,10 +1,18 @@
 import csv
 import pandas
 
-
-sample_info = pandas.read_csv('../HD_mRNASeq_sample_info.csv', comment='#')
+col_names = ['Dataset.dataset_id','Dataset.protocol']
+df = pandas.read_csv('../HD_mRNASeq_sample_info.csv',sep=',', comment='#',usecols=col_names)
 
 #print(sample_info['Dataset.dataset_id'])
 
-dataset_ids = sample_info['Dataset.dataset_id'].tolist()
-#status = 
+dataset_ids = df['Dataset.dataset_id'].tolist()
+
+# Pulling Poly A samples
+poly = df[df['Dataset.protocol'] == 'TruSeq poly-A'].index.tolist()
+poly = df.loc[poly]['Dataset.dataset_id'].tolist()
+
+# Pulling ribo-depleted samples
+ribo = df[df['Dataset.protocol'] == 'TruSeq Ribo-depleted'].index.tolist()
+ribo = df.loc[ribo]['Dataset.dataset_id'].tolist()
+ 

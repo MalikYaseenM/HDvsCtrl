@@ -7,10 +7,20 @@ include: '../common_workflow.snake'
 workdir: '../../samples'
 
 sort_bams = expand('{sample}__trimP__STAR.Aligned.sorted.bam', sample=dataset_ids)
+index_bams = expand('{sample}__trimP__STAR.Aligned.sorted.bam.bai', sample=dataset_ids)
+extract_gene = expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam', sample=dataset_ids)
+ribo = expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam', sample=ribo)
+poly = expand('{sample}__trimP__STAR.Aligned.sorted.HTT.bam', sample=poly)
+concat_ribo='all_ribo_depleted__trimP__STAR.Aligned.sorted.HTT.bam'
+concat_poly='all_polyA__trimP__STAR.Aligned.sorted.HTT.bam'
 
 rule all:
   input:
-    sort_bams
+    sort_bams,
+    index_bams,
+    extract_gene,
+    concat_ribo,
+    concat_poly
 
 rule sort_bams:
   input:'{sample}__trimP__STAR.Aligned.out.bam'
@@ -18,3 +28,28 @@ rule sort_bams:
   threads: 8
   shell:
     "samtools sort {input} -o {output} -@ {threads}"
+
+rule index_bams:
+  input:'{sample}__trimP__STAR.Aligned.sorted.bam'
+  output:'{sample}__trimP__STAR.Aligned.sorted.bam.bai'
+  threads: 8
+  shell:
+    "samtools index {input} -@ {threads}"
+
+rule extract_gene:
+  input:'{sample}__trimP__STAR.Aligned.sorted.bam'
+  output:'{sample}__trimP__STAR.Aligned.sorted.HTT.bam'
+  shell:
+    "samtools view {input} chr4:3074681-3243959 -o {output}"
+
+rule concat_ribo:
+  input: ribo
+  output: 'all_ribo_depleted__trimP__STAR.Aligned.sorted.HTT.bam'
+  shell:
+    "samtools cat -o {output} {input}"
+
+rule concat_poly:
+  input: poly
+  output: 'all_polyA__trimP__STAR.Aligned.sorted.HTT.bam'
+  shell:
+    "samtools cat -o {output} {input}"
