@@ -6,7 +6,7 @@ total_rows = len(df.index)
 start = 0
 end = 200
 
-
+# 200 rows/file
 while(total_rows > 200):
     df1 = df.drop(df.index[201:])
     df = df.drop(df.index[0:201])
