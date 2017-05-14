@@ -14,14 +14,21 @@ rule all:
     firth
 
 # Outputs ordered sample info with subject type and age
-# Outputs CAP samples from normalized files
+# Outputs filtered CAP samples
 rule design_info:
   input:"design.py"
   output:
     info="CAP_info_design.csv",
-    norm="CAP_salmon_norm.csv"
+    norm="CAP_salmon_filter.csv"
   shell:
     "python {input}"
+
+# Normalize filtered samples
+rule norm:
+  input:"CAP_salmon_filter.csv"
+  output:"CAP_salmon_norm.csv"
+  shell:
+    """detk-norm deseq2 {input} -o {output}"""
 
 # firth
 rule firth:

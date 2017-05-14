@@ -1,9 +1,0 @@
-#!/bin/bash
-#$ -P mlhd
-#$ -cwd
-
-R1=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/CAP_Analysis/CAP_salmon_norm.csv
-R2=/usr3/graduate/fiagus/presymptomatic_hd_mrnaseq/analysis/CAP_Analysis/CAP_info_design.csv
-out=CAP_salmon_firth2.csv
-
-detk-de firth "Subject.subject_type ~ Subject.death" $R1 $R2 -o $out
