@@ -1,0 +1,5 @@
+Dataset.dataset_id,Subject.subject_type,Subject.death
+C_0113_CAP_mRNASeq,Control,51.0
+H_1104_CAP_mRNASeq,HDpos,86.0
+C_0114_CAP_mRNASeq,Control,82.0
+H_1105_CAP_mRNASeq,HDpos,49.0
