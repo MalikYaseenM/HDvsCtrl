@@ -16,11 +16,14 @@ salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.
 
 # Only for working with all samplesfastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
+#verse_count = expand('{sample}__verse__counts.tsv', sample=dataset_ids)
+
 
 
 rule all:
   input:
     count
+    #verse_count
 
 rule fastqc:
   input:
@@ -110,3 +113,24 @@ rule salmonquant:
       "-l A -1 {input.read1} -2 {input.read2} --output {output.file} "
       "-p {threads} " 
 
+rule verse_count:
+    input:
+        versegtf= pathtogtf,
+        star_bam='100k_sorted.bam'
+    output:
+        exon='100k_sorted__verse__counts.exon.txt',
+	UTR='100k_sorted__verse__counts.UTR.txt'
+	
+    threads: 8
+    params:
+        prefix='100k_sorted__verse__counts'
+    shell:
+        "verse -a {input.versegtf} -T 8 --multithreadDecompress -t 'exon;UTR' -o {params.prefix} "
+        "{input.star_bam}"
+rule concat_verse:
+    input:
+        
+        
+    output:
+    run:
+        
