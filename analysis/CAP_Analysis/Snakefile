@@ -1,7 +1,7 @@
 # Snakefile
 # Usage
 ## Dry run to check if snakefile works
-# snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50 -np
 ## Actual run
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
