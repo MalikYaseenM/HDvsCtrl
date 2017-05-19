@@ -22,7 +22,11 @@ salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.
 
 # Only for working with all samplesfastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
-verse_count = expand('{sample}__verse__sorted__counts.exon.txt', sample=dataset_ids)
+verse_count =expand('{sample}__verse__sorted__counts.exon.txt', sample=dataset_ids)
+verse_exon_count =expand('{sample}__verse__sorted__counts.exon.txt', sample=dataset_ids)
+verse_transcript_count =expand('{sample}__verse__sorted__counts.transcript.txt', sample=dataset_ids)
+verse_UTR_count =expand('{sample}__verse__sorted__counts.UTR.txt', sample=dataset_ids)
+exon_matrix='verse_exon_matrix.tsv'
 
 
 
@@ -31,7 +35,11 @@ verse_count = expand('{sample}__verse__sorted__counts.exon.txt', sample=dataset_
 rule all:
   input:
     count,
-    verse_count
+    verse_count,
+    exon_matrix,
+    verse_exon_count,
+    verse_UTR_count,
+    verse_transcript_count
 
 rule fastqc:
   input:
@@ -127,54 +135,78 @@ rule verse:
         star_bam='{sample}__trimP__STAR.Aligned.sorted.bam'
     output:
         exon='{sample}__verse__sorted__counts.exon.txt',
-        UTR='{sample}__verse__sorted__counts.UTR.txt'
+        UTR='{sample}__verse__sorted__counts.UTR.txt',
+        transcript='{sample}__verse__sorted__counts.transcript.txt'
     threads: 8
     params:
         prefix='{sample}__verse__sorted__counts'
     shell:
-        "verse -a {input.versegtf} -T 8 --multithreadDecompress -t 'exon;UTR' -o {params.prefix} "
+        "verse -a {input.versegtf} -T 8 --multithreadDecompress -t 'exon;UTR;transcript' -o {params.prefix} "
         "{input.star_bam}"
+
 rule concat_verse:
     input:
-        exon_file='{sample}__verse__sorted__counts.exon.txt',
-        UTR_file='{sample}__verse__sorted__counts.UTR.txt'
+        exon_file=verse_exon_count,
+        UTR_file=verse_UTR_count,
+        transcript_file= verse_transcript_count
     output:
-        verse_exon_matrix='verse_exon_matrix.tsv'
-        verse_UTR_matrix='verse_UTR_matrix.tsv'
-
+        verse_exon_matrix='verse_exon_matrix.tsv',
+        verse_UTR_matrix='verse_UTR_matrix.tsv',
+        verse_transcript_matrix='verse_transcript_matrix.tsv'
     run:
         col_names = ['count']
 
         mat = None
-
+        
         #for exon samples
-
         output_exons = open('verse_exon_matrix.tsv', 'w')
         verse_exons= glob.glob('*__verse__sorted__counts.exon.txt')
         for fn in verse_exons:
             sample_name = os.path.basename(fn).replace('__verse__sorted__counts.exon.txt', '')
             sample_col_names = [sample_name + '_' + col_name for col_name in col_names]
             sample_col_names.insert(0, 'gene_id')
-            df = pandas.read_csv(fn, sep='\t', skiprows=1 names=sample_col_names)
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=sample_col_names)
 
             if mat is None:
                 mat = df
             else:
                 mat = pandas.concat([mat, df.iloc[:, 1:]], axis=1)
-            mat.to_csv(output_exons, sep='\t')
-            output_exons.close()
+        mat.to_csv(output_exons, sep='\t')
+        output_exons.close()
 
+        #UTRS
+        mat = None
         output_UTRS = open('verse_UTR_matrix.tsv', 'w')
         verse_UTR= glob.glob('*__verse__sorted__counts.UTR.txt')
+        
         for fn in verse_UTR:
             sample_name = os.path.basename(fn).replace('__verse__sorted__counts.UTR.txt', '')
             sample_col_names = [sample_name + '_' + col_name for col_name in col_names]
             sample_col_names.insert(0, 'gene_id')
-            df = pandas.read_csv(fn, sep='\t', skiprows=1 names=sample_col_names)
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=sample_col_names)
 
             if mat is None:
                 mat = df
             else:
                 mat = pandas.concat([mat, df.iloc[:, 1:]], axis=1)
-            mat.to_csv(output_UTRS, sep='\t')
-            output_UTRS.close()
+        mat.to_csv(output_UTRS, sep='\t')
+        output_UTRS.close()
+
+
+        #transcripts
+        mat = None
+        output_transcripts = open('verse_transcript_matrix.tsv', 'w')
+        verse_transcript = glob.glob('*__verse__sorted__counts.transcript.txt')
+        
+        for fn in verse_transcript:
+            sample_name = os.path.basename(fn).replace('__verse__sorted__counts.transcript.txt', '')
+            sample_col_names = [sample_name + '_' + col_name for col_name in col_names]
+            sample_col_names.insert(0, 'gene_id')
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=sample_col_names)
+
+            if mat is None:
+                mat = df
+            else:
+                mat = pandas.concat([mat, df.iloc[:, 1:]], axis=1)
+        mat.to_csv(output_transcripts, sep='\t')
+        output_transcripts.close()
