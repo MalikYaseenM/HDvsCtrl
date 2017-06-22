@@ -12,8 +12,8 @@ sample_info = samples.iloc[:,[14,1,4]]
 # Pulls only CAP samples
 sample_info = sample_info[sample_info['Dataset.dataset_id'].str.contains("CAP")]
 # To get HD or control
-#control_ids = [ _ for _ in sample_info['Dataset.dataset_id'] if _.startswith('C')]
-#HD_ids = [ _ for _ in sample_info['Dataset.dataset_id'] if _.startswith('H')]
+control_ids = [ _ for _ in sample_info['Dataset.dataset_id'] if _.startswith('C')]
+HD_ids = [ _ for _ in sample_info['Dataset.dataset_id'] if _.startswith('H')]
 
 # Pulls only CAP samples from counts file
 df = pd.read_csv(fl, sep='\t', comment='#')
@@ -22,12 +22,12 @@ df.drop([col for col in df.columns if 'BA9' in col],axis=1,inplace=True)
 # Filtering, dropping any rows with a 0
 df = df[(df != 0).all(1)]
 
-# Filtering
-#df['avg_control'] = df[control_ids].mean(axis=1)
-#df['avg_HD'] = df[HD_ids].mean(axis=1)
-#df = df[(df.avg_control > 5) & (df.avg_HD > 5)]
-#df = df.drop('avg_control', axis=1)
-#df = df.drop('avg_HD', axis=1)
+# Filtering, drop those with control mean < 5 and HD mean <5
+df['avg_control'] = df[control_ids].mean(axis=1)
+df['avg_HD'] = df[HD_ids].mean(axis=1)
+df = df[(df.avg_control > 5) & (df.avg_HD > 5)]
+df = df.drop('avg_control', axis=1)
+df = df.drop('avg_HD', axis=1)
 # Creates new file with only CAP samples
 df.to_csv("CAP_salmon_filter.csv", index=False)
 
