@@ -1,0 +1,84 @@
+#snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+include: 'samples.py'
+workdir: '../../samples/GTEx/'
+#REFERENCES
+truseq='reference/TruSeq3-PE.fa'
+salmonpath='reference/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index/'
+pathtogtf='reference/gencode.v25.annotation.gtf'
+# need to run fastqc_files first
+fastqc_files=expand('{sample}_fastqc.zip', sample= samples_list)
+rename_fastqc=expand('{sample}__fastqc.zip', sample= samples_list)
+trim_error=expand('{sample}__trimerror.log', sample= samples_list)
+#counts=expand('{sample}__salmon__counts', sample=samples_list)
+rule all:
+    input:
+        fastqc_files,
+	rename_fastqc,
+	trim_error,
+        #counts,
+        "multiqc_report.html"
+rule fastqc:
+    input:
+        fastq= "{sample}.fastq.gz"
+    output:
+        zip= "{sample}_fastqc.zip",
+        html= "{sample}_fastqc.html"
+    threads:8
+    shell:
+        "fastqc -t {threads} {input.fastq}"
+rule renamefastqc:
+    input:
+        zip="{sample}_fastqc.zip",
+        html="{sample}_fastqc.html"
+    output:
+        zip="{sample}__fastqc.zip",
+        html="{sample}__fastqc.html"
+    shell:
+        "mv {input.zip} {output.zip} && "
+        "mv {input.html} {output.html}"
+
+rule trimmomatic:
+    input:
+        read1 = "{sample}.fastq.gz",
+        read2 = "{sample}.fastq.gz",
+        adapter = truseq
+    output:
+        read1p = "{sample}__R1__trimP.fastq.gz",
+        read1u = "{sample}__R1__trimU.fastq.gz",
+        read2p = "{sample}__R2__trimP.fastq.gz",
+        read2u = "{sample}__R2__trimU.fastq.gz",
+        trimlog = "{sample}__trimerror.log"
+    log:
+        "{sample}__trimerror.log"
+    shell:
+        "trimmomatic PE -phred33 "
+        "{input.read1} {input.read2} "
+        "{output.read1p} {output.read1u} {output.read2p} {output.read2u} "
+        "ILLUMINACLIP:{input.adapter}:2:30:10 LEADING:3 TRAILING:3 "
+        "SLIDINGWINDOW:4:15 MINLEN:36 2> {log} "
+
+rule salmon:
+    input:
+        READ1="{sample}_R1.fastq.gz",
+        READ2="{sample}_R2.fastq.gz",
+        gtf=pathtogtf,
+        index= salmonpath
+    output:
+        salmon_out='{sample}__salmon__counts'
+    threads: 8
+    shell:
+        "salmon quant --index {input.index} -g {input.gtf} "
+        "-l A -1 {input.READ1} -2 {input.READ2} --output {output.salmon_out} "
+        "-p {threads} "
+        
+rule multiqc:
+    input:
+        fqc=expand('{sample}__fastqc.zip', sample= samples_list),
+        trim=expand('{sample}__trimerror.log', sample= samples_list)
+    output:
+        report="multiqc_report.html"
+    params:
+        prefix="multiqc_report."
+    shell:
+        "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL && "
+        "multiqc {input.fqc} {input.trim}"
