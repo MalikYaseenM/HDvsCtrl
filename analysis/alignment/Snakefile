@@ -13,17 +13,16 @@ workdir: '../../samples'
 #REFERENCES
 
 indexdir= '../reference/GENCODE_v25_star_index'
-#salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index' # old salmon index
 #pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.annotation.gtf'
-#pathtogtf='/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/augmented.gencode.v25.annotation.gtf'
-#pathtogtf='/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/intron_test.gtf'
 salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.transcripts.salmon_quasi_index'
 #pathtogtf='/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/augmented.with.intergenic.gencode.v25.annotation.gtf'
 pathtogtf='/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/combined.gtf'
+
+# Only for working with all samples
+#fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
+
 # VERSE
 
-
-# Only for working with all samplesfastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
 verse_count =expand('{sample}__verse__sorted__counts.exon.txt', sample=dataset_ids)
 verse_exon_count =expand('{sample}__verse__sorted__counts.exon.txt', sample=dataset_ids)
@@ -33,10 +32,6 @@ verse_gene_count =expand('{sample}__verse__sorted__counts.gene.txt', sample=data
 verse_intron_count =expand('{sample}__verse__sorted__counts.intron.txt', sample=dataset_ids)
 exon_matrix='verse_exon_matrix.tsv'
 verse_intergenic_count =expand('{sample}__verse__sorted__counts.intergenic.txt', sample=dataset_ids)
-
-
-
-
 rule all:
   input:
     #count,

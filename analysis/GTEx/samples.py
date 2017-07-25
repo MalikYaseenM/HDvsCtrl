@@ -28,18 +28,29 @@ files = '../../../presymptomatic_hd_mrnaseq/samples/GTEx/GTEx_samples.txt'
 f = csv.reader(files)
 id_list = []
 with open(files, 'r') as tsvfile:
+    samples = []
     f = csv.reader(tsvfile)
-    samples_list = []
     for r in f:
         if r[0] not in samples_to_remove:
             line = str(r[0])
             split = line.split('.')
-            split1 = line.split('-')
-            split2 = split1[1].split('_')
-            key = split2[0]
-            id_list.append(key)
-            samples_list.append(split[0])
-
+            individual = split[0][0:-3]
+            if individual in samples:
+                pass
+            else:
+                samples.append(individual)
+# quant_sf = '../../../presymptomatic_hd_mrnaseq/samples/GTEx/genes_with_quantsf.txt'
+# with open(quant_sf, 'r') as csvfile:
+#     quant_samples = []
+#     f = csv.reader(csvfile)
+#     for r in f:
+#         line = str(r[0])
+#         split = line.split('__')
+#         quant_samples.append(split[0])
+# quant_set = set(quant_samples)
+# for sample in samples:
+#     if sample not in quant_set:
+print(len(samples))
 #coord_list = ['GTEX-N7MT_CAU_mRNASeq_R1', 'GTEX-WHSE_CAU_mRNASeq_R1', 'GTEX-XLM4_BA9_mRNASeq_R2', 'GTEX-XMD1_BA9_mRNASeq_R1']
 # trouble_list = []
 # for i in range(len(samples_list)):
