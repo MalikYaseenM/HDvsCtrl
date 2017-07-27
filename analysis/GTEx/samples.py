@@ -8,6 +8,7 @@ import csv
 # strip = split[1].split('_')
 #files = '../../../presymptomatic_hd_mrnaseq/samples/GTEx/four_samples.txt'
 #problem_samples = 'bad_samples.txt'
+path = '/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/'
 problem_samples = 'trouble_samples.txt'
 bad_samples = []
 samples_to_remove = []
@@ -39,6 +40,15 @@ with open(files, 'r') as tsvfile:
                 pass
             else:
                 samples.append(individual)
+                
+# hd_samples = 'HD_Salmon.txt'
+# total_samples = []
+# with open(hd_samples, 'r') as csvfile:
+#     f = csv.reader(csvfile)
+#     for r in f:
+#         line = path +str(r[0])+'/quant.genes.sf'
+#         print(line)
+        
 # quant_sf = '../../../presymptomatic_hd_mrnaseq/samples/GTEx/genes_with_quantsf.txt'
 # with open(quant_sf, 'r') as csvfile:
 #     quant_samples = []
@@ -50,7 +60,7 @@ with open(files, 'r') as tsvfile:
 # quant_set = set(quant_samples)
 # for sample in samples:
 #     if sample not in quant_set:
-print(len(samples))
+
 #coord_list = ['GTEX-N7MT_CAU_mRNASeq_R1', 'GTEX-WHSE_CAU_mRNASeq_R1', 'GTEX-XLM4_BA9_mRNASeq_R2', 'GTEX-XMD1_BA9_mRNASeq_R1']
 # trouble_list = []
 # for i in range(len(samples_list)):
