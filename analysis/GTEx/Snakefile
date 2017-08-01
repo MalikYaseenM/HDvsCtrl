@@ -1,15 +1,19 @@
 #snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 #expand("sorted_reads/{sample}.{replicate}.bam", sample=SAMPLES, replicate=[0, 1])
 import os, pandas, glob
-include: 'samples.py'
-workdir: '../../samples/GTEx/'
+include: 'GTEX_samples.py'
+
 #REFERENCES
-truseq='reference/TruSeq3-PE.fa'
-indexdir='reference/GENCODE_v25_star_index'
+truseq=os.path.abspath('../reference/TruSeq3-PE.fa')
+indexdir=os.path.abspath('../reference/GENCODE_v25_star_index')
+salmonpath=os.path.abspath(
+    '../reference/gencode.v25.transcripts.salmon_quasi_index/')
+pathtogtf=os.path.abspath(
+    '../reference/gencode.v25.annotation.gtf')
+hd_counts=glob.glob(os.path.abspath('../../samples/*/quant.genes.sf'))
+workdir: '../../samples/GTEx/'         
 STAR=expand('{sample}__trimP__STAR.Aligned.sortedByCoord.out.bam',
             sample = samples)
-salmonpath='reference/gencode.v25.pc_lncRNA_transcripts.salmon_quasi_index/'
-pathtogtf='reference/gencode.v25.annotation.gtf'
 # need to run fastqc_files first
 fastqc_files=expand('{sample}_R{replicate}_fastqc.zip',
                     sample=samples, replicate=[1,2])
@@ -17,19 +21,20 @@ rename_fastqc=expand('{sample}_R{replicate}__fastqc.zip',
                      sample=samples, replicate=[1,2])
 trim_error=expand('{sample}__trimerror.log', sample=samples)
 salmon_counts=expand('{sample}__salmon__counts', sample= samples)
-#hd_counts = glob.glob('HD_Samples/{samples}/quant.genes.sf', sample= hd_samples)
 salmon_log= expand('{sample}__salmon__counts/libParams/flenDist.txt',
                    sample= samples)
 quant_sf = glob.glob('*/quant.genes.sf')
+total_counts = quant_sf + hd_counts
 STAR_Log = expand('{sample}__trimP__STAR.Log.final.out', sample=samples)
+
 rule all:
     input:
-        #fastqc_files,
-        #rename_fastqc,
+        # fastqc_files,
+        # rename_fastqc,
         #trim_error,
         #salmon_counts,
-        "multiqc_report.html",
-        #"all_salmon_quant.tsv"
+        # "multiqc_report.html",
+        "all_salmon_quant.tsv"
         #STAR
 rule fastqc:
     input:
@@ -87,26 +92,25 @@ rule salmon:
         "-l A -1 {input.READ1} -2 {input.READ2} --output {output.salmon_out} "
         "-p {threads} "
 
-# rule concat_salmon:
-#     input:
-#         #quant = total_counts
-#         quant = hd_counts
-#     output:
-#         matrix= 'all_salmon_quant.tsv'
-#     run:
-#         mat = None
-#         for fn in input.quant:
-#             sample_name = os.path.dirname(fn).replace('__salmon__counts', '')
-#             col_names = ['gene_id', 'Length', 'EffectiveLength', 'TPM', '{}'.
-#                          format(sample_name)]
-#             df = pandas.read_csv(fn, sep='\t', skiprows=1, names=col_names)
+rule concat_salmon:
+    input:
+        quant = total_counts
+    output:
+        matrix= 'all_salmon_quant.tsv'
+    run:
+        mat = None
+        for fn in input.quant:
+            sample_name = os.path.dirname(fn).replace('__salmon__counts', '')
+            col_names = ['gene_id', 'Length', 'EffectiveLength', 'TPM', '{}'.
+                         format(sample_name)]
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=col_names)
 
-#             if mat is None:
-#                 df = df.drop(['Length', 'EffectiveLength', 'TPM'], axis=1)
-#                 mat = df
-#             else:
-#                 mat = pandas.concat([mat, df.iloc[:, 4:]], axis=1)
-#             mat.to_csv(output[0], sep='\t', index=False)
+            if mat is None:
+                df = df.drop(['Length', 'EffectiveLength', 'TPM'], axis=1)
+                mat = df
+            else:
+                mat = pandas.concat([mat, df.iloc[:, 4:]], axis=1)
+            mat.to_csv(output[0], sep='\t', index=False)
 
 rule STAR:
     input:
