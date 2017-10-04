@@ -1,0 +1,42 @@
+# Snakefile
+# Usage
+## Dry run to check if snakefile works
+# snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+## Actual run
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
+
+design_info = "BA9_info_design.csv"
+firth = "BA9_salmon_firth.csv"
+
+rule all:
+  input:
+    design_info,
+    firth
+
+# Outputs ordered sample info with subject type and age
+# Outputs filtered CAP samples
+rule design_info:
+  input:"BA9_design.py"
+  output:
+    info="BA9_info_design.csv",
+    norm="BA9_salmon_filter.csv"
+  shell:
+    "python {input}"
+
+# Normalize filtered samples
+rule norm:
+  input:"BA9_salmon_filter.csv"
+  output:"BA9_salmon_norm.csv"
+  shell:
+    """detk-norm deseq2 {input} -o {output}"""
+
+# firth
+rule firth:
+  input:
+    counts = "BA9_salmon_norm.csv",
+    info= "BA9_info_design.csv"
+  params:
+    design="Subject.subject_type ~ Subject.death"
+  output:"BA9_salmon_firth.csv"
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
