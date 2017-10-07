@@ -10,21 +10,25 @@ fl = os.path.abspath('../../samples/all_salmon_quant_rrna.tsv')
 samples = pd.read_csv(fn, sep=",", comment='#')
 # column15: datasetid, 2: subject type, 5: death age
 sample_info = samples.iloc[:,[14,1,4]]
-# Pulls only HDPos (Asymptomatic) samples
-asymp = sample_info[sample_info['Subject.subject_type'].str.contains("HDpos")]
 
+# Pulls only HDPos (Asymptomatic) samples
+asymp = sample_info[sample_info['Subject.subject_type'].str.contains("HDpos")].copy()
 # Changes the Subject.subject_type to BA9 or CAP
-pd.options.mode.chained_assignment = None 
-asymp.loc[:,'Subject.subject_type'] = asymp["Dataset.dataset_id"].map(lambda x: "BA9" if "BA9" in x else "CAP" if "CAP" in x else "")
+asymp.columns = ["Data_id","Subject_type","Subject_death"]
+#pd.options.mode.chained_assignment = None 
+asymp.loc[:,'Subject_type'] = asymp["Data_id"].map(lambda x: "BA9" if "BA9" in x else "CAP")
 
 # To get BA9 or CAP
-BA9_ids = asymp['Dataset.dataset_id'][asymp['Dataset.dataset_id'].str.contains("BA9")].tolist()
-CAP_ids = asymp['Dataset.dataset_id'][asymp['Dataset.dataset_id'].str.contains("CAP")].tolist()
-hdpos = asymp['Dataset.dataset_id'].tolist()
+BA9_ids = asymp['Data_id'][asymp['Data_id'].str.contains("BA9")].tolist()
+CAP_ids = asymp['Data_id'][asymp['Data_id'].str.contains("CAP")].tolist()
+hdpos = asymp['Data_id'].tolist()
 
-# Pulls only HDPos samples from counts matrix
+# Pulls only gene_ID and HDPos samples from counts matrix
 df = pd.read_csv(fl, sep='\t', comment='#')
-df.drop([col for col in df.columns if col not in hdpos],axis=1,inplace=True)
+# To include gene_ID and HDPos samples
+col = list(df)
+col = col[:1] + hdpos
+df.drop([col for col in df.columns if col not in col],axis=1,inplace=True)
 
 # Filtering, dropping any rows with a 0
 df = df[(df != 0).all(1)]
@@ -40,6 +44,7 @@ df.to_csv("asymp_salmon_filter.csv", index=False)
 
 # For sample info design
 sample_i = pd.DataFrame(df.columns)
-sample_i = sample_i.rename(columns = {0:'Dataset.dataset_id'})
-df_new = pd.merge(sample_i,asymp, on='Dataset.dataset_id')
+sample_i = sample_i.drop(0)
+sample_i = sample_i.rename(columns = {0:'Data_id'})
+df_new = pd.merge(sample_i,asymp, on='Data_id')
 df_new.to_csv("asymp_info_design.csv", index=False)

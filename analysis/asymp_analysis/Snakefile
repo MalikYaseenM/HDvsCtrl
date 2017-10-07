@@ -38,7 +38,7 @@ rule firth:
     counts = "asymp_salmon_norm.csv",
     info= "asymp_info_design.csv"
   params:
-    design="Subject.subject_type ~ Subject.death"
+    design="Subject_type[CAP] ~ Subject_death + counts"
   output:"asymp_salmon_firth.csv"
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
