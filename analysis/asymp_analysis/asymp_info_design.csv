@@ -1,4 +1,4 @@
-Dataset.dataset_id,Subject.subject_type,Subject.death
+Data_id,Subject_type,Subject_death
 H_1106_BA9_mRNASeq,BA9,19.0
 H_1104_CAP_mRNASeq,CAP,86.0
 H_1105_BA9_mRNASeq,BA9,49.0
