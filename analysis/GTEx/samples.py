@@ -40,6 +40,8 @@ with open(files, 'r') as tsvfile:
                 pass
             else:
                 samples.append(individual)
+
+print(len(samples))
                 
 # hd_samples = 'HD_Salmon.txt'
 # total_samples = []
