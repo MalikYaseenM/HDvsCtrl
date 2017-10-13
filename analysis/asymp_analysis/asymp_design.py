@@ -27,8 +27,8 @@ hdpos = asymp['Data_id'].tolist()
 df = pd.read_csv(fl, sep='\t', comment='#')
 # To include gene_ID and HDPos samples
 col = list(df)
-col = col[:1] + hdpos
-df.drop([col for col in df.columns if col not in col],axis=1,inplace=True)
+cols = col[:1] + hdpos
+df.drop([col for col in df.columns if col not in cols],axis=1,inplace=True)
 
 # Filtering, dropping any rows with a 0
 df = df[(df != 0).all(1)]

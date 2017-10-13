@@ -43,6 +43,3 @@ rule firth:
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
-#rule tab:
-#   df = pd.read_csv("CAP_salmon_firth.csv", sep="\t")
-#   df.to_csv("CAP_salmon_firth.csv", index=False)
