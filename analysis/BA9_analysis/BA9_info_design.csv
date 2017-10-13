@@ -1,4 +1,4 @@
-Dataset.dataset_id,Subject.subject_type,Subject.death
+Data_id,Subject_type,Subject_death
 C_0083_BA9_mRNASeq,Control,66.0
 C_0010_BA9_mRNASeq,Control,79.0
 H_0006_BA9_mRNASeq,HD,40.0
