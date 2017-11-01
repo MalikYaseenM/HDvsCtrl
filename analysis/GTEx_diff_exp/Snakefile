@@ -1,0 +1,79 @@
+ # snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+
+#design_info = "sample_info_design.csv"
+design_info = "new_sample_info.csv"
+filter_rows = "GTEX_salmon_filter.csv"
+norm = "../../samples/GTEx/normalized_all_salmon_quant.tsv"
+firth = "GTEX_salmon_firth.csv"
+
+CAU_BA9 = "CAU_BA9_Salmon.tsv"
+
+rule all:
+  input:
+    design_info,
+    filter_rows,
+    firth,
+
+
+
+
+# Outputs ordered sample info with subject type and age
+#rule design_info:
+  input:"design.py"
+  output:"sample_info_design.csv"
+  shell:
+    "python {input}"
+
+# filter rows with means less than 10 (deletes if both control means and hd means <10)
+rule filter_rows:
+  input:"filter_new.py"
+  output:"GTEX_salmon_filter.csv"
+  shell:
+    "python {input}"
+
+rule norm:
+  input:"GTEX_salmon_filter.csv"
+  output:"GTEX_salmon_norm.csv"
+  shell:
+    """detk-norm deseq2 {input} -o {output}"""
+
+rule firth:
+  input:
+    counts = "GTEX_salmon_norm.csv",
+    info= "new_sample_info.csv"
+  params:
+    design="brain_region[CAU] ~ SEX+AGE+counts"
+
+  output:"GTEX_salmon_firth.tsv"
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
+rule stratify_sex:
+    input:
+        "sex_stratification.py"
+    output:
+        "GTEX_male_salmon_norm.csv",
+        "GTEX_female_salmon_norm.csv"
+    shell:
+        "python {input}"
+
+rule female_stratification:
+  input:
+    counts ="GTEX_female_salmon_norm.csv",
+    info= "female_sample_design_info.csv"
+  params:
+    design="brain_region[CAU] ~ AGE+counts"
+  output:"GTEX_female_salmon_firth.tsv"
+  shell:
+`    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
+rule male_stratification:
+  input:
+    counts ="GTEX_male_salmon_norm.csv",
+    info= "male_sample_design_info.csv"
+  params:
+    design="brain_region[CAU] ~ AGE+counts"
+  output:"GTEX_male_salmon_firth.tsv"
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+    
