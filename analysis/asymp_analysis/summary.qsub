@@ -1,0 +1,9 @@
+#!/bin/bash
+#$ -P mlhd
+#$ -cwd
+
+export LC_ALL=en_US.utf-8
+export LANG=$LC_ALL
+
+#detk-stats summary batch_asymp.csv
+detk-stats summary batch_asymp_norm.csv

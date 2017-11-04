@@ -1,45 +1,68 @@
 # Snakefile
 # Usage
-import pandas as pd
-
+#
 ## Dry run to check if snakefile works
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50 -np
 ## Actual run
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
+batch_filter = "batch_asymp_filter.csv"
+norm = "batch_asymp_norm.csv"
 design_info = "asymp_info_design.csv"
-firth = "asymp_salmon_firth.csv"
+firth = "asymp_firth_t.csv"
+tab = "asymp_firth.csv"
 
 rule all:
   input:
+    batch_filter,
+    norm,
     design_info,
-    firth
+    firth,
+    tab
 
 # Outputs ordered sample info with subject type and age
 # Outputs filtered CAP samples
-rule design_info:
-  input:"asymp_design.py"
-  output:
-    info="asymp_info_design.csv",
-    norm="asymp_salmon_filter.csv"
+rule batch_filter:
+  input:"asymp_filter.py"
+  output:"batch_asymp_filter.csv"
   shell:
     "python {input}"
 
 # Normalize filtered samples
 rule norm:
-  input:"asymp_salmon_filter.csv"
-  output:"asymp_salmon_norm.csv"
+  input:"batch_asymp_filter.csv"
+  output:"batch_asymp_norm.csv"
   shell:
     """detk-norm deseq2 {input} -o {output}"""
 
-# firth
+# Drop columns for firth and make info design file
+rule design_info:
+  input:
+    python = "asymp_design.py",
+    counts = "batch_asymp_norm.csv",
+    samp = "../HD_mRNASeq_sample_info.csv"
+  output:
+    info="asymp_info_design.csv",
+    norm="asymp_norm.csv"
+  shell:
+    "python {input.python} {input.counts} {input.samp}"
+
+# Firth
 rule firth:
   input:
-    counts = "asymp_salmon_norm.csv",
+    counts = "asymp_norm.csv",
     info= "asymp_info_design.csv"
   params:
     design="Subject_type[CAP] ~ Subject_death + counts"
-  output:"asymp_salmon_firth.csv"
+  output:"asymp_firth_t.csv"
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
+# Tab delim
+rule tab:
+  input:
+    py = "tab_delim.py",
+    firth = "asymp_firth_t.csv"
+  output: "asymp_firth.csv"
+  shell:
+    """python {input.py} {input.firth}"""
