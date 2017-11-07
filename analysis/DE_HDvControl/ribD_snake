@@ -1,0 +1,62 @@
+# Snakefile
+
+# Usage
+## Dry run to check if snakefile works
+# snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+## Actual run
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
+
+design_info = "ribD_info_design.csv"
+filter_rows = "ribD_salmon_filter.csv"
+norm = "ribD_salmon_norm.csv"
+firth = "ribD_salmon_firth_t.csv"
+tab_delim = "ribD_salmon_firth.csv"
+
+rule all:
+  input:
+    design_info,
+    filter_rows,
+    norm,
+    firth,
+    tab_delim
+
+# Outputs ordered sample info with subject type and age
+rule design_info:
+  input:"design_ribD.py"
+  output:"ribD_info_design.csv"
+  shell:
+    "python {input}"
+
+# filter rows with means less than 5 (deletes if both control means OR hd means <5)
+rule filter_rows:
+  input:"filter_ribD.py"
+  output:"ribD_salmon_filter.csv"
+  shell:
+    "python {input}"
+
+# Normalize counts
+rule norm:
+  input:"ribD_salmon_filter.csv"
+  output:"ribD_salmon_norm.csv"
+  shell:
+    """detk-norm deseq2 {input} -o {output}"""
+
+# DE Firth
+rule firth:
+  input:
+    counts = "ribD_salmon_norm.csv",
+    info= "ribD_info_design.csv"
+  params:
+    design="Subject_type[HD] ~ Subject_death + counts"
+  output:"ribD_salmon_firth_t.csv"
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
+# Separates firth file with tabs
+rule tab_delim:
+  input:
+    py = "tab_delim.py",
+    firth = "ribD_salmon_firth_t.csv"
+  output: "ribD_salmon_firth.csv"
+  shell:
+    """python {input.py} {input.firth}"""
