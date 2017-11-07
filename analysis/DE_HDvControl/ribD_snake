@@ -11,6 +11,7 @@ filter_rows = "ribD_salmon_filter.csv"
 norm = "ribD_salmon_norm.csv"
 firth = "ribD_salmon_firth_t.csv"
 tab_delim = "ribD_salmon_firth.csv"
+sig = "ribD_salmon_firth_sig_counts.csv"
 
 rule all:
   input:
@@ -18,7 +19,8 @@ rule all:
     filter_rows,
     norm,
     firth,
-    tab_delim
+    tab_delim,
+    sig
 
 # Outputs ordered sample info with subject type and age
 rule design_info:
@@ -60,3 +62,13 @@ rule tab_delim:
   output: "ribD_salmon_firth.csv"
   shell:
     """python {input.py} {input.firth}"""
+
+# Find significant genes and counts
+rule sig:
+  input:
+    py = "significant_firth.py",
+    firth = "ribD_salmon_firth.csv",
+    mart = "mart_export.txt"
+  output: "ribD_salmon_firth_sig_counts.csv"
+  shell:
+    """./{input.py} {input.firth} {input.mart}"""
