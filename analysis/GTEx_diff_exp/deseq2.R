@@ -1,0 +1,41 @@
+# DE Analysis of RNA-seq data
+
+## '/projectnb/bubhub/conda_root/user_envs/crespodi/presymptomatic_hd_mrnaseq/lib/R/library'
+
+##load libraries
+## design=~ SEX + AGE 
+.libPaths( c( .libPaths(), '/projectnb/bubhub/conda_root/user_envs/crespodi/presymptomatic_hd_mrnaseq/lib/R/library') )
+library(DESeq2)
+## loading in the files
+RSE_file <- '../../samples/GTEx/results/filtered_RSE.csv'
+GTEX <- '../../samples/GTEx/results/GTEX_salmon_norm.csv'
+meta_data <- '../../samples/GTEx/results/new_sample_info.csv'
+
+##meta data
+colData <- read.csv(meta_data, header=TRUE,stringsAsFactors=FALSE)
+colData$SEX <- as.factor(colData$SEX)
+colData$brain_region <- as.factor(colData$brain_region)
+
+##RSE data
+counts <- read.csv(RSE_file, header=TRUE, row.names = 'gene_id')
+counts <- as.matrix(counts)
+storage.mode(counts) <- 'integer'
+dds <- DESeqDataSetFromMatrix(countData = counts,
+                              colData = colData,
+                              design = ~ AGE + SEX)
+dds$brain_region<- relevel(dds$brain_region, ref='CAU')
+dds <- DESeq(dds)
+res <- results(dds)
+write.csv(res, file = '../../samples/GTEx/results/RSE_deseq2_results.csv', quote = FALSE)
+
+## GTEX data
+GTEX_counts <- read.csv(GTEX, header=TRUE, row.names = 'gene_id')
+GTEX_counts <- as.matrix(GTEX_counts)
+storage.mode(GTEX_counts) <- 'integer'
+GTEX_dds <- DESeqDataSetFromMatrix(countData = GTEX_counts,
+                              colData = colData,
+                              design = ~ AGE + SEX)
+GTEX_dds$brain_region<- relevel(GTEX_dds$brain_region, ref='CAU')
+GTEX_dds <- DESeq(GTEX_dds)
+GTEX_results <- results(GTEX_dds)
+write.csv(GTEX_results, file = '../../samples/GTEx/results/GTEX_deseq2_results.csv', quote = FALSE)
