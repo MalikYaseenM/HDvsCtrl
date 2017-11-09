@@ -49,7 +49,7 @@ rule firth:
     counts = "polA_salmon_norm.csv",
     info= "polA_info_design.csv"
   params:
-    design="Subject_type[HD] ~ Subject_death + counts"
+    design="Subject_type[Control] ~ Subject_death + counts"
   output:"polA_salmon_firth_t.csv"
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
