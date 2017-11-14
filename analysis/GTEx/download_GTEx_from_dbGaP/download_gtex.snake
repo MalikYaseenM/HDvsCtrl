@@ -1,0 +1,58 @@
+import pandas
+import re
+
+
+sra_info = pandas.read_table('SraRunTable.txt',sep='\t')
+sra_info.index = sra_info['Sample_Name_s']
+
+brain_gtex = pandas.read_csv('brain_gtex_sample_data.csv',index_col=0)
+
+all_info = brain_gtex.join(sra_info)
+
+# the SMTSD column has the tissue subtype code:
+#   - Brain - Cortex
+#   - Brain - Caudate (basal ganglia)
+#   - Brain - Nucleus accumbens (basal ganglia)
+#   - Brain - Hypothalamus
+#   - Brain - Frontal Cortex (BA9)
+# create a dict to map these codes to machine readable ones
+tissue_map = {
+  'Brain - Cortex':'CTX'
+  ,'Brain - Caudate (basal ganglia)':'CAU'
+  ,'Brain - Nucleus accumbens (basal ganglia)':'NUA'
+  ,'Brain - Hypothalamus':'HYP'
+  ,'Brain - Frontal Cortex (BA9)':'BA9'
+}
+all_info['brain_region'] = [tissue_map[_] for _ in all_info['SMTSD']]
+
+# each part of the GTEx ID has a meaning according to 
+# https://www.gtexportal.org/home/documentationPage
+# there might be BA9 and Caudate from the same individuals in this dataset
+# the ID is structured like GTEX-{individual}-[{some optional field}-]{tissue type}-SM-{RNA pool ID}
+id_regex = re.compile('^(GTEX-[^-]+).*-[^-]+-SM-[^-]+$')
+all_info['subject_id'] = [id_regex.match(_).group(1) for _ in all_info.index]
+
+# now construct the dataset id similar to our samples using these parsed values
+all_info['dataset_id'] = ['{}_{}_mRNASeq'.format(_.subject_id,_.brain_region) for (k,_) in all_info.iterrows()]
+
+# the Run_s table contains the SRR number to download for each sample
+srrs = expand('sra/{srr}.sra',srr=all_info['Run_s'])
+fastqs = expand('fastq/{srr}_{end}.fastq',srr=all_info['Run_s'],end=(1,2))
+
+workdir: '/restricted/projectnb/mlpd/DBGAP_datasets/dbGaP-14609/'
+
+rule all:
+  input: fastqs[0:2]
+
+rule download_sra:
+  output: 'sra/{srr}.sra'
+  shell:
+    'prefetch {wildcards.srr}'
+
+rule fastq_dump:
+  input: 'sra/{srr}.sra'
+  output:
+    'fastq/{srr}_1.fastq.gz',
+    'fastq/{srr}_2.fastq.gz'
+  shell:
+    'fastq-dump {input[0]} --gzip -O fastq --split-3'
