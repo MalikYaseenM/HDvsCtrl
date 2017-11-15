@@ -111,28 +111,13 @@ rule deseq:
 rule RSE_filter_deseq:
   input:
       'RSE_deseq2_filter.R'
-  output:os.path.abspath("../../samples/GTEx/results/NEW_RSE_filter_deseq2_results.csv")
-  shell:
-      "Rscript {input}"
-
-rule RSE_norm_deseq:
-  input:
-      'RSE_deseq2_norm.R'
-  output:os.path.abspath("../../samples/GTEx/results/NEW_RSE_norm_deseq2_results.csv")
+  output:os.path.abspath("../../samples/GTEx/results/RSE_filter_deseq2_results.csv")
   shell:
       "Rscript {input}"
 
 rule GTEX_filter_deseq:
   input:
       'GTEX_deseq2_filter.R'
-  output:os.path.abspath("../../samples/GTEx/results/NEW_GTEX_filter_deseq2_results.csv")
+  output:os.path.abspath("../../samples/GTEx/results/GTEX_filter_deseq2_results.csv")
   shell:
       "Rscript {input}"
-
-rule GTEX_norm_deseq:
-  input:
-      'GTEX_deseq2_norm.R'
-  output:os.path.abspath("../../samples/GTEx/results/NEW_GTEX_norm_deseq2_results.csv")
-  shell:
-      "Rscript {input}"
-

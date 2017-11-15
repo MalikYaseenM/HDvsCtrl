@@ -18,8 +18,8 @@ counts <- as.matrix(counts)
 storage.mode(counts) <- 'integer'
 dds <- DESeqDataSetFromMatrix(countData = counts,
                               colData = colData,
-                              design = ~ AGE + SEX)
+                              design = ~ AGE + SEX + brain_region)
 dds$brain_region<- relevel(dds$brain_region, ref='CAU')
 dds <- DESeq(dds)
 res <- results(dds)
-write.csv(res, file = '../../samples/GTEx/results/NEW_RSE_filter_deseq2_results.csv', quote = FALSE)
+write.csv(res, file = '../../samples/GTEx/results/RSE_filter_deseq2_results.csv', quote = FALSE)
