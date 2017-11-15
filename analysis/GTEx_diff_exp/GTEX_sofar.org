@@ -1,8 +1,12 @@
 * GTEX Analysis
+** TODO [0/1]
+- [ ] Compare DE gene list between Asympt and the GTEx
+
 ** Information about the Data
 - Genotype-Tissue Expression Project [[https://www.gtexportal.org/home/documentationPage][GTEx Website]]
 - Resource to study human gene expression
 - Paper [[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4010069/][GTEx project paper]]
+-  [[https://sites.google.com/broadinstitute.org/gtex-faqs/home][non-strand specific polyA selection]]
 *Goal of experiment* 
 -  Trying to create a baseline 'normal' BA9 and CAU
 [[file:Brodmann_area_9.jpg][Brodmann area 9]]
@@ -72,14 +76,11 @@ post-mortem cohort, and total ischemic time for a donor.
 - [X] Trimmomatic
 - [X] Salmon
 - [X] STAR
-- [X] Multiqc [[file:pre_filtered_multiqc_report.html][Prefiltered Multiqc Report]], [[file:Per_Base_Sequence.png][Per Base Sequence Heatmap]], [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/GTEx/GTEX_info.tsv][GTEX Info File]], [[file:filtered_multiqc_report.html][Filtered Multiqc Report]]
+- [X] Multiqc [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/pre_filtered_multiqc_report.html][Pre_filtered_multiqc]], [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/Per_Base_Sequence.png][Per_Base_Sequence_Heat]], [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/analysis/reference/GTEX_info.tsv][GTEX_info.tsv]], [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/filtered_multiqc_report.html][Filtered_multiqc]]
 
 #+BEGIN_SRC shell
 shotwell Per_Base_Sequence.png
 #+END_SRC
-
-[[file:pre_filtered_multiqc_report.html][Prefiltered Multiqc Report]]
-[[file:Per_Base_Sequence.png][Per Base Sequence Heatmap]]
 - Filtered out samples due to the heatmap and being qualitatively different from the rest
 - N7MT_BA9, WL46_BA9, X4EP were also filtered out which contained > 2% over represented sequences.
 - T5JC_BA9, T6MN_BA9, XLM4 were filtered out because they were different lengths (250 instead of 76) 
@@ -92,8 +93,6 @@ shotwell Per_Base_Sequence.png
   - median age = 60.5
   - 90 BA9 samples
   - 102 CAU samples
-
-[[file:filtered_multiqc_report.html][Filtered Multiqc Report]]
 
 ** Differential Gene Expression
 *** Previous Anaylsis 10/23/17
@@ -152,20 +151,14 @@ for idx, item in enumerate(frac):
 
 *** Follow Up Analysis 
 
-- [X] Rerun firth with more covariate data
-- [X] Run the stats module on the normalized counts
-- [X] Check for gender bias between brain regions
-- [X] Sex stratificaiton female & male BA9 vs CAU
-[[file:sex_stratification.py][sex_stratification.py]], [[file:female_sample_design_info.csv][female_sample_info]], [[file:male_sample_design_info.csv][male_sample_info]] 
+- [X] Rerun firth with more covariate data [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/GTEX_salmon_firth.tsv][GTEX_firth.tsv]]
+- [X] Run the stats module on the normalized counts [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/GTEX_salmon_firth.html][GTEX_salmon_firth.html]]
+- [X] Check for gender bias between brain regions 
+- [X] Sex stratificaiton female & male BA9 vs CAU [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/female_sample_design_info.csv][fem_samp_info]], [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/male_sample_design_info.csv][male_samp_info]] [[file:sex_stratification.py][sex_stratification.py]],
 [[file:stratification_anaylsis.py][stratification_analysis.py]] 
-
-- [ ] PCA on the normalized overall matrix
-- [ ] Compare old results to new
-- [ ] Compare DE gene list between Asympt and the GTEx
-- [ ] Fgsea?
-
-- [ ] Recount2 get a sense of how similar are data is
-
+- [X] PCA on the normalized overall matrix
+- [X] Compare old results to new
+- [X] Recount2 get a sense of how similar are data is
 *Sample Statistics*
 
 |        | BA9 | CAU | Median Age | range |
@@ -183,8 +176,19 @@ for idx, item in enumerate(frac):
 | Only Male       | 15,165                         |
 
 *** Recount Data
-[[https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1118-6][Recount Paper]]
-*** About Recount
+
+- [X] Download the data from recount
+- [X] Compare DE of recount data to our data
+- [X] Log2 fold change
+
+| Category                | Differentially Expressed Genes |
+|-------------------------+--------------------------------|
+| No Covariates           | 16,021                         |
+| With Covariates         | 15,933 (Age + Sex)             |
+| Recount with Covariates | 26,010 (Age + Sex)             |
+| Only Female             | 9981                           |
+| Only Male               | 15,165                         |
+*** Recount Project description
 recount2 is an online resource consisting of RNA-seq gene and exon counts 
 as well as coverage bigWig files for 2041 different studies. 
 It is the second generation of the ReCount project. 
@@ -207,7 +211,152 @@ By taking care of several preprocessing steps and combining many datasets into o
 easily-accessible website, we make finding and analyzing RNA-seq data considerably more 
 straightforward. 
 
-*** Notes 
+*** Recount and Rail rna
+
+[[https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1118-6][recount paper]]
+[[https://academic.oup.com/bioinformatics/article/doi/10.1093/bioinformatics/btw575/2525684][Rail-Rna]]
+*Rail-RNA*
+- Cloud-enabled spliced aligner that analyzes many samples at once
+- Follows MapReduce programming model
+
+A MapReduce program is composed of a Map() procedure (method) that performs 
+filtering and sorting (such as sorting students by first name into queues, 
+one queue for each name) and a Reduce() method that performs a summary operation 
+(such as counting the number of students in each queue, yielding name frequencies). 
+The "MapReduce System" (also called "infrastructure" or "framework") orchestrates 
+the processing by marshalling the distributed servers, running the various tasks 
+in parallel, managing all communications and data transfers between the various 
+parts of the system, and providing for redundancy and fault tolerance.
+
+*Goals*
+- anaylze many samples at once to
+  - borrow strength for accurate detection of exon-exon junctions even at low coverage
+  - avoid effort spent aligning redundant sequences across samples
+  - compute cross-sample results including normalized mean coverages of each base of the genome across samples
+*Benefits*
+- Eliminate redundant work across samples
+- More accurate than annotation-assisted aligners
+  - accurage w/out gene annotation, avoiding annotation bias resulting from incomplete or incorrect transcript annotations
+- Rail-RNA gets more efficient as more samples are analyzed in part because it identifies and eliminates redundant
+alignment work within and across samples
+
+*Outputs*
+- alignment in SAM/BAM format
+- bigWigs encoding normalized mean and median coverages at each base across samples analyzed
+- exon-exon splice junctions and indels (features) in columnar formats that juxtapose coverages in samples in which
+the given feature is found
+
+*Process*
+Alignment
+- Bowtie 2
+
+*Method*
+- simulated 112 RNA-seq samples with 40 million 76-bp paired end reads using Flux Simulator
+  - used FPKM expression levels from the set of 112 randomly selected paired-end samples
+*Accuracy*
+1. overlap accuracy, 
+measuring precision and recall of overlap events. Each event is an
+instance where the primary alignment of a read overlaps an exon-exon
+junction; 
+2. exon-exon junction accuracy, 
+measuring precision of exon-
+exon junctions called by a given aligner and recall of the set of exon-exon
+junctions within a sample or across samples. We also compute F-score,
+the harmonic mean of precision and recall. Section S.11 formally defines
+these measures as well as a measure of overall mapping accuracy.
+
+*After Rail-RNA)
+We analyzed bigWig outputs using the derfinder Bioconductor
+package (Collado-Torres et al., 2015) based on algorithms described in
+(Frazee et al., 2014; Jaffe et al., 2014). derfinder identified conti-
+guous genomic stretches where average coverage across all samples was
+
+*Rail-RNA steps*
+A worker refers to computer process under Rail-RNA's Control
+Many workers operates simultaneously across several computers
+
+Preprocess-Reads
+- Takes FastQ files (paired or single end)
+
+Align-Reads
+- Duplicate reads are grouped together so that a worker operates on all reads having the same nucleotide sequence
+- Two passes of alignment are performed using Bowtie 2.
+  - 1st pass, each unique read is aligned to the genome
+    - if there is exactly one highest-scoring alignment and it has no gaps, mismatches
+      or soft-clipped bases, allreads with the same nucleotide sequence are assigned that alignment.
+  - 2nd pass, If the alignment is not perfect or if there is more than one highest-scoring alignment,
+    - all reads with the same nucleotide sequence are run through a second
+      pass of Bowtie 2 to ensure that quality sequences are taken into consideration
+      when scoring alignments or ties are broken. Some read sequences
+      with imperfect alignments are divided into short overlapping substrings
+      called readlets. These sequences are searched for whether they overlap
+      exon-exon junctions in a later step.
+
+Align-Readlets
+- Groups duplicate readlets so a worker operates on all readlets across samples with same sequence
+- Each readlet is aligned using bowtie once.
+
+Filter exon-exon junctions
+-Rail-RNA borrows strength across samples to remove junctions not meeting one of these criteria:
+1. The exon-exon junction appears in at least K% of samples.
+2. The exon-exon junction is covered by at least J reads in at least one
+sample. 
+enumerate intron configurations step
+- Rail-RNA enumerates the ways that multiple exon-exon
+junctions detected on the same strand in the same sample can be overlapped
+by a read segment s( readlet_config_size ) spanning readlet_config_size
+bases;
+
+Retrieve and index isofrags step
+- step, each worker operates on an
+intron configuration at a time, concatenating the exonic bases surroun-
+ding its introns to form a transcript fragment of size readlet_config_size.
+This is termed an “isofrag.”
+- Subsequently, a single worker uses
+bowtie2-build to build a single Bowtie 2 index for all enumerated
+isofrags. Later, Bowtie 2 uses the index to realign reads in the next step.
+
+finalize combinations of exon-exon junctions overlapped by
+read sequences
+
+- step, read sequences that failed to align perfectly in the
+first step are aligned to isofrags using Bowtie 2 in local mode with
+a minimum score threshold of 48 by default. Local alignment is used
+since indexed sequences are of length readlet_config_size, shorter than
+the read length.
+- From these alignments Rail-RNA derives a list of exon-exon junctions the read
+could possibly overlap.
+
+realign reads step
+- read sequences that failed to align perfectly in
+the first step are realigned to a set S of transcript fragments. Each transcript
+fragment in S overlaps a different combination of exon-exon junctions
+found in the previous step. All the exon-exon junction combinations found
+for the read’s nucleotide sequence are spanned by a subset of S . Moreover,
+several distinct read sequences may overlap transcript fragments in S . A
+given worker performs realignment as follows.
+1. Transcript fragments in S are recorded and indexed with
+bowtie2-build.
+2. Reads are realigned to the new index using Bowtie 2 in --local
+mode. These are reads that are in the same index bin referenced in
+
+collect and compare read alginments
+- Bowtie 2 alignments
+of reads accumulated in previous steps, except for those that aligned perfe-
+ctly in the “align reads to genome” step, are collected here and partitioned
+by read name. A worker operates on all alignments of a given read at once.
+For each read, if there is exactly one highest-scoring alignment for that
+read, it is chosen as the primary alignment. Otherwise, Rail-RNA attempts
+to break the tie by selecting the alignment spanning the fewest exon-exon
+junctions. If there is still a tie, it is broken by a random draw weighted by
+the number of uniquely aligned reads supporting each exon-exon junction
+
+Write BAMS
+- By default all primary alignments, including
+perfect alignments from the “align reads” step, are output.
+
+
+*** Notes to myself
 - Female 2 male 1
 - Library prep method poly-A
 - Sex stratification, female ba9 to female cau, male ba9 to male cau.
@@ -217,13 +366,8 @@ straightforward.
 - How samples are paired together (IE BA9 sample has a CAP sample)
 - Estimate size factors Rcode
 
-** TODO [3/3]
-- [X] Remove detk from install conda and install w/ pip
-- [X] Libary prep methods [[https://sites.google.com/broadinstitute.org/gtex-faqs/home][non-strand specific polyA selection]]
-- [X] Housekeeping
-
 ** Hub meeting notes
-11/20/17
+10/20/17
 .29 each count in the sample is divided by. 2.05 multip then twice the depth than the average
 deseq2 normalization. across every gene compute geomertric mean. mult all samples together
 and take the nth root.
@@ -232,8 +376,51 @@ all the counts in the matrix
 sequencing the brains of individuals between two population, 
 
 
-11/27/17
+10/27/17
 readcount sequencing counts
 - project download lots of data from different databases and process
 - count for each sample and differential expression
 detk-stats summary counts matrix (normalized or raw)
+
+11/2
+3 feet by 4 feet for the presentation
+matplot lib can write out to svg
+
+11/14
+saveRdata()
+loadRdata()
+Profile Likelihood pl
+if firth is doing what we want it to do then if we do a simple mean of
+counts over the other it should be dramatically different
+
+rerun deseq2 
+deseq2 has a built in outlier scheme by default. Uses cooks distance
+Outliers are set to NaN
+** Lab meeting
+11/09/17
+
+
+
+**** Notes about the Poster
+- sketch out posters
+- abstract
+- background
+- ideally 22 point
+- bullets over sentences
+- graphics over tables
+- reduce the white space
+
+**** Ideas for the poster
+HD project
+- Log fold change, 
+- Up and down relative the the HDpos data.
+- Heatmap of 2 hd pos of with the gtex data
+- Describe the results.
+- plotting beta coefficients between recount2
+- Do a compare and contrast between hdpos and gtex
+- and HD and control and BA9
+- we do see some concordance between asymptomatic individuals and
+- looking at the outline and for each point can we make a plot to describe a result
+- only valid data
+
+

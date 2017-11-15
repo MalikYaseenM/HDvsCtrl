@@ -1,7 +1,8 @@
- # snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
-
+# snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+import os
 #design_info = "sample_info_design.csv"
 design_info = "new_sample_info.csv"
+RSE_info = os.path.abspath("../reference/new_sample_info.csv")
 filter_rows = "GTEX_salmon_filter.csv"
 norm = "../../samples/GTEx/normalized_all_salmon_quant.tsv"
 firth = "GTEX_salmon_firth.csv"
@@ -65,7 +66,7 @@ rule female_stratification:
     design="brain_region[CAU] ~ AGE+counts"
   output:"GTEX_female_salmon_firth.tsv"
   shell:
-`    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 rule male_stratification:
   input:
@@ -77,3 +78,61 @@ rule male_stratification:
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
     
+rule RSE_filter:
+  input:"filtering_rse.py"
+  output:os.path.abspath("../../samples/GTEx/results/filtered_RSE.csv")
+  shell:
+    "python {input}"
+    
+rule RSE_norm:
+  input:os.path.abspath("../../samples/GTEx/results/filtered_RSE.csv")
+  output:os.path.abspath("../../samples/GTEx/results/RSE_norm.csv")
+  shell:
+    """detk-norm deseq2 {input} -o {output}"""
+
+rule RSE_firth:
+  input:
+    counts = os.path.abspath("../../samples/GTEx/results/RSE_norm.csv"),
+    info= RSE_info
+  params:
+    design="brain_region[CAU] ~ SEX+AGE+counts"
+
+  output:os.path.abspath("../../samples/GTEx/results/RSE_firth.tsv")
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
+rule deseq:
+  input:
+      'deseq2.R'
+  output:os.path.abspath("../../samples/GTEx/results/GTEX_filter_deseq2_results.csv")
+  shell:
+      "Rscript {input}"
+
+rule RSE_filter_deseq:
+  input:
+      'RSE_deseq2_filter.R'
+  output:os.path.abspath("../../samples/GTEx/results/NEW_RSE_filter_deseq2_results.csv")
+  shell:
+      "Rscript {input}"
+
+rule RSE_norm_deseq:
+  input:
+      'RSE_deseq2_norm.R'
+  output:os.path.abspath("../../samples/GTEx/results/NEW_RSE_norm_deseq2_results.csv")
+  shell:
+      "Rscript {input}"
+
+rule GTEX_filter_deseq:
+  input:
+      'GTEX_deseq2_filter.R'
+  output:os.path.abspath("../../samples/GTEx/results/NEW_GTEX_filter_deseq2_results.csv")
+  shell:
+      "Rscript {input}"
+
+rule GTEX_norm_deseq:
+  input:
+      'GTEX_deseq2_norm.R'
+  output:os.path.abspath("../../samples/GTEx/results/NEW_GTEX_norm_deseq2_results.csv")
+  shell:
+      "Rscript {input}"
+
