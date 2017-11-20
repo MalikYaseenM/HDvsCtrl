@@ -1,25 +1,34 @@
 # snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
-import os
+import os, pandas as pd
 #design_info = "sample_info_design.csv"
 design_info = "new_sample_info.csv"
 RSE_info = os.path.abspath("../reference/new_sample_info.csv")
 filter_rows = "GTEX_salmon_filter.csv"
 norm = "../../samples/GTEx/normalized_all_salmon_quant.tsv"
 firth = "GTEX_salmon_firth.csv"
-
 CAU_BA9 = "CAU_BA9_Salmon.tsv"
+samples = []
+path_name = os.path.abspath('../../samples/GTEx/results/sample_info')
+for idx in range(1000):
+    file_name = path_name + '_V' + str(idx)
+    samples.append(file_name)
+sample_info = expand('{sample}.csv', sample=samples),
+GTEX_out = expand('{sample}__GTEX__firth.tsv', sample=samples)
 
 rule all:
   input:
-    design_info,
-    filter_rows,
-    firth,
+    #design_info,
+    #filter_rows,
+    #firth,
+    #sample_info
+    #GTEX_out
+    #counts
 
 
 
 
 # Outputs ordered sample info with subject type and age
-#rule design_info:
+rule design_info:
   input:"design.py"
   output:"sample_info_design.csv"
   shell:
@@ -121,3 +130,23 @@ rule GTEX_filter_deseq:
   output:os.path.abspath("../../samples/GTEx/results/GTEX_filter_deseq2_results.csv")
   shell:
       "Rscript {input}"
+
+rule multi_sample_info:
+  input:
+      'shuffle.py'
+  output:os.path.abspath('../../samples/GTEx/results/sample_info_V999.csv')
+  shell:
+      "python {input}"
+
+      
+rule null_test:
+    input:
+        info = sample_info,
+        counts = os.path.abspath('../../samples/GTEx/results/GTEX_salmon_norm.csv')
+    output:
+        GTEX_out
+    params:
+        design="brain_region[CAU] ~ SEX+AGE+counts"
+    shell:
+      """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
