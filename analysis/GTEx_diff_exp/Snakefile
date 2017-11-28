@@ -8,24 +8,22 @@ norm = "../../samples/GTEx/normalized_all_salmon_quant.tsv"
 firth = "GTEX_salmon_firth.csv"
 CAU_BA9 = "CAU_BA9_Salmon.tsv"
 samples = []
-path_name = os.path.abspath('../../samples/GTEx/results/sample_info')
-for idx in range(1000):
-    file_name = path_name + '_V' + str(idx)
-    samples.append(file_name)
-sample_info = expand('{sample}.csv', sample=samples),
-GTEX_out = expand('{sample}__GTEX__firth.tsv', sample=samples)
+dirpath = os.path.abspath('../../samples/GTEx/results/')
+ver = [_ for _ in range(1000)]
+
+
+sample_info = expand('{dirpath}/sample_info_V{ver}.csv', ver=ver, dirpath=dirpath)
+GTEX_out = expand('{dirpath}/GTEX_firth_{ver}.tsv', dirpath=dirpath, ver = ver)
+RSE_subset = os.path.abspath("../../samples/GTEx/results/RSE_subset_deseq2_results.csv")
 
 rule all:
   input:
     #design_info,
     #filter_rows,
     #firth,
-    #sample_info
-    #GTEX_out
+    GTEX_out,
+    RSE_subset
     #counts
-
-
-
 
 # Outputs ordered sample info with subject type and age
 rule design_info:
@@ -139,14 +137,20 @@ rule multi_sample_info:
       "python {input}"
 
       
-rule null_test:
+rule GTEX_null_test:
     input:
-        info = sample_info,
+        info = "{dirpath}/sample_info_V{ver}.csv",
         counts = os.path.abspath('../../samples/GTEx/results/GTEX_salmon_norm.csv')
     output:
-        GTEX_out
+        GTEX = "{dirpath}/GTEX_firth_{ver}.tsv"
     params:
         design="brain_region[CAU] ~ SEX+AGE+counts"
     shell:
-      """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+      """detk-de firth "{params.design}" {input.counts} {input.info} -o {output.GTEX}"""
 
+rule RSE_subset_deseq:
+  input:
+      'RSE_subset.R'
+  output:os.path.abspath("../../samples/GTEx/results/RSE_subset_deseq2_results.csv")
+  shell:
+      "Rscript {input}"
