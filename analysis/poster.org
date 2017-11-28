@@ -1,0 +1,29 @@
+## First post
+Since most of the counts__padj values are the same, ranking by that number produces an essentially random order. 
+Try ranking by nominal p-value instead, as that will order the genes by the precision of the difference between conditions.
+
+Here are the primary results I think we should put into the poster:
+- poly-A BA9 HD vs C DE genes and GSEA on the list ranked by counts__beta descending
+- ribo BA9 HD vs C genes and GSEA on the list ranked by counts__beta descending
+- CAP HD vs C results, I know they aren't significant, but we should in some way show how the CAP gene order is related to the BA9 order. 
+Maybe a Spearman correlation of the counts__betas?
+- ~asymptomatic BA9 HD vs CAP HD, I think we did this over the summer, right?~ -CAP is ribo depleted BA9 is polyA
+- GSEA results of the GTEx DESeq2 results, since we're really unclear as to what is going on with the Firth
+
+## Second post
+When making a cutoff for significant DE genes, always use adjusted p-value (counts__padj).
+
+When ranking genes based on p-value, use nominal p-value (counts__p).
+
+This is because it is unlikely that there will be duplicate nominal p-values in the list, 
+so the order of genes is according to the precision of the effect size.
+
+For all GSEA results, there should be no filter based on FDR. GSEA accepts a list of all genes ranked by effect size, so counts__beta.
+
+For CAP HD vs C, correlate CAP counts__beta with BA9 counts__beta. This will tell us if the order of the genes is preserved.
+You might also possibly do a scatter plot of the counts_betas against each other to show the trend.
+
+Let's present HDpos CAP HD vs C as we did over the summer. Then we can compare these genes to the symptomatic BA9 HD vs C. 
+You will want to describe the filtering scheme you used for the CAP HD vs C samples on the poster. 
+If you still have the gene set enrichment results from the summer it would be really good to compare those to the BA9 HD vs C enrichment results, 
+to show concordance.
