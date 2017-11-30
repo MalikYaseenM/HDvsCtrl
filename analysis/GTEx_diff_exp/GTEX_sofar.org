@@ -67,6 +67,36 @@ history source, death circumstances (n=26 variables), tissue recovery
 post-mortem cohort, and total ischemic time for a donor.
 #+end_example
 
+
+#+BEGIN_SRC python :results output
+import os
+from xml.etree import ElementTree as ET
+import textwrap
+full_file= os.path.abspath(
+'../reference/GTEX_Sample_Data/phs000424.v7.pht002743.v7.GTEx_Sample_Attributes.data_dict.xml')
+
+dom = ET.parse(full_file)
+description = dom.findall('description')
+for d in description:
+    long_string = d.text
+for i in textwrap.wrap(long_string):
+    print(i)
+
+
+
+#+end_SRC
+
+#+RESULTS:
+: This sample attributes data table includes sample batch information
+: (n=6 variables; nucleic acid isolation batch, genotype and expression
+: batch), autolysis score, sample collection and storage (n=6 variables;
+: also RIN number and analyte type), coded site or center, tissue
+: location and type (n=7 variables), and sample ischemic, procurement,
+: fixative time (n=3 variables), samples included in GTEx analysis
+: freeze, sample quality (n=5 variables), and genotype qc information
+: (n=41 variables).
+
+
 ** QC
 *NOTE* In the trouble samples.txt there are 106 sample names, but not all samples include R1 and R2
 
@@ -374,7 +404,6 @@ Recount data with 48k rows was due to filtering counts generated
 directly from the recount project
    
 
-
 *** Notes to myself
  - Female 2 male 1
  - Library prep method poly-A
@@ -384,6 +413,52 @@ directly from the recount project
  - PCA on the overall matrix normalized 
  - How samples are paired together (IE BA9 sample has a CAP sample)
  - Estimate size factors Rcode
+
+
+<variable id="phv00169245.v7">
+  <name>SMNABTCH</name>
+    <description>Nucleic Acid Isolation Batch ID</description>
+      <type>string</type>
+        <comment>Generated at LDACC Batch when DNA/RNA was isolated and extracted from a sample. </comment>
+</variable>
+
+<variable id="phv00169246.v7">
+  <name>SMNABTCHT</name>
+    <description>Type of nucleic acid isolation batch</description>
+      <type>string</type>
+          <comment>Generated at LDACC The process by which DNA/RNA was isolated. </comment>
+</variable>
+
+<variable id="phv00169247.v7">
+  <name>SMNABTCHD</name>
+    <description>Date of nucleic acid isolation batch</description>
+      <type>string</type>
+        <comment>Generated at LDACC The date on which DNA/RNA was isolated. </comment>
+</variable>
+
+<variable id="phv00169248.v7">
+  <name>SMGEBTCH</name>
+    <description>Genotype or Expression Batch ID</description>
+      <type>string</type>
+        <comment>Generated at LDACC Batch when DNA/RNA from a sample was analyzed. </comment>
+</variable>
+
+<variable id="phv00169249.v7">
+  <name>SMGEBTCHD</name>
+    <description>Date of genotype or expression batch</description>
+      <type>string</type>
+        <comment>Generated at The data on which DNA/RNA was analyzed. </comment>
+</variable>
+
+<variable id="phv00169250.v7">
+  <name>SMGEBTCHT</name>
+    <description>Type of genotype or expression batch</description>
+      <type>string</type>
+        <comment>Generated at LDACC The technology used to analyze DNA/RNA. </comment>
+</variable>
+
+
+
 
 ** Hub meeting notes
 10/20/17
