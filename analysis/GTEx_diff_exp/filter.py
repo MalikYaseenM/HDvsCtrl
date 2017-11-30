@@ -26,7 +26,6 @@ ALL_GTEX = ALL_GTEX.drop('avg_ba9', axis=1)
 ALL_GTEX = ALL_GTEX.drop('avg_cau', axis=1)
 print(len(ba9))
 # number of rows after filtering 21654
-#print('after filter', ALL_GTEX.shape)
-#ALL_GTEX.to_csv("GTEX_salmon_filter.csv", index=False)
-#print('done')
+print('after filter', ALL_GTEX.shape)
+ALL_GTEX.to_csv("GTEX_salmon_filter.csv", index=False)
 
