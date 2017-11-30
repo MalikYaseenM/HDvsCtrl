@@ -1,143 +1,163 @@
 # snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 import os, pandas as pd
-#design_info = "sample_info_design.csv"
-design_info = "new_sample_info.csv"
-RSE_info = os.path.abspath("../reference/new_sample_info.csv")
-filter_rows = "GTEX_salmon_filter.csv"
 norm = "../../samples/GTEx/normalized_all_salmon_quant.tsv"
-firth = "GTEX_salmon_firth.csv"
-CAU_BA9 = "CAU_BA9_Salmon.tsv"
-samples = []
+
+# Reference Files
+design_info = os.path.abspath("../../samples/GTEx/results/sample_info_design.csv")
+filter_rows = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_filter.csv")
+
+GTEX_norm = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_norm.csv")
+GTEX_firth = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_firth.tsv")
+GTEX_fem_strat = os.path.abspath("../../samples/GTEx/results/GTEX_female_salmon_norm.csv")
+GTEX_fem_firth = os.path.abspath("../../samples/GTEx/results/GTEX_female_salmon_firth.tsv")
+GTEX_male_firth = os.path.abspath("../../samples/GTEx/results/GTEX_male_salmon_firth.tsv")
+
+RSE_filtered = os.path.abspath("../../samples/GTEx/results/filtered_RSE.csv")
+RSE_norm = os.path.abspath("../../samples/GTEx/results/RSE_norm.csv")
+RSE_info = os.path.abspath("../reference/new_sample_info.csv")
+RSE_firth = os.path.abspath("../../samples/GTEx/results/RSE_firth.tsv")
+
+GTEX_deseq_filter = os.path.abspath("../../samples/GTEx/results/GTEX_filter_deseq2_results.csv")
+RSE_deseq_filter = os.path.abspath("../../samples/GTEx/results/RSE_filter_deseq2_results.csv")
+shuffle_sample = os.path.abspath('../../samples/GTEx/results/sample_info_V999.csv')
+
+
 dirpath = os.path.abspath('../../samples/GTEx/results/')
 ver = [_ for _ in range(1000)]
-
-
-sample_info = expand('{dirpath}/sample_info_V{ver}.csv', ver=ver, dirpath=dirpath)
 GTEX_out = expand('{dirpath}/GTEX_firth_{ver}.tsv', dirpath=dirpath, ver = ver)
-RSE_subset = os.path.abspath("../../samples/GTEx/results/RSE_subset_deseq2_results.csv")
+RSE_subset_deseq2 = os.path.abspath("../../samples/GTEx/results/RSE_subset_deseq2_results.csv")
 
 rule all:
   input:
     #design_info,
     #filter_rows,
-    #firth,
-    GTEX_out,
-    RSE_subset
-    #counts
+    #GTEX_norm,
+    GTEX_firth,
+    #GTEX_fem_strat,
+    #GTEX_fem_firth,
+    #GTEX_male_firth,
+    RSE_filtered,
+    RSE_norm,
+    RSE_firth,
+    GTEX_deseq_filter,
+    RSE_deseq_filter,
+    shuffle_sample,
+    #GTEX_out,
+    RSE_subset_deseq2
 
 # Outputs ordered sample info with subject type and age
-rule design_info:
+rule create_design_info:
   input:"design.py"
-  output:"sample_info_design.csv"
+  output:design_info
   shell:
     "python {input}"
 
 # filter rows with means less than 10 (deletes if both control means and hd means <10)
-rule filter_rows:
-  input:"filter_new.py"
-  output:"GTEX_salmon_filter.csv"
+rule create_filtered_rows:
+  input:"filter.py"
+  output:filter_rows
   shell:
     "python {input}"
 
-rule norm:
-  input:"GTEX_salmon_filter.csv"
-  output:"GTEX_salmon_norm.csv"
+# Normalize the filtered matrix
+rule create_norm:
+  input:filter_rows
+  output:GTEX_norm
   shell:
     """detk-norm deseq2 {input} -o {output}"""
 
-rule firth:
+## Where did New sample_info come from?
+# Performs firth logistic regression on normalized GTEX data
+rule create_firth:
   input:
-    counts = "GTEX_salmon_norm.csv",
-    info= "new_sample_info.csv"
+    counts = GTEX_norm,
+    info= os.path.abspath("../../samples/GTEx/results/new_sample_info.csv")
   params:
     design="brain_region[CAU] ~ SEX+AGE+counts"
 
-  output:"GTEX_salmon_firth.tsv"
+  output:GTEX_firth
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
-rule stratify_sex:
+#Where did male and female sample info files come from?
+rule create_stratify_sex:
     input:
         "sex_stratification.py"
     output:
-        "GTEX_male_salmon_norm.csv",
-        "GTEX_female_salmon_norm.csv"
+        os.path.abspath("../../samples/GTEx/results/GTEX_male_salmon_norm.csv"),
+        os.path.abspath("../../samples/GTEx/results/GTEX_female_salmon_norm.csv")
     shell:
         "python {input}"
 
-rule female_stratification:
+#Firth Logistic regression on female samples
+rule create_female_stratification:
   input:
-    counts ="GTEX_female_salmon_norm.csv",
-    info= "female_sample_design_info.csv"
+    counts= os.path.abspath("../../samples/GTEx/results/GTEX_female_salmon_norm.csv"),
+    info= os.path.abspath("../../samples/GTEx/results/female_sample_design_info.csv")
   params:
     design="brain_region[CAU] ~ AGE+counts"
-  output:"GTEX_female_salmon_firth.tsv"
+  output:GTEX_fem_firth
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
-rule male_stratification:
+rule create_male_stratification:
   input:
-    counts ="GTEX_male_salmon_norm.csv",
-    info= "male_sample_design_info.csv"
+    counts= os.path.abspath("../../samples/GTEx/results/GTEX_male_salmon_norm.csv"),
+    info= os.path.abspath("../../samples/GTEx/results/male_sample_design_info.csv")
   params:
     design="brain_region[CAU] ~ AGE+counts"
-  output:"GTEX_male_salmon_firth.tsv"
+  output:GTEX_male_firth
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+### Wip
+#rule create_recount:
+
     
-rule RSE_filter:
+rule create_RSE_filter:
   input:"filtering_rse.py"
-  output:os.path.abspath("../../samples/GTEx/results/filtered_RSE.csv")
+  output:RSE_filtered
   shell:
     "python {input}"
     
-rule RSE_norm:
-  input:os.path.abspath("../../samples/GTEx/results/filtered_RSE.csv")
-  output:os.path.abspath("../../samples/GTEx/results/RSE_norm.csv")
+rule create_RSE_norm:
+  input:RSE_filtered
+  output:RSE_norm
   shell:
     """detk-norm deseq2 {input} -o {output}"""
 
-rule RSE_firth:
+rule create_RSE_firth:
   input:
     counts = os.path.abspath("../../samples/GTEx/results/RSE_norm.csv"),
     info= RSE_info
   params:
     design="brain_region[CAU] ~ SEX+AGE+counts"
 
-  output:os.path.abspath("../../samples/GTEx/results/RSE_firth.tsv")
+  output:RSE_firth
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
-rule deseq:
-  input:
-      'deseq2.R'
-  output:os.path.abspath("../../samples/GTEx/results/GTEX_filter_deseq2_results.csv")
-  shell:
-      "Rscript {input}"
-
-rule RSE_filter_deseq:
+rule create_RSE_filter_deseq:
   input:
       'RSE_deseq2_filter.R'
-  output:os.path.abspath("../../samples/GTEx/results/RSE_filter_deseq2_results.csv")
+  output:RSE_deseq_filter
   shell:
       "Rscript {input}"
 
-rule GTEX_filter_deseq:
+rule create_GTEX_filter_deseq:
   input:
       'GTEX_deseq2_filter.R'
   output:os.path.abspath("../../samples/GTEx/results/GTEX_filter_deseq2_results.csv")
   shell:
       "Rscript {input}"
 
-rule multi_sample_info:
+rule create_multi_sample_info:
   input:
       'shuffle.py'
-  output:os.path.abspath('../../samples/GTEx/results/sample_info_V999.csv')
+  output:shuffle_sample
   shell:
       "python {input}"
-
       
-rule GTEX_null_test:
+rule create_GTEX_null_test:
     input:
         info = "{dirpath}/sample_info_V{ver}.csv",
         counts = os.path.abspath('../../samples/GTEx/results/GTEX_salmon_norm.csv')
@@ -148,9 +168,9 @@ rule GTEX_null_test:
     shell:
       """detk-de firth "{params.design}" {input.counts} {input.info} -o {output.GTEX}"""
 
-rule RSE_subset_deseq:
+rule create_RSE_subset_deseq:
   input:
       'RSE_subset.R'
-  output:os.path.abspath("../../samples/GTEx/results/RSE_subset_deseq2_results.csv")
+  output:RSE_subset_deseq2
   shell:
       "Rscript {input}"
