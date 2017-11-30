@@ -10,7 +10,7 @@ female = foo + pd.read_csv(os.path.abspath("../../samples/GTEx/results/female_sa
 male_df = pd.read_csv(os.path.abspath("../../samples/GTEx/results/GTEX_salmon_norm.csv"), sep=',', usecols=male)
 
 # read in the normalized counts use only the females
-female_df = pd.read_csv('GTEX_salmon_norm.csv', sep=',', usecols=female)
+female_df = pd.read_csv(os.path.abspath("../../samples/GTEx/results/GTEX_salmon_norm.csv"), sep=',', usecols=female)
 
 # write out seperate files for males and females
 male_df.to_csv(os.path.abspath("../../samples/GTEx/results/GTEX_male_salmon_norm.csv"), sep=',', index=False)
