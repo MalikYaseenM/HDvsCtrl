@@ -26,31 +26,42 @@ dirpath = os.path.abspath('../../samples/GTEx/results/')
 ver = [_ for _ in range(1000)]
 GTEX_out = expand('{dirpath}/GTEX_firth_{ver}.tsv', dirpath=dirpath, ver = ver)
 RSE_subset_deseq2 = os.path.abspath("../../samples/GTEx/results/RSE_subset_deseq2_results.csv")
+GTEX_rlog = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_rlog.csv")
+GTEX_combat_firth = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_rlog_combat_firth.tsv")
+GTEX_combat_firth_cov = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_rlog_combat_firth_covar.tsv")
+
+no_cov_design = os.path.abspath('../../samples/GTEx/results/no_covar_sample_info_design.csv')
+correct_df=os.path.abspath('../../samples/GTEx/results/GTEx_combat_newcol.csv')
 
 rule all:
   input:
     #design_info,
     #filter_rows,
     #GTEX_norm,
-    GTEX_firth,
+    #GTEX_firth,
     #GTEX_fem_strat,
     #GTEX_fem_firth,
     #GTEX_male_firth,
-    RSE_filtered,
-    RSE_norm,
-    RSE_firth,
-    GTEX_deseq_filter,
-    RSE_deseq_filter,
-    shuffle_sample,
+    #RSE_filtered,
+    #RSE_norm,
+    #RSE_firth,
+    #GTEX_deseq_filter,
+    #RSE_deseq_filter,
+    #shuffle_sample,
     #GTEX_out,
-    RSE_subset_deseq2
+    #RSE_subset_deseq2,
+    #GTEX_rlog,
+    #no_cov_design,
+    GTEX_combat_firth,
+    GTEX_combat_firth_cov,
+    correct_df
 
 # Outputs ordered sample info with subject type and age
-rule create_design_info:
-  input:"design.py"
-  output:design_info
-  shell:
-    "python {input}"
+# rule create_design_info:
+#   input:"design.py"
+#   output:design_info
+#   shell:
+#     "python {input}"
 
 # filter rows with means less than 10 (deletes if both control means and hd means <10)
 rule create_filtered_rows:
@@ -174,3 +185,77 @@ rule create_RSE_subset_deseq:
   output:RSE_subset_deseq2
   shell:
       "Rscript {input}"
+
+rule create_GTEX_rlog:
+  input:
+      'rlog.R'
+  output:GTEX_rlog
+  shell:
+      "Rscript {input}"
+
+rule add_gene_col:
+  input:
+      GTEX_rlog
+  output:os.path.abspath("../../samples/GTEx/results/GTEX_salmon_rlog_gene.csv")
+  run:
+    df = pd.read_csv(input.GTEX_rlog, sep=',')
+    df.to_csv(output.no_cov_design, sep=',', index=False)
+
+      
+    
+
+rule subset_design:
+    input:
+        design=os.path.abspath('../../samples/GTEx/results/sample_info_design.csv')
+    output:
+        no_cov_design=os.path.abspath('../../samples/GTEx/results/no_covar_sample_info_design.csv')
+    run:
+        df = pd.read_csv(input.design, sep=',', usecols=['identifier', 'brain_region'])
+        df.to_csv(output.no_cov_design, sep=',', index=False)
+
+#Renames the columns to the proper format that we use becauser R changed them
+rule correct_col_names:
+    input:
+        combat=os.path.abspath('../../samples/GTEx/results/GTEx_combat.csv')
+    output:
+        new_df = correct_df
+    run:
+        # Input combat dataframe
+        df = pd.read_csv(input.combat)
+	
+	# take gene_id column from pre rlogged df
+	gene_df = pd.read_csv(os.path.abspath('../../samples/GTEx/results/GTEX_salmon_filter.csv'), sep=',', usecols=[0])
+        gene_id = gene_df['gene_id'].tolist()
+
+        cols = df.columns
+        # Curse you check.names!
+        for i in cols:
+            newstring=i.replace(".", "-")
+            df = df.rename(columns={i:newstring})
+        final_df = df
+	# reinsert the gene_id column
+	final_df.insert(0, 'gene_id', gene_id)
+
+        final_df.to_csv(output.new_df, sep=',', index=False)
+
+rule create_GTEX_firth_rlog:
+  input:
+       info= os.path.abspath('../../samples/GTEx/results/no_covar_sample_info_design.csv'),
+       counts= os.path.abspath('../../samples/GTEx/results/GTEx_combat_newcol.csv')
+  params:
+    design="brain_region[CAU] ~ counts"
+  output:GTEX_combat_firth
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
+
+rule create_GTEX_firth_rlog_cov:
+  input:
+       info= os.path.abspath('../../samples/GTEx/results/sample_info_design.csv'),
+       counts= os.path.abspath('../../samples/GTEx/results/GTEx_combat_newcol.csv')
+  params:
+    design="brain_region[CAU] ~ SEX+AGE+counts"
+  output:GTEX_combat_firth_cov
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
