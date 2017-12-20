@@ -388,22 +388,74 @@ Padj > 0.05
  perfect alignments from the “align reads” step, are output.
 
 *** Null Analysis Results
+ - [X] Create 1000 sample info files [[file:shuffle.py][shuffle.py]]
+ - [X] Create a rule to perform 1000 firth logistic regressions [[file:Snakefile][rule create_GTEX_null_test:]]
+ - [X] Boxplot of the distribtion of counts per gene per sample [[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/Null_test.ipynb][Null Test ipynb]]
 
-Padj > 0.05
- | Category                  | Differentially Expressed Genes |
- |---------------------------+--------------------------------|
- | No Covariates(FL)         | 16,021                         |
- | With Covariates(FL)       | 15,933 (Age + Sex)             |
- | GTEX (deseq)              | 28                             |
- | *Recount 48k rows (deseq) | 314                            |
- | Recount GTEX equivalent   | 283                            |
- | Only Female(FL)           | 9981                           |
- | Only Male(FL)             | 15,165                         |
-*Note*
-Recount data with 48k rows was due to filtering counts generated
-directly from the recount project
-   
+The idea for the null test was to break the association between brain region. 
 
+[[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/Null_testTop25Genes.png][Null Test Results]]
+Null Test results showed the distribution of genes per sample centered around zero indicating
+a normal distribution as we would expect
+
+- Adam had seen a lot of good results using batchqc and combat from Filisia's work
+- Decided to apply the same pipeline to our samples
+
+*** Batch correction
+- [X] Apply BatchQC to our dataset and observe any batch effects
+- [X] Apply ComBat to our data [[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/batchqc.R][batchqc.R]]
+- [X] Graph counts no_cov vs cov [[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/counts_beta.R][counts beta Rscript]]
+
+192 samples over 69 batches
+
+Significant batches
+pca1(9)
+| Batches        |  Estimate | Std. Error | t-value | pr(>abs(t)) |
+| fbatchBP-43229 | -131.2710 |    62.6269 |  -2.096 | 0.03812*    |
+| fbatchBP-43316 | -170.5490 |    79.2174 |  -2.153 | 0.03328*    |
+| fbatchBP-43747 | -137.4645 |    62.6269 |  -2.195 | 0.03004*    |
+| fbatchBP-43965 | -133.2330 |    64.6807 |  -2.060 | 0.04152*    |
+| fbatchBP-44999 | -135.6784 |    62.6269 |  -2.166 | 0.03220*    |
+| fbatchBP-45522 | -133.1515 |    64.6807 |  -2.059 | 0.04164*    |
+| fbatchBP-46363 | -182.5820 |    68.6043 |  -2.661 | 0.00882**   |
+| fbatchBP-46364 | -161.5114 |    64.6807 |  -2.497 | 0.01384*    |
+| fbatchBP-47085 | -178.6711 |    68.6043 |  -2.604 | 0.01034*    |
+
+pca2(4)
+| Batches        | Estimate | Std. Error | t-value | pr(>abs(t)) |
+| fbatchBP-43316 | 145.3667 |    62.0159 |   2.344 | 0.0207*     |
+| fbatchBP-43316 | 145.3667 |    62.0159 |   2.344 | 0.0207*     |
+| fbatchBP-43982 | 102.3523 |    50.6358 |   2.021 | 0.0454*     |
+| fbatchBP-48227 | 144.0265 |    62.0159 |   2.322 | 0.0219*     | 
+  
+pca3(3)
+| Batches        |  Estimate | Std. Error | t-value | pr(>abs(t)) |
+| fbatchBP-35959 |  -95.5122 |    42.1711 |  -2.265 | 0.0253*     |
+| fbatchBP-43316 | -108.0433 |    48.6950 |  -2.219 | 0.0283*     |
+| fbatchBP-48370 |  -81.7977 |    38.4968 |  -2.125 | 0.0356*     |
+  
+pca5(4)
+| Batches        | Estimate | Std. Error | t-value | pr(>abs(t)) |
+| fbatchBP-41239 | 77.21791 |   37.07873 |   2.083 | 0.0394*     |
+| fbatchBP-41252 | 67.05696 |   33.84810 |   1.981 | 0.0498*     |
+| fbatchBP-42768 | 73.51533 |   37.07873 |   1.983 | 0.0496*     |
+| fbatchBP-45053 | 71.45609 |   33.84810 |   2.111 | 0.0368*     |
+
+[[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/pcab4combat.png][PCA Before Combat]]
+
+[[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/pcaaftercombat.png][PCA After Combat]]
+
+ *Stratificaiton Results*
+ | Category        | Differentially Expressed Genes |
+ |-----------------+--------------------------------|
+ | No Covariates   | 16,021                         |
+ | With Covariates | 15,933 (Age + Sex)             |
+ | Only Female     | 9981                           |
+ | Only Male       | 15,165                         |
+ | Batch Corrected | 13,992                         |
+ | Batch Corrected | 13,863 (Age + Sex)             |
+
+[[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/covariatevnocovariate.png][covariate v no covariate]]
 *** Notes to myself
  - Female 2 male 1
  - Library prep method poly-A
@@ -456,6 +508,7 @@ directly from the recount project
       <type>string</type>
         <comment>Generated at LDACC The technology used to analyze DNA/RNA. </comment>
 </variable>
+
 
 
 
