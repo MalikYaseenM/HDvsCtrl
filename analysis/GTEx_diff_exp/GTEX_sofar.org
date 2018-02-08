@@ -727,6 +727,21 @@ Questions
 - What is the understanding of Transposons
 - Are transposons annotated
 
+2/08/18
+GAK
+- Whole regions of genome of expression for HD but won't show up in one gene
+- Analyzing the GAK data
+- DNA sequencing of all the brains
+- jbrowse
+Ryan
+- Created plots to illucidate metamir profiles of pd csf and control
+
+Diego
+- Look at the compare chromosome instead of annotation (alignment coordinates)
+- 10kb apart
+
+
+Questions
 *** previous
 11/16/17
 - simulate a null outcome 1000 times. Permute the labels ba9 and CAU
