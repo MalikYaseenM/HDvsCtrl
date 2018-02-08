@@ -5,7 +5,7 @@
 .libPaths( c( .libPaths(), '/projectnb/bubhub/conda_root/user_envs/crespodi/presymptomatic_hd_mrnaseq/lib/R/library') )
 library(DESeq2)
 ## loading in the files
-RSE_file <- '../../samples/GTEx/results/filtered_RSE.csv'
+RSE_file <- '../../samples/GTEx/results/subset_RSE.csv'
 meta_data <- '../../samples/GTEx/results/new_sample_info.csv'
 ##meta data
 colData <- read.csv(meta_data, header=TRUE,stringsAsFactors=FALSE)
@@ -22,4 +22,4 @@ dds <- DESeqDataSetFromMatrix(countData = counts,
 dds$brain_region<- relevel(dds$brain_region, ref='CAU')
 dds <- DESeq(dds, minReplicatesForReplace = Inf)
 res <- results(dds, cooksCutoff = Inf)
-write.csv(res, file = '../../samples/GTEx/results/RSE_filter_deseq2_results.csv', quote = FALSE)
+write.csv(res, file = '../../samples/GTEx/results/RSE_subset_deseq2_results.csv', quote = FALSE)

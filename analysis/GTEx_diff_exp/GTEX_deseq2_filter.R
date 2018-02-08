@@ -17,8 +17,8 @@ GTEX_counts <- as.matrix(GTEX_counts)
 storage.mode(GTEX_counts) <- 'integer'
 GTEX_dds <- DESeqDataSetFromMatrix(countData = GTEX_counts,
                               colData = colData,
-                              design = ~ AGE + SEX + brain_region)
+                              design = ~ brain_region)
 GTEX_dds$brain_region<- relevel(GTEX_dds$brain_region, ref='CAU')
-GTEX_dds <- DESeq(GTEX_dds)
-GTEX_results <- results(GTEX_dds)
+GTEX_dds <- DESeq(GTEX_dds, minReplicatesForReplace = Inf)
+GTEX_results <- results(GTEX_dds, cooksCutoff = Inf)
 write.csv(GTEX_results, file = '../../samples/GTEx/results/GTEX_filter_deseq2_results.csv', quote = FALSE)

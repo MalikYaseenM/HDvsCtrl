@@ -1,0 +1,237 @@
+#maxpathout = os.path.abspath('../../samples/maxpathannottype.csv')
+path = os.path.abspath('../../samples/')
+NUMBERS = [_ for _ in range(0,100)]
+split_dfs = expand(path+'/disjoint_maxpaths_abundance_{number}.csv', number =NUMBERS)
+df99 = os.path.abspath('../../samples/disjoint_maxpaths_abundance_99.csv')
+
+found_clusters = expand(path+'/disjoint_maxpath_clusters_{number}.csv', number=NUMBERS)
+all_concat = os.path.abspath('../../samples/all_disjoint_maxpaths.csv')
+
+
+rule all:
+    input:
+        df99,
+        found_clusters,
+        all_concat
+
+rule split_df:
+    input:
+        disjoint_maxpath =os.path.abspath(
+            '../../samples/disjoint_maxpaths_abundance.csv')
+    output:
+        split_path = split_dfs
+    run:
+        import pandas as pd
+        import numpy as np
+        df = pd.read_csv(input.disjoint_maxpath)
+        split_df = np.array_split(df, 100)
+        for idx,item in enumerate(split_df):
+            item.to_csv(os.path.abspath(
+                '../../samples/disjoint_maxpaths_abundance_{}.csv'.format(idx)),
+                        index=False)
+        
+
+rule disjoint_maxpath:
+    input:
+        df_subset = os.path.abspath('../../samples/disjoint_maxpaths_abundance_{number}.csv')
+    output:
+        found = os.path.abspath('../../samples/disjoint_maxpath_clusters_{number}.csv')
+    run:
+        import pandas as pd
+        import numpy as np        
+
+        def find_cluster(cluster, maxpaths):
+            for idx, item in enumerate(maxpaths):
+                unique = set(item.split(','))
+                for j in range(idx+1, len(maxpaths)):
+                    compare = set(maxpaths[j].split(','))
+                    series1 = subset_df[subset_df['maxpath'] == item]['annotation_name']
+                    series2 = subset_df[subset_df['maxpath'] == maxpaths[j]]['annotation_name']
+                    if len(unique.intersection(compare)) == 0 and\
+                    series1.equals(series2) == False:
+                        return(cluster)
+        file_number = input.df_subset.split('_')[-1].split('.')[0]
+        df = pd.read_csv(input.df_subset)
+        cluster_names = df['cluster_name'].unique()
+        disjoint_clusters = []
+        for i in cluster_names:
+            subset_df = df[df['cluster_name'] ==i]
+            maxpaths_array = subset_df['maxpath'].as_matrix()
+            cluster = find_cluster(i,maxpaths_array)
+            if cluster in disjoint_clusters:
+                continue
+            else:
+                disjoint_clusters.append(cluster)
+                disjoint_maxpaths = pd.DataFrame(
+                    {"clusters_with_disjoint_maxpaths":disjoint_clusters})
+                disjoint_maxpaths.to_csv(
+                    os.path.abspath(
+                        '../../samples/disjoint_maxpath_clusters_{}.csv'.format
+                        (file_number)),index=False)
+rule concat_df:
+    input:
+        all_df = found_clusters
+    output:
+        concat = os.path.abspath('../../samples/all_disjoint_maxpaths.csv')
+    run:
+        import pandas as pd
+        for idx,item in enumerate(input.all_df):
+            if idx == 0:
+                concatenated = pd.read_csv(item)
+            else:
+                concatenated = concatenated.concat(pd.read_csv(item))
+        concatenated.to_csv(
+            os.path.abspath(
+                '../../samples/all_disjoint_maxpaths.csv', sep=',', index=False))
+                
+                
+        
+        
+
+# rule sqlquery:
+#     input:
+#         database=os.path.abspath('../reference/smRNASeq.db')
+#     output:
+#         maxpath = os.path.abspath('../../samples/maxpathannottype.csv'),
+#         biotype = os.path.abspath('../../samples/biotypes.csv'),
+#         disjoin = os.path.abspath('../../samples/disjointmaxpaths.csv'),
+#         annotation = os.path.abspath('../../samples/noannotatedmaxpaths.csv')
+#     run:
+#         import pandas as pd
+#         import sqlite3
+#         import os
+        
+#         def query1():
+#             """ Returns annotation type grouped by maxpath """
+#             query = """
+#             SELECT maxpath.id as maxpath_id, maxpath.path, maxpath.seq, annottype.name
+#             FROM maxpath
+#             INNER JOIN maxpathalign ON maxpath.id = maxpathalign.maxpath_id
+#             LEFT JOIN maxpathannot ON maxpathalign.id = maxpathannot.maxpathalign_id
+#             INNER JOIN annot ON maxpathannot.annot_id = annot.id
+#             INNER JOIN annottype ON annot.annot_type_id = annottype.id
+#             GROUP BY maxpath.id
+#             """
+            
+#             conn = sqlite3.connect(input.database)
+#             df = pd.read_sql_query(query,conn,index_col='maxpath_id' )
+#             df.to_csv('maxpathannottype.csv', sep=',',index=True)
+            
+
+#         def query2():
+#             """ Returns what biotypes are associated with each cluster """
+#             query = """SELECT cluster.name as cluster_name,
+#             -- Sum  annottype put in a seperate column,
+#             -- append 0 if no annottype present in column
+#             SUM(CASE WHEN annottype.name = "protein_coding" THEN 1 ELSE 0 END) protein_coding,
+#             SUM(CASE WHEN annottype.name = "antisense_RNA" THEN 1 ELSE 0 END) antisense_RNA,
+#             SUM(CASE WHEN annottype.name = "sense_overlapping" THEN 1 ELSE 0 END) sense_overlapping,
+#             SUM(CASE WHEN annottype.name = "pre-miRNA" THEN 1 ELSE 0 END) premiRNA,
+#             SUM(CASE WHEN annottype.name = "miRNA" THEN 1 ELSE 0 END) miRNA,
+#             SUM(CASE WHEN annottype.name = "lincRNA" THEN 1 ELSE 0 END) lincRNA,
+#             SUM(CASE WHEN annottype.name = "unprocessed_pseudogene" THEN 1 ELSE 0 END) unprocessed_pseudogene,
+#             SUM(CASE WHEN annottype.name = "processed_transcript" THEN 1 ELSE 0 END) processed_transcript,    
+#             SUM(CASE WHEN annottype.name = "snoRNA" THEN 1 ELSE 0 END) snoRNA,
+#             SUM(CASE WHEN annottype.name = "processed_pseudogene" THEN 1 ELSE 0 END) processed_psuedogene,
+#             SUM(CASE WHEN annottype.name = "transcribed_unprocessed_pseudogene" THEN 1 ELSE 0 END) transcribed_unprocessed_pseudogene,
+#             SUM(CASE WHEN annottype.name = "snRNA" THEN 1 ELSE 0 END) snRNA,
+#             SUM(CASE WHEN annottype.name = "transcribed_processed_pseudogene" THEN 1 ELSE 0 END) transcribed_processed_pseudogene,
+#             SUM(CASE WHEN annottype.name = "Mt_tRNA" THEN 1 ELSE 0 END) Mt_tRNA,
+#             SUM(CASE WHEN annottype.name = "transcribed_unitary_pseudogene" THEN 1 ELSE 0 END) transcribed_unitary_pseudogene,
+#             SUM(CASE WHEN annottype.name = "Mt_rRNA" THEN 1 ELSE 0 END) Mt_rRNA,
+#             SUM(CASE WHEN annottype.name = "misc_RNA" THEN 1 ELSE 0 END) misc_RNA,
+#             SUM(CASE WHEN annottype.name = "TEC" THEN 1 ELSE 0 END) TEC,
+#             SUM(CASE WHEN annottype.name = "sense_intronic" THEN 1 ELSE 0 END) sense_intronic,
+#             SUM(CASE WHEN annottype.name = "non_coding" THEN 1 ELSE 0 END) non_coding,
+#             SUM(CASE WHEN annottype.name = "rRNA" THEN 1 ELSE 0 END) rRNA,
+#             SUM(CASE WHEN annottype.name = "bidirectional_promoter_lncRNA" THEN 1 ELSE 0 END) bidirectional_promoter_lncRNA,
+#             SUM(CASE WHEN annottype.name = "IG_V_pseudogene" THEN 1 ELSE 0 END) IG_V_pseudogene,
+#             SUM(CASE WHEN annottype.name = "unitary_pseudogene" THEN 1 ELSE 0 END) unitary_pseudogene,
+#             SUM(CASE WHEN annottype.name = "IG_V_gene" THEN 1 ELSE 0 END) IG_V_gene,
+#             SUM(CASE WHEN annottype.name = "ribozyme" THEN 1 ELSE 0 END) ribozyme,
+#             SUM(CASE WHEN annottype.name = "macro_lncRNA" THEN 1 ELSE 0 END) macro_lncRNA,
+#             SUM(CASE WHEN annottype.name = "scaRNA" THEN 1 ELSE 0 END) scaRNA,
+#             SUM(CASE WHEN annottype.name = "3prime_overlapping_ncRNA" THEN 1 ELSE 0 END) threeprime_overlapping_ncRNA,
+#             SUM(CASE WHEN annottype.name = "polymorphic_pseudogene" THEN 1 ELSE 0 END) polymorphic_pseudogene,
+#             SUM(CASE WHEN annottype.name = "sRNA" THEN 1 ELSE 0 END) sRNA,
+#             SUM(CASE WHEN annottype.name = "TR_V_gene" THEN 1 ELSE 0 END) TR_V_gene,
+#             SUM(CASE WHEN annottype.name = "TR_C_gene" THEN 1 ELSE 0 END) TR_C_gene,
+#             SUM(CASE WHEN annottype.name = "TR_V_pseudogene" THEN 1 ELSE 0 END) TR_V_pseudogene,
+#             SUM(CASE WHEN annottype.name = "scRNA" THEN 1 ELSE 0 END) scRNA,    
+#             SUM(CASE WHEN annottype.name = "IG_C_pseudogene" THEN 1 ELSE 0 END) IG_C_pseudogene,
+#             SUM(CASE WHEN annottype.name = "IG_C_gene" THEN 1 ELSE 0 END) IG_C_gene,
+#             SUM(CASE WHEN annottype.name = "TR_J_gene" THEN 1 ELSE 0 END) TR_J_gene,
+#             SUM(CASE WHEN annottype.name = "vaultRNA" THEN 1 ELSE 0 END) vaultRNA,
+#             SUM(CASE WHEN annottype.name = "translated_processed_pseudogene" THEN 1 ELSE 0 END) translated_processed_pseudogene
+#             FROM annot INNER JOIN annottype ON annot.annot_type_id = annottype.id
+#             INNER JOIN maxpathannot ON maxpathannot.annot_id = annot.id
+#             INNER JOIN maxpathalign ON maxpathalign.id = maxpathannot.maxpathalign_id
+#             INNER JOIN maxpath ON maxpath.id = maxpathalign.maxpath_id
+#             INNER JOIN graph ON graph.id = maxpath.graph_id
+#             INNER JOIN cluster ON cluster.id = graph.cluster_id
+#             GROUP BY cluster.name"""
+
+#             conn = sqlite3.connect(input.database)
+#             df = pd.read_sql_query(query,conn,index_col='cluster_name' )
+#             df.to_csv('biotypes.csv', sep=',',index=True)
+            
+
+
+#         def query3():
+#             """ returns clusters with disjoint maxpaths """
+#             query = """
+#             SELECT A.clusterid, A.graphid, A.seq, A.annotid, B.clusterid, B.graphid, B.seq, B.annotid
+#             FROM
+#             -- maxpaths with no Null annotation ids
+#             (SELECT cluster.id AS clusterid, graph.id AS graphid, maxpath.seq AS seq, annot.annot_id AS annotid
+#             FROM cluster
+#             INNER JOIN graph ON cluster.id = graph.cluster_id
+
+#             LEFT JOIN maxpath ON graph.id = maxpath.graph_id
+#             LEFT JOIN maxpathalign ON maxpath.id = maxpathalign.maxpath_id
+#             LEFT JOIN maxpathannot ON maxpathalign.id = maxpathannot.maxpathalign_id
+#             LEFT JOIN annot ON maxpathannot.annot_id = annot.id
+#             LEFT JOIN annottype ON annot.annot_type_id = annottype.id
+#             WHERE annot.annot_id IS NULL) AS A
+#             INNER JOIN
+#             -- maxpaths with Null annotation ids
+#             (SELECT cluster.id AS clusterid, graph.id AS graphid, maxpath.seq AS seq, annot.annot_id AS annotid
+#             FROM cluster
+#             INNER JOIN graph ON cluster.id = graph.cluster_id
+#             INNER JOIN maxpath ON graph.id = maxpath.graph_id
+#             INNER JOIN maxpathalign ON maxpath.id = maxpathalign.maxpath_id
+#             INNER JOIN maxpathannot ON maxpathalign.id = maxpathannot.maxpathalign_id
+#             INNER JOIN annot ON maxpathannot.annot_id = annot.id
+#             INNER JOIN annottype ON annot.annot_type_id = annottype.id
+#             ) AS B
+#             ON A.graphid = B.graphid
+#             ORDER BY A.graphid"""
+            
+#             conn = sqlite3.connect(input.database)
+#             df = pd.read_sql_query(query,conn)
+#             df.to_csv('disjointmaxpaths.csv', sep=',',index=False)
+            
+
+
+#         def query4():
+#             """ Returns clusters with no annotated maxpaths """
+#             query = """
+#           SELECT cluster.name AS 'cluster_name', maxpath.seq, maxpathalign.pos
+#           FROM maxpath INNER JOIN graph ON maxpath.graph_id = graph.id
+#           INNER JOIN cluster ON cluster.id = graph.cluster_id
+#           LEFT JOIN maxpathalign ON maxpath.id = maxpathalign.maxpath_id
+#           LEFT JOIN maxpathannot ON maxpathalign.id = maxpathannot.maxpathalign_id
+#           LEFT JOIN annot ON maxpathannot.annot_id = annot.id
+#           WHERE maxpathannot.annot_id IS Null
+#           -- GROUP by cluster id to get distinct clusters
+#           GROUP BY cluster.id"""
+
+#             conn = sqlite3.connect(input.database)
+#             df = pd.read_sql_query(query,conn,index_col='cluster_name' )
+#             df.to_csv('noannotatedmaxpaths.csv', sep=',',index=True)
+            
+#         query1()
+#         query2()
+#         query3()
+#         query4()
+
