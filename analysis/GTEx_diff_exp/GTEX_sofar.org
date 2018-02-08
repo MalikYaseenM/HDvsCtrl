@@ -1,7 +1,12 @@
-* GTEX Analysis
-** TODO [0/1]
-- [ ] Compare DE gene list between Asympt and the GTEx
+* Unicode List
+|  Hex | Name             |
+| 2190 | Leftwards arrow  |
+| 2191 | Upwards arrow    |
+| 2192 | Rightwards arrow |
+| 2193 | Downwards arrow  |
+| 2714 | Heavy checkmark  |
 
+* GTEX Analysis
 ** Information about the Data
 - Genotype-Tissue Expression Project [[https://www.gtexportal.org/home/documentationPage][GTEx Website]]
 - Resource to study human gene expression
@@ -96,7 +101,6 @@ for i in textwrap.wrap(long_string):
 : freeze, sample quality (n=5 variables), and genotype qc information
 : (n=41 variables).
 
-
 ** QC
 *NOTE* In the trouble samples.txt there are 106 sample names, but not all samples include R1 and R2
 
@@ -178,7 +182,7 @@ shotwell Per_Base_Sequence.png
 
 
  #+END_SRC
-
+✔
 *** Follow Up Analysis 
  - [X] Rerun firth with more covariate data [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/GTEX_salmon_firth.tsv][GTEX_firth.tsv]]
  - [X] Run the stats module on the normalized counts [[file:/ssh:crespodi@scc4.bu.edu:/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/GTEX_salmon_firth.html][GTEX_salmon_firth.html]]
@@ -203,7 +207,7 @@ shotwell Per_Base_Sequence.png
  | With Covariates | 15,933 (Age + Sex)             |
  | Only Female     | 9981                           |
  | Only Male       | 15,165                         |
-
+✔
 *** Recount Data
 
  - [X] Download the data from recount
@@ -219,7 +223,7 @@ Padj > 0.05
  | Recount (deseq)         | 314                            |
  | Only Female(FL)         | 9981                           |
  | Only Male(FL)           | 15,165                         |
-
+✔
 *** Recount Project description
  recount2 is an online resource consisting of RNA-seq gene and exon counts 
  as well as coverage bigWig files for 2041 different studies. 
@@ -242,7 +246,7 @@ Padj > 0.05
  By taking care of several preprocessing steps and combining many datasets into one 
  easily-accessible website, we make finding and analyzing RNA-seq data considerably more 
  straightforward. 
-
+✔
 *** Recount and Rail rna
 
  [[https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1118-6][recount paper]]
@@ -386,7 +390,7 @@ Padj > 0.05
  Write BAMS
  - By default all primary alignments, including
  perfect alignments from the “align reads” step, are output.
-
+✔
 *** Null Analysis Results
  - [X] Create 1000 sample info files [[file:shuffle.py][shuffle.py]]
  - [X] Create a rule to perform 1000 firth logistic regressions [[file:Snakefile][rule create_GTEX_null_test:]]
@@ -400,7 +404,7 @@ a normal distribution as we would expect
 
 - Adam had seen a lot of good results using batchqc and combat from Filisia's work
 - Decided to apply the same pipeline to our samples
-
+✔
 *** Batch correction
 - [X] Apply BatchQC to our dataset and observe any batch effects
 - [X] Apply ComBat to our data [[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/batchqc.R][batchqc.R]]
@@ -423,7 +427,6 @@ pca1(9)
 
 pca2(4)
 | Batches        | Estimate | Std. Error | t-value | pr(>abs(t)) |
-| fbatchBP-43316 | 145.3667 |    62.0159 |   2.344 | 0.0207*     |
 | fbatchBP-43316 | 145.3667 |    62.0159 |   2.344 | 0.0207*     |
 | fbatchBP-43982 | 102.3523 |    50.6358 |   2.021 | 0.0454*     |
 | fbatchBP-48227 | 144.0265 |    62.0159 |   2.322 | 0.0219*     | 
@@ -455,8 +458,50 @@ pca5(4)
  | Batch Corrected | 13,992                         |
  | Batch Corrected | 13,863 (Age + Sex)             |
 
-[[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/covariatevnocovariate.png][covariate v no covariate]]
+[[file:~/Huntington/presymptomatic_hd_mrnaseq/samples/GTEx/results/covariatevnocovariate.png][covariate v no covariate]]✔
+*** Deseq2
+- Deseq2 halted because the matrix that combat produced has negative values in it.
+- We therefore decided to caculate a empirical null distribution✔✔✔
+*** Empirical Null Distribution
+*Start*
+Null Matirx (Counts Beta)
+ | Null_file        | ENSG00000210196.2 | ENSG00000198727.2 |
+ | GTEX_firth_0.tsv |         -0.000027 |     -2.332661e-07 |
+ | GTEX_firth_1.tsv |          0.000016 |      1.182920e-07 |
+ | GTEX_firth_2.tsv |         -0.000016 |     -1.640637e-07 |
+ | GTEX_firth_3.tsv |         -0.000015 |     -1.270309e-07 |
+ | GTEX_firth_4.tsv |         -0.000047 |     -2.666336e-07 |
+
+
+Firth Results(GTEX)
+ | Ensemble_id       | Counts_beta |   Counts_beta |
+ | ENSG00000210196.2 |   -0.000027 | -2.332661e-07 |
+ | ENSG00000198727.2 |    0.000016 |  1.182920e-07 |
+
+*Caculate*
+                            ↓
+            Calculate raw P-values using CDF
+- upper and lower pvalues
+- each pvalue represents a one tailed test of difference
+- lower_p much smaller than mean beta for that gene
+- upper_p opposite
+                            ↓
+                            ↓
+Output Matrix               ↓
+| Ensemble ID       | upper_pval | lower_pval |
+| ENSG00000210196.2 |   1.000000 |   0.000999 |
+| ENSG00000198727.2 |   1.000000 |   0.000999 |
+| ENSG00000210194.1 |   1.000000 |   0.000999 |
+| ENSG00000198695.2 |   1.000000 |   0.000999 |
+| ENSG00000198786.2 |   1.000000 |   0.000999 |
+                            ↓
+                            ↓
+              Benjamini Hochberg Corrected
+*Results*
+Before FDR I had 21654 rows, after FDR I'm with 21570
+✔✔
 *** Notes to myself
+null model what we expect for healthy people, we can use that as a null model and partician genes
  - Female 2 male 1
  - Library prep method poly-A
  - Sex stratification, female ba9 to female cau, male ba9 to male cau.
@@ -544,6 +589,145 @@ rerun deseq2
 deseq2 has a built in outlier scheme by default. Uses cooks distance
 Outliers are set to NaN
 ** Lab meeting
+
+12/21/17
+- Observed beta coefficient significantly different between 
+- smallest 1/1001
+- compare against the true null
+- sequence data is not normally distributed
+- asymptomatic individual how much is just brain degeneration
+- mid brain psp (mid brain something palsy)
+- substantia nigra, cerebellum
+- literature search. Whole brain expression study using GTEx data
+
+01/25/18
+*Brain Regions In GTEx*
+Brain - Amygdala
+Brain - Hypothalamus
+Brain - Cortex
+Brain - Nucleus accumbens (basal ganglia)
+Brain - Hippocampus
+Brain - Caudate (basal ganglia)
+Brain - Putamen (basal ganglia)
+Brain - Cerebellar Hemisphere
+Brain - Cerebellum
+Brain - Substantia nigra
+Brain - Frontal Cortex (BA9)
+Brain - Spinal cord (cervical c-1)
+Brain - Anterior cingulate cortex (BA24)
+
+*Chris*
+- Lots of differences in the brain regions
+- Same as GTEx!
+- GSEA showed concordance
+- Hypothalmus and Nucleus Accumbens
+- Technical Validation take a subset of the samples
+- non-templated sequence does not match the genome
+- non templated edits by location
+  - A-GC, T-C, C-TG, G-ACT
+- What about snps?
+- Split plots by brain region
+
+*Adam*
+- Ab inicio smallrna reference
+- just aligning to a genome is crude
+- clustered based on homology. Points inbetween that vary
+- mapped is mostly mir10b but specific read has A but sometimes doesn't
+- Me on the 15th (after rick is skiing 22nd) split 1/2 me 1/2 anita
+- TGIF(Something)
+- Clary's, Cambridge beerworks, Estragon/Toro Thursday
+- If a cluster has a protein coding gene, it go into that column
+- counting unique annotations
+*quote of the day*
+- It smells like a biological process
+
+02/1/18
+*Brigette*
+- Cloning has proven extremely difficult
+- Have to live in the real-world sometimes things are harder
+- Don't get wed to any project
+- Have enough projects going on to be able to drop one
+
+Pak bio sequencing
+- Is it sufficiently the right use of our resource
+- "Is it a project that leads up to an interesting paper"
+- Gak was compelling to us a year ago
+- Rick 70% to no more than %50 but possibly %20
+- Pedro turned us down because went to NIH
+- Rick is going to be on search committe
+- Rick June of 2019
+- TAD structures (Hey I'll do rna seq but if all genes a
+  transcribed together than they are related)
+- Experimental design is still valid
+  - is anyone here going to right a grant on Gak?
+- Get the stuff back grom the broad and run it on the gel
+- Or DNA is unstable (reagent might have nuclease)
+- Why would DNA be unstable? It's not RNA
+- BU is not quick at finance, Broad wouldnt accept money
+  until play
+- MSU sequences, tufts
+- How much time, How much money?
+- Some samples they did part way
+- Look at the gene models for gak (23 transcripts) build a kallist reference
+- 30 40 sequences max
+- Not looking to quantify, do we see evidence 
+- PD and control separately
+
+
+Resequencing the Huntington's Brains
+- Ribodepleted rnasequencing in 104 HD brians
+- Is the naming scheme the same
+- Are we writing a separate snakefile for them?
+- 80million reads on each sample
+- We got 60million reads on each sample
+  - It depends on the definition of reads
+- When We say reads, We mean 40million fragments paired ends
+- He said 400million in each direction, 80million per sample 
+- $9550 to do experiment we've been charged
+- We will get that
+
+
+smrna
+- point what are the sequences of nucleotides across whole bunch of people
+identify diversity of the sequences
+- every sequence was observed and thatas how they aligned to ne another
+-variation due to snps
+- reference of all sequences we ever observed without bias of aligning ot method
+- cluster all sequences by homology, create multiple sequence alignment as a graph
+- red line is most abundant
+- Align to a set of clusters, align to a graph
+- Groups of sequences with shared homlogy
+- Threshholds to be included in the cluseer
+- implemented tool for aligning against each clusters
+- What do the smallrna datasets tell us
+- Hoxd3 is a protein coding gene
+- hsa-mir-10b primary microrna transcript
+- Vast majority map to protein coding genes and lincRNA
+- aligning to genome looking at RNA but most of unique sequences are 
+- Microrna clusters look at clusters and distinct biotype most clusters only map to a distinct biotypes
+- Most of the clusters are protein coding gene come from protein coding gene.
+- What fraction of the sequences that we capture are detritus
+- how are messengers RNA that are degraded
+- protein coding an antisenese
+- protein_coding
+- when they are only two distinct biotypes, micro-rnas never overlap with protein coding genes
+- Classes of three biotypes, microrna premrna and x
+- Comparisons among different groups
+- What do smallrnas sequences tell us, what are the results
+- Essentially created the reference. A set of clusters
+- How many contrasts are you making for that one clustrs
+- Many clusters have very low abundance, 
+- pre-mirna or mirna
+
+Quote of the day
+"I want to not have an office here as well"
+"Do sexy science" Evan johnson
+
+Questions
+- What is the understanding of Transposons
+- Are transposons annotated
+
+*** previous
 11/16/17
 - simulate a null outcome 1000 times. Permute the labels ba9 and CAU
 - filter the recount data and use only the same genes
@@ -617,3 +801,58 @@ S-<TAB>'     (`org-global-cycle')
      value of a property.  Reverse sorting is possible as well.  You
      can also supply your own function to extract the sorting key.
      With a `C-u' prefix, sorting will be case-sensitive.  
+
+ |                  | ENSG00000210196.2 | ENSG00000198727.2 | ENSG00000210194.1 |
+ | GTEX_firth_0.tsv |         -0.000027 |     -2.332661e-07 |     -7.012243e-05 |
+ | GTEX_firth_1.tsv |          0.000016 |      1.182920e-07 |      1.585126e-05 |
+ | GTEX_firth_2.tsv |         -0.000016 |     -1.640637e-07 |     -7.044151e-06 |
+ | GTEX_firth_3.tsv |         -0.000015 |     -1.270309e-07 |     -9.555059e-07 |
+ | GTEX_firth_4.tsv |         -0.000047 |     -2.666336e-07 |     -2.339269e-04 |
+
+** Hub meeting
+02/2/18
+- Hub has space and enough to fund adam and one other person
+- Credibility of the hub undermined if no faculty level position
+- Adam cannot mentor 7 ppl at once
+- Slides for todays class were not ready
+- GAK project (initial micro array study on 3' end of gene)
+- rna sequencing but doesn't tell you transcript is associated
+- Mike Negal wrote a paper and show it was effect
+- Tried Pac-Bio sequencing (targeted transcript capture is hard to do)
+- Brigette ritter specializes in cell work
+- Can't even get the dna of the gak gene into a cell 
+- Never really gave our seq data for the gak region for a close look
+- align all reads against that locus, (could also align against specific transcripts)
+- Aligned star against genomic locus and kallist with transcripts from ensemble
+- Format data into a jbrowse instance
+- Kallisto doesn't specify match and mismatch properties really
+- Considering doing a transcript assembly
+Small RNA sequences references
+- cluster 1696
+- Cluster n in a particular position
+- Len left column number
+- Align to gen code and mirbase reference and report what align to
+- Change the name of files because now they collide. 
+- smaller the number the more abundant reads 1690
+
+Angel
+- Star fusion
+- Brian haas starfusion
+
+- Question
+Select annotation.name maxpaths.path, cluster_name,
+Format the heatmap, find the disjoint maxpaths
+
+
+
+| cluster_name     | abundance | biotype           |
+|------------------+-----------+-------------------|
+| "cluster_48659"  |         2 | "protein_coding"  |
+| "cluster_48659"  |         2 | "protein_coding"  |
+| "cluster_48659"  |         2 | "protein_coding"  |
+| "cluster_126263" |         4 | "protein_coding"  |
+| "cluster_93941"  |         2 | "protein_coding"  |
+| "cluster_93941"  |         2 | "transcribed_proc |
+| "cluster_115896" |         2 | "protein_coding"  |
+| "cluster_97511"  |         2 | "protein_coding"  |
+
