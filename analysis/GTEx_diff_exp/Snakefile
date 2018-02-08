@@ -6,6 +6,7 @@ norm = "../../samples/GTEx/normalized_all_salmon_quant.tsv"
 design_info = os.path.abspath("../../samples/GTEx/results/sample_info_design.csv")
 filter_rows = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_filter.csv")
 
+# Output files
 GTEX_norm = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_norm.csv")
 GTEX_firth = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_firth.tsv")
 GTEX_fem_strat = os.path.abspath("../../samples/GTEx/results/GTEX_female_salmon_norm.csv")
@@ -21,7 +22,6 @@ GTEX_deseq_filter = os.path.abspath("../../samples/GTEx/results/GTEX_filter_dese
 RSE_deseq_filter = os.path.abspath("../../samples/GTEx/results/RSE_filter_deseq2_results.csv")
 shuffle_sample = os.path.abspath('../../samples/GTEx/results/sample_info_V999.csv')
 
-
 dirpath = os.path.abspath('../../samples/GTEx/results/')
 ver = [_ for _ in range(1000)]
 GTEX_out = expand('{dirpath}/GTEX_firth_{ver}.tsv', dirpath=dirpath, ver = ver)
@@ -31,7 +31,15 @@ GTEX_combat_firth = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_rlog
 GTEX_combat_firth_cov = os.path.abspath("../../samples/GTEx/results/GTEX_salmon_rlog_combat_firth_covar.tsv")
 
 no_cov_design = os.path.abspath('../../samples/GTEx/results/no_covar_sample_info_design.csv')
-correct_df=os.path.abspath('../../samples/GTEx/results/GTEx_combat_newcol.csv')
+correct_df = os.path.abspath('../../samples/GTEx/results/GTEx_combat_newcol.csv')
+no_covar_deseq = os.path.abspath('../../samples/GTEx/results/GTEX_nocovar_deseq2_results.csv')
+covar_deseq = os.path.abspath('../../samples/GTEx/results/GTEX_covar_deseq2_results.csv')
+
+null_nocovar =  os.path.abspath('../../samples/GTEx/results/DE_empirical.tsv')
+null_covar = os.path.abspath('../../samples/GTEx/results/DE_covar_empirical.tsv')
+
+FDR_results = os.path.abspath('../../samples/GTEx/results/FDR_Corrected_Covar.txt')
+ 
 
 rule all:
   input:
@@ -52,9 +60,14 @@ rule all:
     #RSE_subset_deseq2,
     #GTEX_rlog,
     #no_cov_design,
-    GTEX_combat_firth,
-    GTEX_combat_firth_cov,
-    correct_df
+    #GTEX_combat_firth,
+    #GTEX_combat_firth_cov,
+    #correct_df,
+    # no_covar_deseq,
+    # covar_deseq
+    null_nocovar,
+    null_covar,
+    FDR_results
 
 # Outputs ordered sample info with subject type and age
 # rule create_design_info:
@@ -259,3 +272,100 @@ rule create_GTEX_firth_rlog_cov:
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
+rule deseq2_no_covar:
+  input:
+      'nocovar_deseq2.R'
+  output:no_covar_deseq
+  shell:
+      "Rscript {input}"
+
+rule deseq2_covar:
+  input:
+      'covar_deseq2.R'
+  output: covar_deseq
+  shell:
+      "Rscript {input}"
+
+rule null_test:
+    #prod p-values using null matrix and gtex firth results for each gene
+    input:
+        covar = os.path.abspath(
+            '../../samples/GTEx/results/GTEX_salmon_rlog_combat_firth_covar.tsv'),
+        
+        nocovar = os.path.abspath(
+            '../../samples/GTEx/results/GTEX_salmon_rlog_combat_firth.tsv'),
+        
+        null = os.path.abspath(
+            '../../samples/GTEx/results/Concatenated_GTEX.tsv')
+        
+    output:
+        DE_covar = null_covar,
+        DE_nocovar = null_nocovar
+    run:
+        import pandas as pd
+        from scipy.stats import norm
+        import numpy as np
+        # Input combat dataframe
+        def null_testv2(dataframe, null_matrix):
+            """ returns df of DE genes from datafram with empirical using null model"""
+            true_df = pd.read_csv(dataframe, sep='\t', index_col=0)
+            true_betas = true_df['counts__beta'].to_dict()
+            #Dataframe which consists of all counts betas for all genes from
+            #all null tests files
+            null_df = pd.read_csv(null_matrix, sep='\t', index_col=0)
+            null_dict = null_df.to_dict(orient='list')
+            empirical_p = {}
+            for keys in true_betas:
+                # value of counts beta for gene from firth df
+                gene_beta = true_betas[keys]
+                #list of counts betas from null tests for gene
+                null_values = np.array(null_dict[keys])
+                #Normal distribution
+                null_beta_mu = null_values.mean()
+                null_beta_sd = null_values.std()
+                lower_p = norm.cdf(gene_beta, loc=null_beta_mu,
+                                   scale=null_beta_sd)
+                upper_p = 1 - lower_p
+                empirical_p[keys] = {'upper':upper_p, 'lower':lower_p}
+            upper = [item[1]['upper'] for item in empirical_p.items()]
+            lower = [item[1]['lower'] for item in empirical_p.items()]
+            #Append upper and lower values as columns to original dataframe
+            true_df['upper_pval'] = upper
+            true_df['lower_pval'] = lower
+            #create df of de genes at <=alpha with cols for upper and lower pval
+            de_df = true_df[['upper_pval','lower_pval']]
+            return(empirical_p, de_df)
+        empirical_covar, covar_df = null_testv2(output.DE_covar, 'Concatenated_GTEX.tsv')
+        empirical_nocovar, nocovar_df = null_testv2(output.DE_nocovar, 'Concatenated_GTEX.tsv')
+        covar_df.to_csv(output.DE_covar, sep='\t', index=True)
+        nocovar_df.to_csv(output.DE_nocovar, sep='\t', index=True)
+
+rule benjamini_hochberg:
+    #correct raw p-values generated from null_test rule
+    input:
+        DE_covar = os.path.abspath(
+            '../../samples/GTEx/results/DE_covar_empirical.tsv')
+    output:
+        results = FDR_results
+    run:
+        import statsmodels.stats.multitest as sm
+        import pandas as pd
+        df = pd.read_csv(input.DE_covar, sep='\t', index_col=0)
+        # Capture upper and lower pvalues
+        upper = df['upper_pval']
+        lower = df['lower_pval']
+
+        #Perform benjamini hochberg correction on upper and lower
+        upper_adj = sm.multipletests(upper, method='fdr_bh')
+        lower_adj = sm.multipletests(lower, method='fdr_bh')
+
+        # capture boolean arrqay for filtering in original df
+        upper_len = len(df[upper_adj[0]]['upper_pval'].tolist())
+        lower_len = len(df[lower_adj[0]]['lower_pval'].tolist())
+
+        fh = open(output.results, 'w')
+        fh.write("Before Correction Shape= ", "%s\n".format(df.shape))
+        fh.write("After Correction shape= ", "%s\n".format(upper_len+lower_len))
+        fh.write("Change in rows= ", "%s\n".format(
+            len(df.index)-(upper_len+lower_len))
+        fh.close()
