@@ -4,16 +4,16 @@ include: 'Snakefile'
 
 HD_ids = [ _ for _ in dataset_ids if _.startswith('H')]
 HD_bams=['{}__trimP__STAR.Aligned.out.bam'.format(_) for _ in HD_ids]
-HD_fastqc1= ['{}__R1__fastqc.zip'.format(_) for _ in HD_ids]
-HD_fastqc2= ['{}__R2__fastqc.zip'.format(_) for _ in HD_ids]
+#HD_fastqc1= ['{}__R1__fastqc.zip'.format(_) for _ in HD_ids]
+#HD_fastqc2= ['{}__R2__fastqc.zip'.format(_) for _ in HD_ids]
+HD_fastqc2= expand('{sample}__{replicate}__fastqc.zip',sample=HD_ids, replicate=['R1','R2'])
 HD_salmon= ['{}__salmon__counts'.format(_) for _ in HD_ids]
-
 # or
 # HD_bams=(expand '{sample}__trimP__STAR.Aligned.out.bam',sample=HD_ids)
 
 rule HD_all:
   input:
     HD_bams,
-    HD_fastqc1,
+    #HD_fastqc1,
     HD_fastqc2,
     HD_salmon
