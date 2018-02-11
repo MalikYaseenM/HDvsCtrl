@@ -8,16 +8,19 @@ import glob
 
 include: '../common_workflow.snake'
 
-workdir: '../../samples'
+
+
 
 #REFERENCES
 
-indexdir= '../reference/GENCODE_v25_star_index'
-#pathtogtf='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.annotation.gtf'
-salmonpath='/projectnb/bubhub/bubhub-reference/genome/human/GENCODE/v25/gencode.v25.transcripts.salmon_quasi_index'
-#pathtogtf='/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/augmented.with.intergenic.gencode.v25.annotation.gtf'
-pathtogtf='/usr3/graduate/crespodi/Huntington/presymptomatic_hd_mrnaseq/samples/combined.gtf'
+tru_adapter = os.path.abspath('../reference/TruSeq3-PE.fa')
+indexdir= os.path.abspath('../reference/GENCODE_v25_star_index')
+#pathtogtf=os.path.abspath('../reference/gencode.v25.annotation.gtf')
+salmonpath=os.path.abspath('../reference/gencode.v25.transcripts.salmon_quasi_index')
+#pathtogtf=os.path.abspath('../reference/augmented.with.intergenic.gencode.v25.annotation.gtf')
+pathtogtf=os.path.abspath('../refernce/combined.gtf')
 
+workdir: '../../samples'
 # Only for working with all samples
 #fastqc = expand('{sample}__fastqc.zip', sample=fastqc_names)
 
@@ -68,7 +71,7 @@ rule trimmomatic:
   input:
     read1 = "{sample}__R1.fastq.gz",
     read2 = "{sample}__R2.fastq.gz",
-    adapter_fa = 'TruSeq3-PE.fa'
+    adapter_fa = tru_adapter
   output:
     read1p = "{sample}__R1__trimP.fastq.gz",
     read1u = "{sample}__R1__trimU.fastq.gz",
