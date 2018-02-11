@@ -739,6 +739,10 @@ Ryan
 Diego
 - Look at the compare chromosome instead of annotation (alignment coordinates)
 - 10kb apart
+- Disjoint maxpath don't commit 
+
+HD work
+
 
 
 Questions
