@@ -1,0 +1,18 @@
+include: 'Snakefile'
+#snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+
+#Define sample_names
+control_ids = [ _ for _ in dataset_ids if _.startswith('C')]
+HD_ids = [ _ for _ in dataset_ids if _.startswith('H')]
+All_ids = HD_ids + control_ids
+
+# Input Files
+All_Fastqc = expand('{sample}__{replicate}__fastqc.zip',sample=All_ids, replicate=['R1','R2'])
+All_Bams = expand('{sample}__trimP__STAR.Aligned.out.bam', sample=All_ids)
+All_Salmon = expand('{sample}__salmon__counts', sample=All_ids)
+
+rule Huntington_All:
+  input:
+    All_Fastqc,
+    All_Bams,
+    All_Salmon
