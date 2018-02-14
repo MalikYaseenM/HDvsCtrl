@@ -18,7 +18,7 @@ indexdir= os.path.abspath('../reference/GENCODE_v25_star_index')
 #pathtogtf=os.path.abspath('../reference/gencode.v25.annotation.gtf')
 salmonpath=os.path.abspath('../reference/gencode.v25.transcripts.salmon_quasi_index')
 #pathtogtf=os.path.abspath('../reference/augmented.with.intergenic.gencode.v25.annotation.gtf')
-pathtogtf=os.path.abspath('../refernce/combined.gtf')
+pathtogtf=os.path.abspath('../reference/combined.gtf')
 
 workdir: '../../samples'
 # Only for working with all samples
@@ -35,17 +35,17 @@ verse_gene_count =expand('{sample}__verse__sorted__counts.gene.txt', sample=data
 verse_intron_count =expand('{sample}__verse__sorted__counts.intron.txt', sample=dataset_ids)
 exon_matrix='verse_exon_matrix.tsv'
 verse_intergenic_count =expand('{sample}__verse__sorted__counts.intergenic.txt', sample=dataset_ids)
-rule all:
-  input:
-    #count,
-    verse_count,
-    verse_gene_count,
-    exon_matrix,
-    verse_exon_count,
-    verse_UTR_count,
-    verse_transcript_count,
-    verse_intron_count,
-    verse_intergenic_count
+#rule all:
+#  input:
+#    count
+#    verse_count,
+#    verse_gene_count,
+#    exon_matrix,
+#    verse_exon_count,
+#    verse_UTR_count,
+#    verse_transcript_count,
+#    verse_intron_count,
+#    verse_intergenic_count
 
 rule fastqc:
   input:
