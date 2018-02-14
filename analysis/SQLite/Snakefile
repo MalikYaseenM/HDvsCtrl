@@ -1,90 +1,175 @@
 #maxpathout = os.path.abspath('../../samples/maxpathannottype.csv')
-path = os.path.abspath('../../samples/')
+import os
+path = os.path.abspath('results')
 NUMBERS = [_ for _ in range(0,100)]
 split_dfs = expand(path+'/disjoint_maxpaths_abundance_{number}.csv', number =NUMBERS)
-df99 = os.path.abspath('../../samples/disjoint_maxpaths_abundance_99.csv')
+df99 = os.path.abspath('results/disjoint_maxpaths_abundance_99.csv')
 
 found_clusters = expand(path+'/disjoint_maxpath_clusters_{number}.csv', number=NUMBERS)
-all_concat = os.path.abspath('../../samples/all_disjoint_maxpaths.csv')
+all_concat = os.path.abspath('results/all_disjoint_maxpaths.csv')
 
 
 rule all:
     input:
-        df99,
         found_clusters,
         all_concat
 
 rule split_df:
     input:
         disjoint_maxpath =os.path.abspath(
-            '../../samples/disjoint_maxpaths_abundance.csv')
+            'results/disjoint_maxpaths_greater_than_one.csv')
     output:
         split_path = split_dfs
     run:
         import pandas as pd
         import numpy as np
-        df = pd.read_csv(input.disjoint_maxpath)
-        split_df = np.array_split(df, 100)
-        for idx,item in enumerate(split_df):
-            item.to_csv(os.path.abspath(
-                '../../samples/disjoint_maxpaths_abundance_{}.csv'.format(idx)),
-                        index=False)
-        
+        df = pd.read_csv(input.disjoint_maxpath, sep=',', index_col=False)
+        clusters = df['cluster_name'].unique()
+        division = np.array_split(clusters, 100)
+        for idx,item in enumerate(division):
+            subset_df = df[df['cluster_name'].isin(division[idx])]
+            subset_df.to_csv(os.path.abspath(
+                'results/disjoint_maxpaths_abundance_{}.csv'.format(idx)),
+                             index=False)
+
 
 rule disjoint_maxpath:
     input:
-        df_subset = os.path.abspath('../../samples/disjoint_maxpaths_abundance_{number}.csv')
+        df_subset = os.path.abspath(
+            'results/disjoint_maxpaths_abundance_{number}.csv')
     output:
-        found = os.path.abspath('../../samples/disjoint_maxpath_clusters_{number}.csv')
+        found = os.path.abspath(
+            'results/disjoint_maxpath_clusters_{number}.csv')
     run:
         import pandas as pd
-        import numpy as np        
-
-        def find_cluster(cluster, maxpaths):
-            for idx, item in enumerate(maxpaths):
-                unique = set(item.split(','))
+        import numpy as np
+        def find_cluster(cluster_name, dataframe):
+            """
+           returns clusters with disjoint maxpaths annotated
+           to different genomes or annotated on the same
+           genome min of 10kb apart
+            """
+            cluster = cluster_name
+            df = dataframe
+            maxpaths = [set(item) for item in [_.split(',') for _ in df['maxpath'].as_matrix()]]
+            chrom_string = df['chrom_pos'].as_matrix()
+            chrom = [_.split(':')[0] for _ in df['chrom_pos'].as_matrix()]
+            chrom_end = [int(_.split('-')[1]) for _ in df['chrom_pos'].as_matrix()]
+            for idx,item in enumerate(maxpaths):
                 for j in range(idx+1, len(maxpaths)):
-                    compare = set(maxpaths[j].split(','))
-                    series1 = subset_df[subset_df['maxpath'] == item]['annotation_name']
-                    series2 = subset_df[subset_df['maxpath'] == maxpaths[j]]['annotation_name']
-                    if len(unique.intersection(compare)) == 0 and\
-                    series1.equals(series2) == False:
-                        return(cluster)
-        file_number = input.df_subset.split('_')[-1].split('.')[0]
-        df = pd.read_csv(input.df_subset)
-        cluster_names = df['cluster_name'].unique()
-        disjoint_clusters = []
-        for i in cluster_names:
-            subset_df = df[df['cluster_name'] ==i]
-            maxpaths_array = subset_df['maxpath'].as_matrix()
-            cluster = find_cluster(i,maxpaths_array)
-            if cluster in disjoint_clusters:
-                continue
-            else:
-                disjoint_clusters.append(cluster)
-                disjoint_maxpaths = pd.DataFrame(
-                    {"clusters_with_disjoint_maxpaths":disjoint_clusters})
-                disjoint_maxpaths.to_csv(
-                    os.path.abspath(
-                        '../../samples/disjoint_maxpath_clusters_{}.csv'.format
-                        (file_number)),index=False)
+                    if item.isdisjoint(maxpaths[j]):
+                        if chrom[idx] != chrom[j]:
+                            return(cluster)
+                        elif chrom[idx] == chrom[j]:
+                            if abs(chrom_end[idx] - chrom_end[j]) > 10000:
+                                return(cluster)
+
+
+        def df_to_dict(dataframe):
+            """ 
+            Create dict with cluster as key and
+            subset of dataframe at cluster as value
+            """
+            df = dataframe
+            unique_clusters = df['cluster_name'].unique()
+            sub_dfs = []
+            for i in unique_clusters:
+                sub_dfs.append(df[df['cluster_name'] == i])
+            return(dict(zip(unique_clusters, sub_dfs)))
+
+        def get_clusters(dataframe):
+            """
+            return disjoint clusters
+            """
+            df = pd.read_csv(dataframe, index_col=False)
+            df_dict = df_to_dict(df)
+            disjoint = [find_cluster(k,v) for k,v in df_dict.items() if find_cluster(k,v)]
+            return(disjoint)
+        disjoint_clusters = get_clusters(input.df_subset)
+        file_number = input.df_subset.split('_')[-1].split('.')[0]        
+        disjoint_maxpaths = pd.DataFrame({"clusters_with_disjoint_maxpaths":disjoint_clusters})
+        disjoint_maxpaths.to_csv(
+            os.path.abspath(
+                'results/disjoint_maxpath_clusters_{}.csv'.format(file_number)),
+            index=False,header=False)
+
 rule concat_df:
     input:
         all_df = found_clusters
     output:
-        concat = os.path.abspath('../../samples/all_disjoint_maxpaths.csv')
-    run:
-        import pandas as pd
-        for idx,item in enumerate(input.all_df):
-            if idx == 0:
-                concatenated = pd.read_csv(item)
-            else:
-                concatenated = concatenated.concat(pd.read_csv(item))
-        concatenated.to_csv(
-            os.path.abspath(
-                '../../samples/all_disjoint_maxpaths.csv', sep=',', index=False))
+        concat = os.path.abspath('results/all_disjoint_maxpaths.csv')
+    shell:
+        """cat {input.all_df} >> results/all_disjoint_maxpaths.csv """
+
+# rule concat_df:
+#     input:
+#         all_df = found_clusters
+#     output:
+#         concat = os.path.abspath('results/all_disjoint_maxpaths.csv')
+#     run:
+#         import pandas as pd
+#         for idx,item in enumerate(input.all_df):
+#             if idx == 0:
+#                 concatenated = pd.read_csv(item)
+#             else:
+#                 concatenated = concatenated.concat(pd.read_csv(item))
+#         concatenated.to_csv(
+#             os.path.abspath(
+#                 'results/all_disjoint_maxpaths.csv', sep=',', index=False))
                 
                 
+
+# rule disjoint_maxpath:
+#     input:
+#         df_subset = os.path.abspath(
+#             'results/disjoint_maxpaths_abundance_{number}.csv')
+#     output:
+#         found = os.path.abspath(
+#             'results/disjoint_maxpath_clusters_{number}.csv')
+#     run:
+#         import pandas as pd
+#         import numpy as np
+
+#         def find_cluster(cluster, maxpaths):
+#             """
+#            returns clusters with disjoint maxpaths annotated
+#            to different genomes or annotated on the same
+#            genome min of 10kb apart
+#             """
+#             for idx, item in enumerate(maxpaths):
+#                 unique = set(item.split(','))
+#                 for j in range(idx+1, len(maxpaths)):
+#                     compare = set(maxpaths[j].split(','))
+#                     chrom_string1 = subset_df[
+#                         subset_df['maxpath'] == item]['chrom_pos'].values[0]
+#                     chrom_string2 = subset_df[
+#                         subset_df['maxpath'] == maxpaths[j]]['chrom_pos'].values[0]
+
+#                     chrom1 = chrom_string1.split(':')[0]
+#                     chrom_end1 = int(chrom_string1.split('-')[1])
+
+#                     chrom2 = chrom_string2.split(':')[0]
+#                     chrom_end2 = int(chrom_string2.split('-')[1])
+#                     if len(unique.intersection(compare)) == 0:
+#                         if chrom1 != chrom2:
+#                             return(cluster)
+#                         elif chrom1 == chrom2:
+#                             if abs(chrom_end1 - chrom_end2) > 10000:
+#                                 return(cluster)
+        
+
+#         file_number = input.df_subset.split('_')[-1].split('.')[0]
+#         df = pd.read_csv(input.df_subset)
+#         cluster_names = df['cluster_name'].unique()
+#         disjoint_clusters = []
+#         for i in cluster_names:
+#             subset_df = df[df['cluster_name'] ==i]
+#             maxpaths_array = subset_df['maxpath'].as_matrix()
+#             cluster = find_cluster(i,maxpaths_array)
+#             disjoint_clusters.append(cluster)
+#             disjoint_maxpaths = pd.DataFrame({"clusters_with_disjoint_maxpaths":disjoint_clusters})
+#             disjoint_maxpaths.to_csv(os.path.abspath('results/disjoint_maxpath_clusters_{}.csv'.format(file_number)),index=False)
+
         
         
 
