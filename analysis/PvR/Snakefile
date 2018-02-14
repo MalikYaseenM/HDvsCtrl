@@ -1,8 +1,40 @@
-#workdir: '../../samples'
+# Snakefile
+
+# snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+import os
+import pandas
+import glob
+
+include: '../common_workflow.snake'
+# references
+pathtogtf=os.path.abspath('../reference/combined.gtf')
+
 
 
 # Poly_ids = [ _ for _ in Poly]
 # Ribo_dep = [ _ for _ in Ribo]
+
+#workdir: '../../samples'
+verse_count =expand('{sample}__verse__sorted__counts.exon.txt', sample=dataset_ids)
+verse_exon_count =expand('{sample}__verse__sorted__counts.exon.txt', sample=dataset_ids)
+verse_transcript_count =expand('{sample}__verse__sorted__counts.transcript.txt', sample=dataset_ids)
+verse_UTR_count =expand('{sample}__verse__sorted__counts.UTR.txt', sample=dataset_ids)
+verse_gene_count =expand('{sample}__verse__sorted__counts.gene.txt', sample=dataset_ids)
+verse_intron_count =expand('{sample}__verse__sorted__counts.intron.txt', sample=dataset_ids)
+exon_matrix='verse_exon_matrix.tsv'
+verse_intergenic_count =expand('{sample}__verse__sorted__counts.intergenic.txt', sample=dataset_ids)
+rule all:
+ input:
+   verse_count,
+   verse_gene_count,
+   exon_matrix,
+   verse_exon_count,
+   verse_UTR_count,
+   verse_transcript_count,
+   verse_intron_count,
+   verse_intergenic_count
+
 
 
 rule Protocol_Appender:
@@ -22,3 +54,158 @@ rule PolyRibocsv:
         polyadenylated='polyseq.csv'
     shell:
         "python {input.workflow}"
+
+rule verse_intergenic_rule:
+    input:
+        versegtf= pathtogtf,
+        star_bam='{sample}__trimP__STAR.Aligned.sorted.bam'
+    output:
+        intergenic='{sample}__verse__sorted__counts.intergenic.txt'
+    threads: 8
+    params:
+        prefix='{sample}__verse__sorted__counts'
+    shell:
+        "verse -a {input.versegtf} -g '.' -T 8 -s 0 --multithreadDecompress -t 'intergenic' -o {params.prefix} "
+        "{input.star_bam}"
+
+
+
+rule verse_intron_rule:
+    input:
+        versegtf= pathtogtf,
+        star_bam='{sample}__trimP__STAR.Aligned.sorted.bam'
+    output:
+        intron='{sample}__verse__sorted__counts.intron.txt'
+    threads: 8
+    params:
+        prefix='{sample}__verse__sorted__counts'
+    shell:
+        "verse -a {input.versegtf} -g '.' -T 8 -s 0 --multithreadDecompress -t 'intron' -o {params.prefix} "
+        "{input.star_bam}"
+
+rule concat_verse:
+    input:
+        exon_file=verse_exon_count,
+        UTR_file=verse_UTR_count,
+        transcript_file= verse_transcript_count,
+        gene_file= verse_gene_count,
+        intron_file=verse_intron_count,
+        intergenic_file=verse_intron_count
+    output:
+        verse_exon_matrix='verse_exon_matrix.tsv',
+        verse_UTR_matrix='verse_UTR_matrix.tsv',
+        verse_transcript_matrix='verse_transcript_matrix.tsv',
+        verse_gene_matrix='verse_gene_matrix.tsv',
+        verse_intron_matrix='verse_intron_matrix.tsv',
+        verse_intergenic_matrix='verse_intergenic_matrix.tsv'
+    run:
+        col_names = ['count']
+
+        mat = None
+        
+        #for exon samples
+        output_exons = open('verse_exon_matrix.tsv', 'w')
+        verse_exons= glob.glob('*__verse__sorted__counts.exon.txt')
+        for fn in verse_exons:
+            sample_name = os.path.basename(fn).replace('__verse__sorted__counts.exon.txt', '')
+            sample_col_names = [sample_name + '_' + col_name for col_name in col_names]
+            sample_col_names.insert(0, 'gene_id')
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=sample_col_names)
+
+            if mat is None:
+                mat = df
+            else:
+                mat = pandas.concat([mat, df.iloc[:, 1:]], axis=1)
+        mat.to_csv(output_exons, sep='\t')
+        output_exons.close()
+
+        #UTRS
+        mat = None
+        output_UTRS = open('verse_UTR_matrix.tsv', 'w')
+        verse_UTR= glob.glob('*__verse__sorted__counts.UTR.txt')
+        
+        for fn in verse_UTR:
+            sample_name = os.path.basename(fn).replace('__verse__sorted__counts.UTR.txt', '')
+            sample_col_names = [sample_name + '_' + col_name for col_name in col_names]
+            sample_col_names.insert(0, 'gene_id')
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=sample_col_names)
+
+            if mat is None:
+                mat = df
+            else:
+                mat = pandas.concat([mat, df.iloc[:, 1:]], axis=1)
+        mat.to_csv(output_UTRS, sep='\t')
+        output_UTRS.close()
+
+
+        #transcripts
+        mat = None
+        output_transcripts = open('verse_transcript_matrix.tsv', 'w')
+        verse_transcript = glob.glob('*__verse__sorted__counts.transcript.txt')
+        
+        for fn in verse_transcript:
+            sample_name = os.path.basename(fn).replace('__verse__sorted__counts.transcript.txt', '')
+            sample_col_names = [sample_name + '_' + col_name for col_name in col_names]
+            sample_col_names.insert(0, 'gene_id')
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=sample_col_names)
+
+            if mat is None:
+                mat = df
+            else:
+                mat = pandas.concat([mat, df.iloc[:, 1:]], axis=1)
+        mat.to_csv(output_transcripts, sep='\t')
+        output_transcripts.close()
+
+        #genes
+        mat = None
+        output_genes = open('verse_gene_matrix.tsv', 'w')
+        verse_gene = glob.glob('*__verse__sorted__counts.gene.txt')
+        
+        for fn in verse_gene:
+            sample_name = os.path.basename(fn).replace('__verse__sorted__counts.gene.txt', '')
+            sample_col_names = [sample_name + '_' + col_name for col_name in col_names]
+            sample_col_names.insert(0, 'gene_id')
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=sample_col_names)
+
+            if mat is None:
+                mat = df
+            else:
+                mat = pandas.concat([mat, df.iloc[:, 1:]], axis=1)
+        mat.to_csv(output_genes, sep='\t')
+        output_genes.close()
+
+        #introns
+        mat = None
+        output_introns = open('verse_intron_matrix.tsv', 'w')
+        verse_intron= glob.glob('*__verse__sorted__counts.intron.txt')
+        1
+        for fn in verse_intron:
+            sample_name = os.path.basename(fn).replace('__verse__sorted__counts.intron.txt', '')
+            sample_col_names = [sample_name + '_' + col_name for col_name in col_names]
+            sample_col_names.insert(0, 'gene_id')
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=sample_col_names)
+
+            if mat is None:
+                mat = df
+            else:
+                mat = pandas.concat([mat, df.iloc[:, 1:]], axis=1)
+        mat.to_csv(output_introns, sep='\t')
+        output_introns.close()
+
+        #intergenic
+        mat = None
+        output_intergenics = open('verse_intergenic_matrix.tsv', 'w')
+        verse_intergenic= glob.glob('*__verse__sorted__counts.intergenic.txt')
+        
+        for fn in verse_intergenic:
+            sample_name = os.path.basename(fn).replace('__verse__sorted__counts.intergenic.txt', '')
+            sample_col_names = [sample_name + '_' + col_name for col_name in col_names]
+            sample_col_names.insert(0, 'gene_id')
+            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=sample_col_names)
+
+            if mat is None:
+                mat = df
+            else:
+                mat = pandas.concat([mat, df.iloc[:, 1:]], axis=1)
+        mat.to_csv(output_intergenics, sep='\t')
+        output_intergenics.close()
