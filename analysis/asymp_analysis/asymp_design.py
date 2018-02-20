@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import pandas as pd
 import sys
+import os
 
 def info_design(df, samples):
     # Takes the desired columns only, Dataset id, Subject type and subject death
@@ -21,7 +22,7 @@ def info_design(df, samples):
     df.drop([col for col in df.columns if col not in cols],axis=1,inplace=True)
 
     # Creates new counts file with desired columns
-    df.to_csv("asymp_norm.csv", index=False)
+    df.to_csv(os.path.abspath("../../samples/asymp_norm.csv"), index=False)
 
     ######################### Design info  #######################
     sample_i = pd.DataFrame(df.columns)
@@ -29,7 +30,7 @@ def info_design(df, samples):
     sample_i = sample_i.rename(columns = {0:'Data_id'})
     idesign = pd.merge(sample_i,sample_info, on='Data_id')
     # Create info design file
-    idesign.to_csv("asymp_info_design.csv", index=False)
+    idesign.to_csv(os.path.abspath("../../samples/asymp_info_design.csv"), index=False)
 
 def main():
     if len(sys.argv) < 2:

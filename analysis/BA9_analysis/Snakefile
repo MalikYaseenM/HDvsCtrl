@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 # Snakefile
 # Usage
@@ -7,49 +8,47 @@ import pandas as pd
 ## Actual run
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
-design_info = "BA9_info_design.csv"
-firth = "BA9_salmon_firth_t.csv"
-tab = "BA9_salmon_firth.csv"
+design_info = os.path.abspath("../../samples/BA9_info_design.csv")
+firth = os.path.abspath("../../samples/BA9_salmon_firth.tsv")
 
 rule all:
   input:
     design_info,
     firth,
-    tab
 
 # Outputs ordered sample info with subject type and age
 # Outputs filtered CAP samples
 rule design_info:
   input:"BA9_design.py"
   output:
-    info="BA9_info_design.csv",
-    norm="BA9_salmon_filter.csv"
+    info=os.path.abspath("../../samples/BA9_info_design.csv"),
+    norm=os.path.abspath("../../samples/BA9_salmon_filter.csv")
   shell:
     "python {input}"
 
 # Normalize filtered samples
 rule norm:
-  input:"BA9_salmon_filter.csv"
-  output:"BA9_salmon_norm.csv"
+  input:os.path.abspath("../../samples/BA9_salmon_filter.csv")
+  output:os.path.abspath("../../samples/BA9_salmon_norm.csv")
   shell:
     """detk-norm deseq2 {input} -o {output}"""
 
 # firth
 rule firth:
   input:
-    counts = "BA9_salmon_norm.csv",
-    info= "BA9_info_design.csv"
+    counts = os.path.abspath("../../samples/BA9_salmon_norm.csv"),
+    info= os.path.abspath("../../samples/BA9_info_design.csv")
   params:
     design="Subject_type[HD] ~ Subject_death + counts"
-  output:"BA9_salmon_firth_t.csv"
+  output:os.path.abspath("../../samples/BA9_salmon_firth.tsv")
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 # To separate by tab
-rule tab:
-  input:
-    py = "tab_delim.py",
-    firth = "BA9_salmon_firth_t.csv"
-  output: "BA9_salmon_firth.csv"
-  shell:
-    """python {input.py} {input.firth}"""
+# rule tab:
+#   input:
+#     py = "tab_delim.py",
+#     firth = "BA9_salmon_firth_t.csv"
+#   output: "BA9_salmon_firth.csv"
+#   shell:
+#     """python {input.py} {input.firth}"""

@@ -4,7 +4,7 @@ import os
 # HD mRNASeq sample info
 fn = os.path.abspath('../HD_mRNASeq_sample_info.csv')
 # Counts matrix
-fl = os.path.abspath('../../samples/all_salmon_quant_rrna.tsv')
+fl = os.path.abspath('../../samples/all_salmon_quant.tsv')
 
 # Read data
 samples = pd.read_csv(fn, sep=",", comment='#')
@@ -30,7 +30,7 @@ cols = col[:1] + batch_id
 
 # Drop rows if column names not in batch_id
 df.drop([col for col in df.columns if col not in cols],axis=1,inplace=True)
-df.to_csv("batch_asymp.csv", index=False)
+df.to_csv(os.path.abspath("../../samples/batch_asymp.csv"), index=False)
 
 # RAW FILTERING STEP 1: Drop rows with any 0s
 df = df[(df != 0).all(1)]
@@ -46,4 +46,4 @@ df = df.drop('avg_BA9', axis=1)
 df = df.drop('avg_CAP', axis=1)
 
 # Creates new counts file after filtering
-df.to_csv("batch_asymp_filter.csv", index=False)
+df.to_csv(os.path.abspath("../../samples/batch_asymp_filter.csv"), index=False)

@@ -11,9 +11,15 @@ All_ids = [_ for _ in dataset_ids]
 All_Fastqc = expand('{sample}__{replicate}__fastqc.zip',sample=All_ids, replicate=['R1','R2'])
 All_Bams = expand('{sample}__trimP__STAR.Aligned.out.bam', sample=All_ids)
 All_Salmon = expand('{sample}__salmon__counts', sample=All_ids)
+salmon_matrix=os.path.abspath('../../samples/all_salmon_quant.tsv')
+
+annotation='../reference/gencode.v25.lncRNA_transcripts.fa'
+salmon_counts = glob.glob('*/quant.genes.sf')
+count=expand('{sample}__salmon__counts', sample=dataset_ids)
 
 rule Huntington_All:
   input:
     All_Fastqc,
     All_Bams,
-    All_Salmon
+    All_Salmon,
+    salmon_matrix,

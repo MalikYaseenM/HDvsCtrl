@@ -5,8 +5,8 @@
 ## Actual run
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
-design_info = "CAP_info_design.csv"
-firth = "CAP_salmon_firth.csv"
+design_info = os.path.abspath("../../samples/CAP_info_design.csv")
+firth = os.path.abspath("../../samples/CAP_salmon_firth.tsv")
 
 rule all:
   input:
@@ -18,25 +18,25 @@ rule all:
 rule design_info:
   input:"design.py"
   output:
-    info="CAP_info_design.csv",
-    norm="CAP_salmon_filter.csv"
+    info=os.path.abspath("../../samples/CAP_info_design.csv"),
+    norm=os.path.abspath("../../samples/CAP_salmon_filter.csv")
   shell:
     "python {input}"
 
 # Normalize filtered samples
 rule norm:
-  input:"CAP_salmon_filter.csv"
-  output:"CAP_salmon_norm.csv"
+  input:os.path.abspath("../../samples/CAP_salmon_filter.csv")
+  output:os.path.abspath("../../samples/CAP_salmon_norm.csv")
   shell:
     """detk-norm deseq2 {input} -o {output}"""
 
 # firth
 rule firth:
   input:
-    counts = "CAP_salmon_norm.csv",
-    info= "CAP_info_design.csv"
+    counts = os.path.abspath("../../samples/CAP_salmon_norm.csv"),
+    info= os.path.abspath("../../samples/CAP_info_design.csv")
   params:
-    design="Subject.subject_type ~ Subject.death"
-  output:"CAP_salmon_firth.csv"
+    design="Subject_type[HDpos] ~ Subject_death + counts"
+  output:os.path.abspath("../../samples/CAP_salmon_firth.tsv")
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""

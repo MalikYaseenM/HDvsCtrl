@@ -15,10 +15,10 @@ include: '../common_workflow.snake'
 
 tru_adapter = os.path.abspath('../reference/TruSeq3-PE.fa')
 indexdir= os.path.abspath('../reference/GENCODE_v25_star_index')
-#pathtogtf=os.path.abspath('../reference/gencode.v25.annotation.gtf')
+pathtogtf=os.path.abspath('../reference/gencode.v25.annotation.gtf')
 salmonpath=os.path.abspath('../reference/gencode.v25.transcripts.salmon_quasi_index')
 #pathtogtf=os.path.abspath('../reference/augmented.with.intergenic.gencode.v25.annotation.gtf')
-pathtogtf=os.path.abspath('../reference/combined.gtf')
+#pathtogtf=os.path.abspath('../reference/combined.gtf')
 
 workdir: '../../samples'
 # Only for working with all samples

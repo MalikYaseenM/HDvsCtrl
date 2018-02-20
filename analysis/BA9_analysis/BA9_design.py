@@ -4,7 +4,7 @@ import os
 # HD mRNASeq sample info
 fn = os.path.abspath('../HD_mRNASeq_sample_info.csv')
 # Counts matrix
-fl = os.path.abspath('../../samples/all_salmon_quant_rrna.tsv')
+fl = os.path.abspath('../../samples/all_salmon_quant.tsv')
 
 # Read sample info
 samples = pd.read_csv(fn, sep=",", comment='#')
@@ -29,11 +29,11 @@ df = df[(df.avg_control > 5) & (df.avg_HD > 5)]
 df = df.drop('avg_control', axis=1)
 df = df.drop('avg_HD', axis=1)
 # Creates new file with only BA9 samples
-df.to_csv("BA9_salmon_filter.csv", index=False)
+df.to_csv(os.path.abspath("../../samples/BA9_salmon_filter.csv"), index=False)
 
 # For sample_info design
 sample_i = pd.DataFrame(df.columns)
 sample_i = sample_i.drop(0)
 sample_i = sample_i.rename(columns = {0:'Data_id'})
 df_new = pd.merge(sample_i,BA9, on='Data_id')
-df_new.to_csv("BA9_info_design.csv", index=False)
+df_new.to_csv(os.path.abspath("../../samples/BA9_info_design.csv"), index=False)
