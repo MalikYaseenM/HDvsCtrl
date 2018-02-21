@@ -1,0 +1,69 @@
+# Snakefile
+# Usage
+#
+## Dry run to check if snakefile works
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50 -np
+## Actual run
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
+import os
+
+batch_filter = os.path.abspath("../../samples/batch_asymp_filter.csv")
+norm = os.path.abspath("../../samples/batch_asymp_norm.csv")
+design_info = os.path.abspath("../../samples/asymp_info_design.csv")
+firth = os.path.abspath("../../samples/asymp_firth.tsv")
+#tab = os.path.abspath("../../samples/asymp_firth.csv")
+
+rule all:
+  input:
+    batch_filter,
+    norm,
+    design_info,
+    firth,
+    #tab
+
+# Outputs ordered sample info with subject type and age
+# Outputs filtered CAP samples
+rule batch_filter:
+  input:"asymp_filter.py"
+  output:os.path.abspath("../../samples/batch_asymp_filter.csv")
+  shell:
+    "python {input}"
+
+# Normalize filtered samples
+rule norm:
+  input:os.path.abspath("../../samples/batch_asymp_filter.csv")
+  output:os.path.abspath("../../samples/batch_asymp_norm.csv")
+  shell:
+    """detk-norm deseq2 {input} -o {output}"""
+
+# Drop columns for firth and make info design file
+rule design_info:
+  input:
+    python = "asymp_design.py",
+    counts = os.path.abspath("../../samples/batch_asymp_norm.csv"),
+    samp = "../HD_mRNASeq_sample_info.csv"
+  output:
+    info=os.path.abspath("../../samples/asymp_info_design.csv"),
+    norm=os.path.abspath("../../samples/asymp_norm.csv")
+  shell:
+    "python {input.python} {input.counts} {input.samp}"
+
+# Firth
+rule firth:
+  input:
+    counts = os.path.abspath("../../samples/asymp_norm.csv"),
+    info= os.path.abspath("../../samples/asymp_info_design.csv")
+  params:
+    design="Subject_type[CAP] ~ Subject_death + counts"
+  output:os.path.abspath("../../samples/asymp_firth.tsv")
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
+# # Tab delim
+# rule tab:
+#   input:
+#     py = "tab_delim.py",
+#     firth = "asymp_firth_t.csv"
+#   output: "asymp_firth.csv"
+#   shell:
+#     """python {input.py} {input.firth}"""

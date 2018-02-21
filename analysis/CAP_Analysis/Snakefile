@@ -6,7 +6,7 @@
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
 design_info = os.path.abspath("../../samples/CAP_info_design.csv")
-firth = os.path.abspath("../../samples/CAP_salmon_firth.tsv")
+firth = os.path.abspath("../../samples/CAP_salmon_firth.csv")
 
 rule all:
   input:
@@ -36,7 +36,7 @@ rule firth:
     counts = os.path.abspath("../../samples/CAP_salmon_norm.csv"),
     info= os.path.abspath("../../samples/CAP_info_design.csv")
   params:
-    design="Subject_type[HDpos] ~ Subject_death + counts"
-  output:os.path.abspath("../../samples/CAP_salmon_firth.tsv")
+    design="Subject_type[Control] ~ Subject_death + counts"
+  output:os.path.abspath("../../samples/CAP_salmon_firth.csv")
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
