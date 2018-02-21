@@ -1,15 +1,15 @@
 import pandas as pd
 import os
 
-# Snakefile
+# Snakefile last edit: 02/21/2018
 # Usage
 ## Dry run to check if snakefile works
 # snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 ## Actual run
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
-design_info = os.path.abspath("../../samples/BA9_info_design.csv")
-firth = os.path.abspath("../../samples/BA9_salmon_firth.tsv")
+design_info = os.path.abspath("../../samples/Analysis_Results/BA9_info_design.csv")
+firth = os.path.abspath("../../samples/Analysis_Results/BA9_firth.tsv")
 
 rule all:
   input:
@@ -21,34 +21,25 @@ rule all:
 rule design_info:
   input:"BA9_design.py"
   output:
-    info=os.path.abspath("../../samples/BA9_info_design.csv"),
-    norm=os.path.abspath("../../samples/BA9_salmon_filter.csv")
+    info=os.path.abspath("../../samples/Analysis_Results/BA9_info_design.csv"),
+    norm=os.path.abspath("../../samples/Analysis_Results/BA9_filter.csv")
   shell:
     "python {input}"
 
 # Normalize filtered samples
 rule norm:
-  input:os.path.abspath("../../samples/BA9_salmon_filter.csv")
-  output:os.path.abspath("../../samples/BA9_salmon_norm.csv")
+  input:os.path.abspath("../../samples/Analysis_Results/BA9_filter.csv")
+  output:os.path.abspath("../../samples/Analysis_Results/BA9_norm.csv")
   shell:
     """detk-norm deseq2 {input} -o {output}"""
 
 # firth
 rule firth:
   input:
-    counts = os.path.abspath("../../samples/BA9_salmon_norm.csv"),
-    info= os.path.abspath("../../samples/BA9_info_design.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/BA9_norm.csv"),
+    info= os.path.abspath("../../samples/Analysis_Results/BA9_info_design.csv")
   params:
     design="Subject_type[HD] ~ Subject_death + counts"
-  output:os.path.abspath("../../samples/BA9_salmon_firth.tsv")
+  output:os.path.abspath("../../samples/Analysis_Results/BA9_firth.tsv")
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
-
-# To separate by tab
-# rule tab:
-#   input:
-#     py = "tab_delim.py",
-#     firth = "BA9_salmon_firth_t.csv"
-#   output: "BA9_salmon_firth.csv"
-#   shell:
-#     """python {input.py} {input.firth}"""

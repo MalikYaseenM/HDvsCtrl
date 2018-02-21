@@ -9,62 +9,51 @@ import os
 ## Actual run
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
-design_info = os.path.abspath("../../samples/all_info_design.csv")
-#filter_rows = os.path.abspath("../../samples/all_salmon_filter.csv")
-firth = os.path.abspath("../../samples/all_salmon_firth_t.csv")
-tab_delim = os.path.abspath("../../samples/all_salmon_firth.csv")
+design_info = os.path.abspath("../../samples/Analysis_Results/all_info_design.csv")
+firth = os.path.abspath("../../samples/Analysis_Results/all_firth.tsv")
+#tab_delim = os.path.abspath("../../samples/all_salmon_firth.csv")
 #sig = os.path.abspath("../../samples/all_salmon_firth_sig_counts.csv")
 
 rule all:
   input:
     design_info,
-#    filter_rows,
-    firth,
-    tab_delim
-#    sig
+    firth
 
 # Outputs ordered sample info with subject type and age
 rule design_info:
   input:"design_all.py"
   output:
-    info = os.path.abspath("../../samples/all_info_design.csv"),
-    filt = os.path.abspath("../../samples/all_salmon_filter.csv")
+    info = os.path.abspath("../../samples/Analysis_Results/all_info_design.csv"),
+    filt = os.path.abspath("../../samples/Analysis_Results/all_filter.csv")
   shell:
     "python {input}"
 
-# filter rows with means less than 5 (deletes if both control means OR hd means <5)
-#rule filter_rows:
-#  input:"filter_all.py"
-#  output:os.path.abspath("../../samples/all_salmon_filter.csv")
-#  shell:
-#    "python {input}"
-
 # Normalize counts
 rule norm:
-  input:os.path.abspath("../../samples/all_salmon_filter.csv")
-  output:os.path.abspath("../../samples/all_salmon_norm.csv")
+  input:os.path.abspath("../../samples/Analysis_Results/all_filter.csv")
+  output:os.path.abspath("../../samples/Analysis_Results/all_norm.csv")
   shell:
     """detk-norm deseq2 {input} -o {output}"""
 
 # DE Firth
 rule firth:
   input:
-    counts = os.path.abspath("../../samples/all_salmon_norm.csv"),
-    info= os.path.abspath("../../samples/all_info_design.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/all_norm.csv"),
+    info= os.path.abspath("../../samples/Analysis_Results/all_info_design.csv")
   params:
     design="Subject_type[Control] ~ Subject_death + counts"
-  output:os.path.abspath("../../samples/all_salmon_firth_t.csv")
+  output:os.path.abspath("../../samples/Analysis_Results/all_firth.tsv")
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 # Separates firth file with tabs
-rule tab_delim:
-  input:
-    py = "tab_delim.py",
-    firth = os.path.abspath("../../samples/all_salmon_firth_t.csv")
-  output:os.path.abspath("../../samples/all_salmon_firth.csv")
-  shell:
-    """python {input.py} {input.firth}"""
+#rule tab_delim:
+#  input:
+#    py = "tab_delim.py",
+#    firth = os.path.abspath("../../samples/all_salmon_firth_t.csv")
+#  output:os.path.abspath("../../samples/all_salmon_firth.csv")
+#  shell:
+#    """python {input.py} {input.firth}"""
 
 # Returns significant counts and genes 
 rule sig:

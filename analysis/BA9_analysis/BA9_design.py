@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+#Last edit: 02/21/2018
+
 # HD mRNASeq sample info
 fn = os.path.abspath('../HD_mRNASeq_sample_info.csv')
 # Counts matrix
@@ -22,18 +24,16 @@ HD_ids = [ _ for _ in BA9['Data_id'] if _.startswith('H')]
 # Pulls only BA9 samples from counts file
 df = pd.read_csv(fl, sep='\t', comment='#')
 df.drop([col for col in df.columns if 'CAP' in col],axis=1,inplace=True)
-# Filtering
-df['avg_control'] = df[control_ids].mean(axis=1)
-df['avg_HD'] = df[HD_ids].mean(axis=1)
-df = df[(df.avg_control > 5) & (df.avg_HD > 5)]
-df = df.drop('avg_control', axis=1)
-df = df.drop('avg_HD', axis=1)
+
+# Filtering, drop those with control mean < 5 or HD mean < 5
+df = df[(df[control_ids].mean(axis=1) > 5) | (df[HD_ids].mean(axis=1) > 5)]
+
 # Creates new file with only BA9 samples
-df.to_csv(os.path.abspath("../../samples/BA9_salmon_filter.csv"), index=False)
+df.to_csv(os.path.abspath("../../samples/Analysis_Results/BA9_filter.csv"), index=False)
 
 # For sample_info design
 sample_i = pd.DataFrame(df.columns)
 sample_i = sample_i.drop(0)
 sample_i = sample_i.rename(columns = {0:'Data_id'})
 df_new = pd.merge(sample_i,BA9, on='Data_id')
-df_new.to_csv(os.path.abspath("../../samples/BA9_info_design.csv"), index=False)
+df_new.to_csv(os.path.abspath("../../samples/Analysis_Results/BA9_info_design.csv"), index=False)

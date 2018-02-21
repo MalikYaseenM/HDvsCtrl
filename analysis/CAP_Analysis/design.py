@@ -21,21 +21,15 @@ sample_info.columns = ["Data_id","Subject_type","Subject_death"]
 df = pd.read_csv(fl, sep='\t', comment='#')
 df.drop([col for col in df.columns if 'BA9' in col],axis=1,inplace=True)
 
-# Filtering, dropping any rows with a 0
-df = df[(df != 0).all(1)]
+# Filtering, drop those with control mean < 5 or HD mean <5
+df = df[(df[control_ids].mean(axis=1) > 5) | (df[HD_ids].mean(axis=1) > 5)]
 
-# Filtering, drop those with control mean < 5 and HD mean <5
-df['avg_control'] = df[control_ids].mean(axis=1)
-df['avg_HD'] = df[HD_ids].mean(axis=1)
-df = df[(df.avg_control > 5) & (df.avg_HD > 5)]
-df = df.drop('avg_control', axis=1)
-df = df.drop('avg_HD', axis=1)
 # Creates new file with only CAP samples
-df.to_csv(os.path.abspath("../../samples/CAP_salmon_filter.csv"), index=False)
+df.to_csv(os.path.abspath("../../samples/Analysis_Results/CAP_filter.csv"), index=False)
 
 # For sample_info design
 sample_i = pd.DataFrame(df.columns)
 sample_i = sample_i.drop(0)
 sample_i = sample_i.rename(columns = {0:'Data_id'})
 df_new = pd.merge(sample_i,sample_info, on='Data_id')
-df_new.to_csv(os.path.abspath("../../samples/CAP_info_design.csv"), index=False)
+df_new.to_csv(os.path.abspath("../../samples/Analysis_Results/CAP_info_design.csv"), index=False)
