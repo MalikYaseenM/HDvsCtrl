@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 fn = os.path.abspath('../HD_mRNASeq_sample_info.csv')
-fl = os.path.abspath('../../samples/all_salmon_quant_rrna.tsv')
+fl = os.path.abspath('../../samples/all_salmon_quant.tsv')
 
 # Read salmon counts and drop H_0014_BA9_mRNASeq sample
 df = pd.read_csv(fl, sep="\t")
@@ -16,11 +16,26 @@ samples = sample_info.iloc[:,[14,1,4]]
 samples.columns = ["Data_id", "Subject_type", "Subject_death"]
 # Drop H_0014_BA9_mRNASeq sample
 samples = samples[samples['Data_id']!='H_0014_BA9_mRNASeq']
+# All sample ids
+ids = samples['Data_id'].tolist()
+
+# To get HD or control means
+dataset_ids = samples['Data_id'].tolist()
+control_ids = [ _ for _ in dataset_ids if _.startswith('C')]
+HD_ids = [ _ for _ in dataset_ids if _.startswith('H')]
+
+##################### Filtering #####################
+df['avg_control'] = df[control_ids].mean(axis=1)
+df['avg_HD'] = df[HD_ids].mean(axis=1)
+df = df[(df.avg_control > 5) | (df.avg_HD > 5)]
+df = df.drop('avg_control', axis=1)
+df = df.drop('avg_HD', axis=1)
+df.to_csv(os.path.abspath("../../samples/all_salmon_filter.csv"), index=False)
 
 ##################### For sample_info design ######################
 sample_i = pd.DataFrame(df.columns)
 sample_i = sample_i.drop(0)
 sample_i = sample_i.rename(columns = {0:'Data_id'})
 df_new = pd.merge(sample_i,samples, on='Data_id')
-df_new.to_csv("all_info_design.csv", index=False)
+df_new.to_csv(os.path.abspath("../../samples/all_info_design.csv"), index=False)
 
