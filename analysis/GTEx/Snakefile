@@ -1,41 +1,70 @@
 #snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 #expand("sorted_reads/{sample}.{replicate}.bam", sample=SAMPLES, replicate=[0, 1])
 import os, pandas, glob
-include: 'GTEX_samples.py'
+
+df = pandas.read_csv(
+    os.path.abspath('../../samples/GTEx/GTEx_info.tsv'),
+    sep='\t', usecols=['identifier'])
+
+# Sample names with _R1 _R2
+samples = df['identifier'].tolist()
+
+# Combined names for salmon which takes both pairs and produces 1
+names = []
+for sample_id in samples:
+    split = sample_id.split("_")
+    ident = split[0]
+    brain = split[1]
+    mrnaseq = split[2]
+    names.append(ident + "_" + brain + "_" + mrnaseq)
+
 
 #REFERENCES
-truseq=os.path.abspath('../reference/TruSeq3-PE.fa')
-indexdir=os.path.abspath('../reference/GENCODE_v25_star_index')
-salmonpath=os.path.abspath(
-    '../reference/gencode.v25.transcripts.salmon_quasi_index/')
-pathtogtf=os.path.abspath(
-    '../reference/gencode.v25.annotation.gtf')
-hd_counts=glob.glob(os.path.abspath('../../samples/*/quant.genes.sf'))
-workdir: '../../samples/GTEx/'         
-STAR=expand('{sample}__trimP__STAR.Aligned.sortedByCoord.out.bam',
-            sample = samples)
-# need to run fastqc_files first
-fastqc_files=expand('{sample}_R{replicate}_fastqc.zip',
-                    sample=samples, replicate=[1,2])
-rename_fastqc=expand('{sample}_R{replicate}__fastqc.zip',
-                     sample=samples, replicate=[1,2])
-trim_error=expand('{sample}__trimerror.log', sample=samples)
-salmon_counts=expand('{sample}__salmon__counts', sample= samples)
-salmon_log= expand('{sample}__salmon__counts/libParams/flenDist.txt',
-                   sample= samples)
-quant_sf = glob.glob('*/quant.genes.sf')
+truseq = os.path.abspath("../reference/TruSeq3-PE.fa")
+indexdir = os.path.abspath("../reference/GENCODE_v25_star_index")
+salmonpath = os.path.abspath(
+    "../reference/gencode.v25.transcripts.salmon_quasi_index/")
+pathtogtf = os.path.abspath(
+    "../reference/gencode.v25.annotation.gtf")
+hd_counts = glob.glob(os.path.abspath("../../samples/*/quant.genes.sf"))
+
+
+workdir: "../../samples/GTEx/"
+
+STAR = expand("{name}__trimP__STAR.Aligned.sortedByCoord.out.bam",
+              name = names)
+
+fastqc_files = expand("{sample}__fastqc.html ",
+                    sample=samples)
+
+rename_fastqc = expand("{sample}__fastqc.zip",
+                     sample=samples)
+
+trim_error = expand("{name}__trimerror.log", name=names)
+
+salmon_counts = expand("{name}__salmon__counts", name= names)
+salmon_log = expand("{name}__salmon__counts/libParams/flenDist.txt",
+                   name= names)
+quant_sf = glob.glob("*/quant.genes.sf")
+
 total_counts = quant_sf + hd_counts
-STAR_Log = expand('{sample}__trimP__STAR.Log.final.out', sample=samples)
+
+STAR_Log = expand("{name}__trimP__STAR.Log.final.out", name=names)
+
+salmon_concat = "GTEx_salmon_quant.tsv"
+
+ruleorder: fastqc > renamefastqc > trimmomatic > salmon > concat_salmon > multiqc
 
 rule all:
     input:
-        # fastqc_files,
-        # rename_fastqc,
-        #trim_error,
-        #salmon_counts,
-        # "multiqc_report.html",
-        "all_salmon_quant.tsv"
-        #STAR
+        #fastqc_files,
+        rename_fastqc,
+        trim_error,
+        salmon_counts,
+        salmon_concat,
+        STAR,
+        #"multiqc_report.html"
+
 rule fastqc:
     input:
         fastq= "{sample}.fastq.gz"
@@ -58,19 +87,19 @@ rule renamefastqc:
 
 rule trimmomatic:
     input:
-        #read1 = expand('{sample}_R1.fastq.gz', sample = samples),
-        #read2 = expand('{sample}_R2.fastq.gz', sample = samples),
-        read1="{sample}_R1.fastq.gz",
-        read2="{sample}_R2.fastq.gz",
+        #read1 = expand("{sample}_R1.fastq.gz", sample = samples),
+        #read2 = expand("{sample}_R2.fastq.gz", sample = samples),
+        read1="{name}_R1.fastq.gz",
+        read2="{name}_R2.fastq.gz",
         adapter = truseq
     output:
-        read1p = "{sample}__R1__trimP.fastq.gz",
-        read1u = "{sample}__R1__trimU.fastq.gz",
-        read2p = "{sample}__R2__trimP.fastq.gz",
-        read2u = "{sample}__R2__trimU.fastq.gz",
-        trimlog = "{sample}__trimerror.log"
+        read1p = "{name}__R1__trimP.fastq.gz",
+        read1u = "{name}__R1__trimU.fastq.gz",
+        read2p = "{name}__R2__trimP.fastq.gz",
+        read2u = "{name}__R2__trimU.fastq.gz",
+        trimlog = "{name}__trimerror.log"
     log:
-        "{sample}__trimerror.log"
+        "{name}__trimerror.log"
     shell:
         "trimmomatic PE -phred33 "
         "{input.read1} {input.read2} "
@@ -80,12 +109,12 @@ rule trimmomatic:
 
 rule salmon:
     input:
-        READ1="{sample}_R1.fastq.gz",
-        READ2="{sample}_R2.fastq.gz",
+        READ1="{name}_R1.fastq.gz",
+        READ2="{name}_R2.fastq.gz",
         gtf=pathtogtf,
         index= salmonpath
     output:
-        salmon_out='{sample}__salmon__counts'
+        salmon_out="{name}__salmon__counts"
     threads: 8
     shell:
         "salmon quant --index {input.index} -g {input.gtf} "
@@ -96,37 +125,37 @@ rule concat_salmon:
     input:
         quant = total_counts
     output:
-        matrix= 'all_salmon_quant.tsv'
+        matrix= "GTEx_salmon_quant.tsv"
     run:
         mat = None
         for fn in input.quant:
-            if 'GTEX' in os.path.dirname(fn):                
+            if "GTEX" in os.path.dirname(fn):
                 sample_name = os.path.dirname(fn).replace(
-                    '__salmon__counts', '')
+                    "__salmon__counts", "")
             else:
                 sample_name = os.path.basename(os.path.dirname(fn)).replace(
-                    '__salmon__counts', '')
-            col_names = ['gene_id', 'Length', 'EffectiveLength', 'TPM', '{}'.
+                    "__salmon__counts", "")
+            col_names = ["gene_id", "Length", "EffectiveLength", "TPM", "{}".
                          format(sample_name)]
-            df = pandas.read_csv(fn, sep='\t', skiprows=1, names=col_names)
+            df = pandas.read_csv(fn, sep="\t", skiprows=1, names=col_names)
 
             if mat is None:
-                df = df.drop(['Length', 'EffectiveLength', 'TPM'], axis=1)
+                df = df.drop(["Length", "EffectiveLength", "TPM"], axis=1)
                 mat = df
             else:
                 mat = pandas.concat([mat, df.iloc[:, 4:]], axis=1)
-            mat.to_csv(output[0], sep='\t', index=False)
+            mat.to_csv(output[0], sep="\t", index=False)
 
 rule STAR:
     input:
         index= indexdir,
-        read1="{sample}__R1__trimP.fastq.gz",
-        read2="{sample}__R2__trimP.fastq.gz"
+        read1="{name}__R1__trimP.fastq.gz",
+        read2="{name}__R2__trimP.fastq.gz"
     output:
-        sorted_bam='{sample}__trimP__STAR.Aligned.sortedByCoord.out.bam',
-        finallog='{sample}__trimP__STAR.Log.final.out'
+        sorted_bam="{name}__trimP__STAR.Aligned.sortedByCoord.out.bam",
+        finallog="{name}__trimP__STAR.Log.final.out"
     params:
-        prefix='{sample}__trimP__STAR.'
+        prefix="{name}__trimP__STAR."
     threads:8
     shell:
         "STAR --runThreadN {threads} "
@@ -135,7 +164,7 @@ rule STAR:
         "--readFilesIn {input.read1} {input.read2} "
         "--readFilesCommand zcat --outFileNamePrefix {params.prefix} "
         "--outSAMtype BAM SortedByCoordinate "
-	"--limitBAMsortRAM 57409410454"
+        "--limitBAMsortRAM 57409410454"
 
 rule multiqc:
     input:
@@ -151,17 +180,3 @@ rule multiqc:
         "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL && "
 
         "multiqc {input.fqc} {input.trim} {input.salmon} {input.STAR_Out}"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
