@@ -1,18 +1,19 @@
-This directory contains the pipeline for the processing of data Downloaded from 
+Diego Crespo originally worked on these files
+Email: crespodi@bu.edu
+
+This directory contains the pipeline for the processing of data downloaded from
 https://www.gtexportal.org/home/
 
 # General Information
 This directory contains files from the GTEX database.
 There are 496 source files. They are paired end so there are 248 Read1's
-and 248 Read2's 
+and 248 Read2's
 After looking at the multiqc report 112 samples were filtered out
 This left 384 files (192 pairs)
-A tsv file called GTEX_info.tsv contains information which can be parsed to work with the samples.
+A tsv file called GTEx_info.tsv contains information which can be parsed to work with the samples.
 
 
 
-Diego Crespo originally worked on these files
-Email: crespodi@bu.edu
 
 # Donor Inclusion/Exclusion Criteria are as follows:
 1. 21 ≤ Age (years) ≤ 70
@@ -24,7 +25,7 @@ Email: crespodi@bu.edu
 7. Generally unselected for presence or absence of diseases or disorders, except for potentially communicable diseases that disqualify someone to donate organs or tissues would also be disqualifying for GTEx.
 
 
-#Info
+# Info
 The First step was to run the snakefile and process all of the GTEX samples and create a multiqc report. From the Multiqc report
 trouble_samples.txt was created. It contains a list of samples which after processing all of the data from GTEX had various issues.
 
@@ -40,15 +41,14 @@ The rest of the samples were disqualified due to have qualitatively different pr
 
 HD_Salmon.txt contains a list of the control and HD samples that were used in a previous analysis that have not been used yet with GTEX but are there just in case.
 
-#Snakefile
+# Snakefile
 
-The Snakefile contains the pipeline that was used to process all of the GTEx data.
+There are now two snakefile
 
-The pipeline consists of Fastqc, Trimmomatic, Salmon, STAR, and Multiqc. By the end  of this analyis, the samples that we were going to use in the differential gene expression were established.
+The first Snakefile run_first_snake should be run before the main one. The purpose of the first one is to establish a info file of the samples that will be used in subsequent analyses
 
+The rules in the main Snakefile require the information in that file.
 
+The main Snakefile contains the pipeline that was used to process all of the GTEx data.
 
-
-
-
-
+The pipeline consists of Fastqc, Trimmomatic, Salmon, STAR, and Multiqc.
