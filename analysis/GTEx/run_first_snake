@@ -1,0 +1,64 @@
+#REFERENCE FILES
+samples_to_remove = os.path.abspath("../reference/trouble_samples.csv")
+all_gtex_samples =   os.path.abspath("../reference/GTEx_all_samples.txt")
+
+workdir: "../../samples/GTEx/"
+
+GTEx_info = "GTEx_info.tsv"
+
+rule all:
+    input:
+        GTEx_info
+
+rule create_info_file:
+    input:
+        trouble_samples = samples_to_remove,
+        all_samples = all_gtex_samples
+    output:
+        info = GTEx_info
+    run:
+        import pandas as pd
+        """
+        Some samples only one read is bad but both reads need to be removed
+        106 reads in list but 112 samples removed in total
+        had to split sample names because not all same length
+        struct of split ["GTEX-XXX", "CAU", "mRNASeq"]
+        """
+        def split_names(in_file):
+            df = pd.read_csv(in_file, header=None, names=["sample_name"])
+            list_names = df["sample_name"].tolist()
+            names = []
+            for samples in list_names:
+                split = samples.split("_")
+                ident = split[0]
+                brain = split[1]
+                mrnaseq = split[2]
+                names.append(ident + "_" + brain + "_" + mrnaseq + "_")
+            names = set(names)
+            trimmed_list = []
+            for i in names:
+                trimmed_list.append(i+"R1")
+                trimmed_list.append(i+"R2")
+            return(set(trimmed_list))
+
+        def create_df(samples_to_remove, list_of_all):
+            """
+            produces a dataframe with samples that will be used going
+            further as well as useful information about the samples
+            """
+            trouble_samples = split_names(samples_to_remove)
+            all_samples = split_names(list_of_all)
+            working_samples = all_samples - trouble_samples
+
+            working_samples = list(all_samples - trouble_samples)
+            sample = [_.split("_")[0].split("-")[1] for _ in working_samples]
+            brain_region = [_.split("_")[1] for _ in working_samples]
+            path = "/restricted/projectnb/mlpd/DBGAP_datasets/dbGaP-14609/fastq/"
+            abspath = [path + _ for _ in working_samples]
+
+            df = pd.DataFrame({"identifier":working_samples, "sample_name":sample,
+                              "brain_region":brain_region, "abspath":abspath})
+            df = df[["identifier", "sample_name", "brain_region", "abspath"]]
+            df.to_csv("GTEx_info.tsv", sep='\t', index=False)
+
+        create_df(input.trouble_samples, input.all_samples)
