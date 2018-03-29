@@ -3,8 +3,8 @@ import os
 
 # Snakefile last edit: 02/21/2018
 # Usage
-## Dry run to check if snakefile works
-# snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
+## Dry run to check if snakefile works 
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50 -np
 ## Actual run
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
@@ -14,7 +14,7 @@ firth = os.path.abspath("../../samples/Analysis_Results/BA9_firth.tsv")
 rule all:
   input:
     design_info,
-    firth,
+    firth
 
 # Outputs ordered sample info with subject type and age
 # Outputs filtered CAP samples

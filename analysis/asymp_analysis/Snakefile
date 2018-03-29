@@ -11,18 +11,21 @@ import os
 
 design_info = os.path.abspath("../../samples/Analysis_Results/asymp_info_design.csv")
 firth = os.path.abspath("../../samples/Analysis_Results/asymp_firth.tsv")
+firth_norm = os.path.abspath("../../samples/Analysis_Results/asymp_firth_norm.tsv")
 
 rule all:
   input:
     design_info,
     firth,
+    firth_norm
 
 # Outputs ordered sample info with subject type and age
 rule design_info:
   input:"asymp_design.py"
   output:
     info = os.path.abspath("../../samples/Analysis_Results/asymp_info_design.csv"),
-    filt = os.path.abspath("../../samples/Analysis_Results/asymp_filter.csv")
+    filt = os.path.abspath("../../samples/Analysis_Results/asymp_filter.csv"),
+    nor = os.path.abspath("../../samples/Analysis_Results/asymp_from_norm.csv") 
   shell:
     "python {input}"
 
@@ -41,6 +44,16 @@ rule firth:
   params:
     design="Subject_type[BA9] ~ Subject_death + counts"
   output:os.path.abspath("../../samples/Analysis_Results/asymp_firth.tsv")
+  shell:
+    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+
+rule firth_norm:
+  input:
+    counts = os.path.abspath("../../samples/Analysis_Results/asymp_from_norm.csv"),
+    info= os.path.abspath("../../samples/Analysis_Results/asymp_info_design.csv")
+  params:
+    design="Subject_type[BA9] ~ Subject_death + counts"
+  output:os.path.abspath("../../samples/Analysis_Results/asymp_firth_norm.tsv")  
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
