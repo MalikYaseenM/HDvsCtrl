@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-#Last edit: 03/28/2018
+# Last edit: 04/16/2018
 
 fl = os.path.abspath('../HD_mRNASeq_sample_info.csv')
 fq = os.path.abspath('../../samples/all_salmon_quant.tsv')
@@ -23,8 +23,7 @@ BA9 = [ _ for _ in hdpos if "BA9" in _]
 CAP = [ _ for _ in hdpos if "CAP" in _]
 
 # Drops samples that's not HDPos
-col = list(df)
-cols = col[:1] + hdpos
+cols = list(df)[:1] + hdpos
 df.drop([col for col in df.columns if col not in cols],axis=1,inplace=True)
 
 # Drops rows if mean of CAP && BA9 < 5
