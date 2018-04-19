@@ -37,3 +37,13 @@ Snakefile pipeline only covers steps 1-4.
 4. Firth
 5. Analysis of DE genes from firth
 6. DAVID
+
+Feb 2018
+- new pol-A samples -> replaces the ribo-depleted 
+- re-run analysis
+
+Apr 2018
+- Still found 7 ribo-depleted samples
+- Remove the 7 ribo-depleted samples
+-  Re-run analysis
+
