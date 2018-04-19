@@ -29,7 +29,7 @@ HD_ids = [ _ for _ in samples['Data_id'] if _.startswith('H')]
 # Pulls only symptomatic BA9 samples from counts file
 df = pd.read_csv(fq, sep='\t', comment='#')
 cols = list(df)[:1] + control_ids + HD_ids
-df.drop([col for col in df.columns if col not in cols],axis=1, inplace=True)
+df = df[cols]
 
 # Filtering, drop those with control mean < 5 or HD mean < 5
 df = df[(df[control_ids].mean(axis=1) > 5) | (df[HD_ids].mean(axis=1) > 5)]
@@ -39,7 +39,7 @@ df.to_csv(os.path.abspath("../../samples/Analysis_Results/BA9_filter.csv"), inde
 
 ###################### Counts from norm  ###########################
 dn = pd.read_csv(fn, sep=",", comment='#')
-dn.drop([col for col in dn.columns if col not in cols],axis=1,inplace=True)
+dn = dn[cols]
 dn = dn[(dn[control_ids].mean(axis=1) > 5) | (dn[HD_ids].mean(axis=1) > 5)]
 dn.to_csv(os.path.abspath("../../samples/Analysis_Results/BA9_from_norm.csv"),index=False)
 

@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-# Last edit: 03/28/2018
+# Last edit: 04/17/2018
 
 fl = os.path.abspath('../HD_mRNASeq_sample_info.csv')
 fq = os.path.abspath('../../samples/all_salmon_quant.tsv')
@@ -26,7 +26,8 @@ control_ids = [ _ for _ in samples['Data_id'] if _.startswith('C')]
 HD_ids = [ _ for _ in samples['Data_id'] if _.startswith('H')]
 
 # Pulls only CAP samples from counts file
-df.drop([col for col in df.columns if 'BA9' in col],axis=1,inplace=True)
+cols = list(df)[:1] + control_ids + HD_ids
+df = df[cols]
 
 # Filtering, drop those with control mean < 5 or HD mean <5
 df = df[(df[control_ids].mean(axis=1) > 5) | (df[HD_ids].mean(axis=1) > 5)]
@@ -35,7 +36,7 @@ df = df[(df[control_ids].mean(axis=1) > 5) | (df[HD_ids].mean(axis=1) > 5)]
 df.to_csv(os.path.abspath("../../samples/Analysis_Results/CAP_filter.csv"), index=False)
 
 ###################### Counts from norm  ###########################
-dn.drop([col for col in dn.columns if col not in df.columns],axis=1,inplace=True)
+dn = dn[cols]
 dn = dn[(dn[control_ids].mean(axis=1) > 5) | (dn[HD_ids].mean(axis=1) > 5)]
 dn.to_csv(os.path.abspath("../../samples/Analysis_Results/CAP_from_norm.csv"),index=False)
 
