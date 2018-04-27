@@ -33,6 +33,6 @@ Batch 2: 13 ribo-depleted samples, 7HD 6C
 
 Problem:
 1. Still too many outliers
-2. RNA processing batch effects can be seen
+2. RNA processing batch effects can be seen from PCA of all samples 
 
-####################### See new analysis
+#######################

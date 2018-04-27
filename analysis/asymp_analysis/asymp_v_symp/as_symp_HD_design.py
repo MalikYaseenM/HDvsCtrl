@@ -1,8 +1,8 @@
 import pandas as pd
 import os
 
-#Last edit: 03/28/2018
-
+#Last edit: 04/16/2018
+# Samples to drop: H_0014_BA9_mRNASeq (outlier) & all ribo-depleted
 fl = os.path.abspath('../../HD_mRNASeq_sample_info.csv')
 fq = os.path.abspath('../../../samples/all_salmon_quant.tsv')
 fn = os.path.abspath('../../../samples/Analysis_Results/all_norm.csv')
@@ -12,27 +12,32 @@ df = pd.read_csv(fq, sep="\t")
 sample_info = pd.read_csv(fl, sep=",", comment='#')
 dn = pd.read_csv(fn, sep=",", comment='#')
 
+sample_info = sample_info[(sample_info['Dataset.protocol'] != 'TruSeq Ribo-depleted') & (sample_info['Dataset.dataset_id'] != 'H_0014_BA9_mRNASeq')]
+
 # column15: datasetid, 2: subject type, 5: death age
 samples = sample_info.iloc[:,[14,1,4]].copy()
 samples.columns = ["Data_id","Subject_type","Subject_death"]
 
-# Get HD BA9 samples only
-samples = samples[samples['Subject_type'].str.contains('HD') & samples['Data_id'].str.contains('BA9') & (samples['Data_id'] != 'H_0014_BA9_mRNASeq')]
+# Get BA9 samples only
+samples = samples[samples['Data_id'].str.contains('BA9')]
+# Get Control and HDPos only
+samples = samples[samples['Subject_type'].str.contains('HD')]
+
 # Get ages of HDpos (3 samples)
 age = samples.groupby(['Subject_type']).get_group('HDpos')['Subject_death'].tolist()
-# Take approximate ages
-age = age + [48, 50, 79, samples.groupby(['Subject_type']).get_group('HD')['Subject_death'].min(), samples.groupby(['Subject_type']).get_group('HD')['Subject_death'].max()]
-# HD BA9 samples with approximate ages with HDPos BA9 samples
+# Get approximate ages +- 3 years
+age = age + [x+y for x in age for y in [1,2,3]] + [x-y for x in age for y in [1,2,3]]
+# Control BA9 samples with approximate ages with HDPos BA9 samples
 samples = samples[samples['Subject_death'].isin(age)]
 
 # Used to get average counts for each groups
 HD = samples.groupby(['Subject_type']).get_group('HD')['Data_id'].tolist()
-HD_pos = [x for x in samples['Data_id'] if x not in HD]
+HD_pos = samples.groupby(['Subject_type']).get_group('HDpos')['Data_id'].tolist()
 
 ###################### Filtering ###########################
 # Drops other samples not in samples list
 cols = list(df)[:1] + samples['Data_id'].tolist()
-df.drop([col for col in df.columns if col not in cols],axis=1, inplace=True)
+df = df[cols]
 
 # Drops rows if mean of HD && HDpos  < 5
 df = df[(df[HD].mean(axis=1) > 5) | (df[HD_pos].mean(axis=1) > 5)]
@@ -40,7 +45,7 @@ df.to_csv(os.path.abspath("../../../samples/Analysis_Results/as_symp_HD_filter.c
 
 ###################### Taking normalized counts from all_norm.csv file ###########################
 # Drop other samples not in samples list
-dn.drop([col for col in dn.columns if col not in cols],axis=1, inplace=True)
+dn = dn[cols]
 # Drops rows if mean HD && HDPos < 5 [filtered again because there might be 0s in the normalized metadata]
 dn = dn[(dn[HD].mean(axis=1) > 5) | (dn[HD_pos].mean(axis=1) > 5)]
 

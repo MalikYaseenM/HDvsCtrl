@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-# Last edit: 04/16/2018
+# Last edit: 04/17/2018
 
 fl = os.path.abspath('../HD_mRNASeq_sample_info.csv')
 fq = os.path.abspath('../../samples/all_salmon_quant.tsv')
@@ -24,7 +24,7 @@ CAP = [ _ for _ in hdpos if "CAP" in _]
 
 # Drops samples that's not HDPos
 cols = list(df)[:1] + hdpos
-df.drop([col for col in df.columns if col not in cols],axis=1,inplace=True)
+df = df[cols]
 
 # Drops rows if mean of CAP && BA9 < 5
 df = df[(df[BA9].mean(axis=1) > 5) | (df[CAP].mean(axis=1) > 5)]
@@ -32,7 +32,7 @@ df = df[(df[BA9].mean(axis=1) > 5) | (df[CAP].mean(axis=1) > 5)]
 df.to_csv(os.path.abspath("../../samples/Analysis_Results/asymp_filter.csv"),index=False)
 
 ###################### Counts from norm  ###########################
-dn.drop([col for col in dn.columns if col not in cols],axis=1,inplace=True)
+dn = dn[cols]
 dn = dn[(dn[BA9].mean(axis=1) > 5) | (dn[CAP].mean(axis=1) > 5)]
 
 dn.to_csv(os.path.abspath("../../samples/Analysis_Results/asymp_from_norm.csv"),index=False)

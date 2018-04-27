@@ -50,7 +50,7 @@ rule firth:
 # DE Firth from sample normalized counts
 rule firth_norm:
   input:
-    counts = os.path.abspath("../../../samples/Analysis_Results/as_symp_HD_from_norm.csv"), 
+    counts = os.path.abspath("../../../samples/Analysis_Results/as_symp_HD_from_norm.csv"),
     info= os.path.abspath("../../../samples/Analysis_Results/as_symp_HD_info_design.csv")
   params:
     design="Subject_type[HD] ~ Subject_death + counts"

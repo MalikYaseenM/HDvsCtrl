@@ -37,7 +37,7 @@ HD_pos = samples.groupby(['Subject_type']).get_group('HDpos')['Data_id'].tolist(
 ###################### Filtering ###########################
 # Drops other samples not in samples list
 cols = list(df)[:1] + samples['Data_id'].tolist()
-df.drop([col for col in df.columns if col not in cols],axis=1, inplace=True)
+df = df[cols]
 
 # Drops rows if mean of HD && HDpos  < 5
 df = df[(df[control].mean(axis=1) > 5) | (df[HD_pos].mean(axis=1) > 5)]
@@ -45,7 +45,7 @@ df.to_csv(os.path.abspath("../../../samples/Analysis_Results/as_symp_C_filter.cs
 
 ###################### Taking normalized counts from all_norm.csv file ###########################
 # Drop other samples not in samples list
-dn.drop([col for col in dn.columns if col not in cols],axis=1, inplace=True)
+dn = dn[cols]
 # Drops rows if mean HD && HDPos < 5 [filtered again because there might be 0s in the normalized metadata]
 dn = dn[(dn[control].mean(axis=1) > 5) | (dn[HD_pos].mean(axis=1) > 5)]
 
