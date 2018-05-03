@@ -52,7 +52,7 @@ rule firth_norm:
     counts = os.path.abspath("../../samples/Analysis_Results/BA9_from_norm.csv"),
     info= os.path.abspath("../../samples/Analysis_Results/BA9_info_design.csv")
   params:
-    design="Subject_type[HD] ~ Subject_death + counts"
+    design="Subject_type[Control] ~ Subject_death + counts"
   output:os.path.abspath("../../samples/Analysis_Results/BA9_firth_norm.tsv")
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
