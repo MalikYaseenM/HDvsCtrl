@@ -1,0 +1,54 @@
+import pandas as pd, os, glob
+
+
+# Snakefile last edit: 05/04/2018
+# Usage: snakemake --nolock --cluster "qsub -P mlhd -cwd -l h_rt=72:00:00" --jobs 50 --snakefile RF2_snakefile
+# Dry run: snakemake --nolock --cluster "qsub -P mlhd -cwd -l h_rt=72:00:00" --jobs 50 --snakefile RF2_snakefile -np
+
+gs = list(range(300, 500, 50))
+process_df = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts.csv")
+
+top = expand(os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats.txt"), gene_size = gs)
+#top_shuffle = expand(os.path.abspath("/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats_shuffle.txt"), gene_size = gs)
+#top_shuffle_equal = expand(os.path.abspath("/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats_shuffle_equal.txt"), gene_size = gs)
+#top_equal = expand(os.path.abspath("/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats_equal.txt"), gene_size = gs)
+
+#random = expand(os.path.abspath("/Random_forest_results/rf_random_{gene_size}_genes_20000_trees_1000_repeats.txt"), gene_size = gs)
+#random_shuffle = expand(os.path.abspath("/Random_forest_results/rf_random_{gene_size}_genes_20000_trees_1000_repeats_shuffle.txt"), gene_size = gs)
+#random_shuffle_equal = expand(os.path.abspath("/Random_forest_results/rf_random_{gene_size}_genes_20000_trees_1000_repeats_shuffle_equal.txt"), gene_size = gs)
+#random_equal = expand(os.path.abspath("/Random_forest_results/rf_random_{gene_size}_genes_20000_trees_1000_repeats_equal.txt"), gene_size = gs)
+
+rule all:
+  input:
+    process_df,
+    top
+#    top_shuffle,
+#    top_shuffle_equal,
+#    top_equal
+#    random,
+#    random_shuffle,
+#    random_shuffle_equal,
+#    random_equal
+
+rule process_df:
+  input: "process_df.py"
+  output: os.path.abspath("../../samples/Analysis_Results/sympBA9_counts.csv")
+  shell:
+   "python {input}"
+
+rule top:
+  input: 
+    py = "rf_sympBA9.py",
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts.csv"),
+    gs = {gene_size}
+  output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats.txt")
+  shell:
+    "python {input.py} {input.counts} {input.gs} 0.75 20000 1000 top ns ne"
+
+rule top_equal:
+  input:
+    py = "rf_sympBA9.py",
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts.csv")
+  output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats_equal.txt") 
+  shell:
+    "python {input.py} {input.counts} {gene_size} 0.75 20000 1000 top ns equal"
