@@ -1,54 +1,43 @@
 # snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
 import os, pandas as pd
-#norm = "../../samples/GTEx/normalized_all_salmon_quant.tsv"
-
+        info = GTEX_info,
+        pheno_info = gtex_pheno
+        sample_info = GTEX_design_info
+      quant = "GTEx_salmon_quant.tsv"
+      filter_fn = filter_rows
+      filter_rows      
+      GTEX_norm
+    counts = GTEX_norm,
+    info = GTEX_design_info
+      GTEX_firth
+        gtex = "GTEx_info.tsv"
+        design = GTEX_deseq_design
+      gtex = GTEX_deseq_r
+      
 #REFERENCE
 gtex_pheno = os.path.abspath(
     "../reference/phs000424.v7.pht002742.v7.p2.c1.GTEx_Subject_Phenotypes.GRU.txt")
 
 
 GTEX_deseq_r = os.path.abspath("../../analysis/GTEx_diff_exp/GTEX_deseq2_filter.R")
+
 workdir: "../../samples/GTEx/"
+
+GTEX_info = "GTEx_info.tsv"
 GTEX_deseq_design = "GTEx_deseq_design.csv"
-GTEX_deseq_out = "GTEX_filter_deseq2_results.csv"
+
 
 # Output files
-GTEX_info = "GTEx_info.tsv"
 GTEX_design_info = "GTEx_design_sex_age.tsv"
 filter_rows = "GTEx_salmon_filter.csv"
-
+GTEX_deseq_out = "GTEX_filter_deseq2_results.csv"
 GTEX_norm = "GTEx_salmon_norm.csv"
-GTEX_firth = "GTEx_salmon_firth_sex_age.tsv"
-GTEX_fem_strat = "GTEx_female_salmon_norm.csv"
-GTEX_fem_firth = "GTEx_female_salmon_firth.tsv"
-GTEX_male_firth = "GTEx_male_salmon_firth.tsv"
 
-RSE_filtered = "filtered_RSE.csv"
-RSE_norm = "RSE_norm.csv"
-RSE_info = "../reference/new_sample_info.csv"
-RSE_firth = "RSE_firth.tsv"
+#GTEX_firth = "GTEx_salmon_firth_sex_age.tsv"
+GTEX_firth = "GTEx_firth_without_HD.tsv"
 
 GTEX_deseq_filter = "GTEx_filter_deseq2_results.csv"
-RSE_deseq_filter = "RSE_filter_deseq2_results.csv"
-shuffle_sample = "sample_info_V999.csv"
 
-dirpath = ""
-ver = [_ for _ in range(1000)]
-GTEX_out = expand("{dirpath}/GTEx_firth_{ver}.tsv", dirpath=dirpath, ver = ver)
-RSE_subset_deseq2 = "RSE_subset_deseq2_results.csv"
-GTEX_rlog = "GTEx_salmon_rlog.csv"
-GTEX_combat_firth = "GTEx_salmon_rlog_combat_firth.tsv"
-GTEX_combat_firth_cov = "GTEx_salmon_rlog_combat_firth_covar.tsv"
-
-no_cov_design = "no_covar_sample_info_design.csv"
-correct_df = "GTEx_combat_newcol.csv"
-no_covar_deseq = "GTEx_nocovar_deseq2_results.csv"
-covar_deseq = "GTEx_covar_deseq2_results.csv"
-
-null_nocovar =  "DE_empirical.tsv"
-null_covar = "DE_covar_empirical.tsv"
-
-FDR_results = "FDR_Corrected_Covar.txt"
 
 rule all:
   input:
@@ -56,46 +45,40 @@ rule all:
     filter_rows,
     GTEX_norm,
     GTEX_firth,
-    #GTEX_fem_strat,
-    #GTEX_fem_firth,
-    #GTEX_male_firth,
-    #RSE_filtered,
-    #RSE_norm,
-    #RSE_firth,
     GTEX_deseq_filter,
-    #RSE_deseq_filter,
-    #shuffle_sample,
-    #GTEX_out,
-    #RSE_subset_deseq2,
-    #GTEX_rlog,
-    #no_cov_design,
-    #GTEX_combat_firth,
-    #GTEX_combat_firth_cov,
-    #correct_df,
-    # no_covar_deseq,
-    # covar_deseq
-    # null_nocovar,
-    # null_covar,
-    # FDR_results
 
 
-rule create_deseq_design:
-    input:
-        gtex = "GTEx_info.tsv"
-    output:
-        design = GTEX_deseq_design
-    run:
+#================================Pre-Processing===========================================#
+# filter rows with means less than 10 (deletes if both control means and hd means <10)
+rule create_filtered_rows:
+  input:
+      quant = "GTEx_salmon_quant.tsv"
+  output:
+      filter_fn = filter_rows
+  run:
+      fn = input.quant
+      ALL_GTEX = pd.read_csv(fn, sep="\t", index_col=['gene_id'])
+      # get ba9 and cau samples and put them in a list
+      ba9 = ALL_GTEX.filter(regex="^GTEX-.*BA9.*").columns.tolist()
+      cau = ALL_GTEX.filter(regex="^GTEX-.*CAU.*").columns.tolist()
+      # Drop the Unnamed column which is just an index
+      if "Unnamed: 0" in ALL_GTEX.columns:
+          ALL_GTEX = ALL_GTEX.drop("Unnamed: 0", axis=1)
+      else:
+          # Take the meas of ba9 and cau samples and create new columns
+          ALL_GTEX["avg_ba9"] = ALL_GTEX[ba9].mean(axis=1)
+          ALL_GTEX["avg_cau"] = ALL_GTEX[cau].mean(axis=1)
+          
+          ALL_GTEX = ALL_GTEX[(ALL_GTEX.avg_ba9 > 10) & (ALL_GTEX.avg_cau > 10)]
+          ALL_GTEX = ALL_GTEX.drop("avg_ba9", axis=1)
+          ALL_GTEX = ALL_GTEX.drop("avg_cau", axis=1)
+          
+          GTEX_DF = ALL_GTEX.filter(regex="GTEX-.*")
 
-        import os, pandas as pd
-        
-        info_file = pd.read_csv(input.gtex, sep='\t', usecols=['identifier', 'brain_region'])
-
-        # We just need the sample names
-        subset_info = info_file[info_file['identifier'].str.endswith('_R1')]
-        subset_info['identifier'] = [_.rsplit('_', 1)[0] for _ in subset_info['identifier'].tolist()]
-        subset_info.to_csv(output.design, sep=',', index=False)
+          GTEX_DF.to_csv(output.filter_fn, index=True)
     
-        
+
+#================================Firth Logistic Regression===========================================
 # Outputs ordered sample info with subject type and age
 rule create_design_file_firth:
     input:
@@ -127,46 +110,8 @@ rule create_design_file_firth:
         final_df.to_csv("GTEx_design_sex_age.tsv", sep="\t", index=False)
 
 
-# filter rows with means less than 10 (deletes if both control means and hd means <10)
-rule create_filtered_rows:
-  input:
-      quant = "GTEx_salmon_quant.tsv"
-  output:
-      filter_fn = filter_rows
-  run:
-      fn = input.quant
-      ALL_GTEX = pd.read_csv(fn, sep="\t")
-      # get ba9 and cau samples and put them in a list
-      ba9 = ALL_GTEX.filter(regex="^GTEX-.*BA9.*").columns.tolist()
-      cau = ALL_GTEX.filter(regex="^GTEX-.*CAU.*").columns.tolist()
-      # Drop the Unnamed column which is just an index
-      if "Unnamed: 0" in ALL_GTEX.columns:
-          ALL_GTEX = ALL_GTEX.drop("Unnamed: 0", axis=1)
-      else:
-          # Take the meas of ba9 and cau samples and create new columns
-          ALL_GTEX["avg_ba9"] = ALL_GTEX[ba9].mean(axis=1)
-          ALL_GTEX["avg_cau"] = ALL_GTEX[cau].mean(axis=1)
-
-          init_rows = ALL_GTEX.shape[0]
-          # Filter rows by means 10
-          ALL_GTEX = ALL_GTEX[(ALL_GTEX.avg_ba9 > 10) & (ALL_GTEX.avg_cau > 10)]
-          ALL_GTEX = ALL_GTEX.drop("avg_ba9", axis=1)
-          ALL_GTEX = ALL_GTEX.drop("avg_cau", axis=1)
-
-          # number of rows after filtering 21654
-          filter_rows = ALL_GTEX.shape[0]
-
-          # adding information about filtering as comment
-          f = open(output.filter_fn, "a")
-          f.write("# number of rows before filtering= {}\n".format(init_rows))
-          f.write("# number of rows before filtering= {}\n".format(filter_rows))
-          f.write("# difference= %s\n".format(init_rows - filter_rows))
-
-          ALL_GTEX.to_csv(f, index=False)
-          f.close()
-
+          
 # Normalize the filtered matrix
-# Norm breaks with comments remove them
 rule create_norm:
   input:
       filter_rows
@@ -175,285 +120,39 @@ rule create_norm:
   shell:
     """detk-norm deseq2 {input} -o {output}"""
 
-## Where did New sample_info come from?
 # Performs firth logistic regression on normalized GTEX data
-
-
 rule create_firth:
   input:
     counts = GTEX_norm,
     info = GTEX_design_info
   params:
     design ="brain_region[CAU] ~ SEX+AGE+counts"
-
   output:
       GTEX_firth
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
-#Where did male and female sample info files come from?
-rule create_stratify_sex:
+#=======================================DESeq2======================================================
+rule create_deseq_design:
     input:
-        "sex_stratification.py"
+        gtex = "GTEx_info.tsv"
     output:
-        os.path.abspath("/results/GTEX_male_salmon_norm.csv"),
-        os.path.abspath("/results/GTEX_female_salmon_norm.csv")
-    shell:
-        "python {input}"
+        design = GTEX_deseq_design
+    run:
 
-#Firth Logistic regression on female samples
-rule create_female_stratification:
-  input:
-    counts= os.path.abspath("/results/GTEX_female_salmon_norm.csv"),
-    info= os.path.abspath("/results/female_sample_design_info.csv")
-  params:
-    design="brain_region[CAU] ~ AGE+counts"
-  output:GTEX_fem_firth
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+        import os, pandas as pd
+        
+        info_file = pd.read_csv(input.gtex, sep='\t', usecols=['identifier', 'brain_region'])
 
-rule create_male_stratification:
-  input:
-    counts= os.path.abspath("/results/GTEX_male_salmon_norm.csv"),
-    info= os.path.abspath("/results/male_sample_design_info.csv")
-  params:
-    design="brain_region[CAU] ~ AGE+counts"
-  output:GTEX_male_firth
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
-### Wip
-#rule create_recount:
+        # We just need the sample names
+        subset_info = info_file[info_file['identifier'].str.endswith('_R1')]
+        subset_info['identifier'] = [_.rsplit('_', 1)[0] for _ in subset_info['identifier'].tolist()]
+        subset_info.to_csv(output.design, sep=',', index=False)
 
-
-rule create_RSE_filter:
-  input:"filtering_rse.py"
-  output:RSE_filtered
-  shell:
-    "python {input}"
-
-rule create_RSE_norm:
-  input:RSE_filtered
-  output:RSE_norm
-  shell:
-    """detk-norm deseq2 {input} -o {output}"""
-
-rule create_RSE_firth:
-  input:
-    counts = os.path.abspath("/results/RSE_norm.csv"),
-    info= RSE_info
-  params:
-    design="brain_region[CAU] ~ SEX+AGE+counts"
-
-  output:RSE_firth
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
-
-rule create_RSE_filter_deseq:
-  input:
-      "RSE_deseq2_filter.R"
-  output:RSE_deseq_filter
-  shell:
-      "Rscript {input}"
-
+# Run DESeq2 on the gtex samples
 rule create_GTEX_filter_deseq:
   input:
       gtex = GTEX_deseq_r
   output: GTEX_deseq_out
   shell:
       "Rscript {input.gtex}"
-
-rule create_multi_sample_info:
-  input:
-      "shuffle.py"
-  output:shuffle_sample
-  shell:
-      "python {input}"
-
-rule create_GTEX_null_test:
-    input:
-        info = "{dirpath}/sample_info_V{ver}.csv",
-        counts = os.path.abspath("/results/GTEX_salmon_norm.csv")
-    output:
-        GTEX = "{dirpath}/GTEX_firth_{ver}.tsv"
-    params:
-        design="brain_region[CAU] ~ SEX+AGE+counts"
-    shell:
-      """detk-de firth "{params.design}" {input.counts} {input.info} -o {output.GTEX}"""
-
-rule create_RSE_subset_deseq:
-  input:
-      "RSE_subset.R"
-  output:RSE_subset_deseq2
-  shell:
-      "Rscript {input}"
-
-rule create_GTEX_rlog:
-  input:
-      "rlog.R"
-  output:GTEX_rlog
-  shell:
-      "Rscript {input}"
-
-rule add_gene_col:
-  input:
-      GTEX_rlog
-  output:os.path.abspath("/results/GTEX_salmon_rlog_gene.csv")
-  run:
-    df = pd.read_csv(input.GTEX_rlog, sep=",")
-    df.to_csv(output.no_cov_design, sep=",", index=False)
-
-
-
-
-rule subset_design:
-    input:
-        design=os.path.abspath("/results/sample_info_design.csv")
-    output:
-        no_cov_design=os.path.abspath("/results/no_covar_sample_info_design.csv")
-    run:
-        df = pd.read_csv(input.design, sep=",", usecols=["identifier", "brain_region"])
-        df.to_csv(output.no_cov_design, sep=",", index=False)
-
-#Renames the columns to the proper format that we use becauser R changed them
-rule correct_col_names:
-    input:
-        combat=os.path.abspath("/results/GTEx_combat.csv")
-    output:
-        new_df = correct_df
-    run:
-        # Input combat dataframe
-        df = pd.read_csv(input.combat)
-
-        # take gene_id column from pre rlogged df
-        gene_df = pd.read_csv(os.path.abspath("/results/GTEX_salmon_filter.csv"), sep=",", usecols=[0])
-        gene_id = gene_df["gene_id"].tolist()
-
-        cols = df.columns
-        # Curse you check.names!
-        for i in cols:
-            newstring=i.replace(".", "-")
-            df = df.rename(columns={i:newstring})
-        final_df = df
-        # reinsert the gene_id column
-        final_df.insert(0, "gene_id", gene_id)
-
-        final_df.to_csv(output.new_df, sep=",", index=False)
-
-rule create_GTEX_firth_rlog:
-  input:
-       info= os.path.abspath("/results/no_covar_sample_info_design.csv"),
-       counts= os.path.abspath("/results/GTEx_combat_newcol.csv")
-  params:
-    design="brain_region[CAU] ~ counts"
-  output:GTEX_combat_firth
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
-
-
-rule create_GTEX_firth_rlog_cov:
-  input:
-       info= os.path.abspath("/results/sample_info_design.csv"),
-       counts= os.path.abspath("/results/GTEx_combat_newcol.csv")
-  params:
-    design="brain_region[CAU] ~ SEX+AGE+counts"
-  output:GTEX_combat_firth_cov
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
-
-rule deseq2_no_covar:
-  input:
-      "nocovar_deseq2.R"
-  output:no_covar_deseq
-  shell:
-      "Rscript {input}"
-
-rule deseq2_covar:
-  input:
-      "covar_deseq2.R"
-  output: covar_deseq
-  shell:
-      "Rscript {input}"
-
-rule null_test:
-    #prod p-values using null matrix and gtex firth results for each gene
-    input:
-        covar = os.path.abspath(
-            "/results/GTEX_salmon_rlog_combat_firth_covar.tsv"),
-
-        nocovar = os.path.abspath(
-            "/results/GTEX_salmon_rlog_combat_firth.tsv"),
-
-        null = os.path.abspath(
-            "/results/Concatenated_GTEX.tsv")
-
-    output:
-        DE_covar = null_covar,
-        DE_nocovar = null_nocovar
-    run:
-        import pandas as pd
-        from scipy.stats import norm
-        import numpy as np
-        # Input combat dataframe
-        def null_testv2(dataframe, null_matrix):
-            """ returns df of DE genes from datafram with empirical using null model"""
-            true_df = pd.read_csv(dataframe, sep="\t", index_col=0)
-            true_betas = true_df["counts__beta"].to_dict()
-            #Dataframe which consists of all counts betas for all genes from
-            #all null tests files
-            null_df = pd.read_csv(null_matrix, sep="\t", index_col=0)
-            null_dict = null_df.to_dict(orient="list")
-            empirical_p = {}
-            for keys in true_betas:
-                # value of counts beta for gene from firth df
-                gene_beta = true_betas[keys]
-                #list of counts betas from null tests for gene
-                null_values = np.array(null_dict[keys])
-                #Normal distribution
-                null_beta_mu = null_values.mean()
-                null_beta_sd = null_values.std()
-                lower_p = norm.cdf(gene_beta, loc=null_beta_mu,
-                                   scale=null_beta_sd)
-                upper_p = 1 - lower_p
-                empirical_p[keys] = {"upper":upper_p, "lower":lower_p}
-            upper = [item[1]["upper"] for item in empirical_p.items()]
-            lower = [item[1]["lower"] for item in empirical_p.items()]
-            #Append upper and lower values as columns to original dataframe
-            true_df["upper_pval"] = upper
-            true_df["lower_pval"] = lower
-            #create df of de genes at <=alpha with cols for upper and lower pval
-            de_df = true_df[["upper_pval","lower_pval"]]
-            return(empirical_p, de_df)
-        empirical_covar, covar_df = null_testv2(output.DE_covar, "Concatenated_GTEX.tsv")
-        empirical_nocovar, nocovar_df = null_testv2(output.DE_nocovar, "Concatenated_GTEX.tsv")
-        covar_df.to_csv(output.DE_covar, sep="\t", index=True)
-        nocovar_df.to_csv(output.DE_nocovar, sep="\t", index=True)
-
-rule benjamini_hochberg:
-    #correct raw p-values generated from null_test rule
-    input:
-        DE_covar = os.path.abspath(
-            "/results/DE_covar_empirical.tsv")
-    output:
-        results = FDR_results
-    run:
-        import statsmodels.stats.multitest as sm
-        import pandas as pd
-        df = pd.read_csv(input.DE_covar, sep="\t", index_col=0)
-        # Capture upper and lower pvalues
-        upper = df["upper_pval"]
-        lower = df["lower_pval"]
-
-        #Perform benjamini hochberg correction on upper and lower
-        upper_adj = sm.multipletests(upper, method="fdr_bh")
-        lower_adj = sm.multipletests(lower, method="fdr_bh")
-
-        # capture boolean arrqay for filtering in original df
-        upper_len = len(df[upper_adj[0]]["upper_pval"].tolist())
-        lower_len = len(df[lower_adj[0]]["lower_pval"].tolist())
-
-        fh = open(output.results, "w")
-        fh.write("Before Correction Shape= ", "%s\n".format(df.shape))
-        fh.write("After Correction shape= ", "%s\n".format(upper_len+lower_len))
-        fh.write("Change in rows= ", "%s\n".format(
-            len(df.index)-(upper_len+lower_len)))
-        fh.close()
