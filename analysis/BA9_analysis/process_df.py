@@ -37,10 +37,8 @@ firth = firth[['gene_id', 'counts__padj']]
 merged = pd.merge(firth, df, on='gene_id')
 merged['gene_id'] = merged['gene_id'].str.split('.').str[0]
 merged = pd.merge(ensemble, merged, on='gene_id')
-merged = merged.dropna(subset=['HGNC symbol'])
 merged = merged.sort_values(['counts__padj'], ascending=[True])
 
-s = merged.drop(['gene_id', 'Gene name', 'counts__padj'], 1)
+s = merged.drop(['gene_id', 'HGNC symbol', 'counts__padj'], 1)
 s = s[list(s)[:1] + C_BA9 + HD_BA9 + hdpos_BA9 + hdpos_CAP + C_cap]
 s.to_csv(os.path.abspath("../../samples/Analysis_Results/sympBA9_counts.csv"), index=False)
-
