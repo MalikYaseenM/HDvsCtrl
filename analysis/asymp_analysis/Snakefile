@@ -25,7 +25,7 @@ rule design_info:
   output:
     info = os.path.abspath("../../samples/Analysis_Results/asymp_info_design.csv"),
     filt = os.path.abspath("../../samples/Analysis_Results/asymp_filter.csv"),
-    nor = os.path.abspath("../../samples/Analysis_Results/asymp_from_norm.csv") 
+    nor = os.path.abspath("../../samples/Analysis_Results/asymp_from_norm.csv")
   shell:
     "python {input}"
 
@@ -53,7 +53,7 @@ rule firth_norm:
     info= os.path.abspath("../../samples/Analysis_Results/asymp_info_design.csv")
   params:
     design="Subject_type[BA9] ~ Subject_death + counts"
-  output:os.path.abspath("../../samples/Analysis_Results/asymp_firth_norm.tsv")  
+  output:os.path.abspath("../../samples/Analysis_Results/asymp_firth_norm.tsv")
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
