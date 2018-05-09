@@ -39,15 +39,13 @@ were disqualified due to having lengths of 250bp in a set that otherwise had len
 
 The rest of the samples were disqualified due to have qualitatively different properties from the majority of the samples in the Per Base Sequence Content. In total 53 paired end samples were disqualified for further analysis after processing.
 
-HD_Salmon.txt contains a list of the control and HD samples that were used in a previous analysis that have not been used yet with GTEX but are there just in case.
-
 # Snakefile
 
 There are now two snakefile
 
 The first Snakefile run_first_snake should be run before the main one. The purpose of the first one is to establish a info file of the samples that will be used in subsequent analyses
 
-The rules in the main Snakefile require the information in that file.
+The rules in the main Snakefile requires the information in that file.
 
 The main Snakefile contains the pipeline that was used to process all of the GTEx data.
 
