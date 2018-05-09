@@ -3,10 +3,10 @@
 gtex_pheno = os.path.abspath(
     "../reference/phs000424.v7.pht002742.v7.p2.c1.GTEx_Subject_Phenotypes.GRU.txt")
 GTEX_deseq_r = os.path.abspath("../../analysis/GTEx_diff_exp/GTEX_deseq2_filter.R")
-GTEX_info = "GTEx_info.tsv"
 
 workdir: "../../samples/GTEx/"
 
+GTEX_info = "GTEx_info.tsv"
 # Output files
 filter_rows = "GTEx_salmon_filter.csv"
 
