@@ -1,61 +1,49 @@
 # snakemake --nolock -np --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50
-import os, pandas as pd
-        info = GTEX_info,
-        pheno_info = gtex_pheno
-        sample_info = GTEX_design_info
-      quant = "GTEx_salmon_quant.tsv"
-      filter_fn = filter_rows
-      filter_rows      
-      GTEX_norm
-    counts = GTEX_norm,
-    info = GTEX_design_info
-      GTEX_firth
-        gtex = "GTEx_info.tsv"
-        design = GTEX_deseq_design
-      gtex = GTEX_deseq_r
-      
 #REFERENCE
 gtex_pheno = os.path.abspath(
     "../reference/phs000424.v7.pht002742.v7.p2.c1.GTEx_Subject_Phenotypes.GRU.txt")
-
-
 GTEX_deseq_r = os.path.abspath("../../analysis/GTEx_diff_exp/GTEX_deseq2_filter.R")
+GTEX_info = "GTEx_info.tsv"
 
 workdir: "../../samples/GTEx/"
 
-GTEX_info = "GTEx_info.tsv"
-GTEX_deseq_design = "GTEx_deseq_design.csv"
-
-
 # Output files
-GTEX_design_info = "GTEx_design_sex_age.tsv"
 filter_rows = "GTEx_salmon_filter.csv"
-GTEX_deseq_out = "GTEX_filter_deseq2_results.csv"
+
+#Firth
 GTEX_norm = "GTEx_salmon_norm.csv"
+GTEX_design_info = "GTEx_design_sex_age.tsv"
 
-#GTEX_firth = "GTEx_salmon_firth_sex_age.tsv"
-GTEX_firth = "GTEx_firth_without_HD.tsv"
+#DESEq2
+GTEX_deseq_design = "GTEx_deseq_design.csv"
+GTEX_deseq_out = "GTEx_filter_deseq2_results.csv"
 
-GTEX_deseq_filter = "GTEx_filter_deseq2_results.csv"
+
+GTEX_firth = "GTEx_salmon_firth_sex_age.tsv"
+#GTEX_firth = "GTEx_firth_without_HD.tsv"
+
 
 
 rule all:
   input:
-    GTEX_design_info,
     filter_rows,
     GTEX_norm,
+    GTEX_design_info,
     GTEX_firth,
-    GTEX_deseq_filter,
+    GTEX_deseq_design,
+    GTEX_deseq_out,
+
 
 
 #================================Pre-Processing===========================================#
-# filter rows with means less than 10 (deletes if both control means and hd means <10)
+# filter rows with means less than 5
 rule create_filtered_rows:
   input:
       quant = "GTEx_salmon_quant.tsv"
   output:
       filter_fn = filter_rows
   run:
+      import pandas as pd
       fn = input.quant
       ALL_GTEX = pd.read_csv(fn, sep="\t", index_col=['gene_id'])
       # get ba9 and cau samples and put them in a list
@@ -69,7 +57,7 @@ rule create_filtered_rows:
           ALL_GTEX["avg_ba9"] = ALL_GTEX[ba9].mean(axis=1)
           ALL_GTEX["avg_cau"] = ALL_GTEX[cau].mean(axis=1)
           
-          ALL_GTEX = ALL_GTEX[(ALL_GTEX.avg_ba9 > 10) & (ALL_GTEX.avg_cau > 10)]
+          ALL_GTEX = ALL_GTEX[(ALL_GTEX.avg_ba9 > 5) | (ALL_GTEX.avg_cau > 5)]          
           ALL_GTEX = ALL_GTEX.drop("avg_ba9", axis=1)
           ALL_GTEX = ALL_GTEX.drop("avg_cau", axis=1)
           
@@ -139,9 +127,7 @@ rule create_deseq_design:
     output:
         design = GTEX_deseq_design
     run:
-
-        import os, pandas as pd
-        
+        import os, pandas as pd        
         info_file = pd.read_csv(input.gtex, sep='\t', usecols=['identifier', 'brain_region'])
 
         # We just need the sample names
@@ -152,7 +138,9 @@ rule create_deseq_design:
 # Run DESeq2 on the gtex samples
 rule create_GTEX_filter_deseq:
   input:
-      gtex = GTEX_deseq_r
+      gtex = GTEX_deseq_r,
+      filtered = filter_rows
+      
   output: GTEX_deseq_out
   shell:
       "Rscript {input.gtex}"
