@@ -35,7 +35,7 @@ def create_forest(data, labels, size, n):
     sens = conf_matrix[1][1] / (conf_matrix[1][0] + conf_matrix[1][1])
     false_pos = 1 - sens
     false_neg = 1 - spec
-    return(train_acc, test_acc, sens, spec, false_pos, false_neg, clf, train_con, train_HD, test_con, test_HD)
+    return train_acc, test_acc, sens, spec, false_pos, false_neg, clf, train_con, train_HD, test_con, test_HD
 
 def test_asymp(data, labels, clf):
     labels, clf_pred = list(labels), clf.predict(data)
@@ -56,7 +56,7 @@ def test_asymp(data, labels, clf):
             CCAP_HDBA9 += 1
     aBA9_CBA9, aCAP_HDBA9, CCAP_CBA9 = aBA9_CBA9/hdba9, aCAP_HDBA9/ccap, CCAP_CBA9/hdcap
     aBA9_HDBA9, aCAP_CBA9, CCAP_HDBA9 = aBA9_HDBA9/hdba9, aCAP_CBA9/ccap, CCAP_HDBA9/hdcap
-    return (aBA9_CBA9, aCAP_HDBA9, CCAP_CBA9, aBA9_HDBA9, aCAP_CBA9, CCAP_HDBA9)
+    return aBA9_CBA9, aCAP_HDBA9, CCAP_CBA9, aBA9_HDBA9, aCAP_CBA9, CCAP_HDBA9
 
 def create_set(df, n_genes, e):
     df = df.drop_duplicates(keep='last')
@@ -120,13 +120,23 @@ def repeat(n, all_df, p, est, n_genes, top_rand, shuff, eq):
         aBA9_HDBA9 += [ta[3]]
         aCAP_CBA9 += [ta[4]]
         CCAP_HDBA9 += [ta[5]]
-    return(mean(train_acc), mean(test_acc), mean(sens), mean(spec), mean(false_pos), \
-            mean(false_neg), mean(aBA9_CBA9), mean(aCAP_HDBA9), mean(CCAP_CBA9), \
-            mean(aBA9_HDBA9), mean(aCAP_CBA9), mean(CCAP_HDBA9), statistics.stdev(train_acc), \
-            statistics.stdev(test_acc), statistics.stdev(sens), statistics.stdev(spec), \
-            statistics.stdev(false_pos), statistics.stdev(false_neg), statistics.stdev(aBA9_CBA9), \
-            statistics.stdev(aCAP_HDBA9), statistics.stdev(CCAP_CBA9), statistics.stdev(aBA9_HDBA9), \
-            statistics.stdev(aCAP_CBA9), statistics.stdev(CCAP_HDBA9), cf[7], cf[8], cf[9], cf[10])
+#    return(mean(train_acc), mean(test_acc), mean(sens), mean(spec), mean(false_pos), \
+#            mean(false_neg), mean(aBA9_CBA9), mean(aCAP_HDBA9), mean(CCAP_CBA9), \
+#            mean(aBA9_HDBA9), mean(aCAP_CBA9), mean(CCAP_HDBA9), statistics.stdev(train_acc), \
+#            statistics.stdev(test_acc), statistics.stdev(sens), statistics.stdev(spec), \
+#            statistics.stdev(false_pos), statistics.stdev(false_neg), statistics.stdev(aBA9_CBA9), \
+#            statistics.stdev(aCAP_HDBA9), statistics.stdev(CCAP_CBA9), statistics.stdev(aBA9_HDBA9), \
+#            statistics.stdev(aCAP_CBA9), statistics.stdev(CCAP_HDBA9), cf[7], cf[8], cf[9], cf[10])
+    return round(mean(train_acc),3), round(mean(test_acc),3), round(mean(sens),3), round(mean(spec),3), \
+            round(mean(false_pos),3), round(mean(false_neg),3), round(mean(aBA9_CBA9),3), \
+            round(mean(aCAP_HDBA9),3), round(mean(CCAP_CBA9),3), round(mean(aBA9_HDBA9),3), \
+            round(mean(aCAP_CBA9),3), round(mean(CCAP_HDBA9),3), round(statistics.stdev(train_acc),3), \
+            round(statistics.stdev(test_acc),3), round(statistics.stdev(sens),3), \
+            round(statistics.stdev(spec),3), round(statistics.stdev(false_pos),3), \
+            round(statistics.stdev(false_neg),3), round(statistics.stdev(aBA9_CBA9),3), \
+            round(statistics.stdev(aCAP_HDBA9),3), round(statistics.stdev(CCAP_CBA9),3), \
+            round(statistics.stdev(aBA9_HDBA9),3), round(statistics.stdev(aCAP_CBA9),3), \
+            round(statistics.stdev(CCAP_HDBA9),3), cf[7], cf[8], cf[9], cf[10]
 
 def write_f(res, n_genes, set_size, n_trees, n_repeats, top_rand, shuff, eq):
     add_name = '_shuffle'
