@@ -34,11 +34,13 @@ workdir: "../../samples/GTEx/"
 STAR = expand("{name}__trimP__STAR.Aligned.sortedByCoord.out.bam",
               name = names)
 
-fastqc_files = expand("{sample}__fastqc.html ",
-                    sample=samples)
+fastqc_files = expand("{name}_{read}__{trim}_fastqc.html",
+                    name=names, read=["R1", "R2"], trim=["trimU", "trimP"])
 
-rename_fastqc = expand("{sample}__fastqc.zip",
-                     sample=samples)
+
+
+rename_fastqc = expand("{name}_{read}__{trim}__fastqc.zip",
+                       name=names, read=["R1", "R2"], trim=["trimU", "trimP"])
 
 trim_error = expand("{name}__trimerror.log", name=names)
 
@@ -53,42 +55,20 @@ STAR_Log = expand("{name}__trimP__STAR.Log.final.out", name=names)
 
 salmon_concat = "GTEx_salmon_quant.tsv"
 
-ruleorder: fastqc > renamefastqc > trimmomatic > salmon > concat_salmon > multiqc
+ruleorder:  trimmomatic > fastqc > renamefastqc > salmon > concat_salmon > multiqc
 
 rule all:
     input:
-        #fastqc_files,
-        rename_fastqc,
-        trim_error,
+        # fastqc_files,
+        # rename_fastqc,
+        # trim_error,
         salmon_counts,
         salmon_concat,
-        STAR,
+        # STAR,
         #"multiqc_report.html"
-
-rule fastqc:
-    input:
-        fastq= "{sample}.fastq.gz"
-    output:
-        zip= "{sample}_fastqc.zip",
-        html= "{sample}_fastqc.html"
-    threads:8
-    shell:
-        "fastqc -t {threads} {input.fastq}"
-rule renamefastqc:
-    input:
-        zip="{sample}_fastqc.zip",
-        html="{sample}_fastqc.html"
-    output:
-        zip="{sample}__fastqc.zip",
-        html="{sample}__fastqc.html"
-    shell:
-        "mv {input.zip} {output.zip} && "
-        "mv {input.html} {output.html}"
 
 rule trimmomatic:
     input:
-        #read1 = expand("{sample}_R1.fastq.gz", sample = samples),
-        #read2 = expand("{sample}_R2.fastq.gz", sample = samples),
         read1="{name}_R1.fastq.gz",
         read2="{name}_R2.fastq.gz",
         adapter = truseq
@@ -107,10 +87,32 @@ rule trimmomatic:
         "ILLUMINACLIP:{input.adapter}:2:30:10 LEADING:3 TRAILING:3 "
         "SLIDINGWINDOW:4:15 MINLEN:36 2> {log} "
 
+rule fastqc:
+    input:
+        fastq= "{name}__{read}__{trim}.fastq.gz",
+    output:
+        zip1 = "{name}_{read}__{trim}_fastqc.zip",
+        html = "{name}_{read}__{trim}_fastqc.html",
+    threads:8
+    shell:
+        "fastqc -t {threads} {input.fastq}"
+
+rule renamefastqc:
+    input:
+        zip1 = "{name}_{read}__{trim}_fastqc.zip",
+        html = "{name}_{read}__{trim}_fastqc.html",
+    output:
+        zip1 = "{name}_{read}__{trim}__fastqc.zip",
+        html = "{name}_{read}__{trim}__fastqc.html",
+    shell:
+        "mv {input.zip1} {output.zip1} && "
+        "mv {input.html} {output.html}"
+
+
 rule salmon:
     input:
-        READ1="{name}_R1.fastq.gz",
-        READ2="{name}_R2.fastq.gz",
+        READ1="{name}__R1__trimP.fastq.gz",
+        READ2="{name}__R2__trimP.fastq.gz",
         gtf=pathtogtf,
         index= salmonpath
     output:
