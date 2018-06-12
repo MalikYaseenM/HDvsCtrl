@@ -12,12 +12,11 @@ filter_rows = "GTEx_salmon_filter.csv"
 
 #Firth
 GTEX_norm = "GTEx_salmon_norm.csv"
-GTEX_design_info = "GTEx_design_sex_age.tsv"
+#GTEX_design_info = "GTEx_design_sex_age.tsv"
 
 #DESEq2
 GTEX_deseq_design = "GTEx_deseq_design.csv"
 GTEX_deseq_out = "GTEx_filter_deseq2_results.csv"
-
 
 GTEX_firth = "GTEx_salmon_firth_sex_age.tsv"
 #GTEX_firth = "GTEx_firth_without_HD.tsv"
@@ -27,9 +26,9 @@ GTEX_firth = "GTEx_salmon_firth_sex_age.tsv"
 rule all:
   input:
     filter_rows,
-    GTEX_norm,
-    GTEX_design_info,
-    GTEX_firth,
+#    GTEX_norm,
+#    GTEX_design_info,
+#    GTEX_firth,
     GTEX_deseq_design,
     GTEX_deseq_out,
 
@@ -65,62 +64,6 @@ rule create_filtered_rows:
 
           GTEX_DF.to_csv(output.filter_fn, index=True)
     
-
-#================================Firth Logistic Regression===========================================
-# Outputs ordered sample info with subject type and age
-rule create_design_file_firth:
-    input:
-        info = GTEX_info,
-        pheno_info = gtex_pheno
-    output:
-        sample_info = GTEX_design_info
-    run:
-        import pandas as pd
-        gtex = pd.read_csv(input.info, sep="\t")
-        cols = ["SUBJID", "SEX", "AGE"]
-
-        # Info file that comes with GTEX data
-        attrib = pd.read_csv(input.pheno_info,
-                             sep="\t",comment="#", usecols=cols)
-
-        attrib["sample_name"] = [_.split("-")[1] for _ in attrib["SUBJID"].tolist()]
-
-        # add sex and age to info file
-        merged_df = gtex.merge(attrib, left_on="sample_name", right_on="sample_name", how="outer")
-        merged_df = merged_df[["identifier", "brain_region","SEX", "AGE"]]
-        merged_df = merged_df.dropna(axis=0)
-        merged_df = merged_df.set_index(["identifier"])
-
-        # Keep one pair of sample data
-        merged_df = merged_df.filter(like="_R1", axis=0)
-        merged_df["identifier"] = [_.rsplit("_", 1)[0] for _ in merged_df.index.tolist()]
-        final_df = merged_df[["identifier", "brain_region","SEX", "AGE"]]
-        final_df.to_csv("GTEx_design_sex_age.tsv", sep="\t", index=False)
-
-
-          
-# Normalize the filtered matrix
-rule create_norm:
-  input:
-      filter_rows
-  output:
-      GTEX_norm
-  shell:
-    """detk-norm deseq2 {input} -o {output}"""
-
-# Performs firth logistic regression on normalized GTEX data
-rule create_firth:
-  input:
-    counts = GTEX_norm,
-    info = GTEX_design_info
-  params:
-    design ="brain_region[CAU] ~ SEX+AGE+counts"
-  output:
-      GTEX_firth
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
-
-#=======================================DESeq2======================================================
 rule create_deseq_design:
     input:
         gtex = "GTEx_info.tsv"
