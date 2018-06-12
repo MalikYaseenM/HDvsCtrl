@@ -39,7 +39,7 @@ GTEX_dds <- DESeq(GTEX_dds, minReplicatesForReplace = Inf)
 
 ## remove cooks cutoff outlier filtering
 GTEX_results <- results(GTEX_dds, cooksCutoff = Inf)
-write.csv(GTEX_results, file = '../../samples/GTEx/GTEX_filter_deseq2_results.csv', quote = FALSE)
+write.csv(GTEX_results, file = '../../samples/GTEx/GTEx_filter_deseq2_results.csv', quote = FALSE)
 
 
 
