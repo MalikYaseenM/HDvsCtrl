@@ -19,7 +19,7 @@ pathtogtf=os.path.abspath('../reference/gencode.v25.annotation.gtf')
 salmonpath=os.path.abspath('../reference/gencode.v25.transcripts.salmon_quasi_index')
 
 workdir: '../../samples'
-fastqc_files = expand("{sample}_{read}__{trim}_fastqc.html",
+fastqc_files = expand("{sample}__{read}__{trim}_fastqc.zip",
                     sample=dataset_ids, read=["R1", "R2"], trim=["trimU", "trimP"])
 
 count = expand('{sample}__salmon__counts', sample=dataset_ids)
@@ -29,7 +29,8 @@ count = expand('{sample}__salmon__counts', sample=dataset_ids)
 
 rule all:
  input:
-   count
+   count,
+   fastqc_files
 
 rule trimmomatic:
   input:
@@ -53,25 +54,20 @@ rule trimmomatic:
 
 rule fastqc:
     input:
-        fastq = "{sample}__{read}__{trim}.fastq.gz",
+        fastq = "{sample}__{read}__{trim}.fastq.gz"
     output:
         zip1 = "{sample}__{read}__{trim}_fastqc.zip",
-        html = "{sample}__{read}__{trim}_fastqc.html",
-    threads:8
+        html = "{sample}__{read}__{trim}_fastqc.html"
+    params:
+        zip1 = lambda wildcards, output: output.zip1.replace("_fastqc.zip", "__fastqc.zip"),
+        html = lambda wildcards, output: output.html.replace("_fastqc.html", "__fastqc.html")
+    threads: 4        
     shell:
-        "fastqc -t {threads} {input.fastq}"
-
-rule renamefastqc:
-    input:
-        zip1 = "{sample}__{read}__{trim}_fastqc.zip",
-        html = "{sample}__{read}__{trim}_fastqc.html",
-    output:
-        zip1 = "{sample}__{read}__{trim}__fastqc.zip",
-        html = "{sample}__{read}__{trim}__fastqc.html",
-    shell:
-        "mv {input.zip} {output.zip} && "
-        "mv {input.html} {output.html} "
-
+        """
+        fastqc -t {threads} {input.fastq}
+        mv {output.zip1} {params.zip1} \\
+        && mv {output.html} {params.html} 
+        """        
 rule salmonquant:
     input:
       read1="{sample}__R1__trimP.fastq.gz",
@@ -87,37 +83,37 @@ rule salmonquant:
       "-p {threads} "
         
 
-# rule STAR:
-#     input:
-#       index= indexdir,
-#       read1="{sample}__R1__trimP.fastq.gz",
-#       read2="{sample}__R2__trimP.fastq.gz"
-#     output:
-#       unsorted_bam='{sample}__trimP__STAR.Aligned.out.bam',
-#       finallog='{sample}__trimP__STAR.Log.final.out'
-#     params:
-#       prefix='{sample}__trimP__STAR.'
-#     threads: 8
-#     shell:
-#       "STAR --runThreadN {threads} "
-#       "--runMode alignReads "
-#       "--genomeDir {input.index} "
-#       "--readFilesIn {input.read1} {input.read2} "
-#       "--readFilesCommand zcat --outFileNamePrefix {params.prefix} "
-#       "--outSAMtype BAM Unsorted "
+rule STAR:
+    input:
+      index= indexdir,
+      read1="{sample}__R1__trimP.fastq.gz",
+      read2="{sample}__R2__trimP.fastq.gz"
+    output:
+      unsorted_bam='{sample}__trimP__STAR.Aligned.out.bam',
+      finallog='{sample}__trimP__STAR.Log.final.out'
+    params:
+      prefix='{sample}__trimP__STAR.'
+    threads: 8
+    shell:
+      "STAR --runThreadN {threads} "
+      "--runMode alignReads "
+      "--genomeDir {input.index} "
+      "--readFilesIn {input.read1} {input.read2} "
+      "--readFilesCommand zcat --outFileNamePrefix {params.prefix} "
+      "--outSAMtype BAM Unsorted "
 
-# rule multiqc:
-#     input:
-#       fqcR1="{sample}__R1_fastqc.zip",
-#       fqcR2="{sample}__R2_fastqc.zip",
-#       trim="{sample}__trimerror.log",
-#       STAR="{sample}__trimP__STAR.Log.final.out"
-#     output:
-#       report="{sample}__multiqc_report.html"
-#     params:
-#       prefix="{sample}__multiqc_report."
-#     shell:
-#       "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL && "
-#       "multiqc -n {params.prefix} "
-#       "{input.fqcR1} {input.fqcR2} {input.trim} {input.STAR} "
+rule multiqc:
+    input:
+        fqcR1 = "{sample}__{read}__{trim}__fastqc.zip",
+        fqcR2 = "{sample}__{read}__{trim}__fastqc.html"
+        trim="{sample}__trimerror.log",
+        STAR="{sample}__trimP__STAR.Log.final.out"
+    output:
+        report="{sample}__multiqc_report.html"
+    params:
+        prefix="{sample}__multiqc_report."
+    shell:
+        "export LC_ALL=en_US.utf-8 export LANG=$LC_ALL && "
+        "multiqc -n {params.prefix} "
+        "{input.fqcR1} {input.fqcR2} {input.trim} {input.STAR} "
 
