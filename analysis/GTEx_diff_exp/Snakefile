@@ -4,6 +4,8 @@ gtex_pheno = os.path.abspath(
     "../reference/phs000424.v7.pht002742.v7.p2.c1.GTEx_Subject_Phenotypes.GRU.txt")
 GTEX_deseq_r = os.path.abspath("../../analysis/GTEx_diff_exp/GTEX_deseq2_filter.R")
 
+GTEx_deseq_nonzero_filter_r = os.path.abspath("../../analysis/GTEx_diff_exp/GTEx_deseq2_nonzerofilter.R")
+
 workdir: "../../samples/GTEx/"
 
 GTEX_info = "GTEx_info.tsv"
@@ -18,6 +20,10 @@ GTEX_norm = "GTEx_salmon_norm.csv"
 GTEX_deseq_design = "GTEx_deseq_design.csv"
 GTEX_deseq_out = "GTEx_filter_deseq2_results.csv"
 
+GTEx_nonzero_deseq_out = "GTEx_nonzero_filter_deseq2_results.csv"
+
+
+
 GTEX_firth = "GTEx_salmon_firth_sex_age.tsv"
 #GTEX_firth = "GTEx_firth_without_HD.tsv"
 
@@ -29,40 +35,77 @@ rule all:
 #    GTEX_norm,
 #    GTEX_design_info,
 #    GTEX_firth,
-    GTEX_deseq_design,
+    # GTEX_deseq_design,
     GTEX_deseq_out,
+#    GTEx_nonzero_deseq_out,
+#    "filtered_csv"
 
 
 
 #================================Pre-Processing===========================================#
 # filter rows with means less than 5
-rule create_filtered_rows:
-  input:
-      quant = "GTEx_salmon_quant.tsv"
-  output:
-      filter_fn = filter_rows
-  run:
-      import pandas as pd
-      fn = input.quant
-      ALL_GTEX = pd.read_csv(fn, sep="\t", index_col=['gene_id'])
-      # get ba9 and cau samples and put them in a list
-      ba9 = ALL_GTEX.filter(regex="^GTEX-.*BA9.*").columns.tolist()
-      cau = ALL_GTEX.filter(regex="^GTEX-.*CAU.*").columns.tolist()
-      # Drop the Unnamed column which is just an index
-      if "Unnamed: 0" in ALL_GTEX.columns:
-          ALL_GTEX = ALL_GTEX.drop("Unnamed: 0", axis=1)
-      else:
-          # Take the meas of ba9 and cau samples and create new columns
-          ALL_GTEX["avg_ba9"] = ALL_GTEX[ba9].mean(axis=1)
-          ALL_GTEX["avg_cau"] = ALL_GTEX[cau].mean(axis=1)
-          
-          ALL_GTEX = ALL_GTEX[(ALL_GTEX.avg_ba9 > 5) | (ALL_GTEX.avg_cau > 5)]          
-          ALL_GTEX = ALL_GTEX.drop("avg_ba9", axis=1)
-          ALL_GTEX = ALL_GTEX.drop("avg_cau", axis=1)
-          
-          GTEX_DF = ALL_GTEX.filter(regex="GTEX-.*")
+# rule foo_filtered_rows:
+#     input:
+#         quant = "foo.csv",
+#         meta = "meta.csv"
+#     output:        
+#         filter_fn = "filtered_csv"
+#     shell:
+#         """detk-filter --column-data={input.meta} --output={output.filter_fn} 'zeros(condition[A]<0.5 and zeros(condition[B])<0.5' {input.quant}"""
 
-          GTEX_DF.to_csv(output.filter_fn, index=True)
+
+rule filtered_rows:
+    input:
+        quant = "GTEx_salmon_quant.tsv"
+    output:        
+        filter_fn = filter_rows
+    run:
+        import pandas as pd        
+        df = pd.read_csv(input.quant, sep="\t", index_col=0)
+
+        def get_group(dataframe, fg):
+            group_1 = []
+            group_2 = []
+            for samp in dataframe.columns:
+                if fg in samp:
+                    group_1.append(samp)
+                else:
+                    group_2.append(samp)
+            return dataframe[group_1],dataframe[group_2]
+
+        def filter_zero(dataframe):
+            index = []
+            for row_index,item in enumerate(dataframe.values):
+                if list(item).count(0)/(len(item)) < 0.5:
+                    index.append(row_index)
+            return index
+
+        def return_df(dataframe1, dataframe2):
+            dataframe1["index"] = dataframe1.index.tolist()
+            dataframe2["index"] = dataframe2.index.tolist()
+            merge_df = pd.merge(dataframe1,dataframe2, left_on=['index'], right_on=["index"])
+            return merge_df
+
+        def final_output(dataframe, ref):
+            group1_df,group2_df = get_group(dataframe, ref)
+            group1_index = filter_zero(group1_df)
+            group2_index = filter_zero(group2_df)
+            final_df = return_df(group1_df.iloc[group1_index, :], group2_df.iloc[group2_index, :])
+            final_df = final_df.drop(["index"], axis=1)
+            final_df.index.names = ["gene_id"]
+            return final_df
+        out_df = final_output(df, "CAU")
+        out_df.to_csv(output.filter_fn, sep=",")
+                
+        
+
+# rule create_filtered_rows:
+#     input:
+#         quant = "GTEx_salmon_quant.tsv"
+#     output:        
+#         filter_fn = filter_rows
+#     shell:
+#         """detk-filter --output={output.filter_fn} 'nonzero(all)>0.5' {input.quant}"""
     
 rule create_deseq_design:
     input:
@@ -83,7 +126,6 @@ rule create_GTEX_filter_deseq:
   input:
       gtex = GTEX_deseq_r,
       filtered = filter_rows
-      
   output: GTEX_deseq_out
   shell:
       "Rscript {input.gtex}"
