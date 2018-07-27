@@ -1,6 +1,5 @@
 # DE Analysis of RNA-seq data
 ##load libraries
-.libPaths( c( .libPaths(), '/projectnb/bubhub/conda_root/user_envs/crespodi/presymptomatic_hd_mrnaseq/lib/R/library') )
 library(DESeq2)
 
 GTEX <- '../../samples/GTEx/GTEx_salmon_filter.csv'
