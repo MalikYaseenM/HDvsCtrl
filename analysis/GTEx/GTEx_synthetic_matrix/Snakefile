@@ -48,7 +48,7 @@ rule pairs_mat:
     output: mat = os.path.abspath("../../../samples/Analysis_Results/pairs_{basemean}.csv")
     run:
         pairs = []
-        baseMean = 10**params.gs
+        baseMean = params.bm
         for logfc in np.arange(-3,3,0.2):
             for log_var in np.arange(-2,2,0.2):
                 best_pair = None
