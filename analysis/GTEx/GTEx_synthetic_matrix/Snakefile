@@ -33,15 +33,18 @@ counts['Mean'] = counts[colA].mean(axis=1)
 counts['Var'] = counts[colA].var(axis=1)
 genes = counts['Gene'].tolist()
 
-bm = list(range(1, 7, 1))
+#bm = list(range(1, 7, 1))
+pair_path = os.path.abspath("../../../samples/Analysis_Results/")
+pairs_mat = expand(os.path.join(pair_path,"pairs_{basemean}.csv")
+                   ,basemean=[10**1,10**2,10**3,10**4,10**5,10**6])
 
 rule all:
     input:
         pairs_mat
 
 rule pairs_mat:
-    input: counts
-    params: gs = '{basemean}'
+    #input: counts
+    params: bm = '{basemean}'
     output: mat = os.path.abspath("../../../samples/Analysis_Results/pairs_{basemean}.csv")
     run:
         pairs = []
@@ -52,11 +55,11 @@ rule pairs_mat:
                 for geneA in genes:
                     for geneB in genes:
                         if geneA != geneB and int(geneA[5:]) < int(geneB[5:]):
-                            a = input['Mean'][input['Gene']==geneA].values[0]
-                            b = input['Mean'][input['Gene']==geneB].values[0]
+                            a = counts['Mean'][counts['Gene']==geneA].values[0]
+                            b = counts['Mean'][counts['Gene']==geneB].values[0]
                             baseMean_pair = (a + b)/2
                             logfc_pair = math.log2(a) - math.log2(b)
-                            logvar_pair = math.log2(input['Var'][input['Gene']==geneA].values) - math.log2(input['Var'][input['Gene']==geneB].values)
+                            logvar_pair = math.log2(counts['Var'][counts['Gene']==geneA].values) - math.log2(counts['Var'][counts['Gene']==geneB].values)
                             score = ((baseMean_pair-baseMean)**2 + (logfc_pair-logfc)**2 + (logvar_pair-log_var)**2)
                             if best_pair == None or score < best_pair[-1]:
                                 best_pair = (geneA, geneB, logfc_pair, logvar_pair, score)
