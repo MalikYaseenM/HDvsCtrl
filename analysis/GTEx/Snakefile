@@ -49,13 +49,14 @@ salmon_log = expand("{name}__salmon__counts/libParams/flenDist.txt",
                    name= names)
 quant_sf = glob.glob("*/quant.genes.sf")
 
-total_counts = quant_sf + hd_counts
+#total_counts = quant_sf + hd_counts
 
 STAR_Log = expand("{name}__trimP__STAR.Log.final.out", name=names)
 
 salmon_concat = "GTEx_salmon_quant.tsv"
 
 ruleorder:  trimmomatic > fastqc > renamefastqc > salmon > concat_salmon > multiqc
+
 
 rule all:
     input:
@@ -125,7 +126,7 @@ rule salmon:
 
 rule concat_salmon:
     input:
-        quant = total_counts
+        quant = quant_sf
     output:
         matrix= "GTEx_salmon_quant.tsv"
     run:
