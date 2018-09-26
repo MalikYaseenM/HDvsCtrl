@@ -1,15 +1,14 @@
 import pandas as pd, os
 
-# Merge firth and raw salmon counts
-
+# Merge deseq2 and raw salmon counts
 fm = os.path.abspath('../../samples/Analysis_Results/mart_export.txt')
 fq = os.path.abspath('../../samples/all_salmon_quant.tsv')
-fr = os.path.abspath('../../samples/Analysis_Results/BA9_firth_norm.tsv')
+fr = os.path.abspath('../../samples/Analysis_Results/sympBA9_deseq2_filter_halfzero.csv')
 fl = os.path.abspath('../HD_mRNASeq_sample_info.csv')
 
 # Dataframes
 df = pd.read_csv(fq, sep='\t', comment='#')
-firth = firth = pd.read_csv(fr, sep='\t', comment='#')
+deseq2 = pd.read_csv(fr, sep=',', comment='#')
 ensemble = pd.read_csv(fm, sep='\t', comment='#')
 ensemble = ensemble.rename(columns = {'Gene stable ID':'gene_id'})
 sample_info = pd.read_csv(fl, sep=',', comment='#')
@@ -29,16 +28,15 @@ symp_BA9 = samples[samples['Data_id'].str.contains('BA9') & (samples['Subject_ty
 C_BA9 = [ _ for _ in symp_BA9['Data_id'] if _.startswith('C')]
 HD_BA9 = [ _ for _ in symp_BA9['Data_id'] if _.startswith('H')]
 
-# Process firth, drop irrelevant columns
-firth = firth.rename(columns = {'Unnamed: 0':'gene_id'})
-firth = firth[['gene_id', 'counts__padj']]
+# Process deseq2, drop irrelevant columns
+deseq2 = deseq2[['gene_id', 'padj']]
 
 # Merge
-merged = pd.merge(firth, df, on='gene_id')
+merged = pd.merge(deseq2, df, on='gene_id')
 merged['gene_id'] = merged['gene_id'].str.split('.').str[0]
 merged = pd.merge(ensemble, merged, on='gene_id')
-merged = merged.sort_values(['counts__padj'], ascending=[True])
+merged = merged.sort_values(['padj'], ascending=[True])
 
-s = merged.drop(['gene_id', 'HGNC symbol', 'counts__padj'], 1)
+s = merged.drop(['gene_id', 'HGNC symbol', 'padj'], 1)
 s = s[list(s)[:1] + C_BA9 + HD_BA9 + hdpos_BA9 + hdpos_CAP + C_cap]
-s.to_csv(os.path.abspath("../../samples/Analysis_Results/sympBA9_counts.csv"), index=False)
+s.to_csv(os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2.csv"), index=False)

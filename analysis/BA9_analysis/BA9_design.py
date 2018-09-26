@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-# Last edit: 04/16/2018
+# Last edit: 07/5/2018
 # Samples to drop: H_0014_BA9_mRNASeq (outlier) & all ribo-depleted
 
 # HD mRNASeq sample info
@@ -31,8 +31,14 @@ df = pd.read_csv(fq, sep='\t', comment='#')
 cols = list(df)[:1] + control_ids + HD_ids
 df = df[cols]
 
-# Filtering, drop those with control mean < 5 or HD mean < 5
-df = df[(df[control_ids].mean(axis=1) > 5) | (df[HD_ids].mean(axis=1) > 5)]
+# Sep 20 edit: Filter base mean by 10
+# Filtering, drop those with control mean < 10 or HD mean < 10
+df = df[(df[control_ids].mean(axis=1) > 10) | (df[HD_ids].mean(axis=1) > 10)]
+
+# Jul5 edit: Drop row with all 0s
+df = df[df.sum(axis=1) != 0]
+# Jul 24 edit: Drop rows with > 50% zeros on each group
+df = df[((df[control_ids] == 0).astype(int).sum(axis=1) <= len(control_ids)/2) | ((df[HD_ids] == 0).astype(int).sum(axis=1) <= len(HD_ids)/2)]
 
 # Creates new file with only BA9 samples
 df.to_csv(os.path.abspath("../../samples/Analysis_Results/BA9_filter.csv"), index=False)
@@ -40,7 +46,11 @@ df.to_csv(os.path.abspath("../../samples/Analysis_Results/BA9_filter.csv"), inde
 ###################### Counts from norm  ###########################
 dn = pd.read_csv(fn, sep=",", comment='#')
 dn = dn[cols]
-dn = dn[(dn[control_ids].mean(axis=1) > 5) | (dn[HD_ids].mean(axis=1) > 5)]
+#dn = dn[(dn[control_ids].mean(axis=1) > 5) | (dn[HD_ids].mean(axis=1) > 5)]
+
+dn = dn[dn.sum(axis=1) != 0]
+dn = dn[((dn[control_ids] == 0).astype(int).sum(axis=1) <= len(control_ids)/2) | ((dn[HD_ids] == 0).astype(int).sum(axis=1) <= len(HD_ids)/2)]
+
 dn.to_csv(os.path.abspath("../../samples/Analysis_Results/BA9_from_norm.csv"),index=False)
 
 # For sample_info design

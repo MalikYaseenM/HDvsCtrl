@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-#Last edit: 04/16/2018
+#Last edit: 07/05/2018
 # Samples to drop: H_0014_BA9_mRNASeq (outlier) & all ribo-depleted
 fl = os.path.abspath('../../HD_mRNASeq_sample_info.csv')
 fq = os.path.abspath('../../../samples/all_salmon_quant.tsv')
@@ -36,18 +36,24 @@ HD_pos = samples.groupby(['Subject_type']).get_group('HDpos')['Data_id'].tolist(
 
 ###################### Filtering ###########################
 # Drops other samples not in samples list
-cols = list(df)[:1] + samples['Data_id'].tolist()
+cols = list(df)[:1] + control + HD_pos
 df = df[cols]
 
-# Drops rows if mean of HD && HDpos  < 5
-df = df[(df[control].mean(axis=1) > 5) | (df[HD_pos].mean(axis=1) > 5)]
+# Sep 24 edit: Drops rows if mean of HD && HDpos  < 10
+df = df[(df[control].mean(axis=1) > 10) | (df[HD_pos].mean(axis=1) > 10)]
+
+# Jul5 edit: Drop rows with all 0s
+# Jul24 edit: Drop rows with at least half 0s on both groups
+df = df[((df[control] == 0).astype(int).sum(axis=1) <= len(control)/2) | ((df[HD_pos] == 0).astype(int).sum(axis=1) <= len(HD_pos)/2)]
+
 df.to_csv(os.path.abspath("../../../samples/Analysis_Results/as_symp_C_filter.csv"),index=False)
 
 ###################### Taking normalized counts from all_norm.csv file ###########################
 # Drop other samples not in samples list
 dn = dn[cols]
 # Drops rows if mean HD && HDPos < 5 [filtered again because there might be 0s in the normalized metadata]
-dn = dn[(dn[control].mean(axis=1) > 5) | (dn[HD_pos].mean(axis=1) > 5)]
+#dn = dn[(dn[control].mean(axis=1) > 5) | (dn[HD_pos].mean(axis=1) > 5)]
+dn = dn[((dn[control] == 0).astype(int).sum(axis=1) <= len(control)/2) | ((dn[HD_pos] == 0).astype(int).sum(axis=1) <= len(HD_pos)/2)]
 
 dn.to_csv(os.path.abspath("../../../samples/Analysis_Results/as_symp_C_from_norm.csv"), index=False)
 

@@ -1,7 +1,8 @@
 import pandas as pd
 import os
 
-# Last edit: 04/17/2018
+# Last edit: 07/5/2018
+# Jul5 edit: Filter by row if row is all 0s
 
 fl = os.path.abspath('../HD_mRNASeq_sample_info.csv')
 fq = os.path.abspath('../../samples/all_salmon_quant.tsv')
@@ -29,15 +30,19 @@ HD_ids = [ _ for _ in samples['Data_id'] if _.startswith('H')]
 cols = list(df)[:1] + control_ids + HD_ids
 df = df[cols]
 
-# Filtering, drop those with control mean < 5 or HD mean <5
-df = df[(df[control_ids].mean(axis=1) > 5) | (df[HD_ids].mean(axis=1) > 5)]
+# Sep 24 edit: Filtering, drop those with control mean < 10 or HD mean < 10
+df = df[(df[control_ids].mean(axis=1) > 10) | (df[HD_ids].mean(axis=1) > 10)]
+
+# Filter out row with more than 3 zeros
+df = df[(df == 0).astype(int).sum(axis=1) < 3 ]
 
 # Creates new file with only CAP samples
 df.to_csv(os.path.abspath("../../samples/Analysis_Results/CAP_filter.csv"), index=False)
 
 ###################### Counts from norm  ###########################
 dn = dn[cols]
-dn = dn[(dn[control_ids].mean(axis=1) > 5) | (dn[HD_ids].mean(axis=1) > 5)]
+#dn = dn[(dn[control_ids].mean(axis=1) > 5) | (dn[HD_ids].mean(axis=1) > 5)]
+dn = dn[(dn == 0).astype(int).sum(axis=1) < 3 ]
 dn.to_csv(os.path.abspath("../../samples/Analysis_Results/CAP_from_norm.csv"),index=False)
 
 ###################### Creating info design file ###########################

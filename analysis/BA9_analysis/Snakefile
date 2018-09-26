@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-# Snakefile last edit: 02/21/2018
+# Snakefile last edit: 05/3/2018
 # Usage
 ## Dry run to check if snakefile works 
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50 -np

@@ -1,5 +1,6 @@
 # Snakefile
 # Usage
+# Last edit: 04/17/18
 ## Dry run to check if snakefile works
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50 -np
 ## Actual run

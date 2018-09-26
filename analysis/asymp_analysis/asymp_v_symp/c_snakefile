@@ -5,9 +5,9 @@ import os
 
 # Usage
 ## Dry run to check if snakefile works
-# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50 -np
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10 --snakefile c_snakefile -np
 ## Actual run
-# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
+# snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10 --snakefile c_snakefile
 
 design_info = os.path.abspath("../../../samples/Analysis_Results/as_symp_C_info_design.csv")
 firth = os.path.abspath("../../../samples/Analysis_Results/as_symp_C_firth.tsv")

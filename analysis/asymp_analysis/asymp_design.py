@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-# Last edit: 04/17/2018
+# Last edit: 07/24/2018
 
 fl = os.path.abspath('../HD_mRNASeq_sample_info.csv')
 fq = os.path.abspath('../../samples/all_salmon_quant.tsv')
@@ -23,17 +23,25 @@ BA9 = [ _ for _ in hdpos if "BA9" in _]
 CAP = [ _ for _ in hdpos if "CAP" in _]
 
 # Drops samples that's not HDPos
-cols = list(df)[:1] + hdpos
+cols = list(df)[:1] + BA9 + CAP
 df = df[cols]
 
-# Drops rows if mean of CAP && BA9 < 5
-df = df[(df[BA9].mean(axis=1) > 5) | (df[CAP].mean(axis=1) > 5)]
+# Sep 24 edit: Drops rows if mean of CAP | BA9 < 10
+df = df[(df[BA9].mean(axis=1) > 10) | (df[CAP].mean(axis=1) > 10)]
+
+# Jul 5 edit: Drop row with all zeros
+df = df[df.sum(axis=1) != 0]
+# Jul 24 edit: Drop if BA9 group have more than 1 zeros
+df = df[(df[BA9] == 0).astype(int).sum(axis=1) != 2]
 
 df.to_csv(os.path.abspath("../../samples/Analysis_Results/asymp_filter.csv"),index=False)
 
 ###################### Counts from norm  ###########################
 dn = dn[cols]
-dn = dn[(dn[BA9].mean(axis=1) > 5) | (dn[CAP].mean(axis=1) > 5)]
+#dn = dn[(dn[BA9].mean(axis=1) > 5) | (dn[CAP].mean(axis=1) > 5)]
+
+dn = dn[dn.sum(axis=1) != 0]
+dn = dn[(dn[BA9] == 0).astype(int).sum(axis=1) != 2]
 
 dn.to_csv(os.path.abspath("../../samples/Analysis_Results/asymp_from_norm.csv"),index=False)
 ###################### Creating info design file ###########################

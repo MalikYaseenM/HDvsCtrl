@@ -4,11 +4,11 @@ import pandas as pd, os, glob
 # Usage: snakemake --nolock --cluster "qsub -P mlhd -cwd -l h_rt=72:00:00" --jobs 50 --snakefile RF2_snakefile
 # Dry run: snakemake --nolock --cluster "qsub -P mlhd -cwd -l h_rt=72:00:00" --jobs 50 --snakefile RF2_snakefile -np
 
-# 6026 DE genes found in BA9
-gs = list(range(1000, 11000, 1000))
+# 8000+ DE genes found in BA9
+gs = list(range(1000, 11000, 1000)) + [500, 750]
 #gs = list(range(2000, 10500, 500))
-process_df = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts.csv")
-normalize = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+process_df = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2.csv")
+normalize = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
 top_n = expand(os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats.txt"), gene_size = gs)
 top_shuffle = expand(os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats_shuffle.txt"), gene_size = gs)
 top_shuffle_equal = expand(os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats_shuffle_equal.txt"), gene_size = gs)
@@ -33,21 +33,21 @@ rule all:
     random_equal
 
 rule process_df:
-  input: "process_df.py"
-  output: os.path.abspath("../../samples/Analysis_Results/sympBA9_counts.csv")
+  input: "process_deseq2.py"
+  output: os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2.csv")
   shell:
    "python {input}"
 
 rule normalize:
-  input: os.path.abspath("../../samples/Analysis_Results/sympBA9_counts.csv")
-  output: os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+  input: os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2.csv")
+  output: os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
   shell:
     """detk-norm deseq2 {input} -o {output}"""
 
 rule top_n:
   input: 
     py = "rf_sympBA9.py",
-    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
   params: gs = '{gene_size}'
   output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats.txt")
   shell:
@@ -56,7 +56,7 @@ rule top_n:
 rule top_equal:
   input:
     py = "rf_sympBA9.py",
-    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
   params: gs = '{gene_size}'
   output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats_equal.txt") 
   shell:
@@ -65,7 +65,7 @@ rule top_equal:
 rule top_shuffle:
   input:
     py = "rf_sympBA9.py",
-    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
   params: gs = '{gene_size}'
   output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats_shuffle.txt")
   shell:
@@ -74,7 +74,7 @@ rule top_shuffle:
 rule top_shuffle_equal:
   input:
     py = "rf_sympBA9.py",
-    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
   params: gs = '{gene_size}'
   output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_top_{gene_size}_genes_20000_trees_1000_repeats_shuffle_equal.txt")
   shell:
@@ -83,7 +83,7 @@ rule top_shuffle_equal:
 rule random:
   input:
     py = "rf_sympBA9.py",
-    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
   params: gs = '{gene_size}'
   output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_random_{gene_size}_genes_20000_trees_1000_repeats.txt")
   shell:
@@ -92,7 +92,7 @@ rule random:
 rule random_shuffle:
   input:
     py = "rf_sympBA9.py",
-    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
   params: gs = '{gene_size}'
   output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_random_{gene_size}_genes_20000_trees_1000_repeats_shuffle.txt")
   shell:
@@ -101,7 +101,7 @@ rule random_shuffle:
 rule random_shuffle_equal:
   input:
     py = "rf_sympBA9.py",
-    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
   params: gs = '{gene_size}'
   output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_random_{gene_size}_genes_20000_trees_1000_repeats_shuffle_equal.txt")
   shell:
@@ -110,7 +110,7 @@ rule random_shuffle_equal:
 rule random_equal:
   input:
     py = "rf_sympBA9.py",
-    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_normalized.csv")
+    counts = os.path.abspath("../../samples/Analysis_Results/sympBA9_counts_deseq2_normalized.csv")
   params: gs = '{gene_size}'
   output: os.path.abspath("../../samples/Analysis_Results/Random_forest_results/rf_random_{gene_size}_genes_20000_trees_1000_repeats_equal.txt")
   shell:

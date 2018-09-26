@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-# Snakefile Last edit: 02/21/2018 
+# Snakefile Last edit: 04/30/2018 
 
 # Usage
 ## Dry run to check if snakefile works
