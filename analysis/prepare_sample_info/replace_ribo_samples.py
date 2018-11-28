@@ -43,17 +43,17 @@ for dsid, r1, r2 in new_samples :
   r1_link = '../samples/{}__R1.fastq.gz'.format(dsid)
   r2_link = '../samples/{}__R2.fastq.gz'.format(dsid)
 
-  #try :
-  #  os.remove(r1_link)
-  #except :
-  #  pass
+  try :
+    os.remove(r1_link)
+  except :
+    pass
 
-  #try :
-  #  os.remove(r2_link)
-  #except :
-  #  pass
+  try :
+    os.remove(r2_link)
+  except :
+    pass
 
-  #os.symlink(r1, r1_link)
-  #os.symlink(r2, r2_link)
+  os.symlink(r1, r1_link)
+  os.symlink(r2, r2_link)
 
-df.to_csv('HD_mRNASeq_sample_info.csv',index=False)
+df.to_csv('../HD_mRNASeq_sample_info.csv',index=False)
