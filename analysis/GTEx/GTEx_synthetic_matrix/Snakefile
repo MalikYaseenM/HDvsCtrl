@@ -1,0 +1,68 @@
+import pandas as pd, numpy as np, random, math
+import os
+
+# Snakefile Last edit: 08/10/18
+# Usage: snakemake --nolock --cluster "qsub -P mlhd -cwd -l h_rt=72:00:00" --jobs 10
+
+gt = os.path.abspath('../../../samples/Analysis_Results/CAU_15.csv')
+
+# Read files
+gtex = pd.read_csv(gt, sep=',')
+gtex_cols = list(gtex.columns)
+
+# GTEx samples, take CAU only
+gtex_ids = [ x for x in gtex_cols if 'GTEX' in x ]
+CAU_id = [ x for x in gtex_ids if 'CAU' in x ]
+
+############ GTEx Sets ############
+CAU = gtex[CAU_id].copy()
+# Drop rows with more than 50% 0s in row
+CAU = CAU[(CAU[CAU_id] == 0).astype(int).sum(axis=1) <= len(CAU_id)/2]
+CAU = CAU.reset_index(drop=True)
+
+############ Dummy sample names ############
+colA = ['A_{}'.format(i) for i in range(1, len(CAU_id)+1)]
+#colB = ['B_{}'.format(i) for i in range(1, len(CAU_id)+1)]
+gene = ['Gene_{}'.format(i) for i in range(1, len(CAU)+1)]
+
+# Change CAU column names
+CAU.columns = colA
+counts = pd.concat([pd.DataFrame({'Gene':gene}), CAU], axis=1)
+
+counts['Mean'] = counts[colA].mean(axis=1)
+counts['Var'] = counts[colA].var(axis=1)
+genes = counts['Gene'].tolist()
+
+#bm = list(range(1, 7, 1))
+pair_path = os.path.abspath("../../../samples/Analysis_Results/")
+pairs_mat = expand(os.path.join(pair_path,"pairs_{basemean}.csv")
+                   ,basemean=[10**1,10**2,10**3,10**4,10**5,10**6])
+
+rule all:
+    input:
+        pairs_mat
+
+rule pairs_mat:
+    #input: counts
+    params: bm = '{basemean}'
+    output: mat = os.path.abspath("../../../samples/Analysis_Results/pairs_{basemean}.csv")
+    run:
+        pairs = []
+        baseMean = params.bm
+        for logfc in np.arange(-3,3,0.2):
+            for log_var in np.arange(-2,2,0.2):
+                best_pair = None
+                for geneA in genes:
+                    for geneB in genes:
+                        if geneA != geneB and int(geneA[5:]) < int(geneB[5:]):
+                            a = counts['Mean'][counts['Gene']==geneA].values[0]
+                            b = counts['Mean'][counts['Gene']==geneB].values[0]
+                            baseMean_pair = (a + b)/2
+                            logfc_pair = math.log2(a) - math.log2(b)
+                            logvar_pair = math.log2(counts['Var'][counts['Gene']==geneA].values) - math.log2(counts['Var'][counts['Gene']==geneB].values)
+                            score = ((baseMean_pair-baseMean)**2 + (logfc_pair-logfc)**2 + (logvar_pair-log_var)**2)
+                            if best_pair == None or score < best_pair[-1]:
+                                best_pair = (geneA, geneB, logfc_pair, logvar_pair, score)
+                pairs.append((logfc, log_var)+best_pair)
+        pairs_df = pd.DataFrame(pairs, columns=['logfc','log_var','geneA','geneB','logfc_pair','logvar_pair','score'])
+        pairs_df.to_csv(output.mat, index=False)

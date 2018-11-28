@@ -11,8 +11,6 @@ import os
 
 design_info = os.path.abspath("../../samples/Analysis_Results/all_info_design.csv")
 firth = os.path.abspath("../../samples/Analysis_Results/all_firth.tsv")
-#tab_delim = os.path.abspath("../../samples/all_salmon_firth.csv")
-#sig = os.path.abspath("../../samples/all_salmon_firth_sig_counts.csv")
 
 rule all:
   input:
@@ -45,15 +43,6 @@ rule firth:
   output:os.path.abspath("../../samples/Analysis_Results/all_firth.tsv")
   shell:
     """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
-
-# Separates firth file with tabs
-#rule tab_delim:
-#  input:
-#    py = "tab_delim.py",
-#    firth = os.path.abspath("../../samples/all_salmon_firth_t.csv")
-#  output:os.path.abspath("../../samples/all_salmon_firth.csv")
-#  shell:
-#    """python {input.py} {input.firth}"""
 
 # Returns significant counts and genes 
 rule sig:

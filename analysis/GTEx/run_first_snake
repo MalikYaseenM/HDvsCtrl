@@ -48,7 +48,6 @@ rule create_info_file:
             """
             trouble_samples = split_names(samples_to_remove)
             all_samples = split_names(list_of_all)
-            working_samples = all_samples - trouble_samples
 
             working_samples = list(all_samples - trouble_samples)
             sample = [_.split("_")[0].split("-")[1] for _ in working_samples]
