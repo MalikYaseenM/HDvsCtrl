@@ -1,0 +1,22 @@
+rule all:
+    input:
+        'ttest_GTEx_asymptomatic_direct_c2cp.csv',
+        'ttest_GTEx_asymptomatic_effect_c2cp.csv',
+
+rule direct:
+    input:
+        ttest='ttest_GTEx_asymptomatic.csv',
+        gmt='c2.cp.v6.2.symbols.gmt'
+    output:
+        'ttest_GTEx_asymptomatic_direct_c2cp.csv'
+    shell:
+        'detk-enrich fgsea -i Gene.name -c t -d {input.gmt} {input.ttest} -o {output}'
+
+rule effect:
+    input:
+        ttest='ttest_GTEx_asymptomatic.csv',
+        gmt='c2.cp.v6.2.symbols.gmt'
+    output:
+        'ttest_GTEx_asymptomatic_effect_c2cp.csv'
+    shell:
+        'detk-enrich fgsea -i Gene.name -c t --abs {input.gmt} {input.ttest} -o {output}'
