@@ -1,0 +1,1705 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="666.73071pt"
+   version="1.1"
+   viewBox="0 0 832.59406 666.7307"
+   width="832.59406pt"
+   id="svg493"
+   sodipodi:docname="combined_gsea_clusters_metabolism_annot.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata497">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     id="namedview495"
+     showgrid="false"
+     inkscape:zoom="0.51380404"
+     inkscape:cx="713.23809"
+     inkscape:cy="419.19701"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="axes_1"
+     fit-margin-top="5"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5" />
+  <defs
+     id="defs4"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <style
+       type="text/css"
+       id="style2">
+*{stroke-linecap:butt;stroke-linejoin:round;}
+  </style>
+  </defs>
+  <g
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     id="axes_1"
+     transform="translate(-153.31074,-91.356529)">
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_2">
+      <path
+         inkscape:connector-curvature="0"
+         id="path9"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,125.74322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_3">
+      <path
+         inkscape:connector-curvature="0"
+         id="path12"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,139.33322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_4">
+      <path
+         inkscape:connector-curvature="0"
+         id="path15"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,152.92322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_5">
+      <path
+         inkscape:connector-curvature="0"
+         id="path18"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,166.51322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_6">
+      <path
+         inkscape:connector-curvature="0"
+         id="path21"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,180.10322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_7">
+      <path
+         inkscape:connector-curvature="0"
+         id="path24"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,193.69322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_8">
+      <path
+         inkscape:connector-curvature="0"
+         id="path27"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,207.28322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_9">
+      <path
+         inkscape:connector-curvature="0"
+         id="path30"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,220.87322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_10">
+      <path
+         inkscape:connector-curvature="0"
+         id="path33"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,234.46322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_11">
+      <path
+         inkscape:connector-curvature="0"
+         id="path36"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,248.05322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_12">
+      <path
+         inkscape:connector-curvature="0"
+         id="path39"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,261.64322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_13">
+      <path
+         inkscape:connector-curvature="0"
+         id="path42"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,275.23322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_14">
+      <path
+         inkscape:connector-curvature="0"
+         id="path45"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,288.82322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_15">
+      <path
+         inkscape:connector-curvature="0"
+         id="path48"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,302.41322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_16">
+      <path
+         inkscape:connector-curvature="0"
+         id="path51"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,316.00322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_17">
+      <path
+         inkscape:connector-curvature="0"
+         id="path54"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,329.59322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_18">
+      <path
+         inkscape:connector-curvature="0"
+         id="path57"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,343.18322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_19">
+      <path
+         inkscape:connector-curvature="0"
+         id="path60"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,356.77322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_20">
+      <path
+         inkscape:connector-curvature="0"
+         id="path63"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,370.36322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_21">
+      <path
+         inkscape:connector-curvature="0"
+         id="path66"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,383.95322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_22">
+      <path
+         inkscape:connector-curvature="0"
+         id="path69"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,397.54322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_23">
+      <path
+         inkscape:connector-curvature="0"
+         id="path72"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,411.13322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_24">
+      <path
+         inkscape:connector-curvature="0"
+         id="path75"
+         style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,424.72322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_25">
+      <path
+         inkscape:connector-curvature="0"
+         id="path78"
+         style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,438.31322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#pdfaa033876)" />
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_1">
+      <text
+         id="text306"
+         y="124.02516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_GLYCOSAMINOGLYCAN_BIOSYNTHESIS_CHONDROITIN_SULFATE</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_2">
+      <text
+         id="text309"
+         y="137.61516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_ALDOSTERONE_REGULATED_SODIUM_REABSORPTION</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_3">
+      <text
+         id="text312"
+         y="151.20515"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">REACTOME_PURINE_METABOLISM</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_4">
+      <text
+         id="text315"
+         y="164.79515"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_ALANINE_ASPARTATE_AND_GLUTAMATE_METABOLISM</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_5">
+      <text
+         id="text318"
+         y="178.38516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_INSULIN_SIGNALING_PATHWAY</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_6">
+      <text
+         id="text321"
+         y="191.97516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_AMINO_SUGAR_AND_NUCLEOTIDE_SUGAR_METABOLISM</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_7">
+      <text
+         id="text324"
+         y="205.56516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">REACTOME_MITOCHONDRIAL_PROTEIN_IMPORT</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_8">
+      <text
+         id="text327"
+         y="219.15515"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_ARGININE_AND_PROLINE_METABOLISM</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_9">
+      <text
+         id="text330"
+         y="232.74516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_PRIMARY_BILE_ACID_BIOSYNTHESIS</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_10">
+      <text
+         id="text333"
+         y="246.33516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">BIOCARTA_PGC1A_PATHWAY</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_11">
+      <text
+         id="text336"
+         y="259.92517"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">BIOCARTA_PTDINS_PATHWAY</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_12">
+      <text
+         id="text339"
+         y="273.51517"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_PEROXISOME</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_13">
+      <text
+         id="text342"
+         y="287.10516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">PID_CERAMIDE_PATHWAY</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_14">
+      <text
+         id="text345"
+         y="300.69516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_PENTOSE_PHOSPHATE_PATHWAY</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_15">
+      <text
+         id="text348"
+         y="314.28516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_PHENYLALANINE_METABOLISM</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_16">
+      <text
+         id="text351"
+         y="327.87515"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_GLUTATHIONE_METABOLISM</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_17">
+      <text
+         id="text354"
+         y="341.46515"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">BIOCARTA_PPARA_PATHWAY</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_18">
+      <text
+         id="text357"
+         y="355.05515"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">REACTOME_REGULATION_OF_ORNITHINE_DECARBOXYLASE_ODC</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_19">
+      <text
+         id="text360"
+         y="368.64517"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">BIOCARTA_CHREBP2_PATHWAY</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_20">
+      <text
+         id="text363"
+         y="382.23517"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_NICOTINATE_AND_NICOTINAMIDE_METABOLISM</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_21">
+      <text
+         id="text366"
+         y="395.82516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_PORPHYRIN_AND_CHLOROPHYLL_METABOLISM</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_22">
+      <text
+         id="text369"
+         y="409.41516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">KEGG_GLYCINE_SERINE_AND_THREONINE_METABOLISM</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_23">
+      <text
+         id="text372"
+         y="423.00516"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">REACTOME_ACETYLCHOLINE_BINDING_AND_DOWNSTREAM_EVENTS</text>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_24">
+      <text
+         id="text375"
+         y="436.59515"
+         x="169.63081"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">PID_GLYPICAN_1PATHWAY</text>
+    </g>
+    <g
+       id="g2202"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <g
+         id="g2189"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_26">
+          <path
+             inkscape:connector-curvature="0"
+             id="path81"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,447.14672 v 13.59"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_27">
+          <path
+             inkscape:connector-curvature="0"
+             id="path84"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,451.90322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_28">
+          <path
+             inkscape:connector-curvature="0"
+             id="path87"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,465.49322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+      </g>
+      <g
+         id="text_25"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="450.18515"
+           id="text378">KEGG_STARCH_AND_SUCROSE_METABOLISM</text>
+      </g>
+      <g
+         id="text_26"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="463.77515"
+           id="text381">KEGG_GALACTOSE_METABOLISM</text>
+      </g>
+    </g>
+    <g
+       id="g2181"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <g
+         id="g2168"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_29">
+          <path
+             inkscape:connector-curvature="0"
+             id="path90"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,474.32672 v 13.59"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_30">
+          <path
+             inkscape:connector-curvature="0"
+             id="path93"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,479.08322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_31">
+          <path
+             inkscape:connector-curvature="0"
+             id="path96"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,492.67322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+      </g>
+      <g
+         id="text_27"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="477.30423"
+           id="text384">PID_RXR_VDR_PATHWAY</text>
+      </g>
+      <g
+         id="text_28"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="490.95517"
+           id="text387">PID_RETINOIC_ACID_PATHWAY</text>
+      </g>
+    </g>
+    <g
+       id="g2160"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <g
+         id="g2147"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_32">
+          <path
+             inkscape:connector-curvature="0"
+             id="path99"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,501.50672 v 13.59"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_33">
+          <path
+             inkscape:connector-curvature="0"
+             id="path102"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,506.26322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_34">
+          <path
+             inkscape:connector-curvature="0"
+             id="path105"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,519.85322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+      </g>
+      <g
+         id="text_29"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="504.54517"
+           id="text390">REACTOME_PHASE1_FUNCTIONALIZATION_OF_COMPOUNDS</text>
+      </g>
+      <g
+         id="text_30"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="518.13513"
+           id="text393">REACTOME_BIOLOGICAL_OXIDATIONS</text>
+      </g>
+    </g>
+    <g
+       id="g2139"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <g
+         id="g2120"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_35">
+          <path
+             inkscape:connector-curvature="0"
+             id="path108"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,528.68672 v 27.18"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_36">
+          <path
+             inkscape:connector-curvature="0"
+             id="path111"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,542.27672 v 13.59"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_37">
+          <path
+             inkscape:connector-curvature="0"
+             id="path114"
+             style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,533.44322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_38">
+          <path
+             inkscape:connector-curvature="0"
+             id="path117"
+             style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,547.03322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_39">
+          <path
+             inkscape:connector-curvature="0"
+             id="path120"
+             style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,560.62322 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+      </g>
+      <g
+         id="text_31"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="531.72516"
+           id="text396">REACTOME_CHONDROITIN_SULFATE_DERMATAN_SULFATE_METABOLISM</text>
+      </g>
+      <g
+         id="text_32"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="545.31519"
+           id="text399">REACTOME_METABOLISM_OF_CARBOHYDRATES</text>
+      </g>
+      <g
+         id="text_33"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="558.90515"
+           id="text402">REACTOME_GLYCOSAMINOGLYCAN_METABOLISM</text>
+      </g>
+    </g>
+    <g
+       id="g2108"
+       transform="translate(-5.8388018,16.78656)"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <g
+         id="g2087"
+         transform="rotate(30,174.91352,579.64922)"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_40">
+          <path
+             inkscape:connector-curvature="0"
+             id="path123"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,569.61155 11.47528,20.23017"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_41">
+          <path
+             inkscape:connector-curvature="0"
+             id="path126"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,569.61155 22.64017,-0.15483"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_42">
+          <path
+             inkscape:connector-curvature="0"
+             id="path129"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 186.23361,569.45672 -11.16489,20.385"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_43">
+          <path
+             inkscape:connector-curvature="0"
+             id="path132"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,574.36805 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74479,0.50117 -3.73543,1.39314 -0.99065,0.89198 -1.54727,2.10192 -1.54727,3.36336 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_44">
+          <path
+             inkscape:connector-curvature="0"
+             id="path135"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 186.23361,574.21322 c 1.40099,0 2.74478,-0.50117 3.73543,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33444,-1.39315 -3.73543,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89198 2.33445,1.39315 3.73544,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_45">
+          <path
+             inkscape:connector-curvature="0"
+             id="path138"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 175.06872,594.59822 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74478,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+      </g>
+      <g
+         id="text_34"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(28.500037,6.540809)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="572.64996"
+           id="text405">KEGG_GLYCOSAMINOGLYCAN_BIOSYNTHESIS_HEPARAN_SULFATE</text>
+      </g>
+      <g
+         id="text_35"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(-7.4999625,-6.540809)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="192.27098"
+           y="572.49518"
+           id="text408">REACTOME_HEPARAN_SULFATE_HEPARIN_HS_GAG_METABOLISM</text>
+      </g>
+      <g
+         id="text_36"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(3.75e-5)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="181.10609"
+           y="592.88019"
+           id="text411">REACTOME_HS_GAG_BIOSYNTHESIS</text>
+      </g>
+    </g>
+    <g
+       id="g2073"
+       transform="translate(0,26.190513)"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <g
+         id="g2048"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_46">
+          <path
+             inkscape:connector-curvature="0"
+             id="path141"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,603.43172 v 13.59"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_47">
+          <path
+             inkscape:connector-curvature="0"
+             id="path144"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,603.43172 v 27.18"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_48">
+          <path
+             inkscape:connector-curvature="0"
+             id="path147"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,617.02172 v 27.18"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_49">
+          <path
+             inkscape:connector-curvature="0"
+             id="path150"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,608.18822 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_50">
+          <path
+             inkscape:connector-curvature="0"
+             id="path153"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,621.77822 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_51">
+          <path
+             inkscape:connector-curvature="0"
+             id="path156"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,635.36822 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_52">
+          <path
+             inkscape:connector-curvature="0"
+             id="path159"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,648.95822 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+      </g>
+      <g
+         id="text_37"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="606.47015"
+           id="text414">REACTOME_TCA_CYCLE_AND_RESPIRATORY_ELECTRON_TRANSPORT</text>
+      </g>
+      <g
+         id="text_38"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="620.06018"
+           id="text417">REACTOME_PYRUVATE_METABOLISM_AND_CITRIC_ACID_TCA_CYCLE</text>
+      </g>
+      <g
+         id="text_39"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="633.65015"
+           id="text420">KEGG_OXIDATIVE_PHOSPHORYLATION</text>
+      </g>
+      <g
+         id="text_40"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="647.24017"
+           id="text423">KEGG_CITRATE_CYCLE_TCA_CYCLE</text>
+      </g>
+    </g>
+    <g
+       id="g2032"
+       transform="translate(0,35.594465)"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <g
+         id="g1980"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_53">
+          <path
+             inkscape:connector-curvature="0"
+             id="path162"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,693.54403 3.52646,-35.75231"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_54">
+          <path
+             inkscape:connector-curvature="0"
+             id="path165"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,693.54403 14.93534,-10.27734"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_55">
+          <path
+             inkscape:connector-curvature="0"
+             id="path168"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 208.87377,698.56172 -15.12251,-6.85549"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_56">
+          <path
+             inkscape:connector-curvature="0"
+             id="path171"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 178.52878,683.26669 15.22248,8.43954"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_57">
+          <path
+             inkscape:connector-curvature="0"
+             id="path174"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="M 178.52878,683.26669 167.1199,657.79172"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_58">
+          <path
+             inkscape:connector-curvature="0"
+             id="path177"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,698.30053 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_59">
+          <path
+             inkscape:connector-curvature="0"
+             id="path180"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 208.87377,703.31822 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54726,-2.10191 1.54726,-3.36335 0,-1.26144 -0.55661,-2.47138 -1.54726,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73544,1.39315 -0.99065,0.89197 -1.54726,2.10191 -1.54726,3.36335 0,1.26144 0.55661,2.47138 1.54726,3.36335 0.99065,0.89198 2.33445,1.39315 3.73544,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_60">
+          <path
+             inkscape:connector-curvature="0"
+             id="path183"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 178.52878,688.02319 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74478,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_61">
+          <path
+             inkscape:connector-curvature="0"
+             id="path186"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 167.1199,662.54822 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73544,1.39315 -0.99064,0.89197 -1.54726,2.10191 -1.54726,3.36335 0,1.26144 0.55662,2.47138 1.54726,3.36335 0.99065,0.89198 2.33445,1.39315 3.73544,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_62">
+          <path
+             inkscape:connector-curvature="0"
+             id="path189"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 193.75126,696.46273 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54726,-2.10191 1.54726,-3.36335 0,-1.26144 -0.55661,-2.47138 -1.54726,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89197 2.33445,1.39315 3.73544,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+      </g>
+      <g
+         id="text_41"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(49.500037,4.8438485)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="696.58246"
+           id="text426">REACTOME_FATTY_ACID_TRIACYLGLYCEROL_AND_KETONE_BODY_METABOLISM</text>
+      </g>
+      <g
+         id="text_42"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(3.75e-5,13.062551)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="214.91115"
+           y="701.60016"
+           id="text429">REACTOME_SPHINGOLIPID_METABOLISM</text>
+      </g>
+      <g
+         id="text_43"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(3.75e-5,-11.351614)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="184.56616"
+           y="686.30511"
+           id="text432">REACTOME_METABOLISM_OF_LIPIDS_AND_LIPOPROTEINS</text>
+      </g>
+      <g
+         id="text_44"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(3.75e-5)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="173.15727"
+           y="660.83014"
+           id="text435">REACTOME_PPARA_ACTIVATES_GENE_EXPRESSION</text>
+      </g>
+      <g
+         id="text_45"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(3.75e-5,-6.554786)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="199.78864"
+           y="694.74469"
+           id="text438">REACTOME_PHOSPHOLIPID_METABOLISM</text>
+      </g>
+    </g>
+    <g
+       id="g1958"
+       transform="translate(309.13315,-588.45434)"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <g
+         id="g1851"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(383.96504,33.029251)">
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_92">
+          <path
+             inkscape:connector-curvature="0"
+             id="path279"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 264.84333,801.42469 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10192 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47139 -1.54727,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74478,0.50117 -3.73543,1.39314 -0.99065,0.89197 -1.54727,2.10192 -1.54727,3.36336 0,1.26143 0.55662,2.47138 1.54727,3.36335 0.99065,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_63">
+          <path
+             inkscape:connector-curvature="0"
+             id="path192"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 199.68398,789.23625 32.07482,0.63459"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_64">
+          <path
+             inkscape:connector-curvature="0"
+             id="path195"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 199.68398,789.23625 16.1972,-13.76697"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_65">
+          <path
+             inkscape:connector-curvature="0"
+             id="path198"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 199.68398,789.23625 10.58816,14.07996"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_66">
+          <path
+             inkscape:connector-curvature="0"
+             id="path201"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 228.15067,741.99431 -41.09745,-2.44484"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_67">
+          <path
+             inkscape:connector-curvature="0"
+             id="path204"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="M 228.15067,741.99431 195.76553,729.46042"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_68">
+          <path
+             inkscape:connector-curvature="0"
+             id="path207"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 228.15067,741.99431 -23.70526,0.98655"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_69">
+          <path
+             inkscape:connector-curvature="0"
+             id="path210"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 228.15067,741.99431 -5.22461,-9.05943"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_70">
+          <path
+             inkscape:connector-curvature="0"
+             id="path213"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 207.90532,760.02292 7.97586,15.44636"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_71">
+          <path
+             inkscape:connector-curvature="0"
+             id="path216"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 207.90532,760.02292 -3.45991,-17.04206"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_72">
+          <path
+             inkscape:connector-curvature="0"
+             id="path219"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,736.29858 32.17209,-6.83816"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_73">
+          <path
+             inkscape:connector-curvature="0"
+             id="path222"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 163.59344,736.29858 40.85197,6.68228"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_74">
+          <path
+             inkscape:connector-curvature="0"
+             id="path225"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 195.76553,729.46042 -8.71231,10.08905"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_75">
+          <path
+             inkscape:connector-curvature="0"
+             id="path228"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 195.76553,729.46042 26.25271,-6.28848"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_76">
+          <path
+             inkscape:connector-curvature="0"
+             id="path231"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 195.76553,729.46042 8.67988,13.52044"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_77">
+          <path
+             inkscape:connector-curvature="0"
+             id="path234"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 195.76553,729.46042 27.16053,3.47446"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_78">
+          <path
+             inkscape:connector-curvature="0"
+             id="path237"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="M 264.84333,796.66819 231.7588,789.87084"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_79">
+          <path
+             inkscape:connector-curvature="0"
+             id="path240"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 204.44541,742.98086 -17.39219,-3.43139"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_80">
+          <path
+             inkscape:connector-curvature="0"
+             id="path243"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 204.44541,742.98086 17.57283,-19.80892"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_81">
+          <path
+             inkscape:connector-curvature="0"
+             id="path246"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 204.44541,742.98086 18.48065,-10.04598"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_82">
+          <path
+             inkscape:connector-curvature="0"
+             id="path249"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="M 231.7588,789.87084 215.88118,775.46928"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_83">
+          <path
+             inkscape:connector-curvature="0"
+             id="path252"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 231.7588,789.87084 -21.48666,13.44537"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_84">
+          <path
+             inkscape:connector-curvature="0"
+             id="path255"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 222.01824,723.17194 24.87709,-11.02022"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_85">
+          <path
+             inkscape:connector-curvature="0"
+             id="path258"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 222.01824,723.17194 0.90782,9.76294"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_86">
+          <path
+             inkscape:connector-curvature="0"
+             id="path261"
+             style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+             d="m 187.05322,739.54947 35.87284,-6.61459"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_87">
+          <path
+             inkscape:connector-curvature="0"
+             id="path264"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 199.68398,793.99275 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39314 0.99065,-0.89198 1.54726,-2.10192 1.54726,-3.36336 0,-1.26143 -0.55661,-2.47138 -1.54726,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10192 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36336 0.99065,0.89197 2.33445,1.39314 3.73544,1.39314 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_88">
+          <path
+             inkscape:connector-curvature="0"
+             id="path267"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 228.15067,746.75081 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99064,-0.89197 1.54726,-2.10191 1.54726,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54726,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74479,0.50117 -3.73544,1.39314 -0.99065,0.89198 -1.54727,2.10192 -1.54727,3.36336 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89197 2.33445,1.39315 3.73544,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_89">
+          <path
+             inkscape:connector-curvature="0"
+             id="path270"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 207.90532,764.77942 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39314 0.99065,-0.89197 1.54727,-2.10192 1.54727,-3.36336 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74478,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47139 1.54727,3.36336 0.99065,0.89197 2.33444,1.39314 3.73543,1.39314 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_90">
+          <path
+             inkscape:connector-curvature="0"
+             id="path273"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 163.59344,741.05508 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74479,0.50117 -3.73543,1.39314 -0.99065,0.89198 -1.54727,2.10192 -1.54727,3.36336 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_91">
+          <path
+             inkscape:connector-curvature="0"
+             id="path276"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 195.76553,734.21692 c 1.40099,0 2.74478,-0.50117 3.73543,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33444,-1.39315 -3.73543,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89198 2.33445,1.39315 3.73544,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_93">
+          <path
+             inkscape:connector-curvature="0"
+             id="path282"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 204.44541,747.73736 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74479,0.50117 -3.73544,1.39314 -0.99064,0.89198 -1.54726,2.10192 -1.54726,3.36336 0,1.26144 0.55662,2.47138 1.54726,3.36335 0.99065,0.89197 2.33445,1.39315 3.73544,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_94">
+          <path
+             inkscape:connector-curvature="0"
+             id="path285"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 231.7588,794.62734 c 1.40099,0 2.74478,-0.50117 3.73543,-1.39314 0.99065,-0.89197 1.54727,-2.10192 1.54727,-3.36336 0,-1.26143 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33444,-1.39315 -3.73543,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10192 -1.54727,3.36335 0,1.26144 0.55662,2.47139 1.54727,3.36336 0.99065,0.89197 2.33445,1.39314 3.73544,1.39314 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_95">
+          <path
+             inkscape:connector-curvature="0"
+             id="path288"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 222.01824,727.92844 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39314 0.99065,-0.89198 1.54727,-2.10192 1.54727,-3.36336 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74478,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36336 0.99065,0.89197 2.33444,1.39314 3.73543,1.39314 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_96">
+          <path
+             inkscape:connector-curvature="0"
+             id="path291"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 210.27214,808.07271 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39314 0.99065,-0.89198 1.54727,-2.10192 1.54727,-3.36336 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74478,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36336 0.99065,0.89197 2.33444,1.39314 3.73543,1.39314 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_97">
+          <path
+             inkscape:connector-curvature="0"
+             id="path294"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 215.88118,780.22578 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39314 0.99065,-0.89198 1.54727,-2.10192 1.54727,-3.36336 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74478,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36336 0.99065,0.89197 2.33444,1.39314 3.73543,1.39314 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_98">
+          <path
+             inkscape:connector-curvature="0"
+             id="path297"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 187.05322,744.30597 c 1.40099,0 2.74479,-0.50117 3.73543,-1.39314 0.99065,-0.89198 1.54727,-2.10192 1.54727,-3.36336 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99064,-0.89197 -2.33444,-1.39315 -3.73543,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36336 0.99065,0.89197 2.33445,1.39314 3.73544,1.39314 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_99">
+          <path
+             inkscape:connector-curvature="0"
+             id="path300"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 222.92606,737.69138 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74478,0.50117 -3.73543,1.39314 -0.99065,0.89198 -1.54727,2.10192 -1.54727,3.36336 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+        <g
+           style="stroke-linecap:butt;stroke-linejoin:round"
+           id="patch_100">
+          <path
+             inkscape:connector-curvature="0"
+             id="path303"
+             style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+             d="m 246.89533,716.90822 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73544,1.39315 -0.99064,0.89197 -1.54726,2.10191 -1.54726,3.36335 0,1.26144 0.55662,2.47138 1.54726,3.36335 0.99065,0.89198 2.33445,1.39315 3.73544,1.39315 z"
+             clip-path="url(#pdfaa033876)" />
+        </g>
+      </g>
+      <g
+         id="text_46"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(118.94679,52.56881)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="205.72136"
+           y="792.27472"
+           id="text441">REACTOME_GLYCOLYSIS</text>
+      </g>
+      <g
+         id="text_47"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(90.4801,46.865141)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="234.18805"
+           y="745.03278"
+           id="text444">KEGG_TRYPTOPHAN_METABOLISM</text>
+      </g>
+      <g
+         id="text_48"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(110.72545,55.309383)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="213.9427"
+           y="763.06134"
+           id="text447">KEGG_PYRUVATE_METABOLISM</text>
+      </g>
+      <g
+         id="text_49"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(155.03734,26.088075)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="169.63081"
+           y="739.33704"
+           id="text450">KEGG_BETA_ALANINE_METABOLISM</text>
+      </g>
+      <g
+         id="text_50"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(122.86525,6.4534636)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="201.8029"
+           y="732.49884"
+           id="text453">KEGG_BUTANOATE_METABOLISM</text>
+      </g>
+      <g
+         id="text_51"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(53.787443,71.609732)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="270.88071"
+           y="799.7066"
+           id="text456">REACTOME_GLYCOGEN_BREAKDOWN_GLYCOGENOLYSIS</text>
+      </g>
+      <g
+         id="text_52"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(114.18536,59.115033)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="210.48279"
+           y="746.01929"
+           id="text459">KEGG_PROPANOATE_METABOLISM</text>
+      </g>
+      <g
+         id="text_53"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(86.871977,65.170631)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="237.79617"
+           y="792.9093"
+           id="text462">REACTOME_GLUCOSE_METABOLISM</text>
+      </g>
+      <g
+         id="text_54"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(96.612531,-0.49448743)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="228.05562"
+           y="726.21039"
+           id="text465">KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION</text>
+      </g>
+      <g
+         id="text_55"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(108.35863,78.198064)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="216.30952"
+           y="806.35468"
+           id="text468">REACTOME_GLUCONEOGENESIS</text>
+      </g>
+      <g
+         id="text_56"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(102.74959,53.099436)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="221.91856"
+           y="778.50769"
+           id="text471">KEGG_GLYCOLYSIS_GLUCONEOGENESIS</text>
+      </g>
+      <g
+         id="text_57"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(131.57756,36.073623)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="193.09059"
+           y="742.58789"
+           id="text474">KEGG_LYSINE_DEGRADATION</text>
+      </g>
+      <g
+         id="text_58"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(95.70471,16.21538)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="228.96344"
+           y="735.97333"
+           id="text477">KEGG_FATTY_ACID_METABOLISM</text>
+      </g>
+      <g
+         id="text_59"
+         style="stroke-linecap:butt;stroke-linejoin:round"
+         transform="translate(71.735441,-2.7106874)">
+        <text
+           style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+           x="252.93271"
+           y="715.19019"
+           id="text480">REACTOME_BRANCHED_CHAIN_AMINO_ACID_CATABOLISM</text>
+      </g>
+    </g>
+    <g
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="text_60">
+      <text
+         id="text483"
+         y="105.47372"
+         x="608.84998"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:middle;stroke-linecap:butt;stroke-linejoin:round">Metabolism</text>
+    </g>
+  </g>
+  <defs
+     id="defs491">
+    <clipPath
+       id="pdfaa033876"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <rect
+         height="701.35547"
+         width="920.70001"
+         x="148.5"
+         y="111.47372"
+         id="rect488"
+         style="stroke-linecap:butt;stroke-linejoin:round" />
+    </clipPath>
+  </defs>
+</svg>
