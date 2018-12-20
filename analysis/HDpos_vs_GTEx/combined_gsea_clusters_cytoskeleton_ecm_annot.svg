@@ -1,0 +1,1345 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="835.2pt"
+   version="1.1"
+   viewBox="0 0 1188 835.2"
+   width="1188pt"
+   id="svg373"
+   sodipodi:docname="combined_gsea_clusters_cytoskeleton_ecm_annot.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata377">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1608"
+     inkscape:window-height="943"
+     id="namedview375"
+     showgrid="false"
+     inkscape:zoom="0.8"
+     inkscape:cx="449.5"
+     inkscape:cy="266.81534"
+     inkscape:window-x="11"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg373"
+     inkscape:snap-grids="false"
+     inkscape:measure-start="-36.25,883.75"
+     inkscape:measure-end="591.25,580" />
+  <defs
+     id="defs4">
+    <style
+       type="text/css"
+       id="style2">
+*{stroke-linecap:butt;stroke-linejoin:round;}
+  </style>
+    <marker
+       id="Arrow2Sstart"
+       inkscape:isstock="true"
+       inkscape:stockid="Arrow2Sstart"
+       orient="auto"
+       refX="0"
+       refY="0"
+       style="overflow:visible;stroke-linecap:butt;stroke-linejoin:round">
+      <path
+         d="M 8.72,4.03 -2.21,0.02 8.72,-4 c -1.75,2.37 -1.74,5.62 0,8.03 z"
+         id="Arrow2SstartPath"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
+         transform="matrix(0.3,0,0,0.3,-0.69,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       id="Arrow2Send"
+       inkscape:isstock="true"
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refX="0"
+       refY="0"
+       style="overflow:visible;stroke-linecap:butt;stroke-linejoin:round">
+      <path
+         d="M 8.72,4.03 -2.21,0.02 8.72,-4 c -1.75,2.37 -1.74,5.62 0,8.03 z"
+         id="Arrow2SendPath"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <g
+     id="patch_2"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,114.4935 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path9"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_3"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,128.0835 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path12"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_4"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,141.6735 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path15"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_5"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,155.2635 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path18"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_6"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,168.8535 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path21"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_7"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,182.4435 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path24"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_8"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,196.0335 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path27"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_9"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,209.6235 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path30"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_10"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,223.2135 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path33"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_11"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,236.8035 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path36"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_12"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,250.3935 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path39"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_13"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,263.9835 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path42"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_14"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,277.5735 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+       id="path45"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_15"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,291.1635 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path48"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_16"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,304.7535 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path51"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_17"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,318.3435 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path54"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_18"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,331.9335 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path57"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_19"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,345.5235 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path60"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_20"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,359.1135 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path63"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_21"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,372.7035 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path66"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_22"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,386.2935 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path69"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_23"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,399.8835 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#fbb4b9;stroke-linecap:butt;stroke-linejoin:round"
+       id="path72"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_24"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,413.4735 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path75"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_25"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,427.0635 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path78"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_26"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,440.6535 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path81"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_27"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,454.2435 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path84"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_28"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,467.8335 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path87"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_29"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,481.4235 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path90"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_30"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,495.0135 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path93"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_31"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,503.847 v 13.59"
+       style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+       id="path96"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_32"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,508.6035 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path99"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_33"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,522.1935 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path102"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_34"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,531.027 v 27.18"
+       style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+       id="path105"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_35"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,544.617 v 13.59"
+       style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+       id="path108"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_36"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,535.7835 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+       id="path111"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_37"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,549.3735 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path114"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="patch_38"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <path
+       clip-path="url(#p205a9ec9b5)"
+       d="m 163.59344,562.9635 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+       style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+       id="path117"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="text_1"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-2.8864975e-4)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="112.77544"
+       id="text216">PID_NCADHERIN_PATHWAY</text>
+  </g>
+  <g
+     id="text_2"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,0.00451039)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="126.36544"
+       id="text219">KEGG_ENDOCYTOSIS</text>
+  </g>
+  <g
+     id="text_3"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,0.00930943)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="139.95544"
+       id="text222">REACTOME_ASPARAGINE_N_LINKED_GLYCOSYLATION</text>
+  </g>
+  <g
+     id="text_4"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,0.01411609)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="153.54544"
+       id="text225">SIG_REGULATION_OF_THE_ACTIN_CYTOSKELETON_BY_RHO_GTPASES</text>
+  </g>
+  <g
+     id="text_5"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,0.01892276)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="167.13544"
+       id="text228">KEGG_PROTEIN_EXPORT</text>
+  </g>
+  <g
+     id="text_6"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.07354535)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="180.66451"
+       id="text231">PID_ILK_PATHWAY</text>
+  </g>
+  <g
+     id="text_7"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.12966703)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="194.31543"
+       id="text234">REACTOME_AUTODEGRADATION_OF_CDH1_BY_CDH1_APC_C</text>
+  </g>
+  <g
+     id="text_8"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.12487562)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="207.90544"
+       id="text237">REACTOME_INTEGRIN_ALPHAIIB_BETA3_SIGNALING</text>
+  </g>
+  <g
+     id="text_9"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.12006895)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="221.49544"
+       id="text240">BIOCARTA_ACTINY_PATHWAY</text>
+  </g>
+  <g
+     id="text_10"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.11526229)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="235.08543"
+       id="text243">PID_ARF6_PATHWAY</text>
+  </g>
+  <g
+     id="text_11"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.11045562)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="248.67543"
+       id="text246">ST_INTEGRIN_SIGNALING_PATHWAY</text>
+  </g>
+  <g
+     id="text_12"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.10566421)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="262.26544"
+       id="text249">REACTOME_CTNNB1_PHOSPHORYLATION_CASCADE</text>
+  </g>
+  <g
+     id="text_13"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.10085754)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="275.85544"
+       id="text252">PID_ECADHERIN_STABILIZATION_PATHWAY</text>
+  </g>
+  <g
+     id="text_14"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.09605087)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="289.44543"
+       id="text255">PID_INTEGRIN2_PATHWAY</text>
+  </g>
+  <g
+     id="text_15"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.09124421)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="303.03543"
+       id="text258">REACTOME_AMINO_ACID_TRANSPORT_ACROSS_THE_PLASMA_MEMBRANE</text>
+  </g>
+  <g
+     id="text_16"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.08643754)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="316.62543"
+       id="text261">NABA_PROTEOGLYCANS</text>
+  </g>
+  <g
+     id="text_17"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.08163087)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="330.21542"
+       id="text264">NABA_ECM_AFFILIATED</text>
+  </g>
+  <g
+     id="text_18"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.07685472)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="343.80545"
+       id="text267">KEGG_CELL_ADHESION_MOLECULES_CAMS</text>
+  </g>
+  <g
+     id="text_19"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.07204805)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="357.39545"
+       id="text270">REACTOME_INTERACTION_BETWEEN_L1_AND_ANKYRINS</text>
+  </g>
+  <g
+     id="text_20"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.06724139)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="370.98544"
+       id="text273">PID_INTEGRIN5_PATHWAY</text>
+  </g>
+  <g
+     id="text_21"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.06243472)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="384.57544"
+       id="text276">PID_INTEGRIN_A9B1_PATHWAY</text>
+  </g>
+  <g
+     id="text_22"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.05762805)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="398.16544"
+       id="text279">PID_SYNDECAN_4_PATHWAY</text>
+  </g>
+  <g
+     id="text_23"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.05282138)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="411.75543"
+       id="text282">KEGG_ADHERENS_JUNCTION</text>
+  </g>
+  <g
+     id="text_24"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.04801472)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="425.34543"
+       id="text285">PID_AVB3_OPN_PATHWAY</text>
+  </g>
+  <g
+     id="text_25"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.04320805)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="438.93542"
+       id="text288">NABA_ECM_REGULATORS</text>
+  </g>
+  <g
+     id="text_26"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.03845479)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="452.52545"
+       id="text291">NABA_SECRETED_FACTORS</text>
+  </g>
+  <g
+     id="text_27"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.03364812)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="466.11545"
+       id="text294">PID_AVB3_INTEGRIN_PATHWAY</text>
+  </g>
+  <g
+     id="text_28"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.02884145)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="479.70544"
+       id="text297">KEGG_REGULATION_OF_ACTIN_CYTOSKELETON</text>
+  </g>
+  <g
+     id="text_29"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.02403478)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="493.29544"
+       id="text300">REACTOME_CELL_SURFACE_INTERACTIONS_AT_THE_VASCULAR_WALL</text>
+  </g>
+  <g
+     id="text_30"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.01922812)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="506.88544"
+       id="text303">NABA_ECM_GLYCOPROTEINS</text>
+  </g>
+  <g
+     id="text_31"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.01445197)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="520.47546"
+       id="text306">NABA_CORE_MATRISOME</text>
+  </g>
+  <g
+     id="text_32"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.00961478)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="534.06543"
+       id="text309">PID_SYNDECAN_1_PATHWAY</text>
+  </g>
+  <g
+     id="text_33"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-0.00483863)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="547.65546"
+       id="text312">REACTOME_DEGRADATION_OF_THE_EXTRACELLULAR_MATRIX</text>
+  </g>
+  <g
+     id="text_34"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(0,-1.4461266e-6)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="561.24542"
+       id="text315">REACTOME_EXTRACELLULAR_MATRIX_ORGANIZATION</text>
+  </g>
+  <g
+     id="g355">
+    <g
+       transform="translate(4.9327982e-8,9)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_43">
+      <path
+         inkscape:connector-curvature="0"
+         id="path132"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,617.3235 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,6)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_39">
+      <path
+         inkscape:connector-curvature="0"
+         id="path120"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 163.59344,612.567 20.51545,-15.86486"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,6)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_40">
+      <path
+         inkscape:connector-curvature="0"
+         id="path123"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 208.87377,593.18345 -24.76488,3.51869"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,6)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_41">
+      <path
+         inkscape:connector-curvature="0"
+         id="path126"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="M 208.87377,593.18345 194.04713,571.797"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,6)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_42">
+      <path
+         inkscape:connector-curvature="0"
+         id="path129"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="M 184.10889,596.70214 194.04713,571.797"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,6)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_44">
+      <path
+         inkscape:connector-curvature="0"
+         id="path135"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 208.87377,597.93995 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39314 0.99065,-0.89197 1.54726,-2.10192 1.54726,-3.36336 0,-1.26144 -0.55661,-2.47138 -1.54726,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73544,1.39315 -0.99065,0.89197 -1.54726,2.10191 -1.54726,3.36335 0,1.26144 0.55661,2.47139 1.54726,3.36336 0.99065,0.89197 2.33445,1.39314 3.73544,1.39314 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,6)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_45">
+      <path
+         inkscape:connector-curvature="0"
+         id="path138"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 184.10889,601.45864 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39314 0.99065,-0.89197 1.54726,-2.10192 1.54726,-3.36336 0,-1.26143 -0.55661,-2.47138 -1.54726,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73544,1.39315 -0.99065,0.89197 -1.54726,2.10192 -1.54726,3.36335 0,1.26144 0.55661,2.47139 1.54726,3.36336 0.99065,0.89197 2.33445,1.39314 3.73544,1.39314 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,6)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_46">
+      <path
+         inkscape:connector-curvature="0"
+         id="path141"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 194.04713,576.5535 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74478,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+  </g>
+  <g
+     id="text_35"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(21.1875,2.0625)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="615.60541"
+       id="text318">KEGG_GAP_JUNCTION</text>
+  </g>
+  <g
+     id="text_36"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-4.6875,-6.108925)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="214.91115"
+       y="596.22186"
+       id="text321">REACTOME_PREFOLDIN_MEDIATED_TRANSFER_OF_SUBSTRATE_TO_CCT_TRIC</text>
+  </g>
+  <g
+     id="text_37"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(28.3125,4.1498108)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="190.14627"
+       y="599.7406"
+       id="text324">REACTOME_POST_CHAPERONIN_TUBULIN_FOLDING_PATHWAY</text>
+  </g>
+  <g
+     id="text_38"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(5.6250001,1.5)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="200.08452"
+       y="574.83545"
+       id="text327">REACTOME_FORMATION_OF_TUBULIN_FOLDING_INTERMEDIATES_BY_CCT_TRIC</text>
+  </g>
+  <g
+     id="g313">
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_47">
+      <path
+         inkscape:connector-curvature="0"
+         id="path144"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="M 177.11313,666.927 163.59344,652.41976"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_48">
+      <path
+         inkscape:connector-curvature="0"
+         id="path147"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 177.11313,666.927 31.76064,-11.57424"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_49">
+      <path
+         inkscape:connector-curvature="0"
+         id="path150"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="M 208.87377,655.35276 195.39392,640.82098"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_50">
+      <path
+         inkscape:connector-curvature="0"
+         id="path153"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 208.87377,655.35276 -45.28033,-2.933"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_51">
+      <path
+         inkscape:connector-curvature="0"
+         id="path156"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 163.59344,652.41976 31.80048,-11.59878"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_52">
+      <path
+         inkscape:connector-curvature="0"
+         id="path159"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 203.80721,626.157 -8.41329,14.66398"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_53">
+      <path
+         inkscape:connector-curvature="0"
+         id="path162"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 177.11313,671.6835 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54726,-2.10191 1.54726,-3.36335 0,-1.26144 -0.55661,-2.47138 -1.54726,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89197 2.33445,1.39315 3.73544,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_54">
+      <path
+         inkscape:connector-curvature="0"
+         id="path165"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 208.87377,660.10926 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54726,-2.10192 1.54726,-3.36335 0,-1.26144 -0.55661,-2.47138 -1.54726,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74479,0.50117 -3.73544,1.39314 -0.99065,0.89198 -1.54726,2.10192 -1.54726,3.36336 0,1.26143 0.55661,2.47138 1.54726,3.36335 0.99065,0.89197 2.33445,1.39315 3.73544,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_55">
+      <path
+         inkscape:connector-curvature="0"
+         id="path168"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,657.17626 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74479,0.50117 -3.73543,1.39314 -0.99065,0.89198 -1.54727,2.10192 -1.54727,3.36336 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_56">
+      <path
+         inkscape:connector-curvature="0"
+         id="path171"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 203.80721,630.9135 c 1.40099,0 2.74478,-0.50118 3.73543,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33444,-1.39315 -3.73543,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89197 2.33445,1.39315 3.73544,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,10.5)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_57">
+      <path
+         inkscape:connector-curvature="0"
+         id="path174"
+         style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 195.39392,645.57748 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74478,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+  </g>
+  <g
+     id="text_39"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(1.8750001,17.625)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="183.15051"
+       y="669.96545"
+       id="text330">REACTOME_LYSOSOME_VESICLE_BIOGENESIS</text>
+  </g>
+  <g
+     id="text_40"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(1.8750001,15.350521)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="214.91115"
+       y="658.39117"
+       id="text333">REACTOME_TRANS_GOLGI_NETWORK_VESICLE_BUDDING</text>
+  </g>
+  <g
+     id="text_41"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(47.155335,4.4347571)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="655.45819"
+       id="text336">REACTOME_GOLGI_ASSOCIATED_VESICLE_BIOGENESIS</text>
+  </g>
+  <g
+     id="text_42"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(3.3790589,3)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="213.40709"
+       y="629.19543"
+       id="text339">REACTOME_ENDOSOMAL_SORTING_COMPLEX_REQUIRED_FOR_TRANSPORT_ESCRT</text>
+  </g>
+  <g
+     id="text_43"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(15.354843,2.1847343)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="201.4313"
+       y="643.85944"
+       id="text342">REACTOME_MEMBRANE_TRAFFICKING</text>
+  </g>
+  <g
+     id="g421">
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_58">
+      <path
+         inkscape:connector-curvature="0"
+         id="path177"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 180.2985,707.00529 16.76575,-5.68744"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_59">
+      <path
+         inkscape:connector-curvature="0"
+         id="path180"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 180.2985,707.00529 -16.70506,-0.89292"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_60">
+      <path
+         inkscape:connector-curvature="0"
+         id="path183"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="M 180.2985,707.00529 192.76436,721.287"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_61">
+      <path
+         inkscape:connector-curvature="0"
+         id="path186"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="M 208.87377,718.2901 197.06425,701.31785"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_62">
+      <path
+         inkscape:connector-curvature="0"
+         id="path189"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 208.87377,718.2901 -16.10941,2.9969"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_63">
+      <path
+         inkscape:connector-curvature="0"
+         id="path192"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 192.76436,721.287 4.29989,-19.96915"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_64">
+      <path
+         inkscape:connector-curvature="0"
+         id="path195"
+         style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
+         d="m 203.84112,680.517 -6.77687,20.80085"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_65">
+      <path
+         inkscape:connector-curvature="0"
+         id="path198"
+         style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 180.2985,711.76179 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10192 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47139 -1.54727,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74479,0.50117 -3.73544,1.39314 -0.99065,0.89197 -1.54726,2.10192 -1.54726,3.36336 0,1.26143 0.55661,2.47138 1.54726,3.36335 0.99065,0.89197 2.33445,1.39315 3.73544,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_66">
+      <path
+         inkscape:connector-curvature="0"
+         id="path201"
+         style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 208.87377,723.0466 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54726,-2.10191 1.54726,-3.36335 0,-1.26144 -0.55661,-2.47138 -1.54726,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74479,0.50117 -3.73544,1.39314 -0.99065,0.89198 -1.54726,2.10192 -1.54726,3.36336 0,1.26144 0.55661,2.47138 1.54726,3.36335 0.99065,0.89197 2.33445,1.39315 3.73544,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_67">
+      <path
+         inkscape:connector-curvature="0"
+         id="path204"
+         style="fill:#f768a1;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 192.76436,726.0435 c 1.40099,0 2.74478,-0.50118 3.73543,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33444,-1.39315 -3.73543,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89197 2.33445,1.39315 3.73544,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_68">
+      <path
+         inkscape:connector-curvature="0"
+         id="path207"
+         style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 203.84112,685.2735 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74478,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99065,0.89198 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_69">
+      <path
+         inkscape:connector-curvature="0"
+         id="path210"
+         style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 197.06425,706.07435 c 1.40099,0 2.74478,-0.50117 3.73543,-1.39314 0.99065,-0.89198 1.54727,-2.10192 1.54727,-3.36336 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33444,-1.39315 -3.73543,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73544,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36336 0.99065,0.89197 2.33445,1.39314 3.73544,1.39314 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+    <g
+       transform="translate(4.9327982e-8,24)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="patch_70">
+      <path
+         inkscape:connector-curvature="0"
+         id="path213"
+         style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
+         d="m 163.59344,710.86887 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10192 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47139 -1.54727,-3.36336 -0.99065,-0.89197 -2.33445,-1.39314 -3.73544,-1.39314 -1.40099,0 -2.74479,0.50117 -3.73543,1.39314 -0.99065,0.89197 -1.54727,2.10192 -1.54727,3.36336 0,1.26143 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
+         clip-path="url(#p205a9ec9b5)" />
+    </g>
+  </g>
+  <g
+     id="text_44"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(30,20.119732)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="186.33588"
+       y="710.0437"
+       id="text345">PID_INTEGRIN1_PATHWAY</text>
+  </g>
+  <g
+     id="text_45"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(1.4247284,22.388884)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="214.91115"
+       y="721.32855"
+       id="text348">PID_INTEGRIN_CS_PATHWAY</text>
+  </g>
+  <g
+     id="text_46"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-9.3750001,46.5)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="198.80174"
+       y="724.32544"
+       id="text351">REACTOME_INTEGRIN_CELL_SURFACE_INTERACTIONS</text>
+  </g>
+  <g
+     id="text_47"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(4.9327982e-8,19.5)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="209.87851"
+       y="683.55542"
+       id="text354">KEGG_FOCAL_ADHESION</text>
+  </g>
+  <g
+     id="text_48"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(6.5625001,12.253166)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="203.10162"
+       y="704.35626"
+       id="text357">KEGG_ECM_RECEPTOR_INTERACTION</text>
+  </g>
+  <g
+     id="text_49"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(46.705063,48.120622)">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
+       x="169.63081"
+       y="709.15082"
+       id="text360">PID_INTEGRIN3_PATHWAY</text>
+  </g>
+  <g
+     id="text_50"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:middle;stroke-linecap:butt;stroke-linejoin:round"
+       x="608.84998"
+       y="94.223999"
+       id="text363">Cytoskeleton/ECM</text>
+  </g>
+  <defs
+     id="defs371">
+    <clipPath
+       id="p205a9ec9b5">
+      <rect
+         height="630.576"
+         width="920.7"
+         x="148.5"
+         y="100.224"
+         id="rect368" />
+    </clipPath>
+  </defs>
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot261"
+     style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px"><flowRegion
+       id="flowRegion263"><rect
+         id="rect265"
+         width="976.25"
+         height="315"
+         x="147.5"
+         y="749.85004"
+         style="stroke-linecap:butt;stroke-linejoin:round" /></flowRegion><flowPara
+       id="flowPara267" /></flowRoot></svg>
