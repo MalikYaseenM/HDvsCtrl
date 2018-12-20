@@ -1,0 +1,7 @@
+networkx
+matplotlib_venn
+pydot
+sklearn
+pandas
+jupyterlab
+seaborn
