@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-# Snakefile Last edit: 04/30/2018 
+# Snakefile Last edit: 12/27/2018 
 
 # Usage
 ## Dry run to check if snakefile works
@@ -10,52 +10,99 @@ import os
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
 design_info = os.path.abspath("../../samples/Analysis_Results/asymp_info_design.csv")
+filtered = os.path.abspath("../../samples/Analysis_Results/asymp_raw_filter.csv")
+norm = os.path.abspath("../../samples/Analysis_Results/asymp_norm.csv")
+deseq2 = os.path.abspath("../../samples/Analysis_Results/asymp_raw_filter_deseq2.csv")
+
 firth = os.path.abspath("../../samples/Analysis_Results/asymp_firth.tsv")
 firth_norm = os.path.abspath("../../samples/Analysis_Results/asymp_firth_norm.tsv")
 
 rule all:
-  input:
-    design_info,
-    firth,
-    firth_norm
+    input:
+        design_info,
+        filtered,
+        norm,
+        deseq2,
+#    firth,
+#    firth_norm
 
 # Outputs ordered sample info with subject type and age
 rule design_info:
-  input:"asymp_design.py"
-  output:
-    info = os.path.abspath("../../samples/Analysis_Results/asymp_info_design.csv"),
-    filt = os.path.abspath("../../samples/Analysis_Results/asymp_filter.csv"),
-    nor = os.path.abspath("../../samples/Analysis_Results/asymp_from_norm.csv")
-  shell:
-    "python {input}"
+    input:
+        quant = os.path.abspath('../../samples/all_salmon_quant.tsv'),
+        info = os.path.abspath('../HD_mRNASeq_sample_info.csv'),
+        norm = os.path.abspath('../../samples/Analysis_Results/all_norm.csv'),
+    output:
+        raw_unfil = os.path.abspath('../../samples/Analysis_Results/asymp_raw.csv'),
+        norm_unfil = os.path.abspath('../../samples/Analysis_Results/asymp_from_norm_unfil.csv'),
+        design = design_info
+    run:
+        import pandas as pd
+        df = pd.read_csv(input.quant, sep='\t', comment='#')
+        sample_info = pd.read_csv(input.info, sep=",", comment='#')
+        dn = pd.read_csv(input.norm, sep=",", comment='#')
+
+        # column15: datasetid, 2: subject type, 5: death age
+        samples = sample_info.iloc[:,[14,1,4]]
+        # Change column names from . to _
+        samples.columns = ["Data_id","Subject_type","Subject_death"]
+        hdpos = samples['Data_id'][samples['Subject_type'].str.contains("HDpos")].tolist()
+
+        BA9 = [ _ for _ in hdpos if "BA9" in _]
+        CAP = [ _ for _ in hdpos if "CAP" in _]
+        cols = list(df)[:1] + BA9 + CAP
+        df = df[cols]
+        dn = dn[cols]
+        df.to_csv(output.raw_unfil, index=False)
+        dn.to_csv(output.norm_unfil, index=False)
+
+        sample_i = pd.DataFrame(df.columns)
+        sample_i = sample_i.rename(columns = {0:'Data_id'})
+        sample_i = pd.merge(sample_i,samples, on='Data_id')
+        sample_i.loc[:,'Subject_type'] = sample_i["Data_id"].map(lambda x:"BA9" if "BA9" in x else "CAP")
+        sample_i.to_csv(output.design, index=False)
+
+rule detk_filter:
+    input:os.path.abspath('../../samples/Analysis_Results/asymp_raw.csv')
+    output:filtered
+    shell:
+        """detk-filter 'zero(all) < 3' {input} -o {output}"""
 
 # Normalize counts
 rule norm:
-  input:os.path.abspath("../../samples/Analysis_Results/asymp_filter.csv")
-  output:os.path.abspath("../../samples/Analysis_Results/asymp_norm.csv")
-  shell:
-    """detk-norm deseq2 {input} -o {output}"""
+    input:filtered
+    output:norm
+    shell:
+        """detk-norm deseq2 {input} -o {output}"""
+
+rule deseq2:
+    input:
+        r = 'asymp_DE.R',
+        counts = filtered
+    output:deseq2
+    shell:
+        "Rscript {input.r}"
 
 # DE Firth
 rule firth:
-  input:
-    counts = os.path.abspath("../../samples/Analysis_Results/asymp_norm.csv"),
-    info= os.path.abspath("../../samples/Analysis_Results/asymp_info_design.csv")
-  params:
-    design="Subject_type[BA9] ~ Subject_death + counts"
-  output:os.path.abspath("../../samples/Analysis_Results/asymp_firth.tsv")
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+    input:
+        counts = norm,
+        info = design_info
+    params:
+        design = "Subject_type[BA9] ~ Subject_death + counts"
+    output:firth
+    shell:
+        """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 rule firth_norm:
-  input:
-    counts = os.path.abspath("../../samples/Analysis_Results/asymp_from_norm.csv"),
-    info= os.path.abspath("../../samples/Analysis_Results/asymp_info_design.csv")
-  params:
-    design="Subject_type[BA9] ~ Subject_death + counts"
-  output:os.path.abspath("../../samples/Analysis_Results/asymp_firth_norm.tsv")
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+    input:
+        counts = os.path.abspath("../../samples/Analysis_Results/asymp_from_norm.csv"),
+        info = design_info
+    params:
+        design = "Subject_type[BA9] ~ Subject_death + counts"
+    output:firth_norm
+    shell:
+        """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 # Returns significant counts and genes 
 #rule sig:

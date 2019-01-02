@@ -1,56 +1,120 @@
+import os
 # Snakefile
 # Usage
-# Last edit: 04/17/18
+# Last edit: 12/27/18
 ## Dry run to check if snakefile works
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 50 -np
 ## Actual run
 # snakemake --nolock --cluster "qsub -P mlhd -cwd -pe omp {threads}" --jobs 10
 
 design_info = os.path.abspath("../../samples/Analysis_Results/CAP_info_design.csv")
+filtered = os.path.abspath("../../samples/Analysis_Results/CAP_raw_filter.csv")
+norm = os.path.abspath("../../samples/Analysis_Results/CAP_norm.csv")
+deseq2 = os.path.abspath("../../samples/Analysis_Results/CAP_raw_filter_deseq2.csv")
 firth = os.path.abspath("../../samples/Analysis_Results/CAP_firth.tsv")
 firth_norm = os.path.abspath("../../samples/Analysis_Results/CAP_firth_norm.tsv")
 
+
 rule all:
-  input:
-    design_info,
-    firth,
-    firth_norm
+    input:
+        design_info,
+        filtered,
+        norm,
+        deseq2
+#    firth,
+#    firth_norm
 
 # Outputs ordered sample info with subject type and age
 # Outputs filtered CAP samples
+
+#rule design_info:
+#  input:"design.py"
+#  output:
+#    info = design_info,
+#    norm = os.path.abspath("../../samples/Analysis_Results/CAP_filter.csv"),
+#    nor = os.path.abspath("../../samples/Analysis_Results/CAP_from_norm.csv")
+#  shell:
+#    "python {input}"
+
 rule design_info:
-  input:"design.py"
-  output:
-    info=os.path.abspath("../../samples/Analysis_Results/CAP_info_design.csv"),
-    norm=os.path.abspath("../../samples/Analysis_Results/CAP_filter.csv"),
-    nor = os.path.abspath("../../samples/Analysis_Results/CAP_from_norm.csv")
-  shell:
-    "python {input}"
+    input:
+        quant = os.path.abspath('../../samples/all_salmon_quant.tsv'),
+        info = os.path.abspath('../HD_mRNASeq_sample_info.csv'),
+        norm = os.path.abspath('../../samples/Analysis_Results/all_norm.csv'),
+    output:
+        raw_unfil = os.path.abspath('../../samples/Analysis_Results/CAP_raw.csv'),
+        norm_unfil = os.path.abspath('../../samples/Analysis_Results/CAP_from_norm_unfil.csv'),
+        design = design_info
+    run:
+        import pandas as pd
+        df = pd.read_csv(input.quant, sep='\t', comment='#')
+        sample_info = pd.read_csv(input.info, sep=",", comment='#')
+        dn = pd.read_csv(input.norm, sep=",", comment='#')
+
+        # column15: datasetid, 2: subject type, 5: death age
+        samples = sample_info.iloc[:,[14,1,4]]
+        # Change column names from . to _
+        samples.columns = ["Data_id","Subject_type","Subject_death"]
+        samples = samples[samples['Data_id'].str.contains("CAP")]
+
+        control_ids = [ _ for _ in samples['Data_id'] if _.startswith('C')]
+        HD_ids = [ _ for _ in samples['Data_id'] if _.startswith('H')]
+        
+        cols = list(df)[:1] + control_ids + HD_ids
+        df = df[cols]
+        dn = dn[cols]
+        df.to_csv(output.raw_unfil, index=False)
+        dn.to_csv(output.norm_unfil, index=False)
+
+        sample_i = pd.DataFrame(df.columns)
+        sample_i = sample_i.rename(columns={0:'Data_id'}).drop(sample_i.index[0])
+        df_new = pd.merge(sample_i,samples, on='Data_id')
+        df_new.to_csv(output.design, index=False)
+
+# Jul5 edit: Filter by row if row is all 0s
+# Sep24 edit: Filter by row (more than half zeros in each group) + mean 10
+# Oct9 edit: NO FILTER, only filter out those with all 0s
+# Oct31 edit: Filter out all zeros and rows with more than 2 zeros
+rule detk_filter:
+    input:
+        raw_unfil = os.path.abspath('../../samples/Analysis_Results/CAP_raw.csv')
+    output:
+        fil = filtered
+    shell:
+        """detk-filter 'zero(all) < 3' {input.raw_unfil} -o {output.fil}"""
 
 # Normalize filtered samples
 rule norm:
-  input:os.path.abspath("../../samples/Analysis_Results/CAP_filter.csv")
-  output:os.path.abspath("../../samples/Analysis_Results/CAP_norm.csv")
-  shell:
-    """detk-norm deseq2 {input} -o {output}"""
+    input:filtered
+    output:norm
+    shell:
+        """detk-norm deseq2 {input} -o {output}"""
+
+rule deseq2:
+    input:
+        r = 'CAP_DE.R',
+        counts = filtered
+    output:deseq2
+    shell:
+        "Rscript {input.r}"
 
 # firth
 rule firth:
-  input:
-    counts = os.path.abspath("../../samples/Analysis_Results/CAP_norm.csv"),
-    info= os.path.abspath("../../samples/Analysis_Results/CAP_info_design.csv")
-  params:
-    design="Subject_type[Control] ~ Subject_death + counts"
-  output:os.path.abspath("../../samples/Analysis_Results/CAP_firth.tsv")
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+    input:
+        counts = norm,
+        info = design_info
+    params:
+        design="Subject_type[Control] ~ Subject_death + counts"
+    output:firth
+    shell:
+        """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
 
 rule firth_norm:
-  input:
-    counts = os.path.abspath("../../samples/Analysis_Results/CAP_from_norm.csv"),
-    info= os.path.abspath("../../samples/Analysis_Results/CAP_info_design.csv")
-  params:
-    design="Subject_type[Control] ~ Subject_death + counts"
-  output:os.path.abspath("../../samples/Analysis_Results/CAP_firth_norm.tsv")
-  shell:
-    """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
+    input:
+        counts = os.path.abspath("../../samples/Analysis_Results/CAP_from_norm.csv"),
+        info = design_info
+    params:
+        design="Subject_type[Control] ~ Subject_death + counts"
+    output:firth_norm
+    shell:
+        """detk-de firth "{params.design}" {input.counts} {input.info} -o {output}"""
