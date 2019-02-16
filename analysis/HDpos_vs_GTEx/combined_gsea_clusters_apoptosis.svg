@@ -19,7 +19,7 @@ z
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path clip-path="url(#p441290087b)" d="M 163.593443 31.3335 
+    <path clip-path="url(#pa43554fe81)" d="M 163.593443 31.3335 
 C 164.994432 31.3335 166.33823 30.832325 167.328879 29.940353 
 C 168.319528 29.048382 168.876148 27.838439 168.876148 26.577 
 C 168.876148 25.315561 168.319528 24.105618 167.328879 23.213647 
@@ -32,7 +32,7 @@ z
 " style="fill:#feebe2;"/>
    </g>
    <g id="patch_3">
-    <path clip-path="url(#p441290087b)" d="M 163.593443 44.9235 
+    <path clip-path="url(#pa43554fe81)" d="M 163.593443 44.9235 
 C 164.994432 44.9235 166.33823 44.422325 167.328879 43.530353 
 C 168.319528 42.638382 168.876148 41.428439 168.876148 40.167 
 C 168.876148 38.905561 168.319528 37.695618 167.328879 36.803647 
@@ -42,10 +42,10 @@ C 158.867357 37.695618 158.310738 38.905561 158.310738 40.167
 C 158.310738 41.428439 158.867357 42.638382 159.858006 43.530353 
 C 160.848655 44.422325 162.192453 44.9235 163.593443 44.9235 
 z
-" style="fill:#f768a1;"/>
+" style="fill:#c51b8a;"/>
    </g>
    <g id="patch_4">
-    <path clip-path="url(#p441290087b)" d="M 163.593443 58.5135 
+    <path clip-path="url(#pa43554fe81)" d="M 163.593443 58.5135 
 C 164.994432 58.5135 166.33823 58.012325 167.328879 57.120353 
 C 168.319528 56.228382 168.876148 55.018439 168.876148 53.757 
 C 168.876148 52.495561 168.319528 51.285618 167.328879 50.393647 
@@ -55,15 +55,15 @@ C 158.867357 51.285618 158.310738 52.495561 158.310738 53.757
 C 158.310738 55.018439 158.867357 56.228382 159.858006 57.120353 
 C 160.848655 58.012325 162.192453 58.5135 163.593443 58.5135 
 z
-" style="fill:#f768a1;"/>
+" style="fill:#c51b8a;"/>
    </g>
    <g id="patch_5">
-    <path clip-path="url(#p441290087b)" d="M 163.593443 67.347 
+    <path clip-path="url(#pa43554fe81)" d="M 163.593443 67.347 
 L 163.593443 80.937 
 " style="fill:#1f77b4;stroke:#000000;stroke-linejoin:miter;"/>
    </g>
    <g id="patch_6">
-    <path clip-path="url(#p441290087b)" d="M 163.593443 72.1035 
+    <path clip-path="url(#pa43554fe81)" d="M 163.593443 72.1035 
 C 164.994432 72.1035 166.33823 71.602325 167.328879 70.710353 
 C 168.319528 69.818382 168.876148 68.608439 168.876148 67.347 
 C 168.876148 66.085561 168.319528 64.875618 167.328879 63.983647 
@@ -76,7 +76,7 @@ z
 " style="fill:#7a0177;"/>
    </g>
    <g id="patch_7">
-    <path clip-path="url(#p441290087b)" d="M 163.593443 85.6935 
+    <path clip-path="url(#pa43554fe81)" d="M 163.593443 85.6935 
 C 164.994432 85.6935 166.33823 85.192325 167.328879 84.300353 
 C 168.319528 83.408382 168.876148 82.198439 168.876148 80.937 
 C 168.876148 79.675561 168.319528 78.465618 167.328879 77.573647 
@@ -89,35 +89,35 @@ z
 " style="fill:#7a0177;"/>
    </g>
    <g id="patch_8">
-    <path clip-path="url(#p441290087b)" d="M 163.593443 94.681828 
+    <path clip-path="url(#pa43554fe81)" d="M 163.593443 94.681504 
 L 186.233607 94.527 
 " style="fill:#1f77b4;stroke:#000000;stroke-linejoin:miter;"/>
    </g>
    <g id="patch_9">
-    <path clip-path="url(#p441290087b)" d="M 163.593443 94.681828 
-L 175.067177 114.912 
+    <path clip-path="url(#pa43554fe81)" d="M 163.593443 94.681504 
+L 175.066835 114.912 
 " style="fill:#1f77b4;stroke:#000000;stroke-linejoin:miter;"/>
    </g>
    <g id="patch_10">
-    <path clip-path="url(#p441290087b)" d="M 186.233607 94.527 
-L 175.067177 114.912 
+    <path clip-path="url(#pa43554fe81)" d="M 186.233607 94.527 
+L 175.066835 114.912 
 " style="fill:#1f77b4;stroke:#000000;stroke-linejoin:miter;"/>
    </g>
    <g id="patch_11">
-    <path clip-path="url(#p441290087b)" d="M 163.593443 99.438328 
-C 164.994432 99.438328 166.33823 98.937153 167.328879 98.045181 
-C 168.319528 97.153209 168.876148 95.943266 168.876148 94.681828 
-C 168.876148 93.420389 168.319528 92.210446 167.328879 91.318474 
-C 166.33823 90.426503 164.994432 89.925328 163.593443 89.925328 
-C 162.192453 89.925328 160.848655 90.426503 159.858006 91.318474 
-C 158.867357 92.210446 158.310738 93.420389 158.310738 94.681828 
-C 158.310738 95.943266 158.867357 97.153209 159.858006 98.045181 
-C 160.848655 98.937153 162.192453 99.438328 163.593443 99.438328 
+    <path clip-path="url(#pa43554fe81)" d="M 163.593443 99.438004 
+C 164.994432 99.438004 166.33823 98.936829 167.328879 98.044857 
+C 168.319528 97.152885 168.876148 95.942942 168.876148 94.681504 
+C 168.876148 93.420065 168.319528 92.210122 167.328879 91.31815 
+C 166.33823 90.426178 164.994432 89.925004 163.593443 89.925004 
+C 162.192453 89.925004 160.848655 90.426178 159.858006 91.31815 
+C 158.867357 92.210122 158.310738 93.420065 158.310738 94.681504 
+C 158.310738 95.942942 158.867357 97.152885 159.858006 98.044857 
+C 160.848655 98.936829 162.192453 99.438004 163.593443 99.438004 
 z
 " style="fill:#feebe2;"/>
    </g>
    <g id="patch_12">
-    <path clip-path="url(#p441290087b)" d="M 186.233607 99.2835 
+    <path clip-path="url(#pa43554fe81)" d="M 186.233607 99.2835 
 C 187.634596 99.2835 188.978394 98.782325 189.969043 97.890353 
 C 190.959692 96.998382 191.516311 95.788439 191.516311 94.527 
 C 191.516311 93.265561 190.959692 92.055618 189.969043 91.163647 
@@ -130,15 +130,15 @@ z
 " style="fill:#feebe2;"/>
    </g>
    <g id="patch_13">
-    <path clip-path="url(#p441290087b)" d="M 175.067177 119.6685 
-C 176.468166 119.6685 177.811964 119.167325 178.802613 118.275353 
-C 179.793262 117.383382 180.349882 116.173439 180.349882 114.912 
-C 180.349882 113.650561 179.793262 112.440618 178.802613 111.548647 
-C 177.811964 110.656675 176.468166 110.1555 175.067177 110.1555 
-C 173.666187 110.1555 172.32239 110.656675 171.33174 111.548647 
-C 170.341091 112.440618 169.784472 113.650561 169.784472 114.912 
-C 169.784472 116.173439 170.341091 117.383382 171.33174 118.275353 
-C 172.32239 119.167325 173.666187 119.6685 175.067177 119.6685 
+    <path clip-path="url(#pa43554fe81)" d="M 175.066835 119.6685 
+C 176.467824 119.6685 177.811622 119.167325 178.802271 118.275353 
+C 179.79292 117.383382 180.34954 116.173439 180.34954 114.912 
+C 180.34954 113.650561 179.79292 112.440618 178.802271 111.548647 
+C 177.811622 110.656675 176.467824 110.1555 175.066835 110.1555 
+C 173.665845 110.1555 172.322048 110.656675 171.331398 111.548647 
+C 170.340749 112.440618 169.78413 113.650561 169.78413 114.912 
+C 169.78413 116.173439 170.340749 117.383382 171.331398 118.275353 
+C 172.322048 119.167325 173.665845 119.6685 175.066835 119.6685 
 z
 " style="fill:#feebe2;"/>
    </g>
@@ -146,25 +146,25 @@ z
     <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 29.615438)" x="169.63082" y="29.615438">KEGG_P53_SIGNALING_PATHWAY</text>
    </g>
    <g id="text_2">
-    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 43.205438)" x="169.63082" y="43.205438">PID_P53_DOWNSTREAM_PATHWAY</text>
+    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 43.205438)" x="169.63082" y="43.205438">KEGG_APOPTOSIS</text>
    </g>
    <g id="text_3">
-    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 56.795438)" x="169.63082" y="56.795438">KEGG_APOPTOSIS</text>
+    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 56.795438)" x="169.63082" y="56.795438">PID_P53_DOWNSTREAM_PATHWAY</text>
    </g>
    <g id="text_4">
-    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 70.385438)" x="169.63082" y="70.385438">REACTOME_REGULATION_OF_APOPTOSIS</text>
+    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 70.385438)" x="169.63082" y="70.385438">REACTOME_APOPTOSIS</text>
    </g>
    <g id="text_5">
-    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 83.975437)" x="169.63082" y="83.975437">REACTOME_APOPTOSIS</text>
+    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 83.975437)" x="169.63082" y="83.975437">REACTOME_REGULATION_OF_APOPTOSIS</text>
    </g>
    <g id="text_6">
-    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 97.720265)" x="169.63082" y="97.720265">BIOCARTA_CASPASE_PATHWAY</text>
+    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 169.63082, 97.719941)" x="169.63082" y="97.719941">PID_CASPASE_PATHWAY</text>
    </g>
    <g id="text_7">
-    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 192.270984, 97.565437)" x="192.270984" y="97.565437">BIOCARTA_DEATH_PATHWAY</text>
+    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 192.270984, 97.565437)" x="192.270984" y="97.565437">BIOCARTA_CASPASE_PATHWAY</text>
    </g>
    <g id="text_8">
-    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 181.104554, 117.950438)" x="181.104554" y="117.950438">PID_CASPASE_PATHWAY</text>
+    <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 181.104212, 117.950438)" x="181.104212" y="117.950438">BIOCARTA_DEATH_PATHWAY</text>
    </g>
    <g id="text_9">
     <text style="font-family:DejaVu Sans;font-size:12px;font-style:normal;font-weight:normal;text-anchor:middle;" transform="rotate(-0, 608.85, 11.064)" x="608.85" y="11.064">Apoptosis</text>
@@ -172,7 +172,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p441290087b">
+  <clipPath id="pa43554fe81">
    <rect height="107.361" width="920.7" x="148.5" y="17.064"/>
   </clipPath>
  </defs>

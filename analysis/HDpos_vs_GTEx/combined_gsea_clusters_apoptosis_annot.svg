@@ -9,13 +9,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="142.2pt"
+   height="146.49136pt"
    version="1.1"
-   viewBox="0 0 1188 142.2"
-   width="1188pt"
+   viewBox="0 0 277.08835 146.49137"
+   width="277.08835pt"
    id="svg3980"
    sodipodi:docname="combined_gsea_clusters_apoptosis_annot.svg"
-   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="combined_gsea_clusters_apoptosis_annot.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <metadata
      id="metadata3984">
     <rdf:RDF>
@@ -24,7 +27,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -37,19 +40,24 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1477"
-     inkscape:window-height="923"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
      id="namedview3982"
      showgrid="false"
      inkscape:zoom="2.01"
-     inkscape:cx="374.57212"
-     inkscape:cy="33.260029"
+     inkscape:cx="117.25791"
+     inkscape:cy="37.139847"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg3980" />
+     inkscape:current-layer="svg3980"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <defs
-     id="defs3905">
+     id="defs3905"
+     style="stroke-linecap:butt;stroke-linejoin:round">
     <style
        type="text/css"
        id="style3903">
@@ -62,45 +70,45 @@
      style="fill:#feebe2;stroke-linecap:butt;stroke-linejoin:round"
      d="m 163.59344,31.3335 c 1.40099,0 2.74479,-0.501175 3.73544,-1.393147 0.99065,-0.891971 1.54727,-2.101914 1.54727,-3.363353 0,-1.261439 -0.55662,-2.471382 -1.54727,-3.363353 -0.99065,-0.891972 -2.33445,-1.393147 -3.73544,-1.393147 -1.40099,0 -2.74479,0.501175 -3.73543,1.393147 -0.99065,0.891971 -1.54727,2.101914 -1.54727,3.363353 0,1.261439 0.55662,2.471382 1.54727,3.363353 0.99064,0.891972 2.33444,1.393147 3.73543,1.393147 z"
      clip-path="url(#pe83d30326e)"
-     transform="matrix(1.03008,0,0,1.0476609,-30.101063,5.0043013)" />
+     transform="matrix(1.03008,0,0,1.0476609,-157.78822,6.7589407)" />
   <path
      inkscape:connector-curvature="0"
      id="path3913"
      style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
      d="m 163.59344,44.9235 c 1.40099,0 2.74479,-0.501175 3.73544,-1.393147 0.99065,-0.891971 1.54727,-2.101914 1.54727,-3.363353 0,-1.261439 -0.55662,-2.471382 -1.54727,-3.363353 -0.99065,-0.891972 -2.33445,-1.393147 -3.73544,-1.393147 -1.40099,0 -2.74479,0.501175 -3.73543,1.393147 -0.99065,0.891971 -1.54727,2.101914 -1.54727,3.363353 0,1.261439 0.55662,2.471382 1.54727,3.363353 0.99064,0.891972 2.33444,1.393147 3.73543,1.393147 z"
      clip-path="url(#pe83d30326e)"
-     transform="matrix(1.03008,0,0,1.0476609,-30.101063,5.0043013)" />
+     transform="matrix(1.03008,0,0,1.0476609,-157.78822,6.7589407)" />
   <path
      inkscape:connector-curvature="0"
      id="path3916"
      style="fill:#c51b8a;stroke-linecap:butt;stroke-linejoin:round"
      d="m 163.59344,58.5135 c 1.40099,0 2.74479,-0.501175 3.73544,-1.393147 0.99065,-0.891971 1.54727,-2.101914 1.54727,-3.363353 0,-1.261439 -0.55662,-2.471382 -1.54727,-3.363353 -0.99065,-0.891972 -2.33445,-1.393147 -3.73544,-1.393147 -1.40099,0 -2.74479,0.501175 -3.73543,1.393147 -0.99065,0.891971 -1.54727,2.101914 -1.54727,3.363353 0,1.261439 0.55662,2.471382 1.54727,3.363353 0.99064,0.891972 2.33444,1.393147 3.73543,1.393147 z"
      clip-path="url(#pe83d30326e)"
-     transform="matrix(1.03008,0,0,1.0476609,-30.101063,5.0043013)" />
+     transform="matrix(1.03008,0,0,1.0476609,-157.78822,6.7589407)" />
   <path
      inkscape:connector-curvature="0"
      id="path3919"
      style="fill:#1f77b4;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter"
      d="m 163.59344,67.347 v 13.59"
      clip-path="url(#pe83d30326e)"
-     transform="matrix(1.03008,0,0,1.0476609,-30.101063,5.0043013)" />
+     transform="matrix(1.03008,0,0,1.0476609,-157.78822,6.7589407)" />
   <path
      inkscape:connector-curvature="0"
      id="path3922"
      style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
      d="m 163.59344,72.1035 c 1.40099,0 2.74479,-0.501175 3.73544,-1.393147 0.99065,-0.891971 1.54727,-2.101914 1.54727,-3.363353 0,-1.261439 -0.55662,-2.471382 -1.54727,-3.363353 -0.99065,-0.891972 -2.33445,-1.393147 -3.73544,-1.393147 -1.40099,0 -2.74479,0.501175 -3.73543,1.393147 -0.99065,0.891971 -1.54727,2.101914 -1.54727,3.363353 0,1.261439 0.55662,2.471382 1.54727,3.363353 0.99064,0.891972 2.33444,1.393147 3.73543,1.393147 z"
      clip-path="url(#pe83d30326e)"
-     transform="matrix(1.03008,0,0,1.0476609,-30.101063,5.0043013)" />
+     transform="matrix(1.03008,0,0,1.0476609,-157.78822,6.7589407)" />
   <path
      inkscape:connector-curvature="0"
      id="path3925"
      style="fill:#7a0177;stroke-linecap:butt;stroke-linejoin:round"
      d="m 163.59344,85.6935 c 1.40099,0 2.74479,-0.501175 3.73544,-1.393147 0.99065,-0.891971 1.54727,-2.101914 1.54727,-3.363353 0,-1.261439 -0.55662,-2.471382 -1.54727,-3.363353 -0.99065,-0.891972 -2.33445,-1.393147 -3.73544,-1.393147 -1.40099,0 -2.74479,0.501175 -3.73543,1.393147 -0.99065,0.891971 -1.54727,2.101914 -1.54727,3.363353 0,1.261439 0.55662,2.471382 1.54727,3.363353 0.99064,0.891972 2.33444,1.393147 3.73543,1.393147 z"
      clip-path="url(#pe83d30326e)"
-     transform="matrix(1.03008,0,0,1.0476609,-30.101063,5.0043013)" />
+     transform="matrix(1.03008,0,0,1.0476609,-157.78822,6.7589407)" />
   <g
      id="g4923"
-     transform="rotate(-85.045448,149.82289,115.93062)"
+     transform="rotate(-85.045448,86.935977,186.42553)"
      style="stroke-linecap:butt;stroke-linejoin:round">
     <g
        id="g4938"
@@ -152,60 +160,64 @@
   </g>
   <text
      id="text3946"
-     y="35.727638"
-     x="145.86128"
+     y="37.467491"
+     x="17.089087"
      style="font-style:normal;font-weight:normal;font-size:12.46599865px;font-family:'DejaVu Sans';text-anchor:start;stroke-width:1.03883326;stroke-linecap:butt;stroke-linejoin:round"
-     transform="scale(0.99157395,1.0084976)">KEGG_P53_SIGNALING_PATHWAY</text>
+     transform="scale(0.99157398,1.0084976)">KEGG_P53_SIGNALING_PATHWAY</text>
   <text
      id="text3949"
-     y="49.845379"
-     x="145.86128"
+     y="51.585232"
+     x="17.089087"
      style="font-style:normal;font-weight:normal;font-size:12.46599865px;font-family:'DejaVu Sans';text-anchor:start;stroke-width:1.03883326;stroke-linecap:butt;stroke-linejoin:round"
-     transform="scale(0.99157395,1.0084976)">PID_P53_DOWNSTREAM_PATHWAY</text>
+     transform="scale(0.99157398,1.0084976)">PID_P53_DOWNSTREAM_PATHWAY</text>
   <text
      id="text3952"
-     y="63.963123"
-     x="145.86128"
+     y="65.70298"
+     x="17.089087"
      style="font-style:normal;font-weight:normal;font-size:12.46599865px;font-family:'DejaVu Sans';text-anchor:start;stroke-width:1.03883326;stroke-linecap:butt;stroke-linejoin:round"
-     transform="scale(0.99157395,1.0084976)">KEGG_APOPTOSIS</text>
+     transform="scale(0.99157398,1.0084976)">KEGG_APOPTOSIS</text>
   <text
      id="text3955"
-     y="78.080864"
-     x="145.86128"
+     y="79.820717"
+     x="17.089087"
      style="font-style:normal;font-weight:normal;font-size:12.46599865px;font-family:'DejaVu Sans';text-anchor:start;stroke-width:1.03883326;stroke-linecap:butt;stroke-linejoin:round"
-     transform="scale(0.99157395,1.0084976)">REACTOME_REGULATION_OF_APOPTOSIS</text>
+     transform="scale(0.99157398,1.0084976)">REACTOME_REGULATION_OF_APOPTOSIS</text>
   <text
      id="text3958"
-     y="92.198608"
-     x="145.86128"
+     y="93.938461"
+     x="17.089087"
      style="font-style:normal;font-weight:normal;font-size:12.46599865px;font-family:'DejaVu Sans';text-anchor:start;stroke-width:1.03883326;stroke-linecap:butt;stroke-linejoin:round"
-     transform="scale(0.99157395,1.0084976)">REACTOME_APOPTOSIS</text>
+     transform="scale(0.99157398,1.0084976)">REACTOME_APOPTOSIS</text>
   <text
      id="text3961"
-     y="106.84718"
-     x="152.00247"
+     y="108.58704"
+     x="23.230284"
      style="font-style:normal;font-weight:normal;font-size:12.46599865px;font-family:'DejaVu Sans';text-anchor:start;stroke-width:1.03883326;stroke-linecap:butt;stroke-linejoin:round"
      transform="scale(0.991574,1.0084976)">BIOCARTA_CASPASE_PATHWAY</text>
   <text
      id="text3964"
-     y="121.42126"
-     x="170.91592"
+     y="123.16111"
+     x="42.143734"
      style="font-style:normal;font-weight:normal;font-size:12.46599865px;font-family:'DejaVu Sans';text-anchor:start;stroke-width:1.03883326;stroke-linecap:butt;stroke-linejoin:round"
      transform="scale(0.991574,1.0084976)">BIOCARTA_DEATH_PATHWAY</text>
   <text
      id="text3967"
-     y="135.99533"
-     x="148.01167"
+     y="137.73518"
+     x="19.239485"
      style="font-style:normal;font-weight:normal;font-size:12.46599865px;font-family:'DejaVu Sans';text-anchor:start;stroke-width:1.03883326;stroke-linecap:butt;stroke-linejoin:round"
      transform="scale(0.991574,1.0084976)">PID_CASPASE_PATHWAY</text>
   <text
      id="text3970"
-     y="18.305737"
-     x="220.56342"
+     y="19.675602"
+     x="136.57152"
      style="font-style:normal;font-weight:normal;font-size:12.46599865px;font-family:'DejaVu Sans';text-anchor:middle;stroke-width:1.03883326;stroke-linecap:butt;stroke-linejoin:round"
-     transform="scale(0.99157399,1.0084976)">Apoptosis</text>
+     transform="scale(0.991574,1.0084976)">
+    <tspan
+       style="font-size:24px;stroke-linecap:butt;stroke-linejoin:round"
+       id="tspan844">Apoptosis</tspan>
+  </text>
   <flowRoot
-     transform="matrix(0.75000002,0,0,0.75000002,0,-5.8252429)"
+     transform="matrix(0.75000002,0,0,0.75000002,-127.68715,-4.0706035)"
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
      id="flowRoot4791"
      xml:space="preserve"><flowRegion
@@ -221,13 +233,15 @@
        id="flowPara4797" /></flowRoot>  <defs
      id="defs3978">
     <clipPath
-       id="pe83d30326e">
+       id="pe83d30326e"
+       style="stroke-linecap:butt;stroke-linejoin:round">
       <rect
          height="107.361"
-         width="920.7"
+         width="920.70001"
          x="148.5"
-         y="17.064"
-         id="rect3975" />
+         y="17.063999"
+         id="rect3975"
+         style="stroke-linecap:butt;stroke-linejoin:round" />
     </clipPath>
   </defs>
 </svg>

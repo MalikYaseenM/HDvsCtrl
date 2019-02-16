@@ -9,13 +9,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="556.2pt"
+   height="303.3334pt"
    version="1.1"
-   viewBox="0 0 1188 556.2"
-   width="1188pt"
+   viewBox="0 0 800.98022 303.3334"
+   width="800.98022pt"
    id="svg9069"
    sodipodi:docname="combined_gsea_clusters_signaling_annot.svg"
-   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="combined_gsea_clusters_signaling_annot.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <metadata
      id="metadata9073">
     <rdf:RDF>
@@ -37,19 +40,24 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1677"
-     inkscape:window-height="856"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
      id="namedview9071"
      showgrid="false"
-     inkscape:zoom="0.8"
-     inkscape:cx="521.52846"
-     inkscape:cy="324.67909"
-     inkscape:window-x="62"
+     inkscape:zoom="0.4"
+     inkscape:cx="-651.61345"
+     inkscape:cy="-360.24724"
+     inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g298" />
+     inkscape:current-layer="figure_1"
+     fit-margin-top="5"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5" />
   <defs
-     id="defs8817">
+     id="defs8817"
+     style="stroke-linecap:butt;stroke-linejoin:round">
     <style
        type="text/css"
        id="style8815">
@@ -57,9 +65,12 @@
   </style>
   </defs>
   <g
-     id="figure_1">
+     id="figure_1"
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-30.009624)">
     <g
-       id="patch_1" />
+       id="patch_1"
+       style="stroke-linecap:butt;stroke-linejoin:round" />
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
        id="patch_2">
@@ -252,7 +263,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="patch_21">
+       id="patch_21"
+       transform="translate(346.87499,-185.625)">
       <path
          inkscape:connector-curvature="0"
          id="path8879"
@@ -262,7 +274,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="patch_22">
+       id="patch_22"
+       transform="translate(346.87499,-185.625)">
       <path
          inkscape:connector-curvature="0"
          id="path8882"
@@ -272,7 +285,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="patch_23">
+       id="patch_23"
+       transform="translate(346.87499,-185.625)">
       <path
          inkscape:connector-curvature="0"
          id="path8885"
@@ -282,7 +296,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="patch_24">
+       id="patch_24"
+       transform="translate(346.87499,-185.625)">
       <path
          inkscape:connector-curvature="0"
          id="path8888"
@@ -292,7 +307,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="patch_25">
+       id="patch_25"
+       transform="translate(346.87499,-185.625)">
       <path
          inkscape:connector-curvature="0"
          id="path8891"
@@ -302,7 +318,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="patch_26">
+       id="patch_26"
+       transform="translate(346.87499,-185.625)">
       <path
          inkscape:connector-curvature="0"
          id="path8894"
@@ -312,7 +329,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="patch_27">
+       id="patch_27"
+       transform="translate(346.87499,-185.625)">
       <path
          inkscape:connector-curvature="0"
          id="path8897"
@@ -493,7 +511,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="text_20">
+       id="text_20"
+       transform="translate(346.87499,-185.625)">
       <text
          id="text9020"
          y="337.50543"
@@ -502,7 +521,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="text_21">
+       id="text_21"
+       transform="translate(346.87499,-185.625)">
       <text
          id="text9023"
          y="351.09543"
@@ -511,7 +531,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="text_22">
+       id="text_22"
+       transform="translate(346.87499,-185.625)">
       <text
          id="text9026"
          y="364.68542"
@@ -520,7 +541,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="text_23">
+       id="text_23"
+       transform="translate(346.87499,-185.625)">
       <text
          id="text9029"
          y="378.27545"
@@ -529,7 +551,8 @@
     </g>
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
-       id="text_24">
+       id="text_24"
+       transform="translate(346.87499,-185.625)">
       <text
          id="text9032"
          y="391.86545"
@@ -537,9 +560,12 @@
          style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round">REACTOME_TRANSMEMBRANE_TRANSPORT_OF_SMALL_MOLECULES</text>
     </g>
     <g
-       id="g298">
+       id="g298"
+       transform="translate(346.87499,-185.625)"
+       style="stroke-linecap:butt;stroke-linejoin:round">
       <g
-         id="g362">
+         id="g362"
+         style="stroke-linecap:butt;stroke-linejoin:round">
         <g
            id="g245"
            style="stroke-linecap:butt;stroke-linejoin:round">
@@ -644,7 +670,7 @@
     </g>
     <g
        id="g341"
-       transform="translate(0,3)"
+       transform="translate(346.87499,-182.625)"
        style="stroke-linecap:butt;stroke-linejoin:round">
       <g
          style="stroke-linecap:butt;stroke-linejoin:round"
@@ -872,21 +898,27 @@
        id="text_33">
       <text
          id="text9059"
-         y="60.743999"
-         x="608.84998"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:middle;stroke-linecap:butt;stroke-linejoin:round">Signaling</text>
+         y="53.243999"
+         x="498.22498"
+         style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:middle;stroke-linecap:butt;stroke-linejoin:round">
+        <tspan
+           style="font-size:24px;stroke-linecap:butt;stroke-linejoin:round"
+           id="tspan10105">Signaling</tspan>
+      </text>
     </g>
   </g>
   <defs
      id="defs9067">
     <clipPath
-       id="p428c96af61">
+       id="p428c96af61"
+       style="stroke-linecap:butt;stroke-linejoin:round">
       <rect
          height="419.931"
-         width="920.7"
+         width="920.70001"
          x="148.5"
-         y="66.744"
-         id="rect9064" />
+         y="66.744003"
+         id="rect9064"
+         style="stroke-linecap:butt;stroke-linejoin:round" />
     </clipPath>
   </defs>
 </svg>

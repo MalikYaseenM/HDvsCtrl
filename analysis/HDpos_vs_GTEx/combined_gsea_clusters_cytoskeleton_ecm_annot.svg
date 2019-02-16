@@ -9,13 +9,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="835.2pt"
+   height="381.35767pt"
    version="1.1"
-   viewBox="0 0 1188 835.2"
-   width="1188pt"
+   viewBox="0 0 1027.3563 381.35766"
+   width="1027.3563pt"
    id="svg373"
    sodipodi:docname="combined_gsea_clusters_cytoskeleton_ecm_annot.svg"
-   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="combined_gsea_clusters_cytoskeleton_ecm_annot.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <metadata
      id="metadata377">
     <rdf:RDF>
@@ -24,7 +27,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -37,22 +40,27 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1608"
-     inkscape:window-height="943"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
      id="namedview375"
      showgrid="false"
-     inkscape:zoom="0.8"
-     inkscape:cx="449.5"
-     inkscape:cy="266.81534"
-     inkscape:window-x="11"
+     inkscape:zoom="0.4"
+     inkscape:cx="-590.31394"
+     inkscape:cy="-417.85944"
+     inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg373"
      inkscape:snap-grids="false"
      inkscape:measure-start="-36.25,883.75"
-     inkscape:measure-end="591.25,580" />
+     inkscape:measure-end="591.25,580"
+     fit-margin-top="5"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5" />
   <defs
-     id="defs4">
+     id="defs4"
+     style="stroke-linecap:butt;stroke-linejoin:round">
     <style
        type="text/css"
        id="style2">
@@ -91,7 +99,8 @@
   </defs>
   <g
      id="patch_2"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,114.4935 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -101,7 +110,8 @@
   </g>
   <g
      id="patch_3"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,128.0835 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -111,7 +121,8 @@
   </g>
   <g
      id="patch_4"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,141.6735 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -121,7 +132,8 @@
   </g>
   <g
      id="patch_5"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,155.2635 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -131,7 +143,8 @@
   </g>
   <g
      id="patch_6"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,168.8535 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -141,7 +154,8 @@
   </g>
   <g
      id="patch_7"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,182.4435 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -151,7 +165,8 @@
   </g>
   <g
      id="patch_8"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,196.0335 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -161,7 +176,8 @@
   </g>
   <g
      id="patch_9"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,209.6235 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -171,7 +187,8 @@
   </g>
   <g
      id="patch_10"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,223.2135 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -181,7 +198,8 @@
   </g>
   <g
      id="patch_11"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,236.8035 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -191,7 +209,8 @@
   </g>
   <g
      id="patch_12"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,250.3935 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -201,7 +220,8 @@
   </g>
   <g
      id="patch_13"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,263.9835 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -211,7 +231,8 @@
   </g>
   <g
      id="patch_14"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,277.5735 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -221,7 +242,8 @@
   </g>
   <g
      id="patch_15"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,291.1635 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -231,7 +253,8 @@
   </g>
   <g
      id="patch_16"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,304.7535 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -241,7 +264,8 @@
   </g>
   <g
      id="patch_17"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,318.3435 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
@@ -251,7 +275,8 @@
   </g>
   <g
      id="patch_18"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,331.9335 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -261,7 +286,8 @@
   </g>
   <g
      id="patch_19"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,345.5235 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
@@ -271,7 +297,8 @@
   </g>
   <g
      id="patch_20"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,359.1135 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -281,7 +308,8 @@
   </g>
   <g
      id="patch_21"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,372.7035 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -291,7 +319,8 @@
   </g>
   <g
      id="patch_22"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,386.2935 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -301,7 +330,8 @@
   </g>
   <g
      id="patch_23"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,399.8835 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -311,7 +341,8 @@
   </g>
   <g
      id="patch_24"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,413.4735 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -321,7 +352,8 @@
   </g>
   <g
      id="patch_25"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,427.0635 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -331,7 +363,8 @@
   </g>
   <g
      id="patch_26"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,440.6535 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
@@ -341,7 +374,8 @@
   </g>
   <g
      id="patch_27"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,454.2435 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -351,7 +385,8 @@
   </g>
   <g
      id="patch_28"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,467.8335 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
@@ -361,7 +396,8 @@
   </g>
   <g
      id="patch_29"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,481.4235 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -371,7 +407,8 @@
   </g>
   <g
      id="patch_30"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,495.0135 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -381,7 +418,8 @@
   </g>
   <g
      id="patch_31"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,503.847 v 13.59"
@@ -391,7 +429,8 @@
   </g>
   <g
      id="patch_32"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,508.6035 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -401,7 +440,8 @@
   </g>
   <g
      id="patch_33"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,522.1935 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -411,7 +451,8 @@
   </g>
   <g
      id="patch_34"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,531.027 v 27.18"
@@ -421,7 +462,8 @@
   </g>
   <g
      id="patch_35"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,544.617 v 13.59"
@@ -431,7 +473,8 @@
   </g>
   <g
      id="patch_36"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,535.7835 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
@@ -441,7 +484,8 @@
   </g>
   <g
      id="patch_37"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,549.3735 c 1.40099,0 2.74479,-0.50117 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89198 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50117 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89198 2.33444,1.39315 3.73543,1.39315 z"
@@ -451,7 +495,8 @@
   </g>
   <g
      id="patch_38"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(309.81426,-410.36462)">
     <path
        clip-path="url(#p205a9ec9b5)"
        d="m 163.59344,562.9635 c 1.40099,0 2.74479,-0.50118 3.73544,-1.39315 0.99065,-0.89197 1.54727,-2.10191 1.54727,-3.36335 0,-1.26144 -0.55662,-2.47138 -1.54727,-3.36335 -0.99065,-0.89197 -2.33445,-1.39315 -3.73544,-1.39315 -1.40099,0 -2.74479,0.50118 -3.73543,1.39315 -0.99065,0.89197 -1.54727,2.10191 -1.54727,3.36335 0,1.26144 0.55662,2.47138 1.54727,3.36335 0.99064,0.89197 2.33444,1.39315 3.73543,1.39315 z"
@@ -462,7 +507,7 @@
   <g
      id="text_1"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-2.8864975e-4)">
+     transform="translate(-153.31074,-65.364913)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -472,7 +517,7 @@
   <g
      id="text_2"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,0.00451039)">
+     transform="translate(-153.31074,-65.360114)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -482,7 +527,7 @@
   <g
      id="text_3"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,0.00930943)">
+     transform="translate(-153.31074,-65.355315)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -492,7 +537,7 @@
   <g
      id="text_4"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,0.01411609)">
+     transform="translate(-153.31074,-65.350508)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -502,7 +547,7 @@
   <g
      id="text_5"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,0.01892276)">
+     transform="translate(-153.31074,-65.345701)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -512,7 +557,7 @@
   <g
      id="text_6"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.07354535)">
+     transform="translate(-153.31074,-65.438169)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -522,7 +567,7 @@
   <g
      id="text_7"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.12966703)">
+     transform="translate(-153.31074,-65.494291)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -532,7 +577,7 @@
   <g
      id="text_8"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.12487562)">
+     transform="translate(-153.31074,-65.4895)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -542,7 +587,7 @@
   <g
      id="text_9"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.12006895)">
+     transform="translate(-153.31074,-65.484693)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -552,7 +597,7 @@
   <g
      id="text_10"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.11526229)">
+     transform="translate(-153.31074,-65.479886)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -562,7 +607,7 @@
   <g
      id="text_11"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.11045562)">
+     transform="translate(-153.31074,-65.47508)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -572,7 +617,7 @@
   <g
      id="text_12"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.10566421)">
+     transform="translate(-153.31074,-65.470288)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -582,7 +627,7 @@
   <g
      id="text_13"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.10085754)">
+     transform="translate(-153.31074,-65.465482)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -592,7 +637,7 @@
   <g
      id="text_14"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.09605087)">
+     transform="translate(-153.31074,-65.460675)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -602,7 +647,7 @@
   <g
      id="text_15"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.09124421)">
+     transform="translate(-153.31074,-65.455868)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -612,7 +657,7 @@
   <g
      id="text_16"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.08643754)">
+     transform="translate(-153.31074,-65.451062)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -622,7 +667,7 @@
   <g
      id="text_17"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.08163087)">
+     transform="translate(-153.31074,-65.446255)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -632,7 +677,7 @@
   <g
      id="text_18"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.07685472)">
+     transform="translate(-153.31074,-65.441479)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -642,7 +687,7 @@
   <g
      id="text_19"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.07204805)">
+     transform="translate(-153.31074,-65.436672)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -652,7 +697,7 @@
   <g
      id="text_20"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.06724139)">
+     transform="translate(-153.31074,-65.431865)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -662,7 +707,7 @@
   <g
      id="text_21"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.06243472)">
+     transform="translate(-153.31074,-65.427059)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -672,7 +717,7 @@
   <g
      id="text_22"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.05762805)">
+     transform="translate(-153.31074,-65.422252)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -682,7 +727,7 @@
   <g
      id="text_23"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.05282138)">
+     transform="translate(-153.31074,-65.417445)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -692,7 +737,7 @@
   <g
      id="text_24"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.04801472)">
+     transform="translate(-153.31074,-65.412639)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -702,7 +747,7 @@
   <g
      id="text_25"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.04320805)">
+     transform="translate(-153.31074,-65.407832)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -712,7 +757,7 @@
   <g
      id="text_26"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.03845479)">
+     transform="translate(309.81426,-410.40308)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -722,7 +767,7 @@
   <g
      id="text_27"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.03364812)">
+     transform="translate(309.81426,-410.39827)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -732,7 +777,7 @@
   <g
      id="text_28"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.02884145)">
+     transform="translate(309.81426,-410.39347)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -742,7 +787,7 @@
   <g
      id="text_29"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.02403478)">
+     transform="translate(309.81426,-410.38866)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -752,7 +797,7 @@
   <g
      id="text_30"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.01922812)">
+     transform="translate(309.81426,-410.38385)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -762,7 +807,7 @@
   <g
      id="text_31"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.01445197)">
+     transform="translate(309.81426,-410.37908)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -772,7 +817,7 @@
   <g
      id="text_32"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.00961478)">
+     transform="translate(309.81426,-410.37424)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -782,7 +827,7 @@
   <g
      id="text_33"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-0.00483863)">
+     transform="translate(309.81426,-410.36946)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -792,7 +837,7 @@
   <g
      id="text_34"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(0,-1.4461266e-6)">
+     transform="translate(309.81426,-410.36463)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -800,7 +845,9 @@
        id="text315">REACTOME_EXTRACELLULAR_MATRIX_ORGANIZATION</text>
   </g>
   <g
-     id="g355">
+     id="g355"
+     transform="translate(309.81426,-410.36462)"
+     style="stroke-linecap:butt;stroke-linejoin:round">
     <g
        transform="translate(4.9327982e-8,9)"
        style="stroke-linecap:butt;stroke-linejoin:round"
@@ -893,7 +940,7 @@
   <g
      id="text_35"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(21.1875,2.0625)">
+     transform="translate(331.00176,-408.30212)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -903,7 +950,7 @@
   <g
      id="text_36"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(-4.6875,-6.108925)">
+     transform="translate(305.12676,-416.47355)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="214.91115"
@@ -913,7 +960,7 @@
   <g
      id="text_37"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(28.3125,4.1498108)">
+     transform="translate(338.12676,-406.21481)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="190.14627"
@@ -923,7 +970,7 @@
   <g
      id="text_38"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(5.6250001,1.5)">
+     transform="translate(315.43926,-408.86462)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="200.08452"
@@ -931,7 +978,9 @@
        id="text327">REACTOME_FORMATION_OF_TUBULIN_FOLDING_INTERMEDIATES_BY_CCT_TRIC</text>
   </g>
   <g
-     id="g313">
+     id="g313"
+     transform="translate(309.81426,-410.36462)"
+     style="stroke-linecap:butt;stroke-linejoin:round">
     <g
        transform="translate(4.9327982e-8,10.5)"
        style="stroke-linecap:butt;stroke-linejoin:round"
@@ -1057,7 +1106,7 @@
   <g
      id="text_39"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(1.8750001,17.625)">
+     transform="translate(311.68926,-392.73962)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="183.15051"
@@ -1067,7 +1116,7 @@
   <g
      id="text_40"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(1.8750001,15.350521)">
+     transform="translate(311.68926,-395.0141)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="214.91115"
@@ -1077,7 +1126,7 @@
   <g
      id="text_41"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(47.155335,4.4347571)">
+     transform="translate(356.9696,-405.92987)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -1087,7 +1136,7 @@
   <g
      id="text_42"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(3.3790589,3)">
+     transform="translate(313.19332,-407.36462)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="213.40709"
@@ -1097,7 +1146,7 @@
   <g
      id="text_43"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(15.354843,2.1847343)">
+     transform="translate(325.16911,-408.17989)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="201.4313"
@@ -1105,7 +1154,9 @@
        id="text342">REACTOME_MEMBRANE_TRAFFICKING</text>
   </g>
   <g
-     id="g421">
+     id="g421"
+     transform="translate(309.81426,-410.36462)"
+     style="stroke-linecap:butt;stroke-linejoin:round">
     <g
        transform="translate(4.9327982e-8,24)"
        style="stroke-linecap:butt;stroke-linejoin:round"
@@ -1253,7 +1304,7 @@
   <g
      id="text_44"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(30,20.119732)">
+     transform="translate(339.81426,-390.24489)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="186.33588"
@@ -1263,7 +1314,7 @@
   <g
      id="text_45"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(1.4247284,22.388884)">
+     transform="translate(311.23899,-387.97574)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="214.91115"
@@ -1273,7 +1324,7 @@
   <g
      id="text_46"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(-9.3750001,46.5)">
+     transform="translate(300.43926,-363.86462)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="198.80174"
@@ -1283,7 +1334,7 @@
   <g
      id="text_47"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(4.9327982e-8,19.5)">
+     transform="translate(309.81426,-390.86462)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="209.87851"
@@ -1293,7 +1344,7 @@
   <g
      id="text_48"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(6.5625001,12.253166)">
+     transform="translate(316.37676,-398.11146)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="203.10162"
@@ -1303,7 +1354,7 @@
   <g
      id="text_49"
      style="stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(46.705063,48.120622)">
+     transform="translate(356.51933,-362.244)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:start;stroke-linecap:butt;stroke-linejoin:round"
        x="169.63081"
@@ -1312,34 +1363,44 @@
   </g>
   <g
      id="text_50"
-     style="stroke-linecap:butt;stroke-linejoin:round">
+     style="stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)">
     <text
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:'DejaVu Sans';text-anchor:middle;stroke-linecap:butt;stroke-linejoin:round"
-       x="608.84998"
-       y="94.223999"
-       id="text363">Cytoskeleton/ECM</text>
+       x="621.97498"
+       y="88.598999"
+       id="text363">
+      <tspan
+         style="font-size:24px;stroke-linecap:butt;stroke-linejoin:round"
+         id="tspan1076">Cytoskeleton/ECM</tspan>
+    </text>
   </g>
   <defs
      id="defs371">
     <clipPath
-       id="p205a9ec9b5">
+       id="p205a9ec9b5"
+       style="stroke-linecap:butt;stroke-linejoin:round">
       <rect
-         height="630.576"
-         width="920.7"
+         height="630.57599"
+         width="920.70001"
          x="148.5"
          y="100.224"
-         id="rect368" />
+         id="rect368"
+         style="stroke-linecap:butt;stroke-linejoin:round" />
     </clipPath>
   </defs>
   <flowRoot
      xml:space="preserve"
      id="flowRoot261"
-     style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px"><flowRegion
-       id="flowRegion263"><rect
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
+     transform="translate(-153.31074,-65.364624)"><flowRegion
+       id="flowRegion263"
+       style="stroke-linecap:butt;stroke-linejoin:round"><rect
          id="rect265"
          width="976.25"
          height="315"
          x="147.5"
          y="749.85004"
          style="stroke-linecap:butt;stroke-linejoin:round" /></flowRegion><flowPara
-       id="flowPara267" /></flowRoot></svg>
+       id="flowPara267"
+       style="stroke-linecap:butt;stroke-linejoin:round" /></flowRoot></svg>
